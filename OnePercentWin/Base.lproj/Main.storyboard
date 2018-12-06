@@ -20,8 +20,8 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="OQC-d7-sva" kind="relationship" relationship="viewControllers" id="4ac-Uz-oUn"/>
                         <segue destination="vZA-4a-cqd" kind="relationship" relationship="viewControllers" id="ZFJ-22-pUa"/>
+                        <segue destination="OQC-d7-sva" kind="relationship" relationship="viewControllers" id="4ac-Uz-oUn"/>
                         <segue destination="pFN-7Q-3k9" kind="relationship" relationship="viewControllers" id="6lk-yv-93L"/>
                     </connections>
                 </tabBarController>
