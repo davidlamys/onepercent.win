@@ -19,6 +19,10 @@
 		150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303421A70248000CAB0C /* HistoryViewController.swift */; };
 		150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303621A70251000CAB0C /* HistoryViewModel.swift */; };
 		150A303F21A921B2000CAB0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 150A303E21A921B1000CAB0C /* GoogleService-Info.plist */; };
+		630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F221B011B600E608F4 /* SettingsViewModel.swift */; };
+		630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F421B191C900E608F4 /* UserSettings.swift */; };
+		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
+		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,10 @@
 		150A303621A70251000CAB0C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		150A303E21A921B1000CAB0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePercentWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630DC5F221B011B600E608F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		630DC5F421B191C900E608F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
+		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +83,7 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
+				63FF09A121AC12840001B450 /* LocalCollection.swift */,
 				150A303D21A91EF7000CAB0C /* Models */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
@@ -94,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				150A302521A6E422000CAB0C /* SettingsViewController.swift */,
+				630DC5F221B011B600E608F4 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -136,6 +146,8 @@
 		150A303D21A91EF7000CAB0C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63B030BD21AB112300890104 /* DailyGoal.swift */,
+				630DC5F421B191C900E608F4 /* UserSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,11 +326,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */,
+				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
+				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */,
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
+				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
+				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
 				150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */,
 			);

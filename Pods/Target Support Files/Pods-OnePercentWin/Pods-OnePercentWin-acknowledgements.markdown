@@ -256,6 +256,14 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+## Firebase
+
+Copyright 2018 Google
+
+## FirebaseAnalytics
+
+Copyright 2018 Google
+
 ## FirebaseAuthInterop
 
 
@@ -873,6 +881,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## FirebaseInstanceID
+
+Copyright 2018 Google
+
+## GoogleAppMeasurement
+
+Copyright 2018 Google
 
 ## GoogleUtilities
 

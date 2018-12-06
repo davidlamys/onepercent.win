@@ -7,3 +7,32 @@
 //
 
 import Foundation
+
+struct UserDefaultsWrapper {
+    func save(settings: UserSettings?) {
+        guard settings != nil else {
+            removeSettings()
+            return
+        }
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(settings), forKey:"userSettings")
+
+    }
+    
+    func removeSettings() {
+        UserDefaults.standard.set(nil, forKey: "userSettings")
+    }
+    
+    func getSettings() -> UserSettings? {
+        guard let data = UserDefaults.standard.value(forKey: "userSettings") as? Data else {
+            return nil
+        }
+        
+        do {
+            let settings = try PropertyListDecoder().decode(UserSettings.self, from: data)
+            return settings
+        } catch let err {
+            print(err)
+            return nil
+        }
+    }
+}
