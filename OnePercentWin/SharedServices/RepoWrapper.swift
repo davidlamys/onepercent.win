@@ -17,7 +17,11 @@ class RepoWrapper {
     private var documents: [DocumentSnapshot] = []
     private let db: Firestore
     
-    var delegate: RepoWrapperDelegate?
+    var delegate: RepoWrapperDelegate? {
+        didSet {
+            delegate?.refreshWith(goals: self.goals)
+        }
+    }
     
     static let shared = RepoWrapper()
 
