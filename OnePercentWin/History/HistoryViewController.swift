@@ -82,6 +82,11 @@ extension HistoryViewController: UITableViewDataSource {
         cell.textLabel?.text = showAll ? goalForCell.displayTextGlobal : goalForCell.displayText
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = goalForCell.prettyDate
+        if goalForCell.completed ?? false {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
 }

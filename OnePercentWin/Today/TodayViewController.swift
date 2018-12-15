@@ -13,14 +13,18 @@ final class TodayViewController: UIViewController {
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var reasonTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var countdownLabel: UILabel!
     
     var viewModel: TodayViewModel!
     
-    @IBAction func didPressDone(_ sender: Any) {
+    @IBAction func didPressSave(_ sender: Any) {
         viewModel.addGoal(goal: goalTextField.text ?? "", reason: reasonTextField.text ?? "")
-//        goalTextField.text = ""
-//        reasonTextField.text = ""
-//        self.view.endEditing(true)
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func didPressDone(_ sender: Any) {
+        viewModel.toggleGoalCompletion()
     }
     
     override func viewDidLoad() {
@@ -33,6 +37,8 @@ final class TodayViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        goalTextField.text = ""
+        reasonTextField.text = ""
         RepoWrapper.shared.delegate = viewModel
     }
 }
@@ -53,7 +59,17 @@ extension TodayViewController: UITextFieldDelegate {
 
 extension TodayViewController: TodayViewModelDelegate {
     func setup(goal: DailyGoal) {
+        doneButton.isEnabled = true
         self.goalTextField.text = goal.goal
         self.reasonTextField.text = goal.reason
+        if goal.completed ?? false {
+            saveButton.isEnabled = false
+            doneButton.setTitle("Mark incomplete", for: .normal)
+            countdownLabel.text = "Congratulations"
+        } else {
+            saveButton.isEnabled = true
+            doneButton.setTitle("Mark complete", for: .normal)
+            countdownLabel.text = "Go after it!!!"
+        }
     }
 }

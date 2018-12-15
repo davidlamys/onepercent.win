@@ -28,7 +28,8 @@ class TodayViewModel {
                              goal: goal,
                              reason: reason,
                              date: Date(),
-                             createdBy: createdBy)
+                             createdBy: createdBy,
+                             completed: false)
         wrapper.add(goal)
         self.goal = goal
         delegate?.setup(goal: goal)
@@ -40,6 +41,12 @@ class TodayViewModel {
         self.goal.date = Date()
         wrapper.save(self.goal)
         
+        delegate?.setup(goal: self.goal)
+    }
+    
+    func toggleGoalCompletion() {
+        self.goal.completed = !(self.goal.completed ?? false)
+        wrapper.save(self.goal)
         delegate?.setup(goal: self.goal)
     }
 }
