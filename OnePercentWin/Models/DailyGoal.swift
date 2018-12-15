@@ -10,19 +10,11 @@ import Foundation
 import FirebaseFirestore
 
 struct DailyGoal {
+    var id: String
     var goal: String
     var reason: String
     var date: Date
     var createdBy: String
-    
-    var dictionary: [String: Any] {
-        return [
-            "goal": goal,
-            "reason": reason,
-            "timestamp": date,
-            "createdBy": createdBy
-        ]
-    }
 }
 
 extension DailyGoal {
@@ -36,24 +28,41 @@ extension DailyGoal {
     }
     
     var prettyDate: String {
+        return self.date.prettyDate
+    }
+}
+
+extension Date {
+    var prettyDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yy"
-        return dateFormatter.string(from: self.date)
+        return dateFormatter.string(from: self)
     }
 }
 
 extension DailyGoal: DocumentSerializable {
+    
+    var dictionary: [String: Any] {
+        return [
+            "goal": goal,
+            "reason": reason,
+            "timestamp": date,
+            "createdBy": createdBy
+        ]
+    }
+    
     static var collectionPath: String {
         return "dailyGoals"
     }
     
-    init?(dictionary: [String : Any]) {
+    init?(dictionary: [String : Any], id: String) {
         guard let goal = dictionary["goal"] as? String,
             let reason = dictionary["reason"] as? String,
             let createdBy = dictionary["createdBy"] as? String,
             let date = dictionary["timestamp"] as? Timestamp else { return nil }
         
-        self.init(goal: goal,
+        self.init(id: id,
+                  goal: goal,
                   reason: reason,
                   date: date.dateValue(),
                   createdBy: createdBy)

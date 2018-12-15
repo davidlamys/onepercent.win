@@ -18,9 +18,9 @@ final class TodayViewController: UIViewController {
     
     @IBAction func didPressDone(_ sender: Any) {
         viewModel.addGoal(goal: goalTextField.text ?? "", reason: reasonTextField.text ?? "")
-        goalTextField.text = ""
-        reasonTextField.text = ""
-        self.view.endEditing(true)
+//        goalTextField.text = ""
+//        reasonTextField.text = ""
+//        self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
@@ -29,6 +29,11 @@ final class TodayViewController: UIViewController {
         reasonTextField.delegate = self
         viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
         doneButton.isEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        RepoWrapper.shared.delegate = viewModel
     }
 }
 

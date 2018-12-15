@@ -210,7 +210,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="137" translatesAutoresizingMaskIntoConstraints="NO" id="kSl-Nc-XYS">
-                                        <rect key="frame" x="44.666666666666671" y="240.66666666666669" width="211.66666666666663" height="30"/>
+                                        <rect key="frame" x="43.333333333333329" y="240.66666666666669" width="214.66666666666669" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwB-YX-ZI9">
                                                 <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="30"/>
@@ -219,8 +219,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U60-rh-fXe">
-                                                <rect key="frame" x="177.66666666666663" y="0.0" width="34" height="30"/>
-                                                <state key="normal" title="Save"/>
+                                                <rect key="frame" x="177.66666666666669" y="0.0" width="37" height="30"/>
+                                                <state key="normal" title="Done"/>
                                                 <connections>
                                                     <action selector="didPressDone:" destination="vZA-4a-cqd" eventType="touchUpInside" id="vEU-6D-LDD"/>
                                                 </connections>

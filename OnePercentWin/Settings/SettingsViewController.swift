@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import FirebaseUI
+import FirebaseAuth
 
 let disabledAlpha: CGFloat = 0.5
 
@@ -76,6 +77,7 @@ final class SettingsViewController: UIViewController {
         { (granted, error) in
             // Enable or disable features based on authorization.
         }
+        
     }
     
 }

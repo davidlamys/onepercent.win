@@ -49,6 +49,11 @@ final class HistoryViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        RepoWrapper.shared.delegate = viewModel
+    }
+    
     private func getVisibleGoals(goals: [DailyGoal],
                                  showAll: Bool,
                                  userName: String) -> [DailyGoal] {

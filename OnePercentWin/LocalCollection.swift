@@ -18,9 +18,10 @@ import FirebaseFirestore
 
 // A type that can be initialized from a Firestore document.
 protocol DocumentSerializable {
-    init?(dictionary: [String: Any])
+    init?(dictionary: [String: Any], id: String)
     static var collectionPath: String { get }
     var dictionary: [String: Any] { get }
+    var id: String { get }
 }
 
 final class LocalCollection<T: DocumentSerializable> {
@@ -69,7 +70,7 @@ final class LocalCollection<T: DocumentSerializable> {
                 return
             }
             let models = snapshot.documents.map { (document) -> T in
-                if let model = T(dictionary: document.data()) {
+                if let model = T(dictionary: document.data(), id: document.documentID) {
                     return model
                 } else {
                     // handle error

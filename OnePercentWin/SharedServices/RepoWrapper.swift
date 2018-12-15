@@ -36,7 +36,7 @@ class RepoWrapper {
     
     func save<T: DocumentSerializable>(_ document: T) {
         let collection = db.collection(T.collectionPath)
-//        collection.save(data: document.dictionary)
+        collection.document(document.id).updateData(document.dictionary)
     }
     
     func add<T: DocumentSerializable>(_ document: T) {
@@ -64,7 +64,7 @@ class RepoWrapper {
                 return
             }
             let models = snapshot.documents.map { (document) -> DailyGoal in
-                if let model = DailyGoal(dictionary: document.data()) {
+                if let model = DailyGoal(dictionary: document.data(), id: document.documentID) {
                     return model
                 } else {
                     // Don't use fatalError here in a real app.
