@@ -12,5 +12,7 @@ target 'OnePercentWin' do
   pod 'Firebase/Core'
   pod 'FirebaseCore'
   pod 'FirebaseFirestore'
-
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Auth', '~> 5.0'
+  
 end

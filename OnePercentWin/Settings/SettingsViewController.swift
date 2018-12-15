@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FirebaseUI
 
 let disabledAlpha: CGFloat = 0.5
 
@@ -20,6 +21,12 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet weak private var userNameTextField: UITextField!
     
+    @IBAction func didTapSignIn(_ sender: Any) {
+        let authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        let authViewController = authUI?.authViewController()
+        self.present(authViewController!, animated: true)
+    }
     
     @IBAction func nameTextField(_ sender: Any) {
         if let textField = sender as? UITextField,
@@ -71,6 +78,13 @@ final class SettingsViewController: UIViewController {
         }
     }
     
+}
+
+extension SettingsViewController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        // handle user and error as necessary
+        self.userNameTextField.text = user?.displayName
+    }
 }
 
 private extension SettingsViewController {
