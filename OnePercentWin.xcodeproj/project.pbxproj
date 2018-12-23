@@ -66,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				150A301021A6E106000CAB0C /* OnePercentWin */,
-				150A300F21A6E106000CAB0C /* Products */,
 				C7E2D27A34E025A1E9451F2B /* Pods */,
 				E328ADD7DB7764224E12DBFF /* Frameworks */,
 			);
@@ -78,20 +77,22 @@
 				150A300E21A6E106000CAB0C /* OnePercentWin.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
-				63FF09A121AC12840001B450 /* LocalCollection.swift */,
-				150A303D21A91EF7000CAB0C /* Models */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
+				63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */,
 				150A303321A70237000CAB0C /* History */,
 				150A301F21A6E107000CAB0C /* Info.plist */,
 				150A301C21A6E107000CAB0C /* LaunchScreen.storyboard */,
+				63FF09A121AC12840001B450 /* LocalCollection.swift */,
 				150A301721A6E106000CAB0C /* Main.storyboard */,
-				63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */,
+				150A303D21A91EF7000CAB0C /* Models */,
+				150A300F21A6E106000CAB0C /* Products */,
 				150A302721A6E427000CAB0C /* Settings */,
 				150A302D21A701E1000CAB0C /* SharedServices */,
 				150A302821A700C4000CAB0C /* Today */,
