@@ -1,0 +1,5 @@
+there are two images:
+- woman running on the stairs = splash screen image
+- shooting stars = background for login, sign up, and reset password
+
+How to: on top of the image - insert rectangle, fill with #0D0D0D and opacity = 70%
