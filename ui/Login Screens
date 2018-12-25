@@ -1,0 +1,29 @@
+- Background image for screen could be found under BackgroundImage Folder
+
+- Quote Text Spec:
+  Font: Roboto Italic
+  Size: 18
+  Color: #FFFFFF
+  Quote source font: Roboto Regular, Size 12
+  
+- Button Spec:
+  Font: Roboto Black
+  Size: 17
+  Spacing Char: 1.39 
+  Width: 278
+  Height: 44
+  Color: #FF9500
+  
+- Forgot Password & Sign up here! Text Color #FFA841
+
+- Username/Email, Password, Confirm Password Text Spec:
+  Font: Roboto Regular
+  Size: 15
+  Color: #7C7A7A
+  
+- Don't have an account? Text Spec:
+  Font: Roboto Regular
+  Size: 15
+  Color: #FFFFFF
+  
+- Icons could be found under icons folder
