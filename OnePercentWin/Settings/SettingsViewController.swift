@@ -41,7 +41,11 @@ final class SettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.morningReminderTimePicker.alpha = shouldHide ? disabledAlpha : 1.0
         }
-        viewModel.removeMorningReminders()
+        if morningReminderSwitch.isOn {
+            didSetMorningReminder(self)
+        } else {
+            viewModel.removeMorningReminders()
+        }
     }
     @IBAction func eveningReminderToggled(_ sender: Any) {
         let shouldHide = !eveningReminderSwitch.isOn
@@ -49,7 +53,11 @@ final class SettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.eveningReminderTimePicker.alpha = shouldHide ? disabledAlpha : 1.0
         }
-        viewModel.removeEveningReminders()
+        if eveningReminderSwitch.isOn {
+            didSetEveningReminder(self)
+        } else {
+            viewModel.removeEveningReminders()            
+        }
     }
     
     @IBAction func didSetMorningReminder(_ sender: Any) {
