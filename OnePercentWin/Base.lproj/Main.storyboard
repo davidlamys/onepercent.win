@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -139,9 +138,8 @@
                                     </datePicker>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdj-tz-Ukz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdj-tz-Ukz">
                                 <rect key="frame" x="164" y="681" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="didTapSignIn:" destination="OQC-d7-sva" eventType="touchUpInside" id="cxb-FF-2uL"/>
@@ -151,10 +149,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7z5-X9-Jo0" firstAttribute="centerY" secondItem="I7Q-qk-YKb" secondAttribute="centerY" id="ThI-tC-riT"/>
+                            <constraint firstItem="sdj-tz-Ukz" firstAttribute="top" secondItem="sev-y2-iuG" secondAttribute="bottom" constant="8" id="aLE-e6-TH5"/>
                             <constraint firstItem="7z5-X9-Jo0" firstAttribute="width" secondItem="WoS-O7-czA" secondAttribute="width" multiplier="0.8" constant="0.80000000000000004" id="cXN-GY-CW0"/>
                             <constraint firstItem="7z5-X9-Jo0" firstAttribute="centerX" secondItem="I7Q-qk-YKb" secondAttribute="centerX" id="j78-lS-Q6p"/>
                             <constraint firstItem="I7Q-qk-YKb" firstAttribute="bottom" secondItem="7z5-X9-Jo0" secondAttribute="bottom" constant="56" id="jGb-eb-2eT"/>
                             <constraint firstItem="7z5-X9-Jo0" firstAttribute="top" secondItem="I7Q-qk-YKb" secondAttribute="top" constant="56" id="vbu-wx-7pp"/>
+                            <constraint firstItem="sdj-tz-Ukz" firstAttribute="centerX" secondItem="sev-y2-iuG" secondAttribute="centerX" id="ylf-d8-Md7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I7Q-qk-YKb"/>
                     </view>

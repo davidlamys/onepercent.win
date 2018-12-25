@@ -22,6 +22,9 @@
 		630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F421B191C900E608F4 /* UserSettings.swift */; };
 		63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
+		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
+		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
+		63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7C0721D1EE100010A5A7 /* Review.storyboard */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +49,9 @@
 		630DC5F421B191C900E608F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
+		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
+		63BA7C0721D1EE100010A5A7 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +99,9 @@
 				150A301721A6E106000CAB0C /* Main.storyboard */,
 				150A303D21A91EF7000CAB0C /* Models */,
 				150A300F21A6E106000CAB0C /* Products */,
+				63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */,
+				63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */,
+				63BA7C0721D1EE100010A5A7 /* Review.storyboard */,
 				150A302721A6E427000CAB0C /* Settings */,
 				150A302D21A701E1000CAB0C /* SharedServices */,
 				150A302821A700C4000CAB0C /* Today */,
@@ -112,7 +121,6 @@
 		150A302821A700C4000CAB0C /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				150A303221A7022E000CAB0C /* Notes */,
 				150A302921A700CF000CAB0C /* TodayViewController.swift */,
 				150A302B21A701DC000CAB0C /* TodayViewModel.swift */,
 			);
@@ -126,13 +134,6 @@
 				150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */,
 			);
 			path = SharedServices;
-			sourceTree = "<group>";
-		};
-		150A303221A7022E000CAB0C /* Notes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Notes;
 			sourceTree = "<group>";
 		};
 		150A303321A70237000CAB0C /* History */ = {
@@ -232,9 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
+				63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */,
 				63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */,
 				150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */,
+				63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */,
 				150A301921A6E106000CAB0C /* Main.storyboard in Resources */,
+				63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +340,7 @@
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
 				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */,
+				63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */,
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
@@ -491,6 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,6 +516,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

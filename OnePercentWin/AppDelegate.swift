@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseCore
+import FirebaseAuth
 import FirebaseFirestore
 
 @UIApplicationMain
@@ -22,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.isPersistenceEnabled = true
         let db = Firestore.firestore()
         db.settings = settings
-
+        
+        if let user = Auth.auth().currentUser {
+            print(user)
+        }
         return true
     }
     
