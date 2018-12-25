@@ -57,20 +57,20 @@ class RepoWrapper {
         guard let query = query else { return }
         stopObserving()
         
-        // Display data from Firestore, part one
         listener = query.addSnapshotListener { [unowned self] (snapshot, error) in
             guard let snapshot = snapshot else {
                 print("Error fetching snapshot results: \(error!)")
                 return
             }
-            let models = snapshot.documents.map { (document) -> DailyGoal in
+            let models = snapshot.documents.compactMap { (document) -> DailyGoal? in
                 if let model = DailyGoal(dictionary: document.data(), id: document.documentID) {
                     return model
                 } else {
-                    // Don't use fatalError here in a real app.
-                    fatalError("Unable to initialize type \(DailyGoal.self) with dictionary \(document.data())")
+                    print("Unable to initialize type \(DailyGoal.self) with dictionary \(document.data())")
+                    return nil
                 }
             }
+
             self.goals = models
             self.documents = snapshot.documents
             self.delegate?.refreshWith(goals: self.goals)
