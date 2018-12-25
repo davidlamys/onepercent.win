@@ -25,6 +25,14 @@ struct SettingsViewModel {
         settings = userDefaultsWrapper.getSettings()
     }
     
+    func save(userName: String) {
+        userDefaultsWrapper.save(userName: userName)
+    }
+    
+    func getUserName() -> String? {
+        return userDefaultsWrapper.getUserName()
+    }
+    
     mutating func addMorningReminders(components: DateComponents) {
         removeMorningReminders()
         

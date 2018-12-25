@@ -9,6 +9,14 @@
 import Foundation
 
 struct UserDefaultsWrapper {
+    func getUserName() -> String? {
+        return UserDefaults.standard.string(forKey: "user")
+    }
+    
+    func save(userName: String) {
+        UserDefaults.standard.setValue(userName, forKey: "user")
+    }
+    
     func save(settings: UserSettings?) {
         guard settings != nil else {
             removeSettings()

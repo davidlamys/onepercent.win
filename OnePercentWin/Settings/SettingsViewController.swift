@@ -32,7 +32,7 @@ final class SettingsViewController: UIViewController {
     @IBAction func nameTextField(_ sender: Any) {
         if let textField = sender as? UITextField,
             let userName = textField.text {
-            UserDefaults.standard.setValue(userName, forKey: "user")
+            viewModel.save(userName: userName)
         }
     }
     @IBAction func morningReminderToggled(_ sender: Any) {
@@ -68,7 +68,7 @@ final class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameTextField.text = UserDefaults.standard.string(forKey: "user")
+        userNameTextField.text = viewModel.getUserName()
         userNameTextField.delegate = self
         setupUI()
         let center = UNUserNotificationCenter.current()
