@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseCore
-import FirebaseAuth
 import FirebaseFirestore
 
 @UIApplicationMain
@@ -24,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         db.settings = settings
         
-        if let user = Auth.auth().currentUser {
-            print(user)
-        }
         return true
     }
     

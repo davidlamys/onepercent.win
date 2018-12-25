@@ -24,6 +24,7 @@
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
+		63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA7C0521D1DF6F0010A5A7 /* UserService.swift */; };
 		63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7C0721D1EE100010A5A7 /* Review.storyboard */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
@@ -51,6 +52,7 @@
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
+		63BA7C0521D1DF6F0010A5A7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		63BA7C0721D1EE100010A5A7 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				150A303021A70207000CAB0C /* RepoWrapper.swift */,
+				63BA7C0521D1DF6F0010A5A7 /* UserService.swift */,
 				150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */,
 			);
 			path = SharedServices;

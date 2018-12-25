@@ -9,6 +9,14 @@
 import Foundation
 
 struct UserDefaultsWrapper {
+    func getUserId() -> String? {
+        return UserDefaults.standard.string(forKey: "userId")
+    }
+    
+    func save(userId: String = UUID.init().uuidString) {
+        UserDefaults.standard.setValue(userId, forKey: "userId")
+    }
+    
     func getUserName() -> String? {
         return UserDefaults.standard.string(forKey: "user")
     }
