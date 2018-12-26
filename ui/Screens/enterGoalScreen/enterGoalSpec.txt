@@ -1,0 +1,6 @@
+1. inputEntry Screen is when the screen is fully empty & Repeat Yesterday's Goal is disabled
+2. inputEntryFilled Screen is when the screen is autofilled but user is able to edit it & Repeat Yesterday's goal is enabled
+3. Today's Goal View Screen is shown when:
+   - when user has saved the goal
+   - when user logs in to the app after saving the goal and before end of the day (auto complete the goal)
+4. CompletedView Screen is when user has completed the goal
