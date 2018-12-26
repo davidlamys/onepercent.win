@@ -9,3 +9,5 @@ Size of the Icon on Login:
 - User Icon   = 24x24
 - Email Icon  = 24x24
 - Lock Icon   = 25x25
+
+Size of Smiley Icon = 24x25
