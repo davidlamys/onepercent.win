@@ -12,6 +12,7 @@ final class HistoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var viewModel: HistoryViewModel!
+    private var cellModels: [HistoryCellModel] = []
     
     @IBAction func showAllToggled(_ sender: Any) {
         guard let showAllSwitch = sender as? UISwitch else {
@@ -34,27 +35,43 @@ final class HistoryViewController: UIViewController {
 
 extension HistoryViewController: HistoryViewModelDelegate {
     func refreshView() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        cellModels = viewModel.generateCellModels()
         self.tableView.reloadData()
     }
 }
 
 extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.visibleGoals.count
+        if viewModel.shouldShowAllGoals {
+            return viewModel.visibleGoals.count
+        }
+        return cellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        let goalForCell = viewModel.visibleGoals[indexPath.row]
-        cell.textLabel?.text = viewModel.shouldShowAllGoals ? goalForCell.displayTextGlobal : goalForCell.displayText
-        cell.textLabel?.numberOfLines = 0
-        cell.detailTextLabel?.text = goalForCell.prettyDate
-        if goalForCell.completed ?? false {
-            cell.accessoryType = .checkmark
+        if viewModel.shouldShowAllGoals {
+            let goalForCell = viewModel.visibleGoals[indexPath.row]
+            
+            cell.backgroundColor = UIColor.white
+            cell.textLabel?.text = goalForCell.displayTextGlobal
+            cell.textLabel?.numberOfLines = 0
+            cell.detailTextLabel?.text = goalForCell.prettyDate
+            
+            let isCompleted = goalForCell.completed ?? false
+            cell.accessoryType = isCompleted ? .checkmark : .none
+            
+            return cell
         } else {
+            let cellModelForCell = cellModels[indexPath.row]
+            cell.backgroundColor = cellModelForCell.colorForStatus
+            cell.textLabel?.text = cellModelForCell.dateLabel
+            cell.detailTextLabel?.text = cellModelForCell.textLabel
             cell.accessoryType = .none
+            return cell
         }
-        return cell
     }
 }
