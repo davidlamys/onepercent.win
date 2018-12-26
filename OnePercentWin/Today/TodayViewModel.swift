@@ -55,9 +55,9 @@ class TodayViewModel {
 extension TodayViewModel: RepoWrapperDelegate {
     
     func refreshWith(goals: [DailyGoal]) {
-        let user = UserDefaults.standard.string(forKey: "user") ?? ""
+        let userId = UserService().userId()
         if let todayGoal = goals
-            .filter({ $0.createdBy == user})
+            .filter({ $0.userId == userId })
             .filter({ $0.prettyDate == Date().prettyDate })
             .first {
             self.goal = todayGoal
