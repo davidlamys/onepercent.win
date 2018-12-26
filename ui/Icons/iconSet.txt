@@ -1,0 +1,11 @@
+Inside this folder you can find the set of the icons.
+
+Size of Icon for Tap bar:
+- Writing Icon & calendar = 27x27
+- Settings = 31x31
+- Distance between Writing Icon - Calendar & Calendar - Settings = 68 pixels
+
+Size of the Icon on Login:
+- User Icon   = 24x24
+- Email Icon  = 24x24
+- Lock Icon   = 25x25
