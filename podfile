@@ -12,5 +12,6 @@ target 'OnePercentWin' do
   pod 'Firebase/Core'
   pod 'FirebaseFirestore'
   pod 'FirebaseUI/Auth', '~> 5.0'
+  pod 'JTAppleCalendar', '~> 7.0'
   
 end
