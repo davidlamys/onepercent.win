@@ -34,14 +34,6 @@ extension DailyGoal {
     }
 }
 
-extension Date {
-    var prettyDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM yy"
-        return dateFormatter.string(from: self)
-    }
-}
-
 extension DailyGoal: DocumentSerializable {
     
     var dictionary: [String: Any] {
