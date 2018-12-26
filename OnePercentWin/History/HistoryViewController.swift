@@ -57,10 +57,11 @@ final class HistoryViewController: UIViewController {
     private func getVisibleGoals(goals: [DailyGoal],
                                  showAll: Bool,
                                  userName: String) -> [DailyGoal] {
+        let userId = UserService().userId()
         if showAll {
             return goals
         }
-        return goals.filter { $0.createdBy.lowercased() == userName.lowercased() }
+        return goals.filter { $0.userId == userId }
     }
 }
 

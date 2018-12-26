@@ -25,7 +25,7 @@ class UserService {
         return false
     }
     
-    func userId() -> String? {
+    func userId() -> String {
         if let user = Auth.auth().currentUser {
             return user.uid
         }
@@ -34,6 +34,9 @@ class UserService {
             return tempUserId
         }
         
-        return nil
+        let newUserId = UUID.init().uuidString
+        userDefaultsWrapper.save(userId: newUserId)
+        return newUserId
     }
+    
 }

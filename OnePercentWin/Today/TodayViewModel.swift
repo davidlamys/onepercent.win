@@ -29,6 +29,7 @@ class TodayViewModel {
                              reason: reason,
                              date: Date(),
                              createdBy: createdBy,
+                             userId: UserService().userId(),
                              completed: false)
         wrapper.add(goal)
         self.goal = goal
