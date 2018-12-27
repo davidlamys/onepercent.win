@@ -9,16 +9,25 @@
 import Foundation
 
 extension Date {
-    var prettyDate: String {
+    private static let prettyDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yy"
-        return dateFormatter.string(from: self)
+        return dateFormatter
+    }()
+    
+    private static let historyCellModelDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "(d MMMM yyyy)"
+        return dateFormatter
+    }()
+    
+    var prettyDate: String {
+       
+        return Date.prettyDateFormatter.string(from: self)
     }
     
     var historyCellModelDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "(d MMMM yyyy)"
-        return dateFormatter.string(from: self)
+        return Date.historyCellModelDateFormatter.string(from: self)
     }
 
     var startOfDay: Date {
