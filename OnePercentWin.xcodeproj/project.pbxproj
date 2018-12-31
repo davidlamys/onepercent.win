@@ -21,6 +21,7 @@
 		630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F221B011B600E608F4 /* SettingsViewModel.swift */; };
 		630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F421B191C900E608F4 /* UserSettings.swift */; };
 		633781F021D434F200E11531 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781EF21D434F200E11531 /* Date+Ext.swift */; };
+		633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781F121D5061900E11531 /* HistoryCalendarCell.swift */; };
 		63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
@@ -50,6 +51,7 @@
 		630DC5F221B011B600E608F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		630DC5F421B191C900E608F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		633781EF21D434F200E11531 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		633781F121D5061900E11531 /* HistoryCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCalendarCell.swift; sourceTree = "<group>"; };
 		63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				150A303421A70248000CAB0C /* HistoryViewController.swift */,
 				150A303621A70251000CAB0C /* HistoryViewModel.swift */,
+				633781F121D5061900E11531 /* HistoryCalendarCell.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
+				633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */,
 				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
 				150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */,

@@ -52,6 +52,7 @@ extension Date {
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startOfMonth)!
     }
+    
     func allDates(till endDate: Date) -> [Date] {
         var date = self
         var array: [Date] = []

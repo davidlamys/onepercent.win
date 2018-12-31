@@ -46,7 +46,8 @@ class RepoWrapper {
     
     fileprivate func baseQuery() -> Query {
         return db.collection("dailyGoals")
-            .limit(to: 50)
+            .order(by: "timestamp", descending: true)
+            .limit(to: 365)
     }
     
     fileprivate func stopObserving() {

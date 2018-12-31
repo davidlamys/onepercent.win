@@ -68,3 +68,5 @@ extension DailyGoal: DocumentSerializable {
                   completed: completed)
     }
 }
+
+extension DailyGoal: Equatable {}

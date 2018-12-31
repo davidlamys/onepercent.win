@@ -9,6 +9,10 @@
 import UIKit
 
 struct HistoryCellModel {
+    static let completedColor = UIColor.green
+    static let incompleteColor = UIColor.yellow
+    static let noEntryColor = UIColor.red
+    
     enum GoalStatus {
         case notSet
         case incomplete
@@ -36,11 +40,11 @@ struct HistoryCellModel {
     var colorForStatus: UIColor {
         switch self.status {
         case .complete:
-            return UIColor.green
+            return HistoryCellModel.completedColor
         case .incomplete:
-            return UIColor.yellow
+            return HistoryCellModel.incompleteColor
         case .notSet:
-            return UIColor.red
+            return HistoryCellModel.noEntryColor
         }
     }
 }
@@ -61,7 +65,7 @@ class HistoryViewModel {
             delegate?.refreshView()
         }
     }
-    
+    private var cachedGoals: [DailyGoal] = []
     private let wrapper: RepoWrapper!
     private var goals: [DailyGoal] = [] {
         didSet {
@@ -90,27 +94,34 @@ class HistoryViewModel {
         let goals = getUserGoals()
         let currentDate = Date().startOfDay
         let startOfMonth = Date().startOfMonth
+        let dateOfFirstGoal = goals.last?.date.startOfDay
         
-        let dates = startOfMonth
+        let dates = (dateOfFirstGoal ?? startOfMonth)
             .allDates(till: currentDate)
             .map { $0.startOfDay }
             .reversed()
+
+        var goalDict: [Date: DailyGoal] = [:]
         
-        return dates.map({ date in
-            let goalForDate = goals.filter({ $0.date.startOfDay == date }).first
-            return HistoryCellModel(date: date, goal: goalForDate)
+        for goal in goals {
+            goalDict[goal.date.startOfDay] = goal
+        }
+        
+        return dates.map({
+            HistoryCellModel(date: $0, goal: goalDict[$0])
         })
+
     }
 }
 
 extension HistoryViewModel: RepoWrapperDelegate {
     func refreshWith(goals: [DailyGoal]) {
         
-        self.goals = goals.sorted(by: {
-            $0.date.timeIntervalSince1970 > $1.date.timeIntervalSince1970
-        })
-        
-        delegate?.refreshView()
+        self.goals = goals
+        if self.cachedGoals != self.goals {
+            delegate?.refreshView()
+            cachedGoals = self.goals
+        }
     }
 }
 
