@@ -56,16 +56,16 @@ extension TodayViewModel: RepoWrapperDelegate {
     
     func refreshWith(goals: [DailyGoal]) {
         let userId = UserService().userId()
-        if let todayGoal = goals
+        let todayGoal = goals
             .filter({ $0.userId == userId })
             .filter({ $0.prettyDate == Date().prettyDate })
-            .first {
-            self.goal = todayGoal
-            delegate?.setup(goal: todayGoal)
-        }
+            .first
+        self.goal = todayGoal
+        delegate?.setup(goal: todayGoal)
+        
     }
 }
 
 protocol TodayViewModelDelegate: class {
-    func setup(goal: DailyGoal)
+    func setup(goal: DailyGoal?)
 }

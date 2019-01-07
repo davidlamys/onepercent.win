@@ -41,6 +41,18 @@ final class TodayViewController: UIViewController {
         reasonTextField.text = ""
         RepoWrapper.shared.delegate = viewModel
     }
+    
+    func setupViewForGoal(isCompleted: Bool) {
+        if isCompleted {
+            saveButton.isEnabled = false
+            doneButton.setTitle("Mark incomplete", for: .normal)
+            countdownLabel.text = "Congratulations"
+        } else {
+            saveButton.isEnabled = true
+            doneButton.setTitle("Mark complete", for: .normal)
+            countdownLabel.text = "Go after it!!!"
+        }
+    }
 }
 
 extension TodayViewController: UITextFieldDelegate {
@@ -58,18 +70,16 @@ extension TodayViewController: UITextFieldDelegate {
 }
 
 extension TodayViewController: TodayViewModelDelegate {
-    func setup(goal: DailyGoal) {
+    func setup(goal: DailyGoal?) {
+        guard let goal = goal else {
+            setupViewForGoal(isCompleted: false)
+            goalTextField.text = ""
+            reasonTextField.text = ""
+            return
+        }
         doneButton.isEnabled = true
         self.goalTextField.text = goal.goal
         self.reasonTextField.text = goal.reason
-        if goal.completed ?? false {
-            saveButton.isEnabled = false
-            doneButton.setTitle("Mark incomplete", for: .normal)
-            countdownLabel.text = "Congratulations"
-        } else {
-            saveButton.isEnabled = true
-            doneButton.setTitle("Mark complete", for: .normal)
-            countdownLabel.text = "Go after it!!!"
-        }
+        setupViewForGoal(isCompleted: goal.completed ?? false)
     }
 }
