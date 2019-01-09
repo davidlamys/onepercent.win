@@ -210,7 +210,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kSl-Nc-XYS">
-                                        <rect key="frame" x="71.666666666666686" y="240.66666666666669" width="158" height="30"/>
+                                        <rect key="frame" x="36.666666666666686" y="240.66666666666669" width="228" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U60-rh-fXe">
                                                 <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
@@ -225,6 +225,13 @@
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="didPressSave:" destination="vZA-4a-cqd" eventType="touchUpInside" id="UrS-yE-EK5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zs-8i-7A1">
+                                                <rect key="frame" x="168" y="0.0" width="60" height="30"/>
+                                                <state key="normal" title="Use Last"/>
+                                                <connections>
+                                                    <action selector="didPressUseLast:" destination="vZA-4a-cqd" eventType="touchUpInside" id="cyI-cf-gn0"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -258,6 +265,7 @@
                         <outlet property="goalTextField" destination="psi-Ie-95N" id="b2Y-iV-0f0"/>
                         <outlet property="reasonTextField" destination="SFz-bf-j3O" id="vsJ-sn-xwh"/>
                         <outlet property="saveButton" destination="a4V-R2-JEb" id="v4N-Gg-1i5"/>
+                        <outlet property="useLastButton" destination="8zs-8i-7A1" id="xwn-rs-Lnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="how-cR-Awc" userLabel="First Responder" sceneMemberID="firstResponder"/>

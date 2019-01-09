@@ -14,12 +14,18 @@ final class TodayViewController: UIViewController {
     @IBOutlet weak var reasonTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var useLastButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     
     var viewModel: TodayViewModel!
     
     @IBAction func didPressSave(_ sender: Any) {
         viewModel.addGoal(goal: goalTextField.text ?? "", reason: reasonTextField.text ?? "")
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func didPressUseLast(_ sender: Any) {
+        viewModel.repeatLastGoal()
         self.view.endEditing(true)
     }
     
@@ -70,16 +76,21 @@ extension TodayViewController: UITextFieldDelegate {
 }
 
 extension TodayViewController: TodayViewModelDelegate {
-    func setup(goal: DailyGoal?) {
-        guard let goal = goal else {
+    func setup(todayGoal: DailyGoal?,
+               lastGoal: DailyGoal?) {
+        guard let goal = todayGoal else {
             setupViewForGoal(isCompleted: false)
             goalTextField.text = ""
             reasonTextField.text = ""
+            useLastButton.isEnabled = (lastGoal != nil)
             return
         }
+        
+        useLastButton.isEnabled = false
         doneButton.isEnabled = true
         self.goalTextField.text = goal.goal
         self.reasonTextField.text = goal.reason
         setupViewForGoal(isCompleted: goal.completed ?? false)
     }
+    
 }

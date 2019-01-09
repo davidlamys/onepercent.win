@@ -11,7 +11,8 @@ import Foundation
 class TodayViewModel {
     weak var delegate: TodayViewModelDelegate?
     var wrapper: RepoWrapper!
-    var goal: DailyGoal! = nil
+    private(set) var todayGoal: DailyGoal! = nil
+    private(set) var lastGoal: DailyGoal! = nil
     
     init(wrapper: RepoWrapper, delegate: TodayViewModelDelegate) {
         self.wrapper = wrapper
@@ -19,7 +20,7 @@ class TodayViewModel {
     }
     
     func addGoal(goal:String, reason: String) {
-        guard self.goal == nil else {
+        guard self.todayGoal == nil else {
             self.updateGoal(goal: goal, reason: reason)
             return
         }
@@ -32,23 +33,33 @@ class TodayViewModel {
                              userId: UserService().userId(),
                              completed: false)
         wrapper.add(goal)
-        self.goal = goal
-        delegate?.setup(goal: goal)
+        self.todayGoal = goal
+        delegate?.setup(todayGoal: goal,
+                        lastGoal: self.lastGoal)
+    }
+    
+    func repeatLastGoal() {
+        guard self.lastGoal != nil && self.todayGoal == nil else {
+            return
+        }
+        addGoal(goal: lastGoal.goal, reason: lastGoal.reason)
     }
     
     func updateGoal(goal: String, reason: String) {
-        self.goal.goal = goal
-        self.goal.reason = reason
-        self.goal.date = Date()
-        wrapper.save(self.goal)
+        self.todayGoal.goal = goal
+        self.todayGoal.reason = reason
+        self.todayGoal.date = Date()
+        wrapper.save(self.todayGoal)
         
-        delegate?.setup(goal: self.goal)
+        delegate?.setup(todayGoal: self.todayGoal,
+                        lastGoal: self.lastGoal)
     }
     
     func toggleGoalCompletion() {
-        self.goal.completed = !(self.goal.completed ?? false)
-        wrapper.save(self.goal)
-        delegate?.setup(goal: self.goal)
+        self.todayGoal.completed = !(self.todayGoal.completed ?? false)
+        wrapper.save(self.todayGoal)
+        delegate?.setup(todayGoal: self.todayGoal,
+                        lastGoal: self.lastGoal)
     }
 }
 
@@ -56,16 +67,19 @@ extension TodayViewModel: RepoWrapperDelegate {
     
     func refreshWith(goals: [DailyGoal]) {
         let userId = UserService().userId()
-        let todayGoal = goals
+        let userGoal = goals
             .filter({ $0.userId == userId })
-            .filter({ $0.prettyDate == Date().prettyDate })
-            .first
-        self.goal = todayGoal
-        delegate?.setup(goal: todayGoal)
+        
+        let todayGoal = userGoal.first(where: { $0.prettyDate == Date().prettyDate })
+        
+        self.lastGoal = userGoal.first
+        self.todayGoal = todayGoal
+        delegate?.setup(todayGoal: todayGoal,
+                        lastGoal: lastGoal)
         
     }
 }
 
 protocol TodayViewModelDelegate: class {
-    func setup(goal: DailyGoal?)
+    func setup(todayGoal: DailyGoal?, lastGoal: DailyGoal?)
 }
