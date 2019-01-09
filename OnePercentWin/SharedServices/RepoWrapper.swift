@@ -19,6 +19,7 @@ class RepoWrapper {
     
     var delegate: RepoWrapperDelegate? {
         didSet {
+            observeQuery()
             delegate?.refreshWith(goals: self.goals)
         }
     }
