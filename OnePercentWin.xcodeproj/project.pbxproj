@@ -22,6 +22,7 @@
 		630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F421B191C900E608F4 /* UserSettings.swift */; };
 		633781F021D434F200E11531 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781EF21D434F200E11531 /* Date+Ext.swift */; };
 		633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781F121D5061900E11531 /* HistoryCalendarCell.swift */; };
+		63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63426DFF21E9E3AB00EA35CB /* HistoryCellModel.swift */; };
 		63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
@@ -52,6 +53,7 @@
 		630DC5F421B191C900E608F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		633781EF21D434F200E11531 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		633781F121D5061900E11531 /* HistoryCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCalendarCell.swift; sourceTree = "<group>"; };
+		63426DFF21E9E3AB00EA35CB /* HistoryCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellModel.swift; sourceTree = "<group>"; };
 		63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		150A303321A70237000CAB0C /* History */ = {
 			isa = PBXGroup;
 			children = (
+				63426DFF21E9E3AB00EA35CB /* HistoryCellModel.swift */,
 				150A303421A70248000CAB0C /* HistoryViewController.swift */,
 				150A303621A70251000CAB0C /* HistoryViewModel.swift */,
 				633781F121D5061900E11531 /* HistoryCalendarCell.swift */,
@@ -357,6 +360,7 @@
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
+				63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */,
 				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				633781F021D434F200E11531 /* Date+Ext.swift in Sources */,
 				150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */,
