@@ -71,6 +71,12 @@ class HistoryViewModel {
         })
 
     }
+    
+    func toggleGoalStatus(goal: inout DailyGoal) {
+        let oldStatus = goal.completed ?? false
+        goal.completed = !oldStatus
+        wrapper.save(goal)
+    }
 }
 
 extension HistoryViewModel: RepoWrapperDelegate {

@@ -29,6 +29,7 @@ final class HistoryViewController: UIViewController {
         viewModel = HistoryViewModel(delegate: self,
                                      userService: UserService())
         tableView.dataSource = self
+        tableView.delegate = self
         calendar.calendarDataSource = self
         calendar.calendarDelegate = self
     }
@@ -142,5 +143,35 @@ extension HistoryViewController: UITableViewDataSource {
             }
             return cell
         }
+    }
+}
+
+extension HistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        guard viewModel.shouldShowAllGoals == false else {
+            return
+        }
+        let cellModelForCell = cellModels[indexPath.row]
+        guard var goalForCell = cellModelForCell.goal else {
+            return
+        }
+
+        let statusForCell = goalForCell.completed ?? false
+        let newStatus = statusForCell ? "incomplete" : "completed"
+        let message = "This will set \(goalForCell.goal) as \(newStatus)"
+        
+        let alertViewController = UIAlertController(title: "Toggle completion status", message: message, preferredStyle: UIAlertController.Style.alert)
+      
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+            self?.viewModel.toggleGoalStatus(goal: &goalForCell)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil)
+        alertViewController.addAction(confirmAction)
+        alertViewController.addAction(cancelAction)
+        self.present(alertViewController, animated: true, completion: nil)
     }
 }
