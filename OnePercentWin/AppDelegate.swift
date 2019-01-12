@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.isPersistenceEnabled = true
         let db = Firestore.firestore()
         db.settings = settings
-        
+        UITabBar.appearance().tintColor = UIColor.red
+
         return true
     }
     

@@ -158,7 +158,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I7Q-qk-YKb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="second" id="9Rw-Ca-Dtc"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="9Rw-Ca-Dtc"/>
                     <connections>
                         <outlet property="eveningReminderSwitch" destination="Hw0-YD-nqP" id="bM5-uj-CU3"/>
                         <outlet property="eveningReminderTimePicker" destination="sev-y2-iuG" id="YBI-KS-7r3"/>
@@ -258,7 +258,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jMs-hP-ayu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Today" id="850-mc-Hvy"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="850-mc-Hvy"/>
                     <connections>
                         <outlet property="countdownLabel" destination="PVs-Ug-1ns" id="0LT-sA-YdO"/>
                         <outlet property="doneButton" destination="U60-rh-fXe" id="EUB-54-Zxz"/>
@@ -272,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="824.79999999999995" y="434.93253373313348"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="hpj-cs-6sq">
             <objects>
-                <viewController id="pFN-7Q-3k9" customClass="HistoryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pFN-7Q-3k9" userLabel="History" customClass="HistoryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Myw-1W-nkp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -471,7 +471,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ktj-Sk-icr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hgg-ml-Lnz"/>
+                    <tabBarItem key="tabBarItem" title="History" image="calendarWhite" selectedImage="calendarWhite" id="hgg-ml-Lnz"/>
                     <connections>
                         <outlet property="calendar" destination="egj-1R-SpF" id="qlh-dc-9Uh"/>
                         <outlet property="tableView" destination="hbl-H2-O1p" id="TNX-k2-Wvu"/>
@@ -483,6 +483,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="calendarWhite" width="27" height="27"/>
+        <image name="settings" width="29" height="29"/>
+        <image name="writingIcon" width="25" height="27"/>
     </resources>
 </document>
