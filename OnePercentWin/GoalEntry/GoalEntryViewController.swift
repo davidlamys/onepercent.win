@@ -63,10 +63,7 @@ final class GoalEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setFonts()
-        saveGoalButton.backgroundColor = ThemeHelper.defaultOrange()
-        saveGoalButton.setTitleColor(.black, for: .normal)
-        saveGoalButton.layer.cornerRadius = 5.0
-        saveGoalButton.clipsToBounds = true
+        saveGoalButton.applyStyle()
         goalTextView.becomeFirstResponder()
         if self.goal == nil {
             let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Unknown user"
@@ -88,11 +85,11 @@ final class GoalEntryViewController: UIViewController {
     }
     
     private func setFonts() {
-        goalPrompt.font = ThemeHelper.defaultFont(fontSize: .medium)
-        goalTextView.font = ThemeHelper.defaultFont(fontSize: .medium)
-        reasonPrompt.font = ThemeHelper.defaultFont(fontSize: .medium)
-        reasonTextView.font = ThemeHelper.defaultFont(fontSize: .medium)
-        repeatLastGoalPrompt.font = ThemeHelper.defaultFont(fontSize: .medium)
+        goalPrompt.applyFont(fontSize: .medium)
+        goalTextView.applyFont(fontSize: .medium)
+        reasonPrompt.applyFont(fontSize: .medium)
+        reasonTextView.applyFont(fontSize: .medium)
+        repeatLastGoalPrompt.applyFont(fontSize: .medium)
     }
     
     private func setup(textView: UITextView) {

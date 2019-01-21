@@ -36,6 +36,7 @@
 		63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */; };
 		63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */; };
 		63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */; };
+		63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459621F5AD90006556D3 /* TextStylable.swift */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewController.swift; sourceTree = "<group>"; };
 		63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewModel.swift; sourceTree = "<group>"; };
 		63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldFixed.swift; sourceTree = "<group>"; };
+		63BB459621F5AD90006556D3 /* TextStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylable.swift; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				633781EF21D434F200E11531 /* Date+Ext.swift */,
+				63BB459621F5AD90006556D3 /* TextStylable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */,
 				150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */,
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */,
