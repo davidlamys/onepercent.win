@@ -33,6 +33,9 @@
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
 		63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA7C0521D1DF6F0010A5A7 /* UserService.swift */; };
 		63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7C0721D1EE100010A5A7 /* Review.storyboard */; };
+		63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */; };
+		63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */; };
+		63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
 		63BA7C0521D1DF6F0010A5A7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		63BA7C0721D1EE100010A5A7 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
+		63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewController.swift; sourceTree = "<group>"; };
+		63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewModel.swift; sourceTree = "<group>"; };
+		63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldFixed.swift; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,11 +123,12 @@
 				150A303D21A91EF7000CAB0C /* Models */,
 				150A300F21A6E106000CAB0C /* Products */,
 				63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */,
-				63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */,
+				63BB458A21E9FA0B006556D3 /* GoalEntry */,
 				63BA7C0721D1EE100010A5A7 /* Review.storyboard */,
 				150A302721A6E427000CAB0C /* Settings */,
 				150A302D21A701E1000CAB0C /* SharedServices */,
 				150A302821A700C4000CAB0C /* Today */,
+				63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */,
 			);
 			path = OnePercentWin;
 			sourceTree = "<group>";
@@ -192,6 +199,16 @@
 				63426E0E21E9F45B00EA35CB /* Roboto-Italic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		63BB458A21E9FA0B006556D3 /* GoalEntry */ = {
+			isa = PBXGroup;
+			children = (
+				63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */,
+				63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */,
+				63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */,
+			);
+			path = GoalEntry;
 			sourceTree = "<group>";
 		};
 		C7E2D27A34E025A1E9451F2B /* Pods */ = {
@@ -388,8 +405,10 @@
 				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				633781F021D434F200E11531 /* Date+Ext.swift in Sources */,
 				150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */,
+				63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */,
 				63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */,
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
+				63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
 				63426E0221E9F3B700EA35CB /* ThemeHelper.swift in Sources */,
