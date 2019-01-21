@@ -8,25 +8,39 @@
 
 import Foundation
 
+enum GoalEntryMode {
+    case add
+    case update
+}
+
 class GoalEntryViewModel {
     private(set) var wrapper: RepoWrapper!
     private(set) var goal: DailyGoal
     private(set) var lastGoal: DailyGoal?
     private(set) weak var delegate: GoalEntryViewModelDelegate?
+    let mode: GoalEntryMode
     
     init(wrapper: RepoWrapper,
          goal: DailyGoal,
-         delegate: GoalEntryViewModelDelegate) {
+         delegate: GoalEntryViewModelDelegate,
+         mode: GoalEntryMode) {
         self.wrapper = wrapper
         self.goal = goal
         self.delegate = delegate
+        self.mode = mode
+
         self.wrapper.delegate = self
     }
     
     func updateGoal(goal: String, reason: String) {
         self.goal.goal = goal
         self.goal.reason = reason
-        wrapper.save(self.goal)
+        switch mode {
+        case .add:
+            wrapper.add(self.goal)
+        case .update:
+            wrapper.save(self.goal)
+        }
     }
     
     func updateWithLastGoal() {

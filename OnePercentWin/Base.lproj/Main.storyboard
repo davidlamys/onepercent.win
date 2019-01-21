@@ -179,13 +179,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
-                                <rect key="frame" x="37" y="64" width="301" height="296"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
+                                <rect key="frame" x="58" y="66" width="301" height="296"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, I'm going to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRv-x2-naG">
                                         <rect key="frame" x="79.000000000000014" y="0.0" width="143.33333333333337" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psi-Ie-95N">
@@ -197,10 +197,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as it's going to help me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHO-iA-Lvn">
-                                        <rect key="frame" x="62.333333333333329" y="120.33333333333333" width="176.66666666666669" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="because it's going to help me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHO-iA-Lvn">
+                                        <rect key="frame" x="38.666666666666686" y="120.33333333333333" width="224" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SFz-bf-j3O">
@@ -210,7 +210,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kSl-Nc-XYS">
-                                        <rect key="frame" x="36.666666666666686" y="240.66666666666669" width="228" height="30"/>
+                                        <rect key="frame" x="0.0" y="240.66666666666669" width="301" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U60-rh-fXe">
                                                 <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
@@ -220,18 +220,26 @@
                                                     <action selector="didPressSave:" destination="vZA-4a-cqd" eventType="touchUpInside" id="vEU-6D-LDD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4V-R2-JEb">
-                                                <rect key="frame" x="124" y="0.0" width="34" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4V-R2-JEb">
+                                                <rect key="frame" x="124" y="0.0" width="28" height="30"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="didPressSave:" destination="vZA-4a-cqd" eventType="touchUpInside" id="UrS-yE-EK5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zs-8i-7A1">
-                                                <rect key="frame" x="168" y="0.0" width="60" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zs-8i-7A1">
+                                                <rect key="frame" x="162" y="0.0" width="60" height="30"/>
                                                 <state key="normal" title="Use Last"/>
                                                 <connections>
                                                     <action selector="didPressUseLast:" destination="vZA-4a-cqd" eventType="touchUpInside" id="cyI-cf-gn0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-a0-jaw">
+                                                <rect key="frame" x="232" y="0.0" width="69" height="30"/>
+                                                <state key="normal" title="show new"/>
+                                                <connections>
+                                                    <action selector="didPressUseLast:" destination="vZA-4a-cqd" eventType="touchUpInside" id="A9i-Tz-9vG"/>
+                                                    <segue destination="PfU-37-IJx" kind="show" identifier="showGoalEntry" id="UcX-zD-S4l"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -250,7 +258,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="KrB-t0-iyj" firstAttribute="top" secondItem="jMs-hP-ayu" secondAttribute="top" constant="20" id="G6A-Xr-sx2"/>
                             <constraint firstItem="KrB-t0-iyj" firstAttribute="centerX" secondItem="jMs-hP-ayu" secondAttribute="centerX" id="UVB-hh-Ypa"/>
@@ -270,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="how-cR-Awc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824.79999999999995" y="434.93253373313348"/>
+            <point key="canvasLocation" x="748" y="748"/>
         </scene>
         <!--History-->
         <scene sceneID="hpj-cs-6sq">
@@ -480,6 +488,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2d-5K-pPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-58.399999999999999" y="1220.6896551724139"/>
+        </scene>
+        <!--GoalEntry-->
+        <scene sceneID="1Mz-SL-bLi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GoalEntry" id="PfU-37-IJx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTX-y0-V5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="748"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Yc4-IT-cJI">
+            <objects>
+                <viewController id="vTB-of-YR4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wuk-Cr-s2a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gwq-qn-YcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

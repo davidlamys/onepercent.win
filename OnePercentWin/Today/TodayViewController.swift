@@ -39,13 +39,20 @@ final class TodayViewController: UIViewController {
         reasonTextField.delegate = self
         viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
         doneButton.isEnabled = false
+        countdownLabel.font = ThemeHelper.defaultFont(fontSize: .medium)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        RepoWrapper.shared.delegate = viewModel
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            if self.viewModel.todayGoal == nil {
+                self.performSegue(withIdentifier: "showGoalEntry", sender: nil)
+            }
+        }
+        
         goalTextField.text = ""
         reasonTextField.text = ""
-        RepoWrapper.shared.delegate = viewModel
     }
     
     func setupViewForGoal(isCompleted: Bool) {
@@ -58,6 +65,14 @@ final class TodayViewController: UIViewController {
             doneButton.setTitle("Mark complete", for: .normal)
             countdownLabel.text = "Go after it!!!"
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard let vc = segue.destination as? GoalEntryViewController else {
+            return
+        }
+        vc.delegate = self
     }
 }
 
@@ -93,4 +108,10 @@ extension TodayViewController: TodayViewModelDelegate {
         setupViewForGoal(isCompleted: goal.completed ?? false)
     }
     
+}
+
+extension TodayViewController: GoalEntryViewControllerDelegate {
+    func didSaveGoal() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

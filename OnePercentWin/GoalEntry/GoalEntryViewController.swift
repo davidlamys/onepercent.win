@@ -33,13 +33,16 @@ final class GoalEntryViewController: UIViewController {
     @IBOutlet weak var reasonTextFieldHeightConstraint: NSLayoutConstraint!
     
     private(set) var viewModel: GoalEntryViewModel!
+    private(set) var mode: GoalEntryMode!
     
     var goal: DailyGoal? {
         didSet {
             guard let goal = goal else { return }
             self.viewModel = GoalEntryViewModel(wrapper: RepoWrapper.shared,
                                                 goal: goal,
-                                                delegate: self)
+                                                delegate: self,
+                                                mode: self.mode)
+            self.setupUseLastGoalStackView()
         }
     }
     
@@ -66,8 +69,8 @@ final class GoalEntryViewController: UIViewController {
         saveGoalButton.clipsToBounds = true
         goalTextView.becomeFirstResponder()
         if self.goal == nil {
-            let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Putu"
-
+            let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Unknown user"
+            self.mode = .add
             self.goal = DailyGoal(id: UUID.init().uuidString,
                                   goal: "",
                                   reason: "",
@@ -80,6 +83,7 @@ final class GoalEntryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        RepoWrapper.shared.delegate = viewModel
         setupUseLastGoalStackView()
     }
     
@@ -103,13 +107,21 @@ final class GoalEntryViewController: UIViewController {
     func setupUseLastGoalStackView() {
         guard let goalTextView = self.goalTextView,
             let reasonTextView = self.reasonTextView,
-            let repeatLastGoalStackView = self.repeatLastGoalStackView
-            else {
-                return
+            let repeatLastGoalStackView = self.repeatLastGoalStackView,
+            let viewModel = viewModel
+        else {
+            return
         }
-        let hasGoal = (goalTextView.text != "")
-        let hasReason = (reasonTextView.text != "")
-        repeatLastGoalStackView.isHidden = (hasGoal || hasReason)
+        
+        guard viewModel.lastGoal != nil,
+            goalTextView.text.isEmpty,
+            reasonTextView.text.isEmpty
+        else {
+            repeatLastGoalStackView.isHidden = true
+            return
+        }
+        
+        repeatLastGoalStackView.isHidden = false
         repeatLastGoalSwitch.isOn = false
     }
     
@@ -148,7 +160,7 @@ extension GoalEntryViewController: UITextViewDelegate {
 
 extension GoalEntryViewController: GoalEntryViewModelDelegate {
     func refreshView(hasLastGoal: Bool) {
-        repeatLastGoalStackView.isHidden = !hasLastGoal
+        setupUseLastGoalStackView()
     }
     
     func updateView(goal: DailyGoal) {
