@@ -26,7 +26,6 @@ class ThemeHelper {
 
     static func defaultFont(fontSize: SizeType) -> UIFont {
         return UIFont(name: "Roboto-Regular", size: fontSize.fontSize)!
-//            ?? UIFont.systemFont(ofSize: fontSize.fontSize)
     }
 
     private static func defaultFont(size: CGFloat) -> UIFont {

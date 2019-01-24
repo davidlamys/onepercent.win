@@ -179,106 +179,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
-                                <rect key="frame" x="58" y="66" width="301" height="296"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, I'm going to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRv-x2-naG">
-                                        <rect key="frame" x="79.000000000000014" y="0.0" width="143.33333333333337" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psi-Ie-95N">
-                                        <rect key="frame" x="0.0" y="25.333333333333329" width="301" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="oNA-86-sJS"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="because it's going to help me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHO-iA-Lvn">
-                                        <rect key="frame" x="38.666666666666686" y="120.33333333333333" width="224" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SFz-bf-j3O">
-                                        <rect key="frame" x="0.0" y="145.66666666666666" width="301" height="90"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kSl-Nc-XYS">
-                                        <rect key="frame" x="0.0" y="240.66666666666669" width="301" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U60-rh-fXe">
-                                                <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
-                                                <state key="normal" title="Mark Completed"/>
-                                                <connections>
-                                                    <action selector="didPressDone:" destination="vZA-4a-cqd" eventType="touchUpInside" id="TUM-X7-EmR"/>
-                                                    <action selector="didPressSave:" destination="vZA-4a-cqd" eventType="touchUpInside" id="vEU-6D-LDD"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4V-R2-JEb">
-                                                <rect key="frame" x="124" y="0.0" width="28" height="30"/>
-                                                <state key="normal" title="Save"/>
-                                                <connections>
-                                                    <action selector="didPressSave:" destination="vZA-4a-cqd" eventType="touchUpInside" id="UrS-yE-EK5"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zs-8i-7A1">
-                                                <rect key="frame" x="162" y="0.0" width="60" height="30"/>
-                                                <state key="normal" title="Use Last"/>
-                                                <connections>
-                                                    <action selector="didPressUseLast:" destination="vZA-4a-cqd" eventType="touchUpInside" id="cyI-cf-gn0"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-a0-jaw">
-                                                <rect key="frame" x="232" y="0.0" width="69" height="30"/>
-                                                <state key="normal" title="show new"/>
-                                                <connections>
-                                                    <action selector="didPressUseLast:" destination="vZA-4a-cqd" eventType="touchUpInside" id="A9i-Tz-9vG"/>
-                                                    <segue destination="PfU-37-IJx" kind="show" identifier="showGoalEntry" id="UcX-zD-S4l"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVs-Ug-1ns">
-                                        <rect key="frame" x="86.333333333333329" y="275.66666666666669" width="128.66666666666669" height="20.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-8V-8FD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                                        <connections>
+                                            <segue destination="3qT-xy-CIO" kind="embed" id="s5e-Rr-yOB"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="SFz-bf-j3O" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="HDM-rh-hvi"/>
-                                    <constraint firstItem="psi-Ie-95N" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="Ijg-Sm-yjg"/>
-                                    <constraint firstItem="psi-Ie-95N" firstAttribute="height" secondItem="SFz-bf-j3O" secondAttribute="height" id="nmm-mN-e8L"/>
+                                    <constraint firstItem="2H7-8V-8FD" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="2dt-70-mJK"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="KrB-t0-iyj" firstAttribute="top" secondItem="jMs-hP-ayu" secondAttribute="top" constant="20" id="G6A-Xr-sx2"/>
-                            <constraint firstItem="KrB-t0-iyj" firstAttribute="centerX" secondItem="jMs-hP-ayu" secondAttribute="centerX" id="UVB-hh-Ypa"/>
-                            <constraint firstItem="KrB-t0-iyj" firstAttribute="width" secondItem="Ylu-qS-7Bd" secondAttribute="width" multiplier="0.8" constant="1" id="pE7-J8-vI8"/>
+                            <constraint firstItem="KrB-t0-iyj" firstAttribute="top" secondItem="jMs-hP-ayu" secondAttribute="top" id="Cf7-ZO-yP5"/>
+                            <constraint firstItem="KrB-t0-iyj" firstAttribute="bottom" secondItem="jMs-hP-ayu" secondAttribute="bottom" id="FLy-Pb-hyx"/>
+                            <constraint firstItem="KrB-t0-iyj" firstAttribute="width" secondItem="Ylu-qS-7Bd" secondAttribute="width" id="N9n-Ny-8Ki"/>
+                            <constraint firstItem="KrB-t0-iyj" firstAttribute="centerX" secondItem="jMs-hP-ayu" secondAttribute="centerX" id="ysF-z7-MC1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jMs-hP-ayu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="850-mc-Hvy"/>
                     <connections>
-                        <outlet property="countdownLabel" destination="PVs-Ug-1ns" id="0LT-sA-YdO"/>
-                        <outlet property="doneButton" destination="U60-rh-fXe" id="EUB-54-Zxz"/>
-                        <outlet property="goalTextField" destination="psi-Ie-95N" id="b2Y-iV-0f0"/>
-                        <outlet property="reasonTextField" destination="SFz-bf-j3O" id="vsJ-sn-xwh"/>
-                        <outlet property="saveButton" destination="a4V-R2-JEb" id="v4N-Gg-1i5"/>
-                        <outlet property="useLastButton" destination="8zs-8i-7A1" id="xwn-rs-Lnx"/>
+                        <outlet property="dashboardView" destination="2H7-8V-8FD" id="co7-oy-CfU"/>
+                        <segue destination="PfU-37-IJx" kind="presentation" identifier="showGoalEntry" id="PX7-3O-IoI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="how-cR-Awc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="748"/>
+            <point key="canvasLocation" x="1145" y="647"/>
         </scene>
         <!--History-->
         <scene sceneID="hpj-cs-6sq">
@@ -495,7 +428,7 @@
                 <viewControllerPlaceholder storyboardName="GoalEntry" id="PfU-37-IJx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTX-y0-V5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1667" y="748"/>
+            <point key="canvasLocation" x="1162" y="1172"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yc4-IT-cJI">
@@ -505,10 +438,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="E8x-QE-Tp0"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gwq-qn-YcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="rrl-eW-LeD">
+            <objects>
+                <viewController id="3qT-xy-CIO" customClass="DashboardViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OJ9-nx-w24">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NNy-Cn-mtS">
+                                <rect key="frame" x="20" y="80" width="335" height="525"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, I'm going to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jq-XJ-qp8">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="79.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei6-JK-CTA">
+                                        <rect key="frame" x="0.0" y="89.333333333333343" width="335" height="79"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Because it's going to help me to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bi-lx-1In">
+                                        <rect key="frame" x="0.0" y="178.33333333333331" width="335" height="79.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqF-d3-IxT">
+                                        <rect key="frame" x="0.0" y="267.66666666666669" width="335" height="79"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K8-1X-Ehb">
+                                        <rect key="frame" x="0.0" y="356.66666666666669" width="335" height="79.333333333333314"/>
+                                        <state key="normal" title="edit goal"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-I5-ljF">
+                                        <rect key="frame" x="0.0" y="446" width="335" height="79"/>
+                                        <state key="normal" title="complete goal"/>
+                                        <connections>
+                                            <action selector="didPressedCompletedWithSender:" destination="3qT-xy-CIO" eventType="touchUpInside" id="DrF-Ng-Jvx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NNy-Cn-mtS" firstAttribute="top" secondItem="OJ9-nx-w24" secondAttribute="top" constant="80" id="41S-79-hoe"/>
+                            <constraint firstAttribute="bottom" secondItem="NNy-Cn-mtS" secondAttribute="bottom" constant="80" id="irL-pQ-ub3"/>
+                            <constraint firstAttribute="trailing" secondItem="NNy-Cn-mtS" secondAttribute="trailing" constant="20" id="pN3-lk-zNl"/>
+                            <constraint firstItem="NNy-Cn-mtS" firstAttribute="leading" secondItem="OJ9-nx-w24" secondAttribute="leading" constant="20" id="rlO-wr-MAp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6D7-ln-RT3"/>
+                    </view>
+                    <connections>
+                        <outlet property="completeGoalButton" destination="xMg-I5-ljF" id="kKe-f6-Cq4"/>
+                        <outlet property="editGoalButton" destination="0K8-1X-Ehb" id="6l1-pQ-nCE"/>
+                        <outlet property="goalLabel" destination="Ei6-JK-CTA" id="TiA-Zv-TJu"/>
+                        <outlet property="goalPromptLabel" destination="3Jq-XJ-qp8" id="VU4-A2-HyG"/>
+                        <outlet property="reasonLabel" destination="qqF-d3-IxT" id="MgZ-CI-j0g"/>
+                        <outlet property="reasonPromptLabel" destination="9bi-lx-1In" id="o6w-2g-MzH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q8G-kh-0JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="647"/>
         </scene>
     </scenes>
     <resources>

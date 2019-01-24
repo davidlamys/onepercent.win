@@ -36,6 +36,8 @@
 		63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */; };
 		63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */; };
 		63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */; };
+		63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459221F5AA72006556D3 /* DashboardViewController.swift */; };
+		63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */; };
 		63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459621F5AD90006556D3 /* TextStylable.swift */; };
 		63BB459921F5AE72006556D3 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459821F5AE72006556D3 /* UIButton+Ext.swift */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
@@ -76,6 +78,8 @@
 		63BB458B21E9FA1F006556D3 /* GoalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewController.swift; sourceTree = "<group>"; };
 		63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntryViewModel.swift; sourceTree = "<group>"; };
 		63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldFixed.swift; sourceTree = "<group>"; };
+		63BB459221F5AA72006556D3 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardViewModel.swift; path = /Users/david/Documents/Projects/OnePercentWin/OnePercentWin/Dashboard/DashboardViewModel.swift; sourceTree = "<absolute>"; };
 		63BB459621F5AD90006556D3 /* TextStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylable.swift; sourceTree = "<group>"; };
 		63BB459821F5AE72006556D3 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				150A303D21A91EF7000CAB0C /* Models */,
 				150A300F21A6E106000CAB0C /* Products */,
 				63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */,
+				63BB459121F5AA51006556D3 /* Dashboard */,
 				63BB458A21E9FA0B006556D3 /* GoalEntry */,
 				63BA7C0721D1EE100010A5A7 /* Review.storyboard */,
 				150A302721A6E427000CAB0C /* Settings */,
@@ -215,6 +220,15 @@
 				63BB458D21E9FA27006556D3 /* GoalEntryViewModel.swift */,
 			);
 			path = GoalEntry;
+			sourceTree = "<group>";
+		};
+		63BB459121F5AA51006556D3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				63BB459221F5AA72006556D3 /* DashboardViewController.swift */,
+				63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		C7E2D27A34E025A1E9451F2B /* Pods */ = {
@@ -404,6 +418,7 @@
 			files = (
 				63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */,
 				150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */,
+				63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */,
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
@@ -418,6 +433,7 @@
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
+				63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
 				63426E0221E9F3B700EA35CB /* ThemeHelper.swift in Sources */,
 				633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */,
