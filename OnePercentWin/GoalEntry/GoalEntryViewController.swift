@@ -33,7 +33,7 @@ final class GoalEntryViewController: UIViewController {
     @IBOutlet weak var reasonTextFieldHeightConstraint: NSLayoutConstraint!
     
     private(set) var viewModel: GoalEntryViewModel!
-    private(set) var mode: GoalEntryMode!
+    var mode: GoalEntryMode!
     
     var goal: DailyGoal? {
         didSet {
@@ -65,7 +65,10 @@ final class GoalEntryViewController: UIViewController {
         setFonts()
         saveGoalButton.applyStyle()
         goalTextView.becomeFirstResponder()
-        if self.goal == nil {
+        
+        if let goal = self.goal {
+            setupView(goal: goal)
+        } else {
             let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Unknown user"
             self.mode = .add
             self.goal = DailyGoal(goal: "",
@@ -121,8 +124,15 @@ final class GoalEntryViewController: UIViewController {
     }
     
     func setupView(goal: DailyGoal) {
+        guard let goalTextView = self.goalTextView,
+            let reasonTextView = self.reasonTextView else {
+                return
+        }
+            
         goalTextView.text = goal.goal
         reasonTextView.text = goal.reason
+        textViewDidChange(goalTextView)
+        textViewDidChange(reasonTextView)
     }
 }
 

@@ -27,6 +27,18 @@ final class DashboardViewController: UIViewController {
         goal.completed = true
         RepoWrapper.shared.save(goal)
     }
+    
+    @IBAction func didPressEdit(sender: Any) {
+        let sb = UIStoryboard(name: "GoalEntry", bundle: Bundle.main)
+        guard let vc = sb.instantiateViewController(withIdentifier: "GoalEntryViewController") as? GoalEntryViewController else {
+            fatalError("view controller not found")
+            return
+        }
+        vc.delegate = self
+        vc.mode = .update
+        vc.goal = self.goal
+        self.present(vc, animated: true)
+    }
 
     func setup(with goal: DailyGoal) {
         self.goal = goal
@@ -51,3 +63,9 @@ final class DashboardViewController: UIViewController {
     
 }
 
+extension DashboardViewController: GoalEntryViewControllerDelegate {
+    func didSaveGoal() {
+        dismiss(animated: true)
+        // TodayViewModel will propogate the new goal to this dashboard view controller for now.
+    }
+}

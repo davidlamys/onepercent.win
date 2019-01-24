@@ -12,7 +12,7 @@
         <!--Goal Entry View Controller-->
         <scene sceneID="Yl1-ib-JML">
             <objects>
-                <viewController id="R2b-Lm-P5p" customClass="GoalEntryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoalEntryViewController" id="R2b-Lm-P5p" customClass="GoalEntryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d8r-em-vfW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

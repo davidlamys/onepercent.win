@@ -482,6 +482,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K8-1X-Ehb">
                                         <rect key="frame" x="0.0" y="356.66666666666669" width="335" height="79.333333333333314"/>
                                         <state key="normal" title="edit goal"/>
+                                        <connections>
+                                            <action selector="didPressEditWithSender:" destination="3qT-xy-CIO" eventType="touchUpInside" id="DcX-8X-7gV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-I5-ljF">
                                         <rect key="frame" x="0.0" y="446" width="335" height="79"/>
