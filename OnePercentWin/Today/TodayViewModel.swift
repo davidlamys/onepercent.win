@@ -25,13 +25,11 @@ class TodayViewModel {
             return
         }
         let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Putu"
-        let goal = DailyGoal(id: UUID.init().uuidString,
-                             goal: goal,
+        let goal = DailyGoal(goal: goal,
                              reason: reason,
                              date: Date(),
                              createdBy: createdBy,
-                             userId: UserService().userId(),
-                             completed: false)
+                             userId: UserService().userId())
         wrapper.add(goal)
         self.todayGoal = goal
         delegate?.setup(todayGoal: goal,

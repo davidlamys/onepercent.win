@@ -16,7 +16,25 @@ struct DailyGoal {
     var date: Date
     var createdBy: String
     var userId: String
-    var completed: Bool?
+    var notes: String?
+    var completed: Bool = false
+}
+
+extension DailyGoal {
+    init(goal: String,
+         reason: String,
+         date: Date,
+         createdBy: String,
+         userId: String) {
+        self = DailyGoal(id: UUID.init().uuidString,
+                         goal: goal,
+                         reason: reason,
+                         date: Date(),
+                         createdBy: createdBy,
+                         userId: userId,
+                         notes: nil,
+                         completed: false)
+    }
 }
 
 extension DailyGoal {
@@ -43,6 +61,7 @@ extension DailyGoal: DocumentSerializable {
             "timestamp": date,
             "createdBy": createdBy,
             "userId": userId,
+            "notes": notes,
             "completed": completed ?? false
         ]
     }
@@ -58,13 +77,16 @@ extension DailyGoal: DocumentSerializable {
             let userId = dictionary["userId"] as? String,
             let date = dictionary["timestamp"] as? Timestamp else { return nil }
         
+        let notes = dictionary["notes"] as? String
         let completed = dictionary["completed"] as? Bool ?? false
+        
         self.init(id: id,
                   goal: goal,
                   reason: reason,
                   date: date.dateValue(),
                   createdBy: createdBy,
                   userId: userId,
+                  notes: notes,
                   completed: completed)
     }
 }

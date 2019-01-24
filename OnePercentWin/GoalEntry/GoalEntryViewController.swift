@@ -68,13 +68,11 @@ final class GoalEntryViewController: UIViewController {
         if self.goal == nil {
             let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Unknown user"
             self.mode = .add
-            self.goal = DailyGoal(id: UUID.init().uuidString,
-                                  goal: "",
+            self.goal = DailyGoal(goal: "",
                                   reason: "",
                                   date: Date(),
                                   createdBy: createdBy,
-                                  userId: UserService().userId(),
-                                  completed: false)
+                                  userId: UserService().userId())
         }
     }
     
