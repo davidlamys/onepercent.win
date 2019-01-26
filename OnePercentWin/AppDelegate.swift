@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         db.settings = settings
         UITabBar.appearance().tintColor = ThemeHelper.defaultOrange()
-        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().barTintColor = .black
         return true
     }
     

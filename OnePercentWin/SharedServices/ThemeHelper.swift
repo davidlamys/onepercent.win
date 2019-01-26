@@ -15,7 +15,7 @@ enum SizeType {
     
     var fontSize: CGFloat {
         switch self {
-        case .large: return 24.0
+        case .large: return 27.0
         case .medium: return 21.0
         case .small: return 12.0
         }
@@ -27,16 +27,15 @@ class ThemeHelper {
     static func defaultFont(fontSize: SizeType) -> UIFont {
         return UIFont(name: "Roboto-Regular", size: fontSize.fontSize)!
     }
-
-    private static func defaultFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "Roboto-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+    
+    static func boldFont(fontSize: SizeType) -> UIFont {
+        return UIFont(name: "Roboto-Black", size: fontSize.fontSize)!
     }
     
     static func defaultOrange() -> UIColor {
         return UIColor(rgb: 0xFF9500)
     }
     
-
 }
 
 fileprivate extension UIColor {

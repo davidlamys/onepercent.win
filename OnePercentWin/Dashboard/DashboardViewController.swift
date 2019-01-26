@@ -47,9 +47,9 @@ final class DashboardViewController: UIViewController {
         
         let isGoalCompleted = goal.completed
         completeGoalButton.isEnabled = !isGoalCompleted
-        completeGoalButton.alpha = isGoalCompleted ? 0.5 : 1
+        completeGoalButton.greyOutIfDisable()
         editGoalButton.isEnabled = !isGoalCompleted
-        editGoalButton.alpha = isGoalCompleted ? 0.5 : 1
+        editGoalButton.greyOutIfDisable()
     }
     
     private func applyStyle() {

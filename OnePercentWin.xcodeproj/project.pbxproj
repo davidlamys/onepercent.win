@@ -28,6 +28,9 @@
 		63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63426E1221E9F45C00EA35CB /* Roboto-Black.ttf */; };
 		63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63426E2821E9F65600EA35CB /* Roboto-Regular.ttf */; };
 		63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */; };
+		6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */; };
+		6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */; };
+		6371A51D21F9AE6300D80CF7 /* NotesEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
@@ -70,6 +73,9 @@
 		63426E1221E9F45C00EA35CB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "roboto/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		63426E2821E9F65600EA35CB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "roboto/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotesEntry.storyboard; sourceTree = "<group>"; };
+		6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryViewController.swift; sourceTree = "<group>"; };
+		6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryViewModel.swift; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
@@ -119,9 +125,11 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
-				633781EE21D434DB00E11531 /* Extensions */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
+				63BB459121F5AA51006556D3 /* Dashboard */,
+				633781EE21D434DB00E11531 /* Extensions */,
+				63BB458A21E9FA0B006556D3 /* GoalEntry */,
 				63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */,
 				150A303321A70237000CAB0C /* History */,
 				150A301F21A6E107000CAB0C /* Info.plist */,
@@ -129,10 +137,9 @@
 				63FF09A121AC12840001B450 /* LocalCollection.swift */,
 				150A301721A6E106000CAB0C /* Main.storyboard */,
 				150A303D21A91EF7000CAB0C /* Models */,
-				150A300F21A6E106000CAB0C /* Products */,
+				6371A51721F9AE1900D80CF7 /* NotesEntry */,
 				63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */,
-				63BB459121F5AA51006556D3 /* Dashboard */,
-				63BB458A21E9FA0B006556D3 /* GoalEntry */,
+				150A300F21A6E106000CAB0C /* Products */,
 				63BA7C0721D1EE100010A5A7 /* Review.storyboard */,
 				150A302721A6E427000CAB0C /* Settings */,
 				150A302D21A701E1000CAB0C /* SharedServices */,
@@ -210,6 +217,16 @@
 				63426E0E21E9F45B00EA35CB /* Roboto-Italic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6371A51721F9AE1900D80CF7 /* NotesEntry */ = {
+			isa = PBXGroup;
+			children = (
+				6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */,
+				6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */,
+				6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */,
+			);
+			path = NotesEntry;
 			sourceTree = "<group>";
 		};
 		63BB458A21E9FA0B006556D3 /* GoalEntry */ = {
@@ -313,6 +330,7 @@
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
 				63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */,
+				6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */,
 				63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */,
 				63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */,
 				150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */,
@@ -416,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */,
 				63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */,
 				150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */,
 				63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */,
@@ -432,6 +451,7 @@
 				63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */,
 				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */,
+				6371A51D21F9AE6300D80CF7 /* NotesEntryViewModel.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
 				63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,

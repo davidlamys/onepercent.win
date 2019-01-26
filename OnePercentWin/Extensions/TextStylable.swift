@@ -18,6 +18,12 @@ extension UILabel: TextStylable {
         guard let color = color else { return }
         self.textColor = color
     }
+    
+    func applyBoldFont(fontSize: SizeType, color: UIColor? = nil) {
+        self.font = ThemeHelper.boldFont(fontSize: fontSize)
+        guard let color = color else { return }
+        self.textColor = color
+    }
 }
 
 extension UITextView: TextStylable {
