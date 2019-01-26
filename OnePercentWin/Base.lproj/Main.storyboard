@@ -179,7 +179,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-8V-8FD">
@@ -188,9 +188,16 @@
                                             <segue destination="3qT-xy-CIO" kind="embed" id="s5e-Rr-yOB"/>
                                         </connections>
                                     </containerView>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cq3-IS-0W1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <connections>
+                                            <segue destination="Ruu-j4-dbK" kind="embed" id="93c-zy-lhI"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2H7-8V-8FD" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="2dt-70-mJK"/>
+                                    <constraint firstItem="Cq3-IS-0W1" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="NTr-XG-LhQ"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -205,6 +212,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="850-mc-Hvy"/>
                     <connections>
+                        <outlet property="completedGoalView" destination="Cq3-IS-0W1" id="d1J-bo-MRE"/>
                         <outlet property="dashboardView" destination="2H7-8V-8FD" id="co7-oy-CfU"/>
                         <segue destination="PfU-37-IJx" kind="presentation" identifier="showGoalEntry" id="PX7-3O-IoI"/>
                     </connections>
@@ -421,6 +429,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2d-5K-pPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-58.399999999999999" y="1220.6896551724139"/>
+        </scene>
+        <!--CompletedGoal-->
+        <scene sceneID="RRo-GG-pfO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CompletedGoal" id="Ruu-j4-dbK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gl2-oG-JMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="866"/>
         </scene>
         <!--GoalEntry-->
         <scene sceneID="1Mz-SL-bLi">

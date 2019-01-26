@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DashboardViewControllerDelegate: class {
+    func userDidCompleteGoal()
+}
+
 final class DashboardViewController: UIViewController {
     @IBOutlet weak var goalPromptLabel: UILabel!
     @IBOutlet weak var goalLabel: UILabel!
@@ -17,6 +21,7 @@ final class DashboardViewController: UIViewController {
     @IBOutlet weak var completeGoalButton: UIButton!
     
     var goal: DailyGoal!
+    weak var delegate: DashboardViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,7 @@ final class DashboardViewController: UIViewController {
     @IBAction func didPressedCompleted(sender: Any) {
         goal.completed = true
         RepoWrapper.shared.save(goal)
+        presentNotesEntryViewController(goal: goal)
     }
     
     @IBAction func didPressEdit(sender: Any) {
@@ -52,6 +58,17 @@ final class DashboardViewController: UIViewController {
         editGoalButton.greyOutIfDisable()
     }
     
+    private func presentNotesEntryViewController(goal: DailyGoal) {
+        let sb = UIStoryboard(name: "NotesEntry", bundle: Bundle.main)
+        guard let vc = sb.instantiateViewController(withIdentifier: "NotesEntryViewController") as? NotesEntryViewController else {
+            fatalError("view controller not found")
+            return
+        }
+        vc.delegate = self
+        vc.goal = goal
+        self.present(vc, animated: true)
+    }
+    
     private func applyStyle() {
         editGoalButton.applyStyle()
         completeGoalButton.applyStyle()
@@ -67,5 +84,16 @@ extension DashboardViewController: GoalEntryViewControllerDelegate {
     func didSaveGoal() {
         dismiss(animated: true)
         // TodayViewModel will propogate the new goal to this dashboard view controller for now.
+    }
+}
+
+
+extension DashboardViewController: NotesEntryViewControllerDelegate {
+    func userDidAbortNoteTaking() {
+        dismiss(animated: true)
+    }
+    
+    func userDidSaveNotes() {
+        dismiss(animated: true)
     }
 }

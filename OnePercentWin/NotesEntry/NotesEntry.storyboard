@@ -12,7 +12,7 @@
         <!--Notes Entry View Controller-->
         <scene sceneID="eQt-Dt-cpa">
             <objects>
-                <viewController id="yxg-Th-Yvt" customClass="NotesEntryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotesEntryViewController" id="yxg-Th-Yvt" customClass="NotesEntryViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6h-yp-DvU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,10 +62,16 @@
                                                     <constraint firstAttribute="height" constant="40" id="PF3-J3-BuE"/>
                                                 </constraints>
                                                 <state key="normal" title="skip"/>
+                                                <connections>
+                                                    <action selector="didPressSkipWithSender:" destination="yxg-Th-Yvt" eventType="touchUpInside" id="Ou2-Dw-8jt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ia7-yN-0iC">
                                                 <rect key="frame" x="172.5" y="0.0" width="162.5" height="40"/>
                                                 <state key="normal" title="save"/>
+                                                <connections>
+                                                    <action selector="didPressSaveWithSender:" destination="yxg-Th-Yvt" eventType="touchUpInside" id="ca6-sI-5DA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -82,10 +88,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ima-YA-FCD" firstAttribute="top" secondItem="4Kc-qq-NRj" secondAttribute="top" constant="40" id="GBn-PL-Djn"/>
                             <constraint firstItem="Ima-YA-FCD" firstAttribute="top" secondItem="4Kc-qq-NRj" secondAttribute="top" constant="40" id="L8m-gE-p1E"/>
                             <constraint firstItem="Ima-YA-FCD" firstAttribute="height" secondItem="w6h-yp-DvU" secondAttribute="height" multiplier="0.5" id="M18-w9-W1E"/>
                             <constraint firstItem="Ima-YA-FCD" firstAttribute="leading" secondItem="4Kc-qq-NRj" secondAttribute="leading" constant="20" id="RYW-0E-40e"/>
+                            <constraint firstItem="Ima-YA-FCD" firstAttribute="leading" secondItem="4Kc-qq-NRj" secondAttribute="leading" constant="20" id="UcH-33-Bh0"/>
                             <constraint firstItem="4Kc-qq-NRj" firstAttribute="trailing" secondItem="Ima-YA-FCD" secondAttribute="trailing" constant="20" id="YAs-LE-7Yu"/>
+                            <constraint firstItem="4Kc-qq-NRj" firstAttribute="trailing" secondItem="Ima-YA-FCD" secondAttribute="trailing" constant="20" id="v1P-ir-goX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Kc-qq-NRj"/>
                     </view>

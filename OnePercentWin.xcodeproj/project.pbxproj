@@ -31,6 +31,9 @@
 		6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */; };
 		6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */; };
 		6371A51D21F9AE6300D80CF7 /* NotesEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */; };
+		6371A52021FC4A4300D80CF7 /* CompletedGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51F21FC4A4300D80CF7 /* CompletedGoalViewController.swift */; };
+		6371A52221FC4A4E00D80CF7 /* CompletedGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */; };
+		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
@@ -76,6 +79,9 @@
 		6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotesEntry.storyboard; sourceTree = "<group>"; };
 		6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryViewController.swift; sourceTree = "<group>"; };
 		6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryViewModel.swift; sourceTree = "<group>"; };
+		6371A51F21FC4A4300D80CF7 /* CompletedGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalViewController.swift; sourceTree = "<group>"; };
+		6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalViewModel.swift; sourceTree = "<group>"; };
+		6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompletedGoal.storyboard; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
+				6371A51E21FC4A3000D80CF7 /* CompletedGoal */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
 				63BB459121F5AA51006556D3 /* Dashboard */,
@@ -229,6 +236,16 @@
 			path = NotesEntry;
 			sourceTree = "<group>";
 		};
+		6371A51E21FC4A3000D80CF7 /* CompletedGoal */ = {
+			isa = PBXGroup;
+			children = (
+				6371A51F21FC4A4300D80CF7 /* CompletedGoalViewController.swift */,
+				6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */,
+				6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */,
+			);
+			path = CompletedGoal;
+			sourceTree = "<group>";
+		};
 		63BB458A21E9FA0B006556D3 /* GoalEntry */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +346,7 @@
 				63426E2021E9F45C00EA35CB /* Roboto-Italic.ttf in Resources */,
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
+				6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */,
 				63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */,
 				6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */,
 				63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */,
@@ -440,6 +458,7 @@
 				63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */,
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */,
+				6371A52021FC4A4300D80CF7 /* CompletedGoalViewController.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
 				63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */,
@@ -456,6 +475,7 @@
 				63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */,
 				63B030BE21AB112300890104 /* DailyGoal.swift in Sources */,
 				63426E0221E9F3B700EA35CB /* ThemeHelper.swift in Sources */,
+				6371A52221FC4A4E00D80CF7 /* CompletedGoalViewModel.swift in Sources */,
 				633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */,
 				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
