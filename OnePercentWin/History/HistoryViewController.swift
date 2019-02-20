@@ -26,6 +26,7 @@ final class HistoryViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyBackgroundColor()
         viewModel = HistoryViewModel(delegate: self,
                                      userService: UserService())
         tableView.dataSource = self
@@ -97,6 +98,7 @@ extension HistoryViewController: JTAppleCalendarViewDelegate {
 
 extension HistoryViewController: HistoryViewModelDelegate {
     func refreshView() {
+        precondition(Thread.current == Thread.main)
         guard let viewModel = viewModel else {
             return
         }

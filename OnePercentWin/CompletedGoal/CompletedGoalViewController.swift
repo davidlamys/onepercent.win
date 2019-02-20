@@ -27,6 +27,7 @@ final class CompletedGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
+        applyBackgroundColor()
     }
     
     func setup(with goal: DailyGoal) {

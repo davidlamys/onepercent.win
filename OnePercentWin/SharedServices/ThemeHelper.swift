@@ -36,6 +36,9 @@ class ThemeHelper {
         return UIColor(rgb: 0xFF9500)
     }
     
+    static func textColor() -> UIColor {
+        return UIColor.black
+    }
 }
 
 fileprivate extension UIColor {

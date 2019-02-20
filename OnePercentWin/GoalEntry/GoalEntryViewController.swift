@@ -62,6 +62,7 @@ final class GoalEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyBackgroundColor()
         setFonts()
         saveGoalButton.applyStyle()
         goalTextView.becomeFirstResponder()
@@ -95,10 +96,10 @@ final class GoalEntryViewController: UIViewController {
     
     private func setup(textView: UITextView) {
         textView.delegate = self
-        textView.textColor = .white
+        textView.textColor = .black
         textView.isScrollEnabled = false
         textView.backgroundColor = .clear
-        textView.tintColor = .white
+        textView.tintColor = .black
         textViewDidChange(textView)
     }
     

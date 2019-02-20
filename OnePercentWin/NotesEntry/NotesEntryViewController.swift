@@ -43,6 +43,7 @@ final class NotesEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyBackgroundColor()
         applyStyle()
         lessonLearntTextBox.delegate = self
         lessonLearntTextBox.text = self.goal?.notes
