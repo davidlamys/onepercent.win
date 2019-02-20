@@ -12,7 +12,9 @@ final class TodayViewController: UIViewController {
     
     @IBOutlet weak var dashboardView: UIView!
     @IBOutlet weak var completedGoalView: UIView!
-
+    @IBOutlet weak var tapToAddGoal: UIButton!
+    @IBOutlet weak var noGoalContainerView: UIView!
+    
     var viewModel: TodayViewModel!
     
     weak var dashboardViewController: DashboardViewController!
@@ -20,11 +22,13 @@ final class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyBackgroundColor()
         viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
         dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
-        
         completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
-        
+        tapToAddGoal.applyStyle()
+        dashboardView.isHidden = true
+        completedGoalView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,19 +47,27 @@ final class TodayViewController: UIViewController {
         vc.delegate = self
     }
     
+    @IBAction func userTappedOnAddButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showGoalEntry", sender: nil)
+    }
+    
     func setupInitialView() {
         if let todayGoal = self.viewModel.todayGoal {
             if todayGoal.completed == true {
                 dashboardView.isHidden = true
                 completedGoalView.isHidden = false
+                noGoalContainerView.isHidden = true
                 self.completedGoalViewController.setup(with: todayGoal)
             } else {
                 dashboardView.isHidden = false
                 completedGoalView.isHidden = true
+                noGoalContainerView.isHidden = true
                 self.dashboardViewController.setup(with: todayGoal)
             }
         } else {
-            self.performSegue(withIdentifier: "showGoalEntry", sender: nil)
+            dashboardView.isHidden = true
+            completedGoalView.isHidden = true
+            noGoalContainerView.isHidden = false
         }
     }
 }

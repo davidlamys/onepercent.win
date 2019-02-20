@@ -182,8 +182,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-t0-iyj">
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-8V-8FD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-8V-8FD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <connections>
                                             <segue destination="3qT-xy-CIO" kind="embed" id="s5e-Rr-yOB"/>
                                         </connections>
@@ -194,10 +194,33 @@
                                             <segue destination="Ruu-j4-dbK" kind="embed" id="93c-zy-lhI"/>
                                         </connections>
                                     </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIm-lz-8j7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5y-cQ-RCa">
+                                                <rect key="frame" x="37.666666666666657" y="603" width="300" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9fc-Ey-YW6"/>
+                                                </constraints>
+                                                <state key="normal" title="Tap to add goal for the day"/>
+                                                <connections>
+                                                    <action selector="userTappedOnAddButton:" destination="vZA-4a-cqd" eventType="touchUpInside" id="Qig-tz-hW3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="j5y-cQ-RCa" firstAttribute="centerX" secondItem="WIm-lz-8j7" secondAttribute="centerX" id="1sC-ar-AzX"/>
+                                            <constraint firstItem="j5y-cQ-RCa" firstAttribute="width" secondItem="WIm-lz-8j7" secondAttribute="width" multiplier="0.8" id="H3b-HC-Y5J"/>
+                                            <constraint firstAttribute="bottom" secondItem="j5y-cQ-RCa" secondAttribute="bottom" constant="32" id="LsK-sG-QOE"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2H7-8V-8FD" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="2dt-70-mJK"/>
+                                    <constraint firstItem="WIm-lz-8j7" firstAttribute="height" secondItem="KrB-t0-iyj" secondAttribute="height" id="Eg5-BN-g2X"/>
                                     <constraint firstItem="Cq3-IS-0W1" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="NTr-XG-LhQ"/>
+                                    <constraint firstItem="WIm-lz-8j7" firstAttribute="width" secondItem="KrB-t0-iyj" secondAttribute="width" id="bt2-w9-0za"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -214,6 +237,8 @@
                     <connections>
                         <outlet property="completedGoalView" destination="Cq3-IS-0W1" id="d1J-bo-MRE"/>
                         <outlet property="dashboardView" destination="2H7-8V-8FD" id="co7-oy-CfU"/>
+                        <outlet property="noGoalContainerView" destination="WIm-lz-8j7" id="lfC-6R-YQA"/>
+                        <outlet property="tapToAddGoal" destination="j5y-cQ-RCa" id="Age-U7-2MN"/>
                         <segue destination="PfU-37-IJx" kind="presentation" identifier="showGoalEntry" id="PX7-3O-IoI"/>
                     </connections>
                 </viewController>
@@ -450,8 +475,8 @@
         <scene sceneID="rrl-eW-LeD">
             <objects>
                 <viewController id="3qT-xy-CIO" customClass="DashboardViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OJ9-nx-w24">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="OJ9-nx-w24">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NNy-Cn-mtS">
@@ -490,8 +515,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="OaK-nh-JNI"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wvz-Ie-Fs1">
-                                <rect key="frame" x="20" y="461" width="335" height="170"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wvz-Ie-Fs1">
+                                <rect key="frame" x="20" y="461" width="335" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K8-1X-Ehb">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
@@ -504,7 +529,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-I5-ljF">
-                                        <rect key="frame" x="0.0" y="90" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="90" width="335" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="2pM-6g-Zn3"/>
                                         </constraints>
