@@ -26,7 +26,7 @@ final class CompletedGoalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyStyle()
+        styleElements()
         applyBackgroundColor()
     }
     
@@ -58,7 +58,7 @@ final class CompletedGoalViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    private func applyStyle() {
+    func styleElements() {
         congratulationsLabel.applyBoldFont(fontSize: .large)
         congrulationsSubtitleLabel.applyFont(fontSize: .medium)
         lessonsLearntPrompt.applyFont(fontSize: .medium)

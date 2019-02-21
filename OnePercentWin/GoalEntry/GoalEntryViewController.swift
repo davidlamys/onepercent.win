@@ -96,10 +96,10 @@ final class GoalEntryViewController: UIViewController {
     
     private func setup(textView: UITextView) {
         textView.delegate = self
-        textView.textColor = .black
+        textView.textColor = ThemeHelper.textColor()
         textView.isScrollEnabled = false
         textView.backgroundColor = .clear
-        textView.tintColor = .black
+        textView.tintColor = ThemeHelper.textColor()
         textViewDidChange(textView)
     }
     

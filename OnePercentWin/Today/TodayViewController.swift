@@ -29,6 +29,19 @@ final class TodayViewController: UIViewController {
         tapToAddGoal.applyStyle()
         dashboardView.isHidden = true
         completedGoalView.isHidden = true
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.dashboardViewController.styleElements()
+                self.dashboardViewController.applyBackgroundColor()
+                
+                self.tapToAddGoal.applyStyle()
+                self.applyBackgroundColor()
+                
+                self.completedGoalViewController.styleElements()
+                self.completedGoalViewController.applyBackgroundColor()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

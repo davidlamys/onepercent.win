@@ -9,6 +9,26 @@
 import Foundation
 
 struct UserDefaultsWrapper {
+    let userDefaults = UserDefaults.standard
+    
+    func getTheme() -> ThemeType {
+        guard let settings = self.getSettings() else {
+            return .dark
+        }
+        guard let theme =  settings.theme else {
+            return .dark
+        }
+        return theme
+    }
+    
+    func save(theme: ThemeType) {
+        guard var settings = self.getSettings() else {
+            fatalError()
+        }
+        settings.theme = theme
+        self.save(settings: settings)
+    }
+    
     func getUserId() -> String? {
         return UserDefaults.standard.string(forKey: "userId")
     }

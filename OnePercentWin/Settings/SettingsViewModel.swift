@@ -29,6 +29,14 @@ struct SettingsViewModel {
         userDefaultsWrapper.save(userName: userName)
     }
     
+    mutating func save(theme: ThemeType) {
+        if self.settings == nil {
+            self.settings = UserSettings()
+        }
+        settings?.theme = theme
+        userDefaultsWrapper.save(theme: theme)
+    }
+    
     func getUserName() -> String? {
         return userDefaultsWrapper.getUserName()
     }

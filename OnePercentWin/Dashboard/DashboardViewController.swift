@@ -26,7 +26,7 @@ final class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackgroundColor()
-        applyStyle()
+        styleElements()
     }
     
     @IBAction func didPressedCompleted(sender: Any) {
@@ -70,7 +70,7 @@ final class DashboardViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    private func applyStyle() {
+    func styleElements() {
         editGoalButton.applyStyle()
         completeGoalButton.applyStyle()
         goalPromptLabel.applyFont(fontSize: .medium)

@@ -15,10 +15,19 @@ let disabledAlpha: CGFloat = 0.5
 
 final class SettingsViewController: UIViewController {
     
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var themeLabel: UILabel!
+    @IBOutlet weak private var morningReminderLabel: UILabel!
+    @IBOutlet weak private var eveningReminderLabel: UILabel!
+    
+    @IBOutlet weak private var themeSegmentControl: UISegmentedControl!
+    
     @IBOutlet weak private var morningReminderSwitch: UISwitch!
     @IBOutlet weak private var eveningReminderSwitch: UISwitch!
     @IBOutlet weak private var morningReminderTimePicker: UIDatePicker!
     @IBOutlet weak private var eveningReminderTimePicker: UIDatePicker!
+    
+    @IBOutlet weak private var signInButton: UIButton!
     
     @IBOutlet weak private var userNameTextField: UITextField!
     
@@ -35,6 +44,7 @@ final class SettingsViewController: UIViewController {
             viewModel.save(userName: userName)
         }
     }
+    
     @IBAction func morningReminderToggled(_ sender: Any) {
         let shouldHide = !morningReminderSwitch.isOn
         self.morningReminderTimePicker.isEnabled = !shouldHide
@@ -47,6 +57,7 @@ final class SettingsViewController: UIViewController {
             viewModel.removeMorningReminders()
         }
     }
+    
     @IBAction func eveningReminderToggled(_ sender: Any) {
         let shouldHide = !eveningReminderSwitch.isOn
         self.eveningReminderTimePicker.isEnabled = !shouldHide
@@ -70,12 +81,24 @@ final class SettingsViewController: UIViewController {
         viewModel.addEveningReminds(components: components)
     }
     
+    @IBAction func themeDidChange(_ sender: Any) {
+        let selectedIndex = themeSegmentControl.selectedSegmentIndex
+        let selectedTheme: ThemeType = selectedIndex == 0 ? .dark : .light
+        viewModel.save(theme: selectedTheme)
+        let notification = Notification(name: Notification.Name(rawValue: "themeDidChange"),
+                                        object: nil,
+                                        userInfo: nil)
+        NotificationCenter.default.post(notification)
+    }
+    
     private lazy var viewModel: SettingsViewModel = {
         return SettingsViewModel()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyBackgroundColor()
+
         userNameTextField.text = viewModel.getUserName()
         userNameTextField.delegate = self
         setupUI()
@@ -86,6 +109,29 @@ final class SettingsViewController: UIViewController {
             // Enable or disable features based on authorization.
         }
         
+        styleElements()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.styleElements()
+                self.applyBackgroundColor()
+            }
+        }
+    }
+    
+    private func styleElements() {
+        let defaultSizeForPage = SizeType.medium
+        nameLabel.applyFont(fontSize: defaultSizeForPage)
+        themeLabel.applyFont(fontSize: defaultSizeForPage)
+        morningReminderLabel.applyFont(fontSize: defaultSizeForPage)
+        eveningReminderLabel.applyFont(fontSize: defaultSizeForPage)
+        
+        userNameTextField.applyFont(fontSize: defaultSizeForPage)
+        signInButton.applyStyle()
+        
+        themeSegmentControl.applyFont(fontSize: defaultSizeForPage)
+        
+        morningReminderTimePicker.applyFont(fontSize: defaultSizeForPage)
+        eveningReminderTimePicker.applyFont(fontSize: defaultSizeForPage)
     }
     
 }
@@ -128,6 +174,11 @@ private extension SettingsViewController {
             let userPreferredEveningReminder = calendar.date(from: eveningReminder) {
             eveningReminderSwitch.isOn = true
             set(picker: eveningReminderTimePicker, with: userPreferredEveningReminder)
+        }
+        
+        if let theme = settings.theme {
+            let selectedIndex = theme == .dark ? 0 : 1
+            themeSegmentControl.selectedSegmentIndex = selectedIndex
         }
     }
     

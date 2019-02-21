@@ -8,34 +8,79 @@
 
 import UIKit
 
-protocol TextStylable {
+protocol TextStylable: AnyObject {
+    func setFont(_ font: UIFont)
+    func setTextColor(_ color: UIColor)
     func applyFont(fontSize: SizeType, color: UIColor?)
 }
 
-extension UILabel: TextStylable {
-    func applyFont(fontSize: SizeType, color: UIColor? = .black) {
-        self.font = ThemeHelper.defaultFont(fontSize: fontSize)
+extension TextStylable {
+    func applyFont(fontSize: SizeType, color: UIColor? = ThemeHelper.textColor()) {
+        self.setFont(ThemeHelper.defaultFont(fontSize: fontSize))
         guard let color = color else { return }
+        self.setTextColor(color)
+    }
+    
+    func applyBoldFont(fontSize: SizeType, color: UIColor? = ThemeHelper.textColor()) {
+        self.setFont(ThemeHelper.boldFont(fontSize: fontSize))
+        guard let color = color else { return }
+        self.setTextColor(color)
+    }
+}
+
+extension UILabel: TextStylable {
+    func setTextColor(_ color: UIColor) {
         self.textColor = color
     }
     
-    func applyBoldFont(fontSize: SizeType, color: UIColor? = .black) {
-        self.font = ThemeHelper.boldFont(fontSize: fontSize)
-        guard let color = color else { return }
-        self.textColor = color
+    func setFont(_ font: UIFont) {
+        self.font = font
     }
 }
 
 extension UITextView: TextStylable {
-    func applyFont(fontSize: SizeType, color: UIColor? = .black) {
-        self.font = ThemeHelper.defaultFont(fontSize: fontSize)
-        guard let color = color else { return }
+    func setTextColor(_ color: UIColor) {
         self.textColor = color
+    }
+    
+    func setFont(_ font: UIFont) {
+        self.font = font
+    }
+}
+
+extension UITextField: TextStylable {
+    func setTextColor(_ color: UIColor) {
+        self.textColor = color
+    }
+    
+    func setFont(_ font: UIFont) {
+        self.font = font
+    }
+}
+
+extension UIDatePicker: TextStylable {
+    func setFont(_ font: UIFont) {
+        return
+    }
+    
+    func setTextColor(_ color: UIColor) {
+        self.setValue(false, forKey: "highlightsToday")
+        self.setValue(color, forKeyPath: "textColor")
+    }
+}
+
+extension UISegmentedControl: TextStylable {
+    func setFont(_ font: UIFont) {
+        self.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+    }
+    
+    func setTextColor(_ color: UIColor) {
+        self.tintColor = color
     }
 }
 
 extension UIViewController {
     func applyBackgroundColor() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = ThemeHelper.backgroundColor()
     }
 }

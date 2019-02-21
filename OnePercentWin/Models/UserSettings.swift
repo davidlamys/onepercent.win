@@ -12,4 +12,5 @@ struct UserSettings: Codable {
     var userName: String?
     var morningReminder: DateComponents?
     var eveningReminder: DateComponents?
+    var theme: ThemeType?
 }

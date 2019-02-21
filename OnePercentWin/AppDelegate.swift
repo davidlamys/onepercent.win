@@ -21,9 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.isPersistenceEnabled = true
         let db = Firestore.firestore()
         db.settings = settings
-        UITabBar.appearance().tintColor = ThemeHelper.defaultOrange()
-        UITabBar.appearance().barTintColor = .black
+        setupUIAppearance()
         return true
+    }
+    
+    func setupUIAppearance() {
+        UITabBar.appearance().tintColor = ThemeHelper.defaultOrange()
+        UITabBar.appearance().barTintColor = ThemeHelper.tabbarColor()
     }
     
 }

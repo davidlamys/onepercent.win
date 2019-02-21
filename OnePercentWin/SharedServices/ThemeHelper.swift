@@ -22,8 +22,20 @@ enum SizeType {
     }
 }
 
-class ThemeHelper {
+enum ThemeType: Int, Codable {
+    case dark
+    case light
+    
+    var displayName: String {
+        switch self {
+        case .dark: return "Dark"
+        case .light: return "Light"
+        }
+    }
+}
 
+class ThemeHelper {
+    static let userDefaultsWrapper = UserDefaultsWrapper()
     static func defaultFont(fontSize: SizeType) -> UIFont {
         return UIFont(name: "Roboto-Regular", size: fontSize.fontSize)!
     }
@@ -36,8 +48,44 @@ class ThemeHelper {
         return UIColor(rgb: 0xFF9500)
     }
     
+    static func backgroundColor() -> UIColor {
+        guard var settings = userDefaultsWrapper.getSettings() else {
+            return .black
+        }
+        
+        guard let theme =  settings.theme else {
+            settings.theme = .dark
+            userDefaultsWrapper.save(settings: settings)
+            return .black
+        }
+        switch theme {
+        case .dark:
+            return .black
+        case .light:
+            return .white
+        }
+    }
+    
     static func textColor() -> UIColor {
-        return UIColor.black
+        guard var settings = userDefaultsWrapper.getSettings() else {
+            return .black
+        }
+        
+        guard let theme =  settings.theme else {
+            settings.theme = .dark
+            userDefaultsWrapper.save(settings: settings)
+            return .black
+        }
+        switch theme {
+        case .dark:
+            return .white
+        case .light:
+            return .black
+        }
+    }
+    
+    static func tabbarColor() -> UIColor {
+        return backgroundColor()
     }
 }
 
