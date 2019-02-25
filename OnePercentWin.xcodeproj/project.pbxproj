@@ -36,6 +36,8 @@
 		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */; };
+		63B96A7E2224256100BBA9F9 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */; };
+		63B96A802224268600BBA9F9 /* DashboardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7F2224268600BBA9F9 /* DashboardViewController.storyboard */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
 		63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA7C0521D1DF6F0010A5A7 /* UserService.swift */; };
@@ -85,6 +87,8 @@
 		6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompletedGoal.storyboard; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodayViewController.storyboard; sourceTree = "<group>"; };
+		63B96A7F2224268600BBA9F9 /* DashboardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardViewController.storyboard; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
 		63BA7C0521D1DF6F0010A5A7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			children = (
 				150A302921A700CF000CAB0C /* TodayViewController.swift */,
 				150A302B21A701DC000CAB0C /* TodayViewModel.swift */,
+				63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			children = (
 				63BB459221F5AA72006556D3 /* DashboardViewController.swift */,
 				63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */,
+				63B96A7F2224268600BBA9F9 /* DashboardViewController.storyboard */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B96A802224268600BBA9F9 /* DashboardViewController.storyboard in Resources */,
 				63426E2021E9F45C00EA35CB /* Roboto-Italic.ttf in Resources */,
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
@@ -357,6 +364,7 @@
 				150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */,
 				63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */,
 				63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */,
+				63B96A7E2224256100BBA9F9 /* TodayViewController.storyboard in Resources */,
 				150A301921A6E106000CAB0C /* Main.storyboard in Resources */,
 				63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */,
 			);

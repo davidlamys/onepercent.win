@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jr0-Km-bBE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today-->
+        <scene sceneID="vxP-C1-Uh8">
+            <objects>
+                <viewController title="Today" id="Jr0-Km-bBE" customClass="TodayViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l5l-3j-K2U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-Vx-EkT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-cW-fh6">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <connections>
+                                            <segue destination="ITv-If-AUY" kind="embed" id="GGI-zP-i7Y"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-7J-e4f">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <connections>
+                                            <segue destination="FTh-9o-2Z8" kind="embed" id="nsb-l1-DQR"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXn-Fr-Qwy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-Ku-zBe">
+                                                <rect key="frame" x="37.5" y="565" width="300" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0xo-Yg-Bbd"/>
+                                                </constraints>
+                                                <state key="normal" title="Tap to add goal for the day"/>
+                                                <connections>
+                                                    <action selector="userTappedOnAddButton:" destination="Jr0-Km-bBE" eventType="touchUpInside" id="GiS-n6-NzD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="n7Q-Ku-zBe" secondAttribute="bottom" constant="32" id="14z-cH-W48"/>
+                                            <constraint firstItem="n7Q-Ku-zBe" firstAttribute="centerX" secondItem="PXn-Fr-Qwy" secondAttribute="centerX" id="frm-hJ-T84"/>
+                                            <constraint firstItem="n7Q-Ku-zBe" firstAttribute="width" secondItem="PXn-Fr-Qwy" secondAttribute="width" multiplier="0.8" id="h1f-gb-hek"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PXn-Fr-Qwy" firstAttribute="height" secondItem="FJm-Vx-EkT" secondAttribute="height" id="72n-42-AJm"/>
+                                    <constraint firstItem="PXn-Fr-Qwy" firstAttribute="width" secondItem="FJm-Vx-EkT" secondAttribute="width" id="GF2-O7-5aH"/>
+                                    <constraint firstItem="WYA-cW-fh6" firstAttribute="width" secondItem="FJm-Vx-EkT" secondAttribute="width" id="U4L-5S-Ut7"/>
+                                    <constraint firstItem="Myo-7J-e4f" firstAttribute="width" secondItem="FJm-Vx-EkT" secondAttribute="width" id="a4s-Jh-x7Q"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="FJm-Vx-EkT" firstAttribute="centerX" secondItem="efq-ox-hK8" secondAttribute="centerX" id="9w9-I4-py3"/>
+                            <constraint firstItem="FJm-Vx-EkT" firstAttribute="width" secondItem="l5l-3j-K2U" secondAttribute="width" id="D2M-eE-HLX"/>
+                            <constraint firstItem="FJm-Vx-EkT" firstAttribute="bottom" secondItem="efq-ox-hK8" secondAttribute="bottom" id="EFz-Yk-IhN"/>
+                            <constraint firstItem="FJm-Vx-EkT" firstAttribute="top" secondItem="efq-ox-hK8" secondAttribute="top" id="VOG-X6-79k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="efq-ox-hK8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="Wpr-bw-CGH"/>
+                    <connections>
+                        <outlet property="completedGoalView" destination="Myo-7J-e4f" id="jSx-hZ-PHl"/>
+                        <outlet property="dashboardView" destination="WYA-cW-fh6" id="jD3-l7-ZK0"/>
+                        <outlet property="noGoalContainerView" destination="PXn-Fr-Qwy" id="QFG-Nr-0E7"/>
+                        <outlet property="tapToAddGoal" destination="n7Q-Ku-zBe" id="UQJ-i1-qN4"/>
+                        <segue destination="W71-WA-7iW" kind="presentation" identifier="showGoalEntry" id="Xqw-OZ-1TI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TsY-iu-efL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="434"/>
+        </scene>
+        <!--DashboardViewController-->
+        <scene sceneID="crn-Dr-seE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DashboardViewController" id="ITv-If-AUY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Buh-cN-Pe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="223"/>
+        </scene>
+        <!--CompletedGoal-->
+        <scene sceneID="85F-in-jwq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CompletedGoal" id="FTh-9o-2Z8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ysy-fO-GPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="455"/>
+        </scene>
+        <!--GoalEntry-->
+        <scene sceneID="Ve6-QV-di4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GoalEntry" id="W71-WA-7iW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgf-Hs-VbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="595"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="writingIcon" width="25" height="27"/>
+    </resources>
+</document>
