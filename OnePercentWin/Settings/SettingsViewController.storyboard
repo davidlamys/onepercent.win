@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N13-8w-LBv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="sqJ-YZ-ims">
+            <objects>
+                <viewController id="N13-8w-LBv" customClass="SettingsViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4a9-Tn-VTQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeG-JG-qd2">
+                                <rect key="frame" x="37" y="76" width="301" height="535"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="uJs-h0-cAV">
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goZ-oJ-Iqk">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENJ-oZ-rV5">
+                                                <rect key="frame" x="52" y="0.0" width="25" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="nameTextField:" destination="N13-8w-LBv" eventType="editingChanged" id="I9C-Ce-G95"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ENJ-oZ-rV5" secondAttribute="trailing" id="C2R-Rm-LmB"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LA-cO-Tph">
+                                        <rect key="frame" x="0.0" y="40" width="144.5" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhW-zL-AoN">
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1ik-K4-ZDM">
+                                                <rect key="frame" x="53.5" y="0.0" width="91" height="21.5"/>
+                                                <segments>
+                                                    <segment title="Dark"/>
+                                                    <segment title="Light"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="themeDidChange:" destination="N13-8w-LBv" eventType="valueChanged" id="qxw-l6-vW1"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-Ab-Q7X" userLabel="MorningReminder">
+                                        <rect key="frame" x="0.0" y="70.5" width="257" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2V-Kr-KRg">
+                                                <rect key="frame" x="0.0" y="0.0" width="141" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-n0-GWc">
+                                                <rect key="frame" x="208" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="morningReminderToggled:" destination="N13-8w-LBv" eventType="valueChanged" id="D8V-Me-qRb"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="2Ku-n0-GWc" secondAttribute="bottom" id="5rV-4s-yGQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Ku-n0-GWc" secondAttribute="trailing" id="GIj-4v-iM5"/>
+                                            <constraint firstItem="2Ku-n0-GWc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j2V-Kr-KRg" secondAttribute="trailing" constant="10" id="WVJ-bQ-4Kw"/>
+                                            <constraint firstItem="j2V-Kr-KRg" firstAttribute="leading" secondItem="A8q-Ab-Q7X" secondAttribute="leading" id="WWQ-08-X2X"/>
+                                            <constraint firstItem="j2V-Kr-KRg" firstAttribute="top" secondItem="A8q-Ab-Q7X" secondAttribute="top" id="afN-Mh-zEs"/>
+                                            <constraint firstItem="2Ku-n0-GWc" firstAttribute="top" secondItem="A8q-Ab-Q7X" secondAttribute="top" id="gnp-FM-YKl"/>
+                                            <constraint firstItem="j2V-Kr-KRg" firstAttribute="centerY" secondItem="2Ku-n0-GWc" secondAttribute="centerY" id="sWI-TO-qwT"/>
+                                            <constraint firstAttribute="bottom" secondItem="j2V-Kr-KRg" secondAttribute="bottom" id="yGy-7G-vZm"/>
+                                        </constraints>
+                                    </view>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e1-I8-xry">
+                                        <rect key="frame" x="0.0" y="111.5" width="301" height="156.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
+                                            <!--2018-11-22 13:20:10 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="didSetMorningReminder:" destination="N13-8w-LBv" eventType="valueChanged" id="0nz-va-Aj4"/>
+                                        </connections>
+                                    </datePicker>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Ry-yWf" userLabel="MorningReminder">
+                                        <rect key="frame" x="0.0" y="278" width="257" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-gM-1IJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-1u-HKp">
+                                                <rect key="frame" x="208" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="eveningReminderToggled:" destination="N13-8w-LBv" eventType="valueChanged" id="OFV-Me-t8B"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="nBq-gM-1IJ" firstAttribute="centerY" secondItem="jYF-1u-HKp" secondAttribute="centerY" id="FAH-tB-OzX"/>
+                                            <constraint firstItem="nBq-gM-1IJ" firstAttribute="top" secondItem="t3d-Ry-yWf" secondAttribute="top" id="Gj6-mK-KG1"/>
+                                            <constraint firstItem="nBq-gM-1IJ" firstAttribute="leading" secondItem="t3d-Ry-yWf" secondAttribute="leading" id="VxF-hy-E8j"/>
+                                            <constraint firstItem="jYF-1u-HKp" firstAttribute="top" secondItem="t3d-Ry-yWf" secondAttribute="top" id="epk-Iu-MYJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="jYF-1u-HKp" secondAttribute="trailing" id="kKU-oY-rkP"/>
+                                            <constraint firstItem="jYF-1u-HKp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nBq-gM-1IJ" secondAttribute="trailing" constant="10" id="lPd-GV-lFQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="jYF-1u-HKp" secondAttribute="bottom" id="wmw-Fi-8zg"/>
+                                            <constraint firstAttribute="bottom" secondItem="nBq-gM-1IJ" secondAttribute="bottom" id="yOA-Is-3tf"/>
+                                        </constraints>
+                                    </view>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR1-hr-759">
+                                        <rect key="frame" x="0.0" y="319" width="301" height="216"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
+                                            <!--2018-11-22 13:20:10 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="didSetEveningReminder:" destination="N13-8w-LBv" eventType="valueChanged" id="Wt4-Ro-w09"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emm-dE-1tb">
+                                <rect key="frame" x="164" y="627" width="47" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BMV-g6-QCS"/>
+                                </constraints>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="didTapSignIn:" destination="N13-8w-LBv" eventType="touchUpInside" id="MyT-xY-Atw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="emm-dE-1tb" firstAttribute="centerX" secondItem="jR1-hr-759" secondAttribute="centerX" id="4b9-Vw-bJf"/>
+                            <constraint firstItem="emm-dE-1tb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jR1-hr-759" secondAttribute="bottom" constant="8" id="5ax-1B-lfJ"/>
+                            <constraint firstItem="NeG-JG-qd2" firstAttribute="width" secondItem="4a9-Tn-VTQ" secondAttribute="width" multiplier="0.8" constant="0.80000000000000004" id="J3Q-as-1Nk"/>
+                            <constraint firstItem="eXV-le-fu5" firstAttribute="bottom" secondItem="NeG-JG-qd2" secondAttribute="bottom" constant="56" id="JFU-UJ-40D"/>
+                            <constraint firstItem="NeG-JG-qd2" firstAttribute="centerX" secondItem="eXV-le-fu5" secondAttribute="centerX" id="PCd-bb-AI8"/>
+                            <constraint firstItem="eXV-le-fu5" firstAttribute="bottom" secondItem="emm-dE-1tb" secondAttribute="bottom" constant="10" id="PMn-Qn-wHh"/>
+                            <constraint firstItem="NeG-JG-qd2" firstAttribute="centerY" secondItem="eXV-le-fu5" secondAttribute="centerY" id="cpc-wU-u8c"/>
+                            <constraint firstItem="NeG-JG-qd2" firstAttribute="top" secondItem="eXV-le-fu5" secondAttribute="top" constant="56" id="mFY-Aw-jrP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eXV-le-fu5"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="glS-rg-W2G"/>
+                    <connections>
+                        <outlet property="eveningReminderLabel" destination="nBq-gM-1IJ" id="YQr-Ug-kIb"/>
+                        <outlet property="eveningReminderSwitch" destination="jYF-1u-HKp" id="W4u-YP-HWI"/>
+                        <outlet property="eveningReminderTimePicker" destination="jR1-hr-759" id="lAf-5K-wUg"/>
+                        <outlet property="morningReminderLabel" destination="j2V-Kr-KRg" id="FJs-mw-J7g"/>
+                        <outlet property="morningReminderSwitch" destination="2Ku-n0-GWc" id="8FS-S0-1KZ"/>
+                        <outlet property="morningReminderTimePicker" destination="8e1-I8-xry" id="cXJ-es-Xae"/>
+                        <outlet property="nameLabel" destination="goZ-oJ-Iqk" id="uon-Uw-E7m"/>
+                        <outlet property="signInButton" destination="emm-dE-1tb" id="8vW-tP-10u"/>
+                        <outlet property="themeLabel" destination="IhW-zL-AoN" id="6TZ-k8-OpO"/>
+                        <outlet property="themeSegmentControl" destination="1ik-K4-ZDM" id="3HI-uv-wfF"/>
+                        <outlet property="userNameTextField" destination="ENJ-oZ-rV5" id="HiU-mg-o4S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D8M-Gj-150" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-79" y="-218"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings" width="29" height="29"/>
+    </resources>
+</document>
