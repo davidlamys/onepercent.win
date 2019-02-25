@@ -22,26 +22,18 @@ final class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyBackgroundColor()
         viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
         dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
         completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
-        tapToAddGoal.applyStyle()
         dashboardView.isHidden = true
         completedGoalView.isHidden = true
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
             DispatchQueue.main.async {
-                self.dashboardViewController.styleElements()
-                self.dashboardViewController.applyBackgroundColor()
-                
-                self.tapToAddGoal.applyStyle()
-                self.applyBackgroundColor()
-                
-                self.completedGoalViewController.styleElements()
-                self.completedGoalViewController.applyBackgroundColor()
+                self.applyStyle()
             }
         }
+        applyStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +54,17 @@ final class TodayViewController: UIViewController {
     
     @IBAction func userTappedOnAddButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showGoalEntry", sender: nil)
+    }
+    
+    func applyStyle() {
+        self.dashboardViewController.styleElements()
+        self.dashboardViewController.applyBackgroundColor()
+        
+        self.tapToAddGoal.applyStyle()
+        self.applyBackgroundColor()
+        
+        self.completedGoalViewController.styleElements()
+        self.completedGoalViewController.applyBackgroundColor()
     }
     
     func setupInitialView() {
