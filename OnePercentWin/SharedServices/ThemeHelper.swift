@@ -68,13 +68,13 @@ class ThemeHelper {
     
     static func textColor() -> UIColor {
         guard var settings = userDefaultsWrapper.getSettings() else {
-            return .black
+            return .white
         }
         
         guard let theme =  settings.theme else {
             settings.theme = .dark
             userDefaultsWrapper.save(settings: settings)
-            return .black
+            return .white
         }
         switch theme {
         case .dark:
