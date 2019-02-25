@@ -97,6 +97,7 @@ final class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        styleElements()
         applyBackgroundColor()
 
         userNameTextField.text = viewModel.getUserName()
@@ -109,7 +110,6 @@ final class SettingsViewController: UIViewController {
             // Enable or disable features based on authorization.
         }
         
-        styleElements()
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
             DispatchQueue.main.async {
                 self.styleElements()
@@ -126,6 +126,7 @@ final class SettingsViewController: UIViewController {
         eveningReminderLabel.applyFont(fontSize: defaultSizeForPage)
         
         userNameTextField.applyFont(fontSize: defaultSizeForPage)
+        userNameTextField.backgroundColor = .clear
         signInButton.applyStyle()
         
         themeSegmentControl.applyFont(fontSize: defaultSizeForPage)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jr0-Km-bBE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ygo-5o-M85">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SettingsViewController-->
+        <scene sceneID="XsI-AA-TRH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsViewController" id="XmV-sj-4Jx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwH-oW-8Vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2590" y="-27"/>
+        </scene>
         <!--Today-->
         <scene sceneID="vxP-C1-Uh8">
             <objects>
@@ -18,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-Vx-EkT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-cW-fh6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -33,10 +41,10 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXn-Fr-Qwy">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-Ku-zBe">
-                                                <rect key="frame" x="37.5" y="565" width="300" height="50"/>
+                                                <rect key="frame" x="37.5" y="477" width="300" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0xo-Yg-Bbd"/>
                                                 </constraints>
@@ -71,7 +79,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="efq-ox-hK8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="Wpr-bw-CGH"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GpN-Ns-B2Y">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="kRC-g8-fFy">
+                            <connections>
+                                <segue destination="XmV-sj-4Jx" kind="show" id="glW-AD-8hi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="completedGoalView" destination="Myo-7J-e4f" id="jSx-hZ-PHl"/>
                         <outlet property="dashboardView" destination="WYA-cW-fh6" id="jD3-l7-ZK0"/>
@@ -82,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsY-iu-efL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="434"/>
+            <point key="canvasLocation" x="1964" y="433.13343328335833"/>
         </scene>
         <!--DashboardViewController-->
         <scene sceneID="crn-Dr-seE">
@@ -90,7 +106,7 @@
                 <viewControllerPlaceholder storyboardName="DashboardViewController" id="ITv-If-AUY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Buh-cN-Pe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="223"/>
+            <point key="canvasLocation" x="2697.5999999999999" y="299.55022488755623"/>
         </scene>
         <!--CompletedGoal-->
         <scene sceneID="85F-in-jwq">
@@ -98,7 +114,7 @@
                 <viewControllerPlaceholder storyboardName="CompletedGoal" id="FTh-9o-2Z8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ysy-fO-GPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="455"/>
+            <point key="canvasLocation" x="2675.1999999999998" y="432.68365817091455"/>
         </scene>
         <!--GoalEntry-->
         <scene sceneID="Ve6-QV-di4">
@@ -106,7 +122,26 @@
                 <viewControllerPlaceholder storyboardName="GoalEntry" id="W71-WA-7iW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgf-Hs-VbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="595"/>
+            <point key="canvasLocation" x="2648" y="555.02248875562225"/>
+        </scene>
+        <!--Today-->
+        <scene sceneID="9iV-fp-RA7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ygo-5o-M85" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" image="writingIcon" largeContentSizeImage="writingIcon" selectedImage="writingIcon" id="Wpr-bw-CGH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8AV-84-p6a">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jr0-Km-bBE" kind="relationship" relationship="rootViewController" id="nAr-sb-SQ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ojb-Vr-4XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024.8" y="433.13343328335833"/>
         </scene>
     </scenes>
     <resources>
