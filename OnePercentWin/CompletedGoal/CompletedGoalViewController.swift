@@ -51,7 +51,6 @@ final class CompletedGoalViewController: UIViewController {
         let sb = UIStoryboard(name: "NotesEntry", bundle: Bundle.main)
         guard let vc = sb.instantiateViewController(withIdentifier: "NotesEntryViewController") as? NotesEntryViewController else {
             fatalError("view controller not found")
-            return
         }
         vc.delegate = self
         vc.goal = goal

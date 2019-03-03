@@ -126,7 +126,7 @@ extension HistoryViewController: UITableViewDataSource {
             cell.textLabel?.numberOfLines = 0
             cell.detailTextLabel?.text = goalForCell.prettyDate
             
-            let isCompleted = goalForCell.completed ?? false
+            let isCompleted = goalForCell.completed
             cell.accessoryType = isCompleted ? .checkmark : .none
             
             return cell
@@ -161,7 +161,7 @@ extension HistoryViewController: UITableViewDelegate {
             return
         }
 
-        let statusForCell = goalForCell.completed ?? false
+        let statusForCell = goalForCell.completed
         let newStatus = statusForCell ? "incomplete" : "completed"
         let message = "This will set \(goalForCell.goal) as \(newStatus)"
         

@@ -73,7 +73,7 @@ class HistoryViewModel {
     }
     
     func toggleGoalStatus(goal: inout DailyGoal) {
-        let oldStatus = goal.completed ?? false
+        let oldStatus = goal.completed
         goal.completed = !oldStatus
         wrapper.save(goal)
     }
