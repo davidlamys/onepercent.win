@@ -19,6 +19,9 @@ class DateSelectionCell: UICollectionViewCell {
             dayLabel.text = cellModel.dayString
             dateLabel.text = cellModel.dateString
             monthLabel.text = cellModel.monthString
+            dayLabel.applyFont(fontSize: .extraSmall)
+            dateLabel.applyFont(fontSize: .small)
+            monthLabel.applyFont(fontSize: .extraSmall)
             if accessoryView.backgroundColor == nil {
                 accessoryView.backgroundColor = cellModel?.colorForAccessory
             }
@@ -32,12 +35,21 @@ class DateSelectionCell: UICollectionViewCell {
     }
     
     private func configureFor(selected: Bool) {
-        self.backgroundColor = selected ? accessoryView.backgroundColor : .clear
+        if selected {
+            backgroundColor = accessoryView.backgroundColor
+            dayLabel.applyFont(fontSize: .extraSmall, color: .black)
+            dateLabel.applyFont(fontSize: .small, color: .black)
+            monthLabel.applyFont(fontSize: .extraSmall, color: .black)
+        } else {
+            backgroundColor = .clear
+            dayLabel.applyFont(fontSize: .extraSmall)
+            dateLabel.applyFont(fontSize: .small)
+            monthLabel.applyFont(fontSize: .extraSmall)
+        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
     override func awakeFromNib() {
         accessoryView.backgroundColor = cellModel?.colorForAccessory

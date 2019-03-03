@@ -23,6 +23,12 @@ final class DateSelectionViewController: UIViewController {
         collectionView.allowsSelection = true
         presenter?.viewDidLoad()
     }
+    
+    func styleElements() {
+        collectionView.reloadData()
+        collectionView.backgroundColor = ThemeHelper.backgroundColor()
+    }
+    
 }
 
 extension DateSelectionViewController: DateSelectionViewProtocol {

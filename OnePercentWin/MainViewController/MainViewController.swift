@@ -72,6 +72,9 @@ final class MainViewController: UIViewController {
         
         self.completedGoalViewController.styleElements()
         self.completedGoalViewController.applyBackgroundColor()
+        
+        self.dateSelectionViewController.styleElements()
+        self.dateSelectionViewController.applyBackgroundColor()
     }
     
     func setupInitialView() {

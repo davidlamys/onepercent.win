@@ -12,12 +12,14 @@ enum SizeType {
     case large
     case medium
     case small
+    case extraSmall
     
     var fontSize: CGFloat {
         switch self {
         case .large: return 27.0
         case .medium: return 21.0
-        case .small: return 12.0
+        case .small: return 16.0
+        case .extraSmall: return 10.0
         }
     }
 }
