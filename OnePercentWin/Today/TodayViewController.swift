@@ -19,12 +19,19 @@ final class TodayViewController: UIViewController {
     
     weak var dashboardViewController: DashboardViewController!
     weak var completedGoalViewController: CompletedGoalViewController!
+    weak var dateSelectionViewController: DateSelectionViewController! {
+        didSet {
+            let builder = DateSelectionBuilder()
+            builder.build(view: dateSelectionViewController)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
         dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
         completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
+        dateSelectionViewController = self.children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
         dashboardView.isHidden = true
         completedGoalView.isHidden = true
         
@@ -93,6 +100,7 @@ extension TodayViewController: TodayViewModelDelegate {
                lastGoal: DailyGoal?) {
         if let todayGoal = todayGoal {
             self.dashboardViewController.setup(with: todayGoal)
+            setupInitialView()
         } 
     }
     

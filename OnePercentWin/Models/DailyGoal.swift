@@ -9,7 +9,11 @@
 import Foundation
 import FirebaseFirestore
 
-struct DailyGoal {
+protocol DailyGoalModelling {
+    var completed: Bool { get set }
+}
+
+struct DailyGoal: DailyGoalModelling {
     var id: String
     var goal: String
     var reason: String
@@ -92,3 +96,34 @@ extension DailyGoal: DocumentSerializable {
 }
 
 extension DailyGoal: Equatable {}
+
+extension Optional where Wrapped: DailyGoalModelling {
+    var status: GoalStatus {
+        guard let goal = self else {
+            return .notSet
+        }
+        return (goal.completed) ? .complete : .incomplete
+    }
+    
+    var colorForStatus: UIColor {
+        switch self.status {
+        case .complete:
+            return HistoryCellModel.completedColor
+        case .incomplete:
+            return HistoryCellModel.incompleteColor
+        case .notSet:
+            return HistoryCellModel.noEntryColor
+        }
+    }
+}
+
+enum GoalStatus {
+    case notSet
+    case incomplete
+    case complete
+    
+    static let completedColor = UIColor.green
+    static let incompleteColor = UIColor.yellow
+    static let noEntryColor = UIColor.red
+}
+

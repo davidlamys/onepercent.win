@@ -21,9 +21,39 @@ extension Date {
         return dateFormatter
     }()
     
+    private static let monthFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter
+    }()
+    
+    private static let dateFormatter: DateFormatter = {
+       let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return dateFormatter
+    }()
+    
+    private static let dayFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return dateFormatter
+    }()
+    
     var prettyDate: String {
        
         return Date.prettyDateFormatter.string(from: self)
+    }
+    
+    var dayString: String {
+        return Date.dayFormatter.string(from: self)
+    }
+    
+    var dateString: String {
+        return Date.dateFormatter.string(from: self)
+    }
+    
+    var monthString: String {
+        return Date.monthFormatter.string(from: self)
     }
     
     var historyCellModelDate: String {

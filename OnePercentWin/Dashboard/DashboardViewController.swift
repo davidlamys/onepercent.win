@@ -39,7 +39,6 @@ final class DashboardViewController: UIViewController {
         let sb = UIStoryboard(name: "GoalEntry", bundle: Bundle.main)
         guard let vc = sb.instantiateViewController(withIdentifier: "GoalEntryViewController") as? GoalEntryViewController else {
             fatalError("view controller not found")
-            return
         }
         vc.delegate = self
         vc.mode = .update
