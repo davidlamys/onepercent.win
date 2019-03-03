@@ -9,9 +9,11 @@
 import Foundation
 
 class DateSelectionBuilder: DateSelectionBuilderProtocol {
-    func build(view: DateSelectionViewProtocol) {
+    func build(view: DateSelectionViewProtocol,
+               presenterOutputConsumer: DateSelectionPresenterOutputConsumer) {
         let presenter = DateSelectionPresenter()
         presenter.dateView = view
+        presenter.outputConsumer = presenterOutputConsumer
         let interactor = DateSelectionInteractor()
         presenter.interactor = interactor
         interactor.presenter = presenter

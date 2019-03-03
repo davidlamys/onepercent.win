@@ -22,13 +22,14 @@ final class TodayViewController: UIViewController {
     weak var dateSelectionViewController: DateSelectionViewController! {
         didSet {
             let builder = DateSelectionBuilder()
-            builder.build(view: dateSelectionViewController)
+            builder.build(view: dateSelectionViewController,
+                          presenterOutputConsumer: viewModel)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = TodayViewModel(wrapper: RepoWrapper.shared, delegate: self)
+        viewModel = TodayViewModel(delegate: self)
         dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
         completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
         dateSelectionViewController = self.children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
@@ -45,7 +46,6 @@ final class TodayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        RepoWrapper.shared.delegate = viewModel
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             self.setupInitialView()
         }
@@ -96,12 +96,11 @@ final class TodayViewController: UIViewController {
 }
 
 extension TodayViewController: TodayViewModelDelegate {
-    func setup(todayGoal: DailyGoal?,
-               lastGoal: DailyGoal?) {
+    func setup(todayGoal: DailyGoal?) {
         if let todayGoal = todayGoal {
             self.dashboardViewController.setup(with: todayGoal)
-            setupInitialView()
-        } 
+        }
+        setupInitialView()
     }
     
 }

@@ -11,6 +11,7 @@ import Foundation
 class DateSelectionPresenter: DateSelectionPresenterProtocol {
     
     weak var dateView: DateSelectionViewProtocol?
+    weak var outputConsumer: DateSelectionPresenterOutputConsumer?
     var interactor: DateSelectionInteractorProtocol? {
         didSet {
             interactor?.fetchAllUserGoals()
@@ -61,6 +62,13 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
         interactor?.fetchAllUserGoals()
     }
     
+    func didSelectCell(at indexPath: IndexPath) {
+        guard let cellModel = cellModelFor(indexPath: indexPath) as? DateSelectionCellModel else {
+            fatalError("hash map is no longer provider us with DateSelectionCellModel")
+        }
+        outputConsumer?.didSelect(date: cellModel.date,
+                                  goal: cellModel.goal)
+    }
 }
 
 extension DateSelectionPresenter: DateSelectionInteractorOutputConsumer {

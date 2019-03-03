@@ -38,6 +38,10 @@ extension DateSelectionViewController: DateSelectionViewProtocol {
 }
 
 extension DateSelectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.didSelectCell(at: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.numberOfCellsToPresent() ?? 0
     }
