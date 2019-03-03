@@ -6,8 +6,9 @@
 //  Copyright © 2018 David Lam. All rights reserved.
 //
 
-import Foundation
+import Firebase
 import FirebaseFirestore
+import Foundation
 
 class RepoWrapper {
     
@@ -27,7 +28,10 @@ class RepoWrapper {
     static let shared = RepoWrapper()
 
     private init() {
-        db = Firestore.firestore()
+        guard let app = FirebaseApp.app() else {
+            fatalError()
+        }
+        db = Firestore.firestore(app: app)
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings

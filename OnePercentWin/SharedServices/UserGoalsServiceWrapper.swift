@@ -6,8 +6,9 @@
 //  Copyright © 2019 David Lam. All rights reserved.
 //
 
-import Foundation
+import Firebase
 import FirebaseFirestore
+import Foundation
 
 class UserGoalQueryListener {
     fileprivate var query: Query?
@@ -17,9 +18,13 @@ class UserGoalQueryListener {
     private let db: Firestore
     
     static let shared = UserGoalQueryListener()
+    private var userId: String!
     
     private init() {
-        db = Firestore.firestore()
+        guard let app = FirebaseApp.app() else {
+            fatalError()
+        }
+        db = Firestore.firestore(app: app)
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
@@ -34,7 +39,8 @@ class UserGoalQueryListener {
     }
     
     func set(userId: String) {
-        self.goals.removeAll()
+        self.userId = userId
+        goals = goals.filter({ $0.userId == userId })
         query = baseQuery(userId: userId)
         observeQuery()
     }
@@ -42,7 +48,6 @@ class UserGoalQueryListener {
     fileprivate func baseQuery(userId: String) -> Query {
         return db.collection("dailyGoals")
             .order(by: "timestamp", descending: true)
-            .whereField("userId", isEqualTo: userId)
             .limit(to: 365)
     }
     
@@ -67,8 +72,12 @@ class UserGoalQueryListener {
                     return nil
                 }
             }
+            if let userId = self.userId {
+                self.goals = models.filter { $0.userId == userId }
+            } else {
+                self.goals = []
+            }
             
-            self.goals = models
             self.documents = snapshot.documents
             self.delegate?.refreshWith(goals: self.goals)
         }
