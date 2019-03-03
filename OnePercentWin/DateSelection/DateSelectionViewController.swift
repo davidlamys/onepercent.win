@@ -38,7 +38,8 @@ extension DateSelectionViewController: DateSelectionViewProtocol {
         }
         self.collectionView.reloadData()
         if let selectedIndex = selectedIndex {
-            collectionView.scrollToItem(at: selectedIndex, at: UICollectionView.ScrollPosition.right, animated: false)
+            collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: .right)
+            presenter?.didSelectCell(at: selectedIndex)
         }
     }
 }
