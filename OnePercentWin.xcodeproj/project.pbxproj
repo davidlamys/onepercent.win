@@ -12,8 +12,7 @@
 		150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150A301A21A6E107000CAB0C /* Assets.xcassets */; };
 		150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150A301C21A6E107000CAB0C /* LaunchScreen.storyboard */; };
 		150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A302521A6E422000CAB0C /* SettingsViewController.swift */; };
-		150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A302921A700CF000CAB0C /* TodayViewController.swift */; };
-		150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A302B21A701DC000CAB0C /* TodayViewModel.swift */; };
+		150A302C21A701DC000CAB0C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A302B21A701DC000CAB0C /* MainViewModel.swift */; };
 		150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */; };
 		150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303021A70207000CAB0C /* RepoWrapper.swift */; };
 		150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303421A70248000CAB0C /* HistoryViewController.swift */; };
@@ -46,7 +45,7 @@
 		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */; };
-		63B96A7E2224256100BBA9F9 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */; };
+		63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */; };
 		63B96A802224268600BBA9F9 /* DashboardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7F2224268600BBA9F9 /* DashboardViewController.storyboard */; };
 		63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */; };
 		63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */; };
@@ -59,6 +58,7 @@
 		63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */; };
 		63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459621F5AD90006556D3 /* TextStylable.swift */; };
 		63BB459921F5AE72006556D3 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459821F5AE72006556D3 /* UIButton+Ext.swift */; };
+		63F57A86222BDAFB003D7F31 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F57A85222BDAFB003D7F31 /* MainViewController.swift */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
@@ -72,8 +72,7 @@
 		150A301D21A6E107000CAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		150A301F21A6E107000CAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		150A302521A6E422000CAB0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		150A302921A700CF000CAB0C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		150A302B21A701DC000CAB0C /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		150A302B21A701DC000CAB0C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		150A303021A70207000CAB0C /* RepoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWrapper.swift; sourceTree = "<group>"; };
 		150A303421A70248000CAB0C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +106,7 @@
 		6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompletedGoal.storyboard; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
-		63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodayViewController.storyboard; sourceTree = "<group>"; };
+		63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		63B96A7F2224268600BBA9F9 /* DashboardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardViewController.storyboard; sourceTree = "<group>"; };
 		63BA7BC521CFA2190010A5A7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		63BA7BC721CFA4210010A5A7 /* GoalEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalEntry.storyboard; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		63BB459421F5AA7F006556D3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardViewModel.swift; path = /Users/david/Documents/Projects/OnePercentWin/OnePercentWin/Dashboard/DashboardViewModel.swift; sourceTree = "<absolute>"; };
 		63BB459621F5AD90006556D3 /* TextStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylable.swift; sourceTree = "<group>"; };
 		63BB459821F5AE72006556D3 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		63F57A85222BDAFB003D7F31 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,7 +176,7 @@
 				63BA7C0721D1EE100010A5A7 /* Review.storyboard */,
 				150A302721A6E427000CAB0C /* Settings */,
 				150A302D21A701E1000CAB0C /* SharedServices */,
-				150A302821A700C4000CAB0C /* Today */,
+				150A302821A700C4000CAB0C /* MainViewController */,
 				63BB458F21F578B8006556D3 /* UITextFieldFixed.swift */,
 				630A9850222A9FFB008B0116 /* DateSelection */,
 			);
@@ -193,14 +193,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		150A302821A700C4000CAB0C /* Today */ = {
+		150A302821A700C4000CAB0C /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				150A302921A700CF000CAB0C /* TodayViewController.swift */,
-				150A302B21A701DC000CAB0C /* TodayViewModel.swift */,
-				63B96A7D2224256100BBA9F9 /* TodayViewController.storyboard */,
+				63F57A85222BDAFB003D7F31 /* MainViewController.swift */,
+				150A302B21A701DC000CAB0C /* MainViewModel.swift */,
+				63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */,
 			);
-			path = Today;
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		150A302D21A701E1000CAB0C /* SharedServices */ = {
@@ -403,7 +403,7 @@
 				150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */,
 				63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */,
 				63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */,
-				63B96A7E2224256100BBA9F9 /* TodayViewController.storyboard in Resources */,
+				63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */,
 				150A301921A6E106000CAB0C /* Main.storyboard in Resources */,
 				63BA7C0821D1EE100010A5A7 /* Review.storyboard in Resources */,
 			);
@@ -505,7 +505,7 @@
 			files = (
 				6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */,
 				63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */,
-				150A302C21A701DC000CAB0C /* TodayViewModel.swift in Sources */,
+				150A302C21A701DC000CAB0C /* MainViewModel.swift in Sources */,
 				63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */,
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
 				63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */,
@@ -522,9 +522,9 @@
 				63BB459921F5AE72006556D3 /* UIButton+Ext.swift in Sources */,
 				63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */,
 				63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */,
-				150A302A21A700CF000CAB0C /* TodayViewController.swift in Sources */,
 				63BB459021F578B8006556D3 /* UITextFieldFixed.swift in Sources */,
 				6371A51D21F9AE6300D80CF7 /* NotesEntryViewModel.swift in Sources */,
+				63F57A86222BDAFB003D7F31 /* MainViewController.swift in Sources */,
 				150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */,
 				630A9862222B8CEB008B0116 /* DateSelectionCell.swift in Sources */,
 				63BB459521F5AA80006556D3 /* DashboardViewModel.swift in Sources */,

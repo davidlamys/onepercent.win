@@ -8,23 +8,23 @@
 
 import Foundation
 
-class TodayViewModel {
-    weak var delegate: TodayViewModelDelegate?
+class MainViewModel {
+    weak var delegate: MainViewModelDelegate?
     private(set) var todayGoal: DailyGoal! = nil
     
-    init(delegate: TodayViewModelDelegate) {
+    init(delegate: MainViewModelDelegate) {
         self.delegate = delegate
     }
     
 }
 
-extension TodayViewModel: DateSelectionPresenterOutputConsumer {
+extension MainViewModel: DateSelectionPresenterOutputConsumer {
     func didSelect(date: Date, goal: DailyGoal?) {
         self.todayGoal = goal
-        self.delegate?.setup(todayGoal: goal)
+        self.delegate?.setup(goal: goal)
     }
 }
 
-protocol TodayViewModelDelegate: class {
-    func setup(todayGoal: DailyGoal?)
+protocol MainViewModelDelegate: class {
+    func setup(goal: DailyGoal?)
 }

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TodayViewController-->
+        <!--MainViewController-->
         <scene sceneID="MEd-6Z-eAX">
             <objects>
-                <viewControllerPlaceholder storyboardName="TodayViewController" id="m03-Wl-7M3" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MainViewController" id="m03-Wl-7M3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Today" image="writingIcon" selectedImage="writingIcon" id="Ghf-Ps-8lw"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3i-Au-fIS" userLabel="First Responder" sceneMemberID="firstResponder"/>

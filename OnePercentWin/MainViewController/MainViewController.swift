@@ -1,5 +1,5 @@
 //
-//  TodayViewController.swift
+//  MainViewController.swift
 //  OnePercentWin
 //
 //  Created by David Lam on 22/11/18.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class TodayViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     @IBOutlet weak var dashboardView: UIView!
     @IBOutlet weak var completedGoalView: UIView!
     @IBOutlet weak var tapToAddGoal: UIButton!
     @IBOutlet weak var noGoalContainerView: UIView!
     
-    var viewModel: TodayViewModel!
+    var viewModel: MainViewModel!
     
     weak var dashboardViewController: DashboardViewController!
     weak var completedGoalViewController: CompletedGoalViewController!
@@ -29,7 +29,7 @@ final class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = TodayViewModel(delegate: self)
+        viewModel = MainViewModel(delegate: self)
         dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
         completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
         dateSelectionViewController = self.children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
@@ -75,37 +75,37 @@ final class TodayViewController: UIViewController {
     }
     
     func setupInitialView() {
-        if let todayGoal = self.viewModel.todayGoal {
-            if todayGoal.completed == true {
-                dashboardView.isHidden = true
-                completedGoalView.isHidden = false
-                noGoalContainerView.isHidden = true
-                self.completedGoalViewController.setup(with: todayGoal)
-            } else {
-                dashboardView.isHidden = false
-                completedGoalView.isHidden = true
-                noGoalContainerView.isHidden = true
-                self.dashboardViewController.setup(with: todayGoal)
-            }
-        } else {
+        guard let goalForDay = viewModel.todayGoal else {
             dashboardView.isHidden = true
             completedGoalView.isHidden = true
             noGoalContainerView.isHidden = false
+            return
+        }
+        noGoalContainerView.isHidden = true
+        
+        if goalForDay.completed {
+            dashboardView.isHidden = true
+            completedGoalView.isHidden = false
+            self.completedGoalViewController.setup(with: goalForDay)
+        } else {
+            dashboardView.isHidden = false
+            completedGoalView.isHidden = true
+            self.dashboardViewController.setup(with: goalForDay)
         }
     }
 }
 
-extension TodayViewController: TodayViewModelDelegate {
-    func setup(todayGoal: DailyGoal?) {
-        if let todayGoal = todayGoal {
-            self.dashboardViewController.setup(with: todayGoal)
+extension MainViewController: MainViewModelDelegate {
+    func setup(goal: DailyGoal?) {
+        if let goal = goal {
+            self.dashboardViewController.setup(with: goal)
         }
         setupInitialView()
     }
     
 }
 
-extension TodayViewController: GoalEntryViewControllerDelegate {
+extension MainViewController: GoalEntryViewControllerDelegate {
     func didSaveGoal() {
         self.dismiss(animated: true, completion: nil)
     }
