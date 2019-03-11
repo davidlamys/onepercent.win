@@ -43,6 +43,7 @@
 		6371A52021FC4A4300D80CF7 /* CompletedGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51F21FC4A4300D80CF7 /* CompletedGoalViewController.swift */; };
 		6371A52221FC4A4E00D80CF7 /* CompletedGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */; };
 		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
+		63A3B5D82236A42A00105C58 /* HistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */; };
 		63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */; };
@@ -104,6 +105,7 @@
 		6371A51F21FC4A4300D80CF7 /* CompletedGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalViewController.swift; sourceTree = "<group>"; };
 		6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalViewModel.swift; sourceTree = "<group>"; };
 		6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompletedGoal.storyboard; sourceTree = "<group>"; };
+		63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryViewController.storyboard; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				150A303421A70248000CAB0C /* HistoryViewController.swift */,
 				150A303621A70251000CAB0C /* HistoryViewModel.swift */,
 				633781F121D5061900E11531 /* HistoryCalendarCell.swift */,
+				63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
 				6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */,
 				63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */,
+				63A3B5D82236A42A00105C58 /* HistoryViewController.storyboard in Resources */,
 				6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */,
 				63BA7BC621CFA2190010A5A7 /* Onboarding.storyboard in Resources */,
 				63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */,

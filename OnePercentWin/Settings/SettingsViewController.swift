@@ -28,6 +28,7 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak private var eveningReminderTimePicker: UIDatePicker!
     
     @IBOutlet weak private var signInButton: UIButton!
+    @IBOutlet weak private var getNosy: UIButton!
     
     @IBOutlet weak private var userNameTextField: UITextField!
     
@@ -128,6 +129,7 @@ final class SettingsViewController: UIViewController {
         userNameTextField.applyFont(fontSize: defaultSizeForPage)
         userNameTextField.backgroundColor = .clear
         signInButton.applyStyle()
+        getNosy.applyStyle()
         
         themeSegmentControl.applyFont(fontSize: defaultSizeForPage)
         
