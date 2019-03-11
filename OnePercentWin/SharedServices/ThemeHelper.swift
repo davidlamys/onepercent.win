@@ -89,6 +89,18 @@ class ThemeHelper {
     static func tabbarColor() -> UIColor {
         return backgroundColor()
     }
+    
+}
+
+extension ThemeHelper: ImageProvider {
+    static func getImage(for image: Images) -> UIImage {
+        switch userDefaultsWrapper.getTheme() {
+        case .dark:
+            return DarkThemeImageProvider.getImage(for: image)
+        case .light:
+            return LightThemeImageProvider.getImage(for: image)
+        }
+    }
 }
 
 fileprivate extension UIColor {
@@ -106,5 +118,31 @@ fileprivate extension UIColor {
             green: (rgb >> 8) & 0xFF,
             blue: rgb & 0xFF
         )
+    }
+}
+
+fileprivate protocol ImageProvider {
+    static func getImage(for image: Images) -> UIImage
+}
+
+enum Images {
+    case noGoalImage
+}
+
+fileprivate struct DarkThemeImageProvider: ImageProvider {
+    static func getImage(for image: Images) -> UIImage {
+        switch image {
+        case .noGoalImage:
+            return #imageLiteral(resourceName: "no_goal_dark")
+        }
+    }
+}
+
+fileprivate struct LightThemeImageProvider: ImageProvider {
+    static func getImage(for image: Images) -> UIImage {
+        switch image {
+        case .noGoalImage:
+            return #imageLiteral(resourceName: "no_goal_light")
+        }
     }
 }

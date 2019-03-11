@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ygo-5o-M85">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,29 +22,29 @@
             <objects>
                 <viewController title="Today" id="Jr0-Km-bBE" customClass="MainViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l5l-3j-K2U">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-Vx-EkT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="383"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="491"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-cW-fh6">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <connections>
                                             <segue destination="ITv-If-AUY" kind="embed" id="GGI-zP-i7Y"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-7J-e4f">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <connections>
                                             <segue destination="FTh-9o-2Z8" kind="embed" id="nsb-l1-DQR"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXn-Fr-Qwy">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="383"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="491"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-Ku-zBe">
-                                                <rect key="frame" x="60" y="301" width="480" height="50"/>
+                                                <rect key="frame" x="37.5" y="409" width="300" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0xo-Yg-Bbd"/>
                                                 </constraints>
@@ -50,12 +53,29 @@
                                                     <action selector="userTappedOnAddButton:" destination="Jr0-Km-bBE" eventType="touchUpInside" id="GiS-n6-NzD"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no goals yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-r3-boV">
+                                                <rect key="frame" x="104.5" y="75.5" width="166.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ej2-2s-439">
+                                                <rect key="frame" x="56.5" y="114" width="262.5" height="262.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ej2-2s-439" secondAttribute="height" multiplier="1:1" id="VSa-Bg-rFB"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="n7Q-Ku-zBe" secondAttribute="bottom" constant="32" id="14z-cH-W48"/>
+                                            <constraint firstItem="WuH-r3-boV" firstAttribute="centerX" secondItem="ej2-2s-439" secondAttribute="centerX" id="6jE-AS-DUP"/>
                                             <constraint firstItem="n7Q-Ku-zBe" firstAttribute="centerX" secondItem="PXn-Fr-Qwy" secondAttribute="centerX" id="frm-hJ-T84"/>
                                             <constraint firstItem="n7Q-Ku-zBe" firstAttribute="width" secondItem="PXn-Fr-Qwy" secondAttribute="width" multiplier="0.8" id="h1f-gb-hek"/>
+                                            <constraint firstItem="ej2-2s-439" firstAttribute="top" secondItem="WuH-r3-boV" secondAttribute="bottom" constant="18" id="ngh-E6-HzO"/>
+                                            <constraint firstItem="ej2-2s-439" firstAttribute="centerX" secondItem="PXn-Fr-Qwy" secondAttribute="centerX" id="t65-kD-Aq3"/>
+                                            <constraint firstItem="ej2-2s-439" firstAttribute="width" secondItem="PXn-Fr-Qwy" secondAttribute="width" multiplier="0.7" id="vEz-PK-5kM"/>
+                                            <constraint firstItem="ej2-2s-439" firstAttribute="centerY" secondItem="PXn-Fr-Qwy" secondAttribute="centerY" id="z3k-rF-Mf8"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -67,7 +87,7 @@
                                 </constraints>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fC-vx-1Kx">
-                                <rect key="frame" x="0.0" y="447" width="600" height="109"/>
+                                <rect key="frame" x="0.0" y="555" width="375" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0fC-vx-1Kx" secondAttribute="height" multiplier="5.5:1" id="Wlt-9c-IRb"/>
                                 </constraints>
@@ -101,6 +121,8 @@
                         <outlet property="completedGoalView" destination="Myo-7J-e4f" id="jSx-hZ-PHl"/>
                         <outlet property="dashboardView" destination="WYA-cW-fh6" id="jD3-l7-ZK0"/>
                         <outlet property="noGoalContainerView" destination="PXn-Fr-Qwy" id="QFG-Nr-0E7"/>
+                        <outlet property="noGoalImageView" destination="ej2-2s-439" id="ku9-C8-2bI"/>
+                        <outlet property="noGoalPrompt" destination="WuH-r3-boV" id="vH3-xK-9Z9"/>
                         <outlet property="tapToAddGoal" destination="n7Q-Ku-zBe" id="UQJ-i1-qN4"/>
                         <segue destination="W71-WA-7iW" kind="presentation" identifier="showGoalEntry" id="Xqw-OZ-1TI"/>
                     </connections>

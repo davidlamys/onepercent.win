@@ -14,6 +14,8 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var completedGoalView: UIView!
     @IBOutlet weak var tapToAddGoal: UIButton!
     @IBOutlet weak var noGoalContainerView: UIView!
+    @IBOutlet weak var noGoalPrompt: UILabel!
+    @IBOutlet weak var noGoalImageView: UIImageView!
     
     var viewModel: MainViewModel!
     
@@ -64,17 +66,24 @@ final class MainViewController: UIViewController {
     }
     
     func applyStyle() {
-        self.dashboardViewController.styleElements()
-        self.dashboardViewController.applyBackgroundColor()
+        dashboardViewController.styleElements()
+        dashboardViewController.applyBackgroundColor()
         
-        self.tapToAddGoal.applyStyle()
-        self.applyBackgroundColor()
+        tapToAddGoal.applyStyle()
+        noGoalPrompt.applyFont(fontSize: .medium)
+        if UserDefaultsWrapper().getTheme() == .dark {
+            noGoalImageView.image = #imageLiteral(resourceName: "no_goal_dark")
+        } else {
+            noGoalImageView.image = #imageLiteral(resourceName: "no_goal_light")
+        }
+        noGoalImageView.image = ThemeHelper.getImage(for: .noGoalImage)
+        applyBackgroundColor()
         
-        self.completedGoalViewController.styleElements()
-        self.completedGoalViewController.applyBackgroundColor()
+        completedGoalViewController.styleElements()
+        completedGoalViewController.applyBackgroundColor()
         
-        self.dateSelectionViewController.styleElements()
-        self.dateSelectionViewController.applyBackgroundColor()
+        dateSelectionViewController.styleElements()
+        dateSelectionViewController.applyBackgroundColor()
     }
     
     func setupInitialView() {

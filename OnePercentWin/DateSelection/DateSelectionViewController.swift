@@ -47,8 +47,11 @@ extension DateSelectionViewController: DateSelectionViewProtocol {
 extension DateSelectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        collectionView.selectItem(at: selectedIndex, animated: true, scrollPosition: .centeredHorizontally)
+        collectionView.selectItem(at: selectedIndex,
+                                  animated: true,
+                                  scrollPosition: .centeredHorizontally)
         presenter?.didSelectCell(at: indexPath)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
