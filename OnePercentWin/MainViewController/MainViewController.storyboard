@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-Vx-EkT">
-                                <rect key="frame" x="0.0" y="64" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="132" width="375" height="491"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-cW-fh6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -54,13 +54,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no goals yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-r3-boV">
-                                                <rect key="frame" x="104.5" y="75.5" width="166.5" height="20.5"/>
+                                                <rect key="frame" x="104.5" y="76" width="166.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ej2-2s-439">
-                                                <rect key="frame" x="56.5" y="114" width="262.5" height="262.5"/>
+                                                <rect key="frame" x="56.5" y="114.5" width="262.5" height="262.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ej2-2s-439" secondAttribute="height" multiplier="1:1" id="VSa-Bg-rFB"/>
                                                 </constraints>
@@ -87,7 +87,7 @@
                                 </constraints>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fC-vx-1Kx">
-                                <rect key="frame" x="0.0" y="555" width="375" height="68"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0fC-vx-1Kx" secondAttribute="height" multiplier="5.5:1" id="Wlt-9c-IRb"/>
                                 </constraints>
@@ -99,12 +99,12 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="efq-ox-hK8" firstAttribute="trailing" secondItem="0fC-vx-1Kx" secondAttribute="trailing" id="4cj-8L-Uuu"/>
+                            <constraint firstItem="efq-ox-hK8" firstAttribute="bottom" secondItem="FJm-Vx-EkT" secondAttribute="bottom" id="5h3-r4-wzx"/>
                             <constraint firstItem="FJm-Vx-EkT" firstAttribute="centerX" secondItem="efq-ox-hK8" secondAttribute="centerX" id="9w9-I4-py3"/>
                             <constraint firstItem="FJm-Vx-EkT" firstAttribute="width" secondItem="l5l-3j-K2U" secondAttribute="width" id="D2M-eE-HLX"/>
-                            <constraint firstItem="efq-ox-hK8" firstAttribute="bottom" secondItem="0fC-vx-1Kx" secondAttribute="bottom" id="G8N-j8-y8c"/>
                             <constraint firstItem="0fC-vx-1Kx" firstAttribute="leading" secondItem="efq-ox-hK8" secondAttribute="leading" id="OmG-jP-gOc"/>
-                            <constraint firstItem="FJm-Vx-EkT" firstAttribute="top" secondItem="efq-ox-hK8" secondAttribute="top" id="VOG-X6-79k"/>
-                            <constraint firstItem="0fC-vx-1Kx" firstAttribute="top" secondItem="FJm-Vx-EkT" secondAttribute="bottom" id="iBp-iC-JN1"/>
+                            <constraint firstItem="0fC-vx-1Kx" firstAttribute="bottom" secondItem="FJm-Vx-EkT" secondAttribute="top" id="W0l-UN-aHp"/>
+                            <constraint firstItem="0fC-vx-1Kx" firstAttribute="top" secondItem="efq-ox-hK8" secondAttribute="top" id="szS-g2-rTg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="efq-ox-hK8"/>
                     </view>
