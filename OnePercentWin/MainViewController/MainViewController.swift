@@ -84,6 +84,8 @@ final class MainViewController: UIViewController {
         
         dateSelectionViewController.styleElements()
         dateSelectionViewController.applyBackgroundColor()
+        navigationController?.navigationBar.barTintColor = ThemeHelper.backgroundColor()
+        navigationController?.navigationBar.tintColor = ThemeHelper.defaultOrange()
     }
     
     func setupInitialView() {

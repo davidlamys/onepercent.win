@@ -22,12 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         db.settings = settings
         setupUIAppearance()
+        addNotificationCenterObserver()
         return true
+    }
+    
+    func addNotificationCenterObserver() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.setupUIAppearance()
+            }
+        }
     }
     
     func setupUIAppearance() {
         UITabBar.appearance().tintColor = ThemeHelper.defaultOrange()
         UITabBar.appearance().barTintColor = ThemeHelper.tabbarColor()
+        UINavigationBar.appearance().barTintColor = ThemeHelper.backgroundColor()
     }
     
 }
