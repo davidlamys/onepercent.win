@@ -9,10 +9,10 @@
 import UIKit
 
 class DateSelectionCell: UICollectionViewCell {
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var accessoryView: UIView!
+    @IBOutlet private weak var dayLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var monthLabel: UILabel!
+    @IBOutlet private weak var accessoryView: UIView!
     
     var cellModel: DateSelectionCellModelling! {
         didSet {
