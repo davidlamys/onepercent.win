@@ -19,9 +19,6 @@ class DateSelectionCell: UICollectionViewCell {
             dayLabel.text = cellModel.dayString
             dateLabel.text = cellModel.dateString
             monthLabel.text = cellModel.monthString
-            dayLabel.applyFont(fontSize: .extraSmall)
-            dateLabel.applyFont(fontSize: .small)
-            monthLabel.applyFont(fontSize: .extraSmall)
             if accessoryView.backgroundColor == nil {
                 accessoryView.backgroundColor = cellModel?.colorForAccessory
             }
