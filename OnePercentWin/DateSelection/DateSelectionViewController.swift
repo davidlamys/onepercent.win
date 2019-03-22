@@ -13,7 +13,7 @@ final class DateSelectionViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var presenter: DateSelectionPresenterProtocol?
-    var selectedIndex: IndexPath?
+    var selectedIndex: IndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,9 @@ final class DateSelectionViewController: UIViewController {
 
 extension DateSelectionViewController: DateSelectionViewProtocol {
     func reloadCollectionView() {
-        if selectedIndex == nil {
-            selectedIndex = IndexPath(item: 0, section: 0)
-        }
         self.collectionView.reloadData()
-        if let selectedIndex = selectedIndex {
-            collectionView.selectItem(at: selectedIndex, animated: true, scrollPosition: .centeredHorizontally)
-            presenter?.didSelectCell(at: selectedIndex)
-        }
+        collectionView.selectItem(at: selectedIndex, animated: true, scrollPosition: .centeredHorizontally)
+        presenter?.didSelectCell(at: selectedIndex)
     }
 }
 
