@@ -8,6 +8,8 @@
 
 import UIKit
 
+fileprivate let collectionViewInset: CGFloat = 10.0
+
 final class DateSelectionViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -21,6 +23,10 @@ final class DateSelectionViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsSelection = true
+        collectionView.contentInset = UIEdgeInsets(top: 0.0,
+                                                   left: collectionViewInset,
+                                                   bottom: 0.0,
+                                                   right: collectionViewInset)
         presenter?.viewDidLoad()
     }
     
