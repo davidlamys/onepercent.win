@@ -35,6 +35,9 @@ final class DateSelectionViewController: UIViewController {
     
     func styleElements() {
         collectionView.reloadData()
+        collectionView.selectItem(at: selectedIndex,
+                                  animated: false,
+                                  scrollPosition: .centeredHorizontally)
         collectionView.backgroundColor = ThemeHelper.backgroundColor()
     }
     
