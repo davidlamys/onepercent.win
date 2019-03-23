@@ -95,10 +95,7 @@ final class SettingsViewController: UIViewController {
         let selectedIndex = themeSegmentControl.selectedSegmentIndex
         let selectedTheme: ThemeType = selectedIndex == 0 ? .dark : .light
         viewModel.save(theme: selectedTheme)
-        let notification = Notification(name: Notification.Name(rawValue: "themeDidChange"),
-                                        object: nil,
-                                        userInfo: nil)
-        NotificationCenter.default.post(notification)
+        NotificationCenter.default.post(for: .themeDidChange)
     }
     
     private lazy var viewModel: SettingsViewModel = {
@@ -119,12 +116,9 @@ final class SettingsViewController: UIViewController {
         { (granted, error) in
             // Enable or disable features based on authorization.
         }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
-            DispatchQueue.main.async {
-                self.styleElements()
-                self.applyBackgroundColor()
-            }
+    NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
+            self.styleElements()
+            self.applyBackgroundColor()
         }
     }
     

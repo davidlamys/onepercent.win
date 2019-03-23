@@ -29,6 +29,7 @@
 		630A9864222BC01D008B0116 /* UserGoalsServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9863222BC01D008B0116 /* UserGoalsServiceWrapper.swift */; };
 		630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F221B011B600E608F4 /* SettingsViewModel.swift */; };
 		630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630DC5F421B191C900E608F4 /* UserSettings.swift */; };
+		632520DA2246559700EF6971 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632520D92246559700EF6971 /* NotificationCenter+Ext.swift */; };
 		633781F021D434F200E11531 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781EF21D434F200E11531 /* Date+Ext.swift */; };
 		633781F221D5061900E11531 /* HistoryCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633781F121D5061900E11531 /* HistoryCalendarCell.swift */; };
 		63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63426DFF21E9E3AB00EA35CB /* HistoryCellModel.swift */; };
@@ -91,6 +92,7 @@
 		630A9863222BC01D008B0116 /* UserGoalsServiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalsServiceWrapper.swift; sourceTree = "<group>"; };
 		630DC5F221B011B600E608F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		630DC5F421B191C900E608F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		632520D92246559700EF6971 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
 		633781EF21D434F200E11531 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		633781F121D5061900E11531 /* HistoryCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCalendarCell.swift; sourceTree = "<group>"; };
 		63426DFF21E9E3AB00EA35CB /* HistoryCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellModel.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				633781EF21D434F200E11531 /* Date+Ext.swift */,
 				63BB459621F5AD90006556D3 /* TextStylable.swift */,
 				63BB459821F5AE72006556D3 /* UIButton+Ext.swift */,
+				632520D92246559700EF6971 /* NotificationCenter+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */,
 				150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */,
 				630A985A222AA07B008B0116 /* DateSelectionEntities.swift in Sources */,
+				632520DA2246559700EF6971 /* NotificationCenter+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

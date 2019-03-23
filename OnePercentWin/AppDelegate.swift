@@ -27,10 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func addNotificationCenterObserver() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
-            DispatchQueue.main.async {
-                self.setupUIAppearance()
-            }
+        NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
+            self.setupUIAppearance()
         }
     }
     

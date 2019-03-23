@@ -37,11 +37,10 @@ final class MainViewController: UIViewController {
         dateSelectionViewController = self.children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
         dashboardView.isHidden = true
         completedGoalView.isHidden = true
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "themeDidChange"), object: nil, queue: nil) { _ in
-            DispatchQueue.main.async {
+
+        NotificationCenter.default
+            .observeOnMainQueue(for: .themeDidChange) { _ in
                 self.applyStyle()
-            }
         }
         applyStyle()
     }
