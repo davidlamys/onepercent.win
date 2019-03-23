@@ -47,19 +47,19 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1e-mv-tyO">
-                                <rect key="frame" x="20" y="192" width="335" height="285"/>
+                                <rect key="frame" x="20" y="192" width="335" height="405"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="DG7-ZF-inS"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-nn-LvE">
-                                <rect key="frame" x="20" y="477" width="335" height="170"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-nn-LvE">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf3-Ya-Qvs">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="z34-tI-wqr"/>
+                                            <constraint firstAttribute="height" constant="50" id="z34-tI-wqr"/>
                                         </constraints>
                                         <state key="normal" title="edit goal"/>
                                         <connections>
@@ -67,9 +67,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-iL-xt9">
-                                        <rect key="frame" x="0.0" y="90" width="335" height="80"/>
+                                        <rect key="frame" x="172.5" y="0.0" width="162.5" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="ko1-SU-iNv"/>
+                                            <constraint firstAttribute="height" constant="50" id="ko1-SU-iNv"/>
                                         </constraints>
                                         <state key="normal" title="complete goal"/>
                                         <connections>
@@ -77,6 +77,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lf3-Ya-Qvs" firstAttribute="width" secondItem="JbH-iL-xt9" secondAttribute="width" id="xSI-a1-60c"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

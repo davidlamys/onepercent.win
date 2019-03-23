@@ -66,8 +66,6 @@ final class MainViewController: UIViewController {
     }
     
     func applyStyle() {
-        dashboardViewController.styleElements()
-        dashboardViewController.applyBackgroundColor()
         
         tapToAddGoal.applyStyle()
         noGoalPrompt.applyFont(fontSize: .medium)
@@ -79,11 +77,15 @@ final class MainViewController: UIViewController {
         noGoalImageView.image = ThemeHelper.getImage(for: .noGoalImage)
         applyBackgroundColor()
         
+        dashboardViewController.styleElements()
+        dashboardViewController.applyBackgroundColor()
+        
         completedGoalViewController.styleElements()
         completedGoalViewController.applyBackgroundColor()
         
         dateSelectionViewController.styleElements()
         dateSelectionViewController.applyBackgroundColor()
+        
         navigationController?.navigationBar.barTintColor = ThemeHelper.backgroundColor()
         navigationController?.navigationBar.tintColor = ThemeHelper.defaultOrange()
     }

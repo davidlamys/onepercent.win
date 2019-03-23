@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeG-JG-qd2">
-                                <rect key="frame" x="37" y="76" width="301" height="535"/>
+                                <rect key="frame" x="37" y="76" width="301" height="521"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="uJs-h0-cAV">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
@@ -44,16 +44,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5LA-cO-Tph">
-                                        <rect key="frame" x="0.0" y="40" width="228.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="40" width="228.5" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhW-zL-AoN">
-                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1ik-K4-ZDM">
-                                                <rect key="frame" x="63.5" y="0.0" width="91" height="31"/>
+                                                <rect key="frame" x="63.5" y="0.0" width="91" height="51"/>
                                                 <segments>
                                                     <segment title="Dark"/>
                                                     <segment title="Light"/>
@@ -63,9 +63,9 @@
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgW-Ng-3bz" userLabel="Get Nosy">
-                                                <rect key="frame" x="164.5" y="0.0" width="64" height="30"/>
+                                                <rect key="frame" x="164.5" y="0.0" width="64" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="KOH-TX-CEy"/>
+                                                    <constraint firstAttribute="height" constant="50" id="KOH-TX-CEy"/>
                                                 </constraints>
                                                 <state key="normal" title="Get Nosy"/>
                                                 <connections>
@@ -75,7 +75,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-Ab-Q7X" userLabel="MorningReminder">
-                                        <rect key="frame" x="0.0" y="80" width="257" height="31"/>
+                                        <rect key="frame" x="0.0" y="100" width="257" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2V-Kr-KRg">
                                                 <rect key="frame" x="0.0" y="0.0" width="141" height="31"/>
@@ -103,7 +103,7 @@
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e1-I8-xry">
-                                        <rect key="frame" x="0.0" y="121" width="301" height="147"/>
+                                        <rect key="frame" x="0.0" y="141" width="301" height="164.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
                                             <!--2018-11-22 13:20:10 +0000-->
@@ -113,7 +113,7 @@
                                         </connections>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Ry-yWf" userLabel="MorningReminder">
-                                        <rect key="frame" x="0.0" y="278" width="257" height="31"/>
+                                        <rect key="frame" x="0.0" y="315.5" width="257" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-gM-1IJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
@@ -141,7 +141,7 @@
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR1-hr-759">
-                                        <rect key="frame" x="0.0" y="319" width="301" height="216"/>
+                                        <rect key="frame" x="0.0" y="356.5" width="301" height="164.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
                                             <!--2018-11-22 13:20:10 +0000-->
@@ -151,11 +151,14 @@
                                         </connections>
                                     </datePicker>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="8e1-I8-xry" firstAttribute="height" secondItem="jR1-hr-759" secondAttribute="height" id="cm0-A1-V7b"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emm-dE-1tb">
-                                <rect key="frame" x="164" y="627" width="47" height="30"/>
+                                <rect key="frame" x="37" y="607" width="301" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BMV-g6-QCS"/>
+                                    <constraint firstAttribute="height" constant="50" id="BMV-g6-QCS"/>
                                 </constraints>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
@@ -166,12 +169,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="emm-dE-1tb" firstAttribute="centerX" secondItem="jR1-hr-759" secondAttribute="centerX" id="4b9-Vw-bJf"/>
-                            <constraint firstItem="emm-dE-1tb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jR1-hr-759" secondAttribute="bottom" constant="8" id="5ax-1B-lfJ"/>
                             <constraint firstItem="NeG-JG-qd2" firstAttribute="width" secondItem="4a9-Tn-VTQ" secondAttribute="width" multiplier="0.8" constant="0.80000000000000004" id="J3Q-as-1Nk"/>
-                            <constraint firstItem="eXV-le-fu5" firstAttribute="bottom" secondItem="NeG-JG-qd2" secondAttribute="bottom" constant="56" id="JFU-UJ-40D"/>
+                            <constraint firstItem="emm-dE-1tb" firstAttribute="top" secondItem="jR1-hr-759" secondAttribute="bottom" constant="10" id="KEk-tZ-bkU"/>
                             <constraint firstItem="NeG-JG-qd2" firstAttribute="centerX" secondItem="eXV-le-fu5" secondAttribute="centerX" id="PCd-bb-AI8"/>
                             <constraint firstItem="eXV-le-fu5" firstAttribute="bottom" secondItem="emm-dE-1tb" secondAttribute="bottom" constant="10" id="PMn-Qn-wHh"/>
-                            <constraint firstItem="NeG-JG-qd2" firstAttribute="centerY" secondItem="eXV-le-fu5" secondAttribute="centerY" id="cpc-wU-u8c"/>
+                            <constraint firstItem="emm-dE-1tb" firstAttribute="width" secondItem="4a9-Tn-VTQ" secondAttribute="width" multiplier="0.8" constant="1" id="eFi-5N-tik"/>
                             <constraint firstItem="NeG-JG-qd2" firstAttribute="top" secondItem="eXV-le-fu5" secondAttribute="top" constant="56" id="mFY-Aw-jrP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eXV-le-fu5"/>

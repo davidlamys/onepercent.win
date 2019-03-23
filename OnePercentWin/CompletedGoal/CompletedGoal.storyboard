@@ -72,9 +72,9 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bq9-Cb-Vxl">
-                                <rect key="frame" x="27.5" y="547" width="320" height="80"/>
+                                <rect key="frame" x="27.5" y="577" width="320" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="i6n-5N-sAl"/>
+                                    <constraint firstAttribute="height" constant="50" id="i6n-5N-sAl"/>
                                 </constraints>
                                 <state key="normal" title="Add Lesson Learnt">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

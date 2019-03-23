@@ -48,18 +48,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96e-gu-JOB">
-                                        <rect key="frame" x="0.0" y="106.5" width="335" height="172"/>
+                                        <rect key="frame" x="0.0" y="106.5" width="335" height="162"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E4n-Qt-yTJ">
-                                        <rect key="frame" x="0.0" y="293.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="283.5" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffR-cW-vdW">
-                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="PF3-J3-BuE"/>
+                                                    <constraint firstAttribute="height" constant="50" id="PF3-J3-BuE"/>
                                                 </constraints>
                                                 <state key="normal" title="skip"/>
                                                 <connections>
@@ -67,7 +67,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ia7-yN-0iC">
-                                                <rect key="frame" x="172.5" y="0.0" width="162.5" height="40"/>
+                                                <rect key="frame" x="172.5" y="0.0" width="162.5" height="50"/>
                                                 <state key="normal" title="save"/>
                                                 <connections>
                                                     <action selector="didPressSaveWithSender:" destination="yxg-Th-Yvt" eventType="touchUpInside" id="ca6-sI-5DA"/>
