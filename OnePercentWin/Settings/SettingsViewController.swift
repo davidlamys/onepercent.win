@@ -33,6 +33,7 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak private var userNameTextField: UITextField!
     
     @IBAction func didTapSignIn(_ sender: Any) {
+        
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         let authViewController = authUI?.authViewController()
@@ -141,8 +142,10 @@ final class SettingsViewController: UIViewController {
 
 extension SettingsViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        // handle user and error as necessary
-        self.userNameTextField.text = user?.displayName
+        if let displayName = user?.displayName {
+            userNameTextField.text = displayName
+            viewModel.save(userName: displayName)
+        }
     }
 }
 
@@ -183,6 +186,13 @@ private extension SettingsViewController {
             let selectedIndex = theme == .dark ? 0 : 1
             themeSegmentControl.selectedSegmentIndex = selectedIndex
         }
+        
+        if viewModel.hasLoggedInUser {
+            signInButton.setTitle("Log out", for: .normal)
+        } else {
+            signInButton.setTitle("Sign in/ Sign up", for: .normal)
+        }
+        
     }
     
     func getComponentsFrom(picker: UIDatePicker) -> DateComponents {

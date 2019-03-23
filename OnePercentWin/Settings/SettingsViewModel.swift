@@ -14,11 +14,16 @@ struct SettingsViewModel {
     private let eveningRemindersIdentifier = "celebrateAtNight"
     
     private let userDefaultsWrapper = UserDefaultsWrapper()
+    private let userService = UserService()
     
     private(set) var settings: UserSettings? {
         didSet {
             userDefaultsWrapper.save(settings: settings)
         }
+    }
+    
+    var hasLoggedInUser: Bool {
+        return userService.hasLoggedInUser()
     }
     
     init() {

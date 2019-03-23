@@ -13,6 +13,10 @@ class UserService {
     
     private let userDefaultsWrapper = UserDefaultsWrapper()
     
+    func hasLoggedInUser() -> Bool {
+        return Auth.auth().currentUser != nil
+    }
+    
     func hasUser() -> Bool {
         if Auth.auth().currentUser != nil {
             return true
