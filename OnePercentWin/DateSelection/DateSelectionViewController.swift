@@ -31,6 +31,10 @@ final class DateSelectionViewController: UIViewController {
                                                    left: collectionViewInset,
                                                    bottom: 0.0,
                                                    right: collectionViewInset)
+        
+        NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
+            self.selectedIndex = IndexPath(item: 0, section: 0)
+        }
     }
     
     func styleElements() {

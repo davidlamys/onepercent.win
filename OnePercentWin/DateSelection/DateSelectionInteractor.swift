@@ -13,11 +13,13 @@ class DateSelectionInteractor {
     weak var presenter: DateSelectionInteractorOutputConsumer?
     let userService = UserService()
     let userQueryListener = UserGoalQueryListener.shared
+    init() {
+        userQueryListener.delegate = self        
+    }
 }
 
 extension DateSelectionInteractor: DateSelectionInteractorProtocol {
     func fetchAllUserGoals() {
-        userQueryListener.delegate = self
         let userId = userService.userId()
         userQueryListener.set(userId: userId)
     }

@@ -19,9 +19,8 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     }
     
     private let today = Date().startOfDay
-    private let startOfMonth = Date().startOfMonth
     
-    private var allDates = Date().startOfMonth.allDates(till: Date().startOfDay)
+    private var allDates: [Date] = []
     private var goalsHashMap = [Date: DailyGoal?]()
     private var allGoalsFromUser = [DailyGoal]() {
         didSet {
@@ -58,6 +57,16 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     }
     
     func setupPresenter() {
+        NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
+            self.initialSetup()
+        }
+        initialSetup()
+    }
+    
+    func initialSetup() {
+        goalsHashMap.removeAll()
+        allGoalsFromUser = []
+        allDates = [today]
         interactor?.fetchAllUserGoals()
     }
     
