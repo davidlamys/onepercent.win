@@ -103,4 +103,8 @@ struct SettingsViewModel {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [eveningRemindersIdentifier])
     }
+    
+    func signOutUser() {
+        userService.signOutUser()
+    }
 }

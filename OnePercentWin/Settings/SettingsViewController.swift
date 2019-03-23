@@ -11,7 +11,7 @@ import UserNotifications
 import FirebaseUI
 import FirebaseAuth
 
-let disabledAlpha: CGFloat = 0.5
+fileprivate let disabledAlpha: CGFloat = 0.5
 
 final class SettingsViewController: UIViewController {
     
@@ -32,12 +32,20 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet weak private var userNameTextField: UITextField!
     
-    @IBAction func didTapSignIn(_ sender: Any) {
-        
+    fileprivate func displayAuthenticationUI() {
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         let authViewController = authUI?.authViewController()
         self.present(authViewController!, animated: true)
+    }
+    
+    @IBAction func didTapSignIn(_ sender: Any) {
+        if viewModel.hasLoggedInUser {
+            viewModel.signOutUser()
+            setupAuthenticationButton()
+        } else {
+            displayAuthenticationUI()
+        }
     }
     
     @IBAction func nameTextField(_ sender: Any) {
@@ -145,6 +153,7 @@ extension SettingsViewController: FUIAuthDelegate {
         if let displayName = user?.displayName {
             userNameTextField.text = displayName
             viewModel.save(userName: displayName)
+            setupAuthenticationButton()
         }
     }
 }
@@ -186,18 +195,21 @@ private extension SettingsViewController {
             let selectedIndex = theme == .dark ? 0 : 1
             themeSegmentControl.selectedSegmentIndex = selectedIndex
         }
-        
-        if viewModel.hasLoggedInUser {
-            signInButton.setTitle("Log out", for: .normal)
-        } else {
-            signInButton.setTitle("Sign in/ Sign up", for: .normal)
-        }
+        setupAuthenticationButton()
         
     }
     
     func getComponentsFrom(picker: UIDatePicker) -> DateComponents {
         return Calendar.current.dateComponents([.hour, .minute],
                                                from: picker.date)
+    }
+    
+    func setupAuthenticationButton() {
+        if viewModel.hasLoggedInUser {
+            signInButton.setTitle("Log out", for: .normal)
+        } else {
+            signInButton.setTitle("Sign in/ Sign up", for: .normal)
+        }
     }
 }
 

@@ -43,4 +43,12 @@ class UserService {
         return newUserId
     }
     
+    func signOutUser() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error)
+        }
+    }
+    
 }
