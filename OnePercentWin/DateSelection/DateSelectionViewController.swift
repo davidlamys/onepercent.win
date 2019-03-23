@@ -14,7 +14,11 @@ final class DateSelectionViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var presenter: DateSelectionPresenterProtocol?
+    var presenter: DateSelectionPresenterProtocol? {
+        didSet {
+            presenter?.setupPresenter()
+        }
+    }
     var selectedIndex = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
@@ -27,7 +31,6 @@ final class DateSelectionViewController: UIViewController {
                                                    left: collectionViewInset,
                                                    bottom: 0.0,
                                                    right: collectionViewInset)
-        presenter?.viewDidLoad()
     }
     
     func styleElements() {

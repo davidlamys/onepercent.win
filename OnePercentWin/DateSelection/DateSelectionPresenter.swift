@@ -17,7 +17,6 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
             interactor?.fetchAllUserGoals()
         }
     }
-    var indexPath: NSIndexPath?
     
     private let today = Date().startOfDay
     private let startOfMonth = Date().startOfMonth
@@ -58,7 +57,7 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
         }
     }
     
-    func viewDidLoad() {
+    func setupPresenter() {
         interactor?.fetchAllUserGoals()
     }
     

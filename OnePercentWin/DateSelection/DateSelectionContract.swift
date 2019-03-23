@@ -47,11 +47,10 @@ protocol DateSelectionPresenterProtocol: class {
     var dateView: DateSelectionViewProtocol? { get set }
     var interactor: DateSelectionInteractorProtocol? { get set }
     var outputConsumer: DateSelectionPresenterOutputConsumer? { get set }
-    var indexPath: NSIndexPath? { get set } //if nil defaults to false
     
     // VIEW -> PRESENTER
     func cellModelFor(indexPath: IndexPath) -> DateSelectionCellModelling
-    func viewDidLoad()
+    func setupPresenter()
     func numberOfCellsToPresent() -> Int
     func didSelectCell(at indexPath: IndexPath)
     
