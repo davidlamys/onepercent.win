@@ -46,9 +46,14 @@ class UserService {
     func signOutUser() {
         do {
             try Auth.auth().signOut()
+            NotificationCenter.default.post(for: .userDidChange)
         } catch let error {
             print(error)
         }
+    }
+    
+    func didAuthenticateUser() {
+        NotificationCenter.default.post(for: .userDidChange)
     }
     
 }

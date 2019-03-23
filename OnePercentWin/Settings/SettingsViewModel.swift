@@ -107,4 +107,10 @@ struct SettingsViewModel {
     func signOutUser() {
         userService.signOutUser()
     }
+    
+    mutating func didAuthenticateUser(displayName: String) {
+        self.save(userName: displayName)
+        userService.didAuthenticateUser()
+    }
 }
+

@@ -146,7 +146,7 @@ extension SettingsViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if let displayName = user?.displayName {
             userNameTextField.text = displayName
-            viewModel.save(userName: displayName)
+            viewModel.didAuthenticateUser(displayName: displayName)
             setupAuthenticationButton()
         }
     }
