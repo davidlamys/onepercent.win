@@ -22,6 +22,7 @@ class DateSelectionCell: UICollectionViewCell {
             if accessoryView.backgroundColor == nil {
                 accessoryView.backgroundColor = cellModel?.colorForAccessory
             }
+            configureFor(selected: isSelected)
         }
     }
     
