@@ -166,6 +166,7 @@ private extension SettingsViewController {
         eveningReminderTimePicker.isEnabled = false
         morningReminderTimePicker.alpha = disabledAlpha
         eveningReminderTimePicker.alpha = disabledAlpha
+        setupAuthenticationButton()
 
         guard let settings = viewModel.settings else {
             return
@@ -189,7 +190,6 @@ private extension SettingsViewController {
             let selectedIndex = theme == .dark ? 0 : 1
             themeSegmentControl.selectedSegmentIndex = selectedIndex
         }
-        setupAuthenticationButton()
         
     }
     
