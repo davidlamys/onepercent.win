@@ -19,7 +19,6 @@ final class DateSelectionViewController: UIViewController {
             presenter?.setupPresenter()
         }
     }
-    var selectedIndex = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,40 +26,47 @@ final class DateSelectionViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsSelection = true
-        collectionView.contentInset = UIEdgeInsets(top: 0.0,
-                                                   left: collectionViewInset,
-                                                   bottom: 0.0,
-                                                   right: collectionViewInset)
-        
-        NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
-            self.selectedIndex = IndexPath(item: 0, section: 0)
-        }
     }
     
     func styleElements() {
-        collectionView.reloadData()
-        collectionView.selectItem(at: selectedIndex,
-                                  animated: false,
-                                  scrollPosition: .centeredHorizontally)
         collectionView.backgroundColor = ThemeHelper.backgroundColor()
+        reloadCollectionView()
     }
     
+    fileprivate func needsCentering() -> Bool {
+        let cellsToPresent = presenter?.numberOfCellsToPresent() ?? 1
+        let cellWidth = view.frame.height + 10.0 // minimum line spacing
+        let numCellsInCollectionView = view.frame.width / cellWidth
+        return cellsToPresent > Int(numCellsInCollectionView)
+    }
+    
+    fileprivate func optimalScrollPosition() -> UICollectionView.ScrollPosition {
+        return needsCentering() ? .centeredHorizontally : []
+    }
 }
 
 extension DateSelectionViewController: DateSelectionViewProtocol {
     func reloadCollectionView() {
-        collectionView.reloadData()
-        collectionView.selectItem(at: selectedIndex, animated: true, scrollPosition: .centeredHorizontally)
-        presenter?.didSelectCell(at: selectedIndex)
+        collectionView.reloadDataThenPerform { [weak collectionView, weak self] in
+            guard let presenter = self?.presenter else {
+                return
+            }
+            let scrollPosition = self?.optimalScrollPosition() ?? []
+            let needAnimation = scrollPosition != []
+            collectionView?.selectItem(at: presenter.selectedIndexPath,
+                                      animated: needAnimation,
+                                      scrollPosition: scrollPosition)
+        }
     }
 }
 
 extension DateSelectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath
-        collectionView.selectItem(at: selectedIndex,
-                                  animated: true,
-                                  scrollPosition: .centeredHorizontally)
+        let scrollPosition = optimalScrollPosition()
+        let needAnimation = scrollPosition != []
+        collectionView.selectItem(at: indexPath,
+                                  animated: needAnimation,
+                                  scrollPosition: scrollPosition)
         presenter?.didSelectCell(at: indexPath)
 
     }

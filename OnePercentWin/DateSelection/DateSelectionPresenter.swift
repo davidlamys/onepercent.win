@@ -17,19 +17,22 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
             interactor?.fetchAllUserGoals()
         }
     }
+    private(set) var selectedIndexPath = IndexPath(item: 0, section: 0)
     
     private let today = Date().startOfDay
     
-    private var allDates: [Date] = []
+    private var allDates: [Date] = [Date().startOfDay]
     private var goalsHashMap = [Date: DailyGoal?]()
     private var allGoalsFromUser = [DailyGoal]() {
         didSet {
+            goalsHashMap.removeAll()
+            selectedIndexPath = IndexPath(row: 0, section: 0)
             guard let firstEnteredGoal = allGoalsFromUser.last else {
+                allDates = [today]
                 return
             }
-            let firstDate = firstEnteredGoal.date.startOfDay
-            goalsHashMap.removeAll()
-            allDates = firstDate
+            
+            allDates = firstEnteredGoal.date.startOfDay
                 .allDates(till: today)
                 .reversed()
         }
@@ -71,6 +74,8 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     }
     
     func didSelectCell(at indexPath: IndexPath) {
+        selectedIndexPath = indexPath
+        
         guard let cellModel = cellModelFor(indexPath: indexPath) as? DateSelectionCellModel else {
             fatalError("hash map is no longer provider us with DateSelectionCellModel")
         }

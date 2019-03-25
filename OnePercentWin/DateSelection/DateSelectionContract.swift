@@ -47,6 +47,7 @@ protocol DateSelectionPresenterProtocol: class {
     var dateView: DateSelectionViewProtocol? { get set }
     var interactor: DateSelectionInteractorProtocol? { get set }
     var outputConsumer: DateSelectionPresenterOutputConsumer? { get set }
+    var selectedIndexPath: IndexPath { get }
     
     // VIEW -> PRESENTER
     func cellModelFor(indexPath: IndexPath) -> DateSelectionCellModelling
