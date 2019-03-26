@@ -38,6 +38,7 @@
 		63426E2021E9F45C00EA35CB /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63426E0E21E9F45B00EA35CB /* Roboto-Italic.ttf */; };
 		63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63426E1221E9F45C00EA35CB /* Roboto-Black.ttf */; };
 		63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63426E2821E9F65600EA35CB /* Roboto-Regular.ttf */; };
+		634C9EAA2249E9A500E2B53E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C9EA92249E9A500E2B53E /* UIView+Ext.swift */; };
 		63643DAF21C6999500D7D2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */; };
 		6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */; };
 		6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */; };
@@ -102,6 +103,7 @@
 		63426E0E21E9F45B00EA35CB /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "roboto/Roboto-Italic.ttf"; sourceTree = SOURCE_ROOT; };
 		63426E1221E9F45C00EA35CB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "roboto/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		63426E2821E9F65600EA35CB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "roboto/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		634C9EA92249E9A500E2B53E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		63643DAE21C6999500D7D2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotesEntry.storyboard; sourceTree = "<group>"; };
 		6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryViewController.swift; sourceTree = "<group>"; };
@@ -263,10 +265,11 @@
 			isa = PBXGroup;
 			children = (
 				633781EF21D434F200E11531 /* Date+Ext.swift */,
+				632520D92246559700EF6971 /* NotificationCenter+Ext.swift */,
 				63BB459621F5AD90006556D3 /* TextStylable.swift */,
 				63BB459821F5AE72006556D3 /* UIButton+Ext.swift */,
-				632520D92246559700EF6971 /* NotificationCenter+Ext.swift */,
 				632520DB2248DE2D00EF6971 /* UICollectionView+Ext.swift */,
+				634C9EA92249E9A500E2B53E /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				630A985E222AA09D008B0116 /* DateSelectionCoordinator.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
+				634C9EAA2249E9A500E2B53E /* UIView+Ext.swift in Sources */,
 				630A9856222AA03F008B0116 /* DateSelectionPresenter.swift in Sources */,
 				630A9858222AA05F008B0116 /* DateSelectionInteractor.swift in Sources */,
 				630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */,

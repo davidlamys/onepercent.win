@@ -49,6 +49,12 @@ class DateSelectionCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        roundCorners(corners: [.topLeft, .topRight], radius: 5.0)
+        clipsToBounds = true
+    }
     override func awakeFromNib() {
         accessoryView.backgroundColor = cellModel?.colorForAccessory
     }
