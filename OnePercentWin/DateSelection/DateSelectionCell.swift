@@ -52,7 +52,7 @@ class DateSelectionCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        roundCorners(corners: [.topLeft, .topRight], radius: 5.0)
+        layer.cornerRadius = 5.0
         clipsToBounds = true
     }
     override func awakeFromNib() {
