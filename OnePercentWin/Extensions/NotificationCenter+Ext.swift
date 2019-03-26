@@ -13,11 +13,11 @@ enum NotificationType: String {
     case userDidChange
     
     fileprivate var name: Notification.Name {
-        return Notification.Name(rawValue: self.rawValue)
+        return Notification.Name(rawValue: rawValue)
     }
     
     fileprivate var notification: Notification {
-        return Notification(name: self.name,
+        return Notification(name: name,
                             object: nil,
                             userInfo: nil)
     }

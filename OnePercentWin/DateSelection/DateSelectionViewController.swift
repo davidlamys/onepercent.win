@@ -100,7 +100,7 @@ extension DateSelectionViewController: UICollectionViewDelegate, UICollectionVie
 
 extension DateSelectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = self.view.frame.height - 10.0
+        let height = view.frame.height - 10.0
         let width = height
         return CGSize(width: width, height: height)
     }

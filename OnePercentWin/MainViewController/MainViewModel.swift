@@ -20,8 +20,8 @@ class MainViewModel {
 
 extension MainViewModel: DateSelectionPresenterOutputConsumer {
     func didSelect(date: Date, goal: DailyGoal?) {
-        self.todayGoal = goal
-        self.delegate?.setup(goal: goal)
+        todayGoal = goal
+        delegate?.setup(goal: goal)
     }
 }
 

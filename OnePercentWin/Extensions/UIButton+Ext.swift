@@ -10,13 +10,13 @@ import UIKit
 
 extension UIButton {
     func applyStyle() {
-        self.backgroundColor = ThemeHelper.defaultOrange()
-        self.setTitleColor(ThemeHelper.textColor(), for: .normal)
-        self.layer.cornerRadius = 5.0
-        self.clipsToBounds = true
+        backgroundColor = ThemeHelper.defaultOrange()
+        setTitleColor(ThemeHelper.textColor(), for: .normal)
+        layer.cornerRadius = 5.0
+        clipsToBounds = true
     }
     
     func greyOutIfDisable() {
-        self.alpha = self.isEnabled ? 1.0 : 0.5
+        alpha = isEnabled ? 1.0 : 0.5
     }
 }

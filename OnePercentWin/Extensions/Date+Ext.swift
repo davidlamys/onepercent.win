@@ -40,7 +40,6 @@ extension Date {
     }()
     
     var prettyDate: String {
-       
         return Date.prettyDateFormatter.string(from: self)
     }
     

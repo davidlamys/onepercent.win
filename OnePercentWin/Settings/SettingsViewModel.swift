@@ -35,8 +35,8 @@ struct SettingsViewModel {
     }
     
     mutating func save(theme: ThemeType) {
-        if self.settings == nil {
-            self.settings = UserSettings()
+        if settings == nil {
+            settings = UserSettings()
         }
         settings?.theme = theme
         userDefaultsWrapper.save(theme: theme)
@@ -49,8 +49,8 @@ struct SettingsViewModel {
     mutating func addMorningReminders(components: DateComponents) {
         removeMorningReminders()
         
-        if self.settings == nil {
-            self.settings = UserSettings()
+        if settings == nil {
+            settings = UserSettings()
         }
         settings?.morningReminder = components
         userDefaultsWrapper.save(settings: settings)
@@ -72,8 +72,8 @@ struct SettingsViewModel {
     mutating func addEveningReminds(components: DateComponents) {
         removeEveningReminders()
         
-        if self.settings == nil {
-            self.settings = UserSettings()
+        if settings == nil {
+            settings = UserSettings()
         }
         settings?.eveningReminder = components
         userDefaultsWrapper.save(settings: settings)
@@ -109,7 +109,7 @@ struct SettingsViewModel {
     }
     
     mutating func didAuthenticateUser(displayName: String) {
-        self.save(userName: displayName)
+        save(userName: displayName)
         userService.didAuthenticateUser()
     }
 }

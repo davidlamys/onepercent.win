@@ -16,15 +16,15 @@ protocol TextStylable: AnyObject {
 
 extension TextStylable {
     func applyFont(fontSize: SizeType, color: UIColor? = ThemeHelper.textColor()) {
-        self.setFont(ThemeHelper.defaultFont(fontSize: fontSize))
+        setFont(ThemeHelper.defaultFont(fontSize: fontSize))
         guard let color = color else { return }
-        self.setTextColor(color)
+        setTextColor(color)
     }
     
     func applyBoldFont(fontSize: SizeType, color: UIColor? = ThemeHelper.textColor()) {
-        self.setFont(ThemeHelper.boldFont(fontSize: fontSize))
+        setFont(ThemeHelper.boldFont(fontSize: fontSize))
         guard let color = color else { return }
-        self.setTextColor(color)
+        setTextColor(color)
     }
 }
 
@@ -64,23 +64,23 @@ extension UIDatePicker: TextStylable {
     }
     
     func setTextColor(_ color: UIColor) {
-        self.setValue(false, forKey: "highlightsToday")
-        self.setValue(color, forKeyPath: "textColor")
+        setValue(false, forKey: "highlightsToday")
+        setValue(color, forKeyPath: "textColor")
     }
 }
 
 extension UISegmentedControl: TextStylable {
     func setFont(_ font: UIFont) {
-        self.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
     }
     
     func setTextColor(_ color: UIColor) {
-        self.tintColor = color
+        tintColor = color
     }
 }
 
 extension UIViewController {
     func applyBackgroundColor() {
-        self.view.backgroundColor = ThemeHelper.backgroundColor()
+        view.backgroundColor = ThemeHelper.backgroundColor()
     }
 }

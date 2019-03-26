@@ -80,12 +80,11 @@ class HistoryViewModel {
 }
 
 extension HistoryViewModel: RepoWrapperDelegate {
-    func refreshWith(goals: [DailyGoal]) {
-        
-        self.goals = goals
-        if self.cachedGoals != self.goals {
+    func refreshWith(goals newGoals: [DailyGoal]) {
+        goals = newGoals
+        if cachedGoals != goals {
             delegate?.refreshView()
-            cachedGoals = self.goals
+            cachedGoals = goals
         }
     }
 }

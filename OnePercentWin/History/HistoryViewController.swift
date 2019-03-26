@@ -103,9 +103,9 @@ extension HistoryViewController: HistoryViewModelDelegate {
             return
         }
         cellModels = viewModel.generateCellModels()
-        self.tableView.reloadData()
-        self.calendar.reloadData()
-        self.calendar.scrollToDate(Date())
+        tableView.reloadData()
+        calendar.reloadData()
+        calendar.scrollToDate(Date())
     }
 }
 
@@ -167,13 +167,13 @@ extension HistoryViewController: UITableViewDelegate {
         
         let alertViewController = UIAlertController(title: "Toggle completion status", message: message, preferredStyle: UIAlertController.Style.alert)
       
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-            self?.viewModel.toggleGoalStatus(goal: &goalForCell)
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { [viewModel] _ in
+            viewModel?.toggleGoalStatus(goal: &goalForCell)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil)
         alertViewController.addAction(confirmAction)
         alertViewController.addAction(cancelAction)
-        self.present(alertViewController, animated: true, completion: nil)
+        present(alertViewController, animated: true, completion: nil)
     }
 }

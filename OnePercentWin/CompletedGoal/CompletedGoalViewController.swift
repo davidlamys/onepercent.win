@@ -54,7 +54,7 @@ final class CompletedGoalViewController: UIViewController {
         }
         vc.delegate = self
         vc.goal = goal
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
     
     func styleElements() {

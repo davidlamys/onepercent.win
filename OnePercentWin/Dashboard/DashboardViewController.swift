@@ -42,16 +42,16 @@ final class DashboardViewController: UIViewController {
         }
         vc.delegate = self
         vc.mode = .update
-        vc.goal = self.goal
-        self.present(vc, animated: true)
+        vc.goal = goal
+        present(vc, animated: true)
     }
 
-    func setup(with goal: DailyGoal) {
-        self.goal = goal
-        self.goalLabel.text = goal.goal
-        self.reasonLabel.text = goal.reason
+    func setup(with newGoal: DailyGoal) {
+        goal = newGoal
+        goalLabel.text = newGoal.goal
+        reasonLabel.text = newGoal.reason
         
-        let isGoalCompleted = goal.completed
+        let isGoalCompleted = newGoal.completed
         completeGoalButton.isEnabled = !isGoalCompleted
         completeGoalButton.greyOutIfDisable()
         editGoalButton.isEnabled = !isGoalCompleted
@@ -65,7 +65,7 @@ final class DashboardViewController: UIViewController {
         }
         vc.delegate = self
         vc.goal = goal
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
     
     func styleElements() {

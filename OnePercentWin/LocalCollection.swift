@@ -39,17 +39,17 @@ final class LocalCollection<T: DocumentSerializable> {
     }
     
     var count: Int {
-        return self.items.count
+        return items.count
     }
     
     subscript(index: Int) -> T {
-        return self.items[index]
+        return items[index]
     }
     
     init(query: Query, updateHandler: @escaping ([DocumentChange]) -> ()) {
-        self.items = []
         self.query = query
         self.updateHandler = updateHandler
+        items = []
     }
     
     func index(of document: DocumentSnapshot) -> Int? {

@@ -22,7 +22,7 @@ extension UICollectionView {
     func reloadDataThenPerform(_ closure: @escaping (() -> Void)) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(closure)
-        self.reloadData()
+        reloadData()
         CATransaction.commit()
     }
 }

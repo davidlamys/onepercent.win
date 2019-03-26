@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func addNotificationCenterObserver() {
-        NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
-            self.setupUIAppearance()
+        NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { [weak self] _ in
+            self?.setupUIAppearance()
         }
     }
     

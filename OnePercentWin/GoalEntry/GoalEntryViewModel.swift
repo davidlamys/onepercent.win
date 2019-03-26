@@ -29,25 +29,25 @@ class GoalEntryViewModel {
         self.delegate = delegate
         self.mode = mode
 
-        self.wrapper.delegate = self
+        wrapper.delegate = self
     }
     
-    func updateGoal(goal: String, reason: String) {
-        self.goal.goal = goal
-        self.goal.reason = reason
+    func updateGoal(goal goalString: String, reason: String) {
+        goal.goal = goalString
+        goal.reason = reason
         switch mode {
         case .add:
-            wrapper.add(self.goal)
+            wrapper.add(goal)
         case .update:
-            wrapper.save(self.goal)
+            wrapper.save(goal)
         }
     }
     
     func updateWithLastGoal() {
         guard let lastGoal = lastGoal else { return }
-        self.goal.goal = lastGoal.goal
-        self.goal.reason = lastGoal.reason
-        delegate?.updateView(goal: self.goal)
+        goal.goal = lastGoal.goal
+        goal.reason = lastGoal.reason
+        delegate?.updateView(goal: goal)
     }
 }
 
@@ -57,8 +57,8 @@ extension GoalEntryViewModel: RepoWrapperDelegate {
         let userId = UserService().userId()
         let userGoal = goals
             .filter({ $0.userId == userId })
-        self.lastGoal = userGoal.first
-        delegate?.refreshView(hasLastGoal: (self.lastGoal != nil))
+        lastGoal = userGoal.first
+        delegate?.refreshView(hasLastGoal: (lastGoal != nil))
     }
 }
 

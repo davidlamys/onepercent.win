@@ -36,7 +36,7 @@ final class SettingsViewController: UIViewController {
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         let authViewController = authUI?.authViewController()
-        self.present(authViewController!, animated: true)
+        present(authViewController!, animated: true)
     }
     
     @IBAction func didTapSignIn(_ sender: Any) {
@@ -57,7 +57,7 @@ final class SettingsViewController: UIViewController {
     
     @IBAction func morningReminderToggled(_ sender: Any) {
         let shouldHide = !morningReminderSwitch.isOn
-        self.morningReminderTimePicker.isEnabled = !shouldHide
+        morningReminderTimePicker.isEnabled = !shouldHide
         UIView.animate(withDuration: 0.5) {
             self.morningReminderTimePicker.alpha = shouldHide ? disabledAlpha : 1.0
         }
@@ -70,7 +70,7 @@ final class SettingsViewController: UIViewController {
     
     @IBAction func eveningReminderToggled(_ sender: Any) {
         let shouldHide = !eveningReminderSwitch.isOn
-        self.eveningReminderTimePicker.isEnabled = !shouldHide
+        eveningReminderTimePicker.isEnabled = !shouldHide
         UIView.animate(withDuration: 0.5) {
             self.eveningReminderTimePicker.alpha = shouldHide ? disabledAlpha : 1.0
         }
@@ -216,7 +216,7 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
     }
 }

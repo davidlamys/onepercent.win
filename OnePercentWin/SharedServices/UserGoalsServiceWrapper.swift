@@ -34,12 +34,12 @@ class UserGoalQueryListener {
     var delegate: RepoWrapperDelegate? {
         didSet {
             observeQuery()
-            delegate?.refreshWith(goals: self.goals)
+            delegate?.refreshWith(goals: goals)
         }
     }
     
-    func set(userId: String) {
-        self.userId = userId
+    func set(userId newUserId: String) {
+        userId = newUserId
         goals = goals.filter({ $0.userId == userId })
         query = baseQuery(userId: userId)
         observeQuery()

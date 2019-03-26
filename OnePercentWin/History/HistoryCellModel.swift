@@ -38,7 +38,7 @@ struct HistoryCellModel {
     }
     
     var colorForStatus: UIColor {
-        switch self.status {
+        switch status {
         case .complete:
             return HistoryCellModel.completedColor
         case .incomplete:

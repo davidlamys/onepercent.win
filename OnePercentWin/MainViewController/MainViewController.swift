@@ -32,9 +32,9 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainViewModel(delegate: self)
-        dashboardViewController = self.children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
-        completedGoalViewController = self.children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
-        dateSelectionViewController = self.children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
+        dashboardViewController = children.first(where: { $0 is DashboardViewController }) as?  DashboardViewController
+        completedGoalViewController = children.first(where: { $0 is CompletedGoalViewController }) as?  CompletedGoalViewController
+        dateSelectionViewController = children.first(where: { $0 is DateSelectionViewController }) as? DateSelectionViewController
         dashboardView.isHidden = true
         completedGoalView.isHidden = true
 
@@ -61,7 +61,7 @@ final class MainViewController: UIViewController {
     }
     
     @IBAction func userTappedOnAddButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showGoalEntry", sender: nil)
+        performSegue(withIdentifier: "showGoalEntry", sender: nil)
     }
     
     func applyStyle() {
@@ -101,11 +101,11 @@ final class MainViewController: UIViewController {
         if goalForDay.completed {
             dashboardView.isHidden = true
             completedGoalView.isHidden = false
-            self.completedGoalViewController.setup(with: goalForDay)
+            completedGoalViewController.setup(with: goalForDay)
         } else {
             dashboardView.isHidden = false
             completedGoalView.isHidden = true
-            self.dashboardViewController.setup(with: goalForDay)
+            dashboardViewController.setup(with: goalForDay)
         }
     }
 }
@@ -113,7 +113,7 @@ final class MainViewController: UIViewController {
 extension MainViewController: MainViewModelDelegate {
     func setup(goal: DailyGoal?) {
         if let goal = goal {
-            self.dashboardViewController.setup(with: goal)
+            dashboardViewController.setup(with: goal)
         }
         setupInitialView()
     }
@@ -122,6 +122,6 @@ extension MainViewController: MainViewModelDelegate {
 
 extension MainViewController: GoalEntryViewControllerDelegate {
     func didSaveGoal() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

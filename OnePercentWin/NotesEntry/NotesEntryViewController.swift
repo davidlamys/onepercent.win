@@ -23,8 +23,8 @@ final class NotesEntryViewController: UIViewController {
     
     var goal: DailyGoal! {
         didSet {
-            self.viewModel = NotesEntryViewModel()
-            self.viewModel.goal = goal
+            viewModel = NotesEntryViewModel()
+            viewModel.goal = goal
         }
     }
     
@@ -37,8 +37,8 @@ final class NotesEntryViewController: UIViewController {
     
     @IBAction func didPressSave(sender: Any) {
         let textTrimmed = lessonLearntTextBox.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        self.viewModel.save(notes: textTrimmed)
-        self.delegate?.userDidSaveNotes()
+        viewModel.save(notes: textTrimmed)
+        delegate?.userDidSaveNotes()
     }
     
     override func viewDidLoad() {

@@ -38,11 +38,11 @@ final class GoalEntryViewController: UIViewController {
     var goal: DailyGoal? {
         didSet {
             guard let goal = goal else { return }
-            self.viewModel = GoalEntryViewModel(wrapper: RepoWrapper.shared,
-                                                goal: goal,
-                                                delegate: self,
-                                                mode: self.mode)
-            self.setupUseLastGoalStackView()
+            viewModel = GoalEntryViewModel(wrapper: RepoWrapper.shared,
+                                           goal: goal,
+                                           delegate: self,
+                                           mode: mode)
+            setupUseLastGoalStackView()
         }
     }
     
@@ -67,16 +67,16 @@ final class GoalEntryViewController: UIViewController {
         saveGoalButton.applyStyle()
         goalTextView.becomeFirstResponder()
         
-        if let goal = self.goal {
+        if let goal = goal {
             setupView(goal: goal)
         } else {
             let createdBy = UserDefaults.standard.string(forKey: "user") ?? "Unknown user"
-            self.mode = .add
-            self.goal = DailyGoal(goal: "",
-                                  reason: "",
-                                  date: Date(),
-                                  createdBy: createdBy,
-                                  userId: UserService().userId())
+            mode = .add
+            goal = DailyGoal(goal: "",
+                             reason: "",
+                             date: Date(),
+                             createdBy: createdBy,
+                             userId: UserService().userId())
         }
     }
     
@@ -104,9 +104,9 @@ final class GoalEntryViewController: UIViewController {
     }
     
     func setupUseLastGoalStackView() {
-        guard let goalTextView = self.goalTextView,
-            let reasonTextView = self.reasonTextView,
-            let repeatLastGoalStackView = self.repeatLastGoalStackView,
+        guard let goalTextView = goalTextView,
+            let reasonTextView = reasonTextView,
+            let repeatLastGoalStackView = repeatLastGoalStackView,
             let viewModel = viewModel
         else {
             return
@@ -125,8 +125,8 @@ final class GoalEntryViewController: UIViewController {
     }
     
     func setupView(goal: DailyGoal) {
-        guard let goalTextView = self.goalTextView,
-            let reasonTextView = self.reasonTextView else {
+        guard let goalTextView = goalTextView,
+            let reasonTextView = reasonTextView else {
                 return
         }
             

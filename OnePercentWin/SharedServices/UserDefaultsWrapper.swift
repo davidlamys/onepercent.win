@@ -12,7 +12,7 @@ struct UserDefaultsWrapper {
     let userDefaults = UserDefaults.standard
     
     func getTheme() -> ThemeType {
-        guard let settings = self.getSettings() else {
+        guard let settings = getSettings() else {
             return .dark
         }
         guard let theme =  settings.theme else {
@@ -22,11 +22,11 @@ struct UserDefaultsWrapper {
     }
     
     func save(theme: ThemeType) {
-        guard var settings = self.getSettings() else {
+        guard var settings = getSettings() else {
             fatalError()
         }
         settings.theme = theme
-        self.save(settings: settings)
+        save(settings: settings)
     }
     
     func getUserId() -> String? {

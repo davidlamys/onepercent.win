@@ -52,7 +52,7 @@ extension DailyGoal {
     }
     
     var prettyDate: String {
-        return self.date.prettyDate
+        return date.prettyDate
     }
 }
 
@@ -106,7 +106,7 @@ extension Optional where Wrapped: DailyGoalModelling {
     }
     
     var colorForStatus: UIColor {
-        switch self.status {
+        switch status {
         case .complete:
             return HistoryCellModel.completedColor
         case .incomplete:

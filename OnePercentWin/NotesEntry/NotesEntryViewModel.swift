@@ -13,9 +13,9 @@ class NotesEntryViewModel {
     
     func save(notes: String?) {
         if notes == "" {
-            self.goal.notes = nil
+            goal.notes = nil
         } else {
-            self.goal.notes = notes
+            goal.notes = notes
         }
         RepoWrapper.shared.save(goal)
     }
