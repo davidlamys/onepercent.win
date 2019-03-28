@@ -67,7 +67,7 @@ extension DailyGoal: DocumentSerializable {
             "timestamp": date,
             "createdBy": createdBy,
             "userId": userId,
-            "notes": notes,
+            "notes": notes as Any,
             "completed": completed
         ]
     }
