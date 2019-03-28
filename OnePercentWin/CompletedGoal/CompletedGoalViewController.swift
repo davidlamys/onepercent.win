@@ -11,8 +11,12 @@ import UIKit
 final class CompletedGoalViewController: UIViewController {
     @IBOutlet private weak var congratulationsLabel: UILabel!
     @IBOutlet private weak var congrulationsSubtitleLabel: UILabel!
-    @IBOutlet private weak var lessonsLearntLabel: UILabel!
+    @IBOutlet private weak var goalPrompt: UILabel!
+    @IBOutlet private weak var goalLabel: UILabel!
+    @IBOutlet private weak var reasonPrompt: UILabel!
+    @IBOutlet private weak var reasonLabel: UILabel!
     @IBOutlet private weak var lessonsLearntPrompt: UILabel!
+    @IBOutlet private weak var lessonsLearntLabel: UILabel!
     @IBOutlet private weak var imageViewHolder: UIView!
     @IBOutlet private weak var addLessonLearntButton: UIButton!
     @IBOutlet private weak var stackViewHolder: UIStackView!
@@ -32,14 +36,15 @@ final class CompletedGoalViewController: UIViewController {
     
     func setup(with goal: DailyGoal) {
         self.goal = goal
+        goalLabel.text = goal.goal
+        reasonLabel.text = goal.reason
+        
         if let notes = goal.notes {
-            imageViewHolder.isHidden = true
             lessonsLearntLabel.isHidden = false
             lessonsLearntPrompt.isHidden = false
             lessonsLearntLabel.text = notes
             addLessonLearntButton.setTitle("Edit Notes", for: .normal)
         } else {
-            imageViewHolder.isHidden = false
             lessonsLearntLabel.isHidden = true
             lessonsLearntPrompt.isHidden = true
             lessonsLearntLabel.text = nil
@@ -59,9 +64,18 @@ final class CompletedGoalViewController: UIViewController {
     
     func styleElements() {
         congratulationsLabel.applyBoldFont(fontSize: .large)
-        congrulationsSubtitleLabel.applyFont(fontSize: .medium)
+        congrulationsSubtitleLabel.applyFont(fontSize: .large)
+        
+        let orange = ThemeHelper.defaultOrange()
+        
+        goalPrompt.applyFont(fontSize: .medium)
+        goalLabel.applyFont(fontSize: .medium, color: orange)
+        
+        reasonPrompt.applyFont(fontSize: .medium)
+        reasonLabel.applyFont(fontSize: .medium, color: orange)
+        
         lessonsLearntPrompt.applyFont(fontSize: .medium)
-        lessonsLearntLabel.applyFont(fontSize: .medium, color: ThemeHelper.defaultOrange())
+        lessonsLearntLabel.applyFont(fontSize: .medium, color: orange)
         addLessonLearntButton.applyStyle()
     }
 }
