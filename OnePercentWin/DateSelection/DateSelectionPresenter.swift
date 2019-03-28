@@ -26,8 +26,8 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     private var allGoalsFromUser = [DailyGoal]() {
         didSet {
             goalsHashMap.removeAll()
-            selectedIndexPath = IndexPath(row: 0, section: 0)
             guard let firstEnteredGoal = allGoalsFromUser.last else {
+                selectedIndexPath = IndexPath(row: 0, section: 0)
                 allDates = [today]
                 return
             }
