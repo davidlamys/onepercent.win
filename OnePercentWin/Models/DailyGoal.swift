@@ -10,10 +10,12 @@ import Foundation
 import FirebaseFirestore
 
 protocol DailyGoalModelling {
+    var hasNotes: Bool { get }
     var completed: Bool { get set }
+    var status: GoalStatus { get }
 }
 
-struct DailyGoal: DailyGoalModelling {
+struct DailyGoal {
     var id: String
     var goal: String
     var reason: String
@@ -97,22 +99,41 @@ extension DailyGoal: DocumentSerializable {
 
 extension DailyGoal: Equatable {}
 
-extension Optional where Wrapped: DailyGoalModelling {
+extension DailyGoal: DailyGoalModelling {
+    var hasNotes: Bool {
+        guard let notes = notes else {
+            return false
+        }
+        return !notes.isEmpty
+    }
+    
+    var status: GoalStatus {
+        if completed == false {
+            return .incomplete
+        }
+        
+        return hasNotes ? .completeWithNotes : .complete
+    }
+}
+
+extension Optional where Wrapped == DailyGoal {
     var status: GoalStatus {
         guard let goal = self else {
             return .notSet
         }
-        return (goal.completed) ? .complete : .incomplete
+        return goal.status
     }
     
     var colorForStatus: UIColor {
         switch status {
+        case .completeWithNotes:
+            return completedWithNotesColor
         case .complete:
-            return HistoryCellModel.completedColor
+            return completedColor
         case .incomplete:
-            return HistoryCellModel.incompleteColor
+            return incompleteColor
         case .notSet:
-            return HistoryCellModel.noEntryColor
+            return noEntryColor
         }
     }
 }
@@ -121,9 +142,10 @@ enum GoalStatus {
     case notSet
     case incomplete
     case complete
-    
-    static let completedColor = UIColor.green
-    static let incompleteColor = UIColor.yellow
-    static let noEntryColor = UIColor.red
+    case completeWithNotes
 }
 
+fileprivate let completedWithNotesColor = UIColor.green
+fileprivate let completedColor = UIColor.yellow
+fileprivate let incompleteColor = UIColor.orange
+fileprivate let noEntryColor = UIColor.red

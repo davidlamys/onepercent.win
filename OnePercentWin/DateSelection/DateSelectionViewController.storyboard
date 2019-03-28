@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IncompleteGoalDateCell" id="cmi-P7-jUI" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IncompleteCell" id="cmi-P7-jUI" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -80,7 +80,7 @@
                                             <outlet property="monthLabel" destination="fMf-2l-IVW" id="Zri-hZ-Pc3"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CompleteGoalDateCell" id="gIR-Ap-hRR" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CompleteCell" id="gIR-Ap-hRR" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
                                         <rect key="frame" x="10" y="137" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -133,8 +133,61 @@
                                             <outlet property="monthLabel" destination="JqH-tf-ovo" id="ZZ7-vZ-tRw"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoEntryDateCell" id="gxO-qw-loV" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CompleteWithNotesCell" id="bco-Ev-j0U" userLabel="CompleteWithNotesCell" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
                                         <rect key="frame" x="10" y="273.5" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="di3-s8-9di">
+                                                    <rect key="frame" x="38" y="4" width="44" height="94"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ks-ac-dD5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="BmE-r4-DFT">
+                                                            <rect key="frame" x="0.0" y="26" width="44" height="38.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JL7-DT-5YI">
+                                                            <rect key="frame" x="0.0" y="66.5" width="44" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uze-5j-hMz">
+                                                    <rect key="frame" x="0.0" y="102" width="120" height="18"/>
+                                                    <color key="backgroundColor" red="0.84210347080000003" green="0.84605059199999999" blue="0.035632496960000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="di3-s8-9di" firstAttribute="centerX" secondItem="bco-Ev-j0U" secondAttribute="centerX" id="CR8-6m-JH2"/>
+                                            <constraint firstItem="uze-5j-hMz" firstAttribute="height" secondItem="bco-Ev-j0U" secondAttribute="height" multiplier="0.15" id="FAi-ka-hRD"/>
+                                            <constraint firstItem="uze-5j-hMz" firstAttribute="width" secondItem="bco-Ev-j0U" secondAttribute="width" id="Ipo-qc-p4a"/>
+                                            <constraint firstItem="uze-5j-hMz" firstAttribute="top" secondItem="di3-s8-9di" secondAttribute="bottom" constant="4" id="MIf-0B-Oyl"/>
+                                            <constraint firstItem="di3-s8-9di" firstAttribute="top" secondItem="bco-Ev-j0U" secondAttribute="top" constant="4" id="Xjq-O3-gcV"/>
+                                            <constraint firstItem="uze-5j-hMz" firstAttribute="leading" secondItem="bco-Ev-j0U" secondAttribute="leading" id="Xq6-3t-Hf9"/>
+                                            <constraint firstAttribute="trailing" secondItem="uze-5j-hMz" secondAttribute="trailing" id="oWi-N0-UYg"/>
+                                            <constraint firstAttribute="bottom" secondItem="uze-5j-hMz" secondAttribute="bottom" id="zAc-Ug-nny"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="uze-5j-hMz" id="qLf-sY-NQH"/>
+                                            <outlet property="dateLabel" destination="BmE-r4-DFT" id="QGf-RR-b7C"/>
+                                            <outlet property="dayLabel" destination="5Ks-ac-dD5" id="aYK-Al-Dx4"/>
+                                            <outlet property="monthLabel" destination="JL7-DT-5YI" id="wdl-fB-dgg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoEntryCell" id="gxO-qw-loV" customClass="DateSelectionCell" customModule="OnePercentWin" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="410.5" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
