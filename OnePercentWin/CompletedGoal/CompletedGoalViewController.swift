@@ -9,15 +9,15 @@
 import UIKit
 
 final class CompletedGoalViewController: UIViewController {
-    @IBOutlet weak var congratulationsLabel: UILabel!
-    @IBOutlet weak var congrulationsSubtitleLabel: UILabel!
-    @IBOutlet weak var lessonsLearntLabel: UILabel!
-    @IBOutlet weak var lessonsLearntPrompt: UILabel!
-    @IBOutlet weak var imageViewHolder: UIView!
-    @IBOutlet weak var addLessonLearntButton: UIButton!
-    @IBOutlet weak var stackViewHolder: UIStackView!
+    @IBOutlet private weak var congratulationsLabel: UILabel!
+    @IBOutlet private weak var congrulationsSubtitleLabel: UILabel!
+    @IBOutlet private weak var lessonsLearntLabel: UILabel!
+    @IBOutlet private weak var lessonsLearntPrompt: UILabel!
+    @IBOutlet private weak var imageViewHolder: UIView!
+    @IBOutlet private weak var addLessonLearntButton: UIButton!
+    @IBOutlet private weak var stackViewHolder: UIStackView!
     
-    var goal: DailyGoal?
+    private var goal: DailyGoal?
     
     @IBAction func didPressAddNotes(sender: Any) {
         guard let goal = goal else { return }
