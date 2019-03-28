@@ -75,12 +75,7 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     
     func didSelectCell(at indexPath: IndexPath) {
         selectedIndexPath = indexPath
-        
-        guard let cellModel = cellModelFor(indexPath: indexPath) as? DateSelectionCellModel else {
-            fatalError("hash map is no longer provider us with DateSelectionCellModel")
-        }
-        outputConsumer?.didSelect(date: cellModel.date,
-                                  goal: cellModel.goal)
+        updateConsumer()
     }
 }
 
@@ -88,5 +83,17 @@ extension DateSelectionPresenter: DateSelectionInteractorOutputConsumer {
     func didFinishFetching(goals: [DailyGoal]) {
         allGoalsFromUser = goals
         dateView?.reloadCollectionView()
+        updateConsumer()
+    }
+}
+
+// MARK: - Helper methods
+fileprivate extension DateSelectionPresenter {
+    func updateConsumer() {
+        guard let cellModel = cellModelFor(indexPath: selectedIndexPath) as? DateSelectionCellModel else {
+            fatalError("hash map is no longer provider us with DateSelectionCellModel")
+        }
+        outputConsumer?.didSelect(date: cellModel.date,
+                                  goal: cellModel.goal)
     }
 }
