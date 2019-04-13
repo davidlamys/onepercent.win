@@ -35,7 +35,7 @@ extension DailyGoal {
         self = DailyGoal(id: UUID.init().uuidString,
                          goal: goal,
                          reason: reason,
-                         date: Date(),
+                         date: date,
                          createdBy: createdBy,
                          userId: userId,
                          notes: nil,

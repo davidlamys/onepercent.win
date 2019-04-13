@@ -21,10 +21,10 @@ class MainViewModel {
 extension MainViewModel: DateSelectionPresenterOutputConsumer {
     func didSelect(date: Date, goal: DailyGoal?) {
         todayGoal = goal
-        delegate?.setup(goal: goal)
+        delegate?.setup(date: date, goal: goal)
     }
 }
 
 protocol MainViewModelDelegate: class {
-    func setup(goal: DailyGoal?)
+    func setup(date: Date, goal: DailyGoal?)
 }

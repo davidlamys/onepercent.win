@@ -29,6 +29,8 @@ final class MainViewController: UIViewController {
         }
     }
     
+    private var selectedDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainViewModel(delegate: self)
@@ -58,6 +60,7 @@ final class MainViewController: UIViewController {
             return
         }
         vc.delegate = self
+        vc.date = selectedDate
     }
     
     @IBAction func userTappedOnAddButton(_ sender: Any) {
@@ -111,7 +114,8 @@ final class MainViewController: UIViewController {
 }
 
 extension MainViewController: MainViewModelDelegate {
-    func setup(goal: DailyGoal?) {
+    func setup(date: Date, goal: DailyGoal?) {
+        selectedDate = date
         if let goal = goal {
             dashboardViewController.setup(with: goal)
         }

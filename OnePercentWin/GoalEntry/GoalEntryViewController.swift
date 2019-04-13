@@ -46,6 +46,8 @@ final class GoalEntryViewController: UIViewController {
         }
     }
     
+    var date: Date?
+    
     @IBAction func repeatLastGoalToggled(_ sender: Any) {
         viewModel.updateWithLastGoal()
         setupUseLastGoalStackView()
@@ -74,7 +76,7 @@ final class GoalEntryViewController: UIViewController {
             mode = .add
             goal = DailyGoal(goal: "",
                              reason: "",
-                             date: Date(),
+                             date: date ?? Date(),
                              createdBy: createdBy,
                              userId: UserService().userId())
         }
