@@ -8,13 +8,14 @@
 
 import UIKit
 
+fileprivate let goalPromptText = "I wanted to "
+fileprivate let reasonPromptText = "Because it was going to help me "
+
 final class CompletedGoalViewController: UIViewController {
     @IBOutlet private weak var congratulationsLabel: UILabel!
     @IBOutlet private weak var congrulationsSubtitleLabel: UILabel!
     @IBOutlet private weak var goalPrompt: UILabel!
-    @IBOutlet private weak var goalLabel: UILabel!
     @IBOutlet private weak var reasonPrompt: UILabel!
-    @IBOutlet private weak var reasonLabel: UILabel!
     @IBOutlet private weak var lessonsLearntPrompt: UILabel!
     @IBOutlet private weak var lessonsLearntLabel: UILabel!
     @IBOutlet private weak var imageViewHolder: UIView!
@@ -36,8 +37,6 @@ final class CompletedGoalViewController: UIViewController {
     
     func setup(with goal: DailyGoal) {
         self.goal = goal
-        goalLabel.text = goal.goal
-        reasonLabel.text = goal.reason
         
         if let notes = goal.notes {
             lessonsLearntLabel.isHidden = false
@@ -50,6 +49,9 @@ final class CompletedGoalViewController: UIViewController {
             lessonsLearntLabel.text = nil
             addLessonLearntButton.setTitle("Add Notes", for: .normal)
         }
+        goalPrompt.attributedText = getAttributedString(prompt: goalPromptText, input: goal.goal)
+        
+        reasonPrompt.attributedText = getAttributedString(prompt: reasonPromptText, input: goal.reason)
     }
     
     private func presentNotesEntryViewController(goal: DailyGoal) {
@@ -68,15 +70,22 @@ final class CompletedGoalViewController: UIViewController {
         
         let orange = ThemeHelper.defaultOrange()
         
-        goalPrompt.applyFont(fontSize: .medium)
-        goalLabel.applyFont(fontSize: .medium, color: orange)
+        goalPrompt.attributedText = getAttributedString(prompt: goalPromptText, input: goal?.goal ?? "")
         
-        reasonPrompt.applyFont(fontSize: .medium)
-        reasonLabel.applyFont(fontSize: .medium, color: orange)
-        
+        reasonPrompt.attributedText = getAttributedString(prompt: reasonPromptText, input: goal?.reason ?? "")
         lessonsLearntPrompt.applyFont(fontSize: .medium)
         lessonsLearntLabel.applyFont(fontSize: .medium, color: orange)
         addLessonLearntButton.applyStyle()
+    }
+    
+    private func getAttributedString(prompt: String, input: String) -> NSAttributedString {
+        let font = [NSAttributedString.Key.font: ThemeHelper.defaultFont(fontSize: .medium)]
+        let retString = NSMutableAttributedString(string: prompt + input, attributes: font)
+        let promptRange = NSMakeRange(0, prompt.count - 1)
+        retString.addAttributes([NSAttributedString.Key.foregroundColor: ThemeHelper.textColor()], range: promptRange)
+        let inputRange = NSMakeRange(prompt.count, input.count)
+        retString.addAttributes([NSAttributedString.Key.foregroundColor: ThemeHelper.defaultOrange()], range: inputRange)
+        return retString
     }
 }
 
