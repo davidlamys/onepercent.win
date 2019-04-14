@@ -39,6 +39,10 @@ extension Date {
         return dateFormatter
     }()
     
+    static func tomorrow() -> Date? {
+        return Calendar.current.date(byAdding: Calendar.Component.day, value: 1, to: Date().startOfDay)
+    }
+    
     var prettyDate: String {
         return Date.prettyDateFormatter.string(from: self)
     }

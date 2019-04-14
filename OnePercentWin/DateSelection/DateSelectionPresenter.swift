@@ -19,7 +19,9 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     }
     private(set) var selectedIndexPath = IndexPath(item: 0, section: 0)
     
-    private let today = Date().startOfDay
+    private var today: Date {
+        return Date().startOfDay
+    }
     
     private var allDates: [Date] = [Date().startOfDay]
     private var goalsHashMap = [Date: DailyGoal?]()
@@ -32,8 +34,19 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
                 return
             }
             
+            var lastDate: Date?
+            let tomorrow = Date.tomorrow()
+            
+            if let newestGoals = allGoalsFromUser.first {
+                if newestGoals.date.startOfDay == today && newestGoals.completed {
+                    lastDate = tomorrow
+                } else if newestGoals.date.startOfDay == tomorrow {
+                    lastDate = tomorrow
+                }
+            }
+            
             allDates = firstEnteredGoal.date.startOfDay
-                .allDates(till: today)
+                .allDates(till: lastDate ?? today)
                 .reversed()
         }
     }
