@@ -14,7 +14,10 @@ class DateSelectionInteractor {
     let userService = UserService()
     let userQueryListener = UserGoalQueryListener.shared
     init() {
-        userQueryListener.delegate = self        
+        userQueryListener.delegate = self
+        NotificationCenter.default.observeOnMainQueue(for: .applicationDidBecomeActive, onChange: { _ in 
+            self.fetchAllUserGoals()
+        })
     }
 }
 

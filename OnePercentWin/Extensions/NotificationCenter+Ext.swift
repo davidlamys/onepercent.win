@@ -11,6 +11,7 @@ import UIKit
 enum NotificationType: String {
     case themeDidChange
     case userDidChange
+    case applicationDidBecomeActive
     
     fileprivate var name: Notification.Name {
         return Notification.Name(rawValue: rawValue)
