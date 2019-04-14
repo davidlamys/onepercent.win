@@ -76,7 +76,7 @@ final class GoalEntryViewController: UIViewController {
             mode = .add
             goal = DailyGoal(goal: "",
                              reason: "",
-                             date: date ?? Date(),
+                             date: date ?? Date().startOfDay,
                              createdBy: createdBy,
                              userId: UserService().userId())
         }
