@@ -19,7 +19,7 @@ class DateSelectionCell: UICollectionViewCell {
             dayLabel.text = cellModel.dayString
             dateLabel.text = cellModel.dateString
             monthLabel.text = cellModel.monthString
-            if accessoryView.backgroundColor == nil {
+            if accessoryView.backgroundColor == nil && accessoryView.backgroundColor != cellModel.colorForAccessory {
                 accessoryView.backgroundColor = cellModel?.colorForAccessory
             }
             configureFor(selected: isSelected)
