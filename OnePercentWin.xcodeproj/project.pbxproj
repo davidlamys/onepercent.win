@@ -702,7 +702,7 @@
 			baseConfigurationReference = AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -712,6 +712,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.happylab.onepercentwin";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -722,7 +723,7 @@
 			baseConfigurationReference = 000630BC2ACDD59A9D83E0B0 /* Pods-OnePercentWin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -732,6 +733,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.happylab.onepercentwin";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
