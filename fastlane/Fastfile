@@ -17,6 +17,15 @@ default_platform(:ios)
 
 platform :ios do
   lane :beta do
+    match(type: "adhoc", readonly: is_ci)
     build_app(scheme: "OnePercentWin")
+    #todo: inject api token from jenkins
+    deploygate(
+      api_token: "f6090463008eb32f50a78dbe144e5980cb25a3c7",
+      user: "davidlamys",
+      ipa: "./OnePercentWin.ipa",
+      message: "Keep moving forward..."
+    )
   end
+
 end
