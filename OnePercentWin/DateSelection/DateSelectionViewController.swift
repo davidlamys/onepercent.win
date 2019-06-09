@@ -95,6 +95,7 @@ extension DateSelectionViewController: UICollectionViewDelegate, UICollectionVie
             fatalError("misconfigured collection view")
         }
         cell.cellModel = cellModel
+        cell.configureFor(selected: indexPath == presenter.selectedIndexPath)
         return cell
     }
     

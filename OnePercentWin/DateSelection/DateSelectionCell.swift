@@ -32,14 +32,18 @@ class DateSelectionCell: UICollectionViewCell {
         }
     }
     
-    private func configureFor(selected: Bool) {
+    func configureFor(selected: Bool) {
         if selected {
-            backgroundColor = accessoryView.backgroundColor
+            if backgroundColor != accessoryView.backgroundColor {
+                backgroundColor = accessoryView.backgroundColor
+            }
             dayLabel.applyFont(fontSize: .extraSmall, color: .black)
             dateLabel.applyFont(fontSize: .small, color: .black)
             monthLabel.applyFont(fontSize: .extraSmall, color: .black)
         } else {
-            backgroundColor = .clear
+            if backgroundColor != .clear {
+                backgroundColor = .clear
+            }
             dayLabel.applyFont(fontSize: .extraSmall)
             dateLabel.applyFont(fontSize: .small)
             monthLabel.applyFont(fontSize: .extraSmall)
