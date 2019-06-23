@@ -125,6 +125,10 @@ extension MainViewController: MainViewModelDelegate {
 }
 
 extension MainViewController: GoalEntryViewControllerDelegate {
+    func didCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func didSaveGoal() {
         dismiss(animated: true, completion: nil)
     }

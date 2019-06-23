@@ -10,6 +10,7 @@ import UIKit
 
 protocol GoalEntryViewControllerDelegate: class {
     func didSaveGoal()
+    func didCancel()
 }
 
 final class GoalEntryViewController: UIViewController {
@@ -28,6 +29,7 @@ final class GoalEntryViewController: UIViewController {
         didSet { setup(textView: reasonTextView) }
     }
 
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveGoalButton: UIButton!
     @IBOutlet weak var goalTextFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var reasonTextFieldHeightConstraint: NSLayoutConstraint!
@@ -52,11 +54,18 @@ final class GoalEntryViewController: UIViewController {
         viewModel.updateWithLastGoal()
         setupUseLastGoalStackView()
     }
+    
+    @IBAction func cancelButtonPressed(sender: Any) {
+        resignTextViews()
+        delegate?.didCancel()
+    }
+    
     @IBAction func saveButtonPressed(sender: Any) {
         guard let goal = goalTextView.text, let reason = reasonTextView.text else {
                 return
         }
         viewModel.updateGoal(goal: goal, reason: reason)
+        resignTextViews()
         delegate?.didSaveGoal()
     }
     
@@ -66,7 +75,7 @@ final class GoalEntryViewController: UIViewController {
         super.viewDidLoad()
         applyBackgroundColor()
         setFonts()
-        saveGoalButton.applyStyle()
+        setupButtons()
         goalTextView.becomeFirstResponder()
         
         if let goal = goal {
@@ -103,6 +112,16 @@ final class GoalEntryViewController: UIViewController {
         textView.backgroundColor = .clear
         textView.tintColor = ThemeHelper.textColor()
         textViewDidChange(textView)
+    }
+    
+    private func setupButtons() {
+        cancelButton.applyStyle()
+        saveGoalButton.applyStyle()
+    }
+    
+    private func resignTextViews() {
+        goalTextView.resignFirstResponder()
+        reasonTextView.resignFirstResponder()
     }
     
     func setupUseLastGoalStackView() {

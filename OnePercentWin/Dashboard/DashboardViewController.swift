@@ -84,6 +84,10 @@ extension DashboardViewController: GoalEntryViewControllerDelegate {
         dismiss(animated: true)
         // TodayViewModel will propogate the new goal to this dashboard view controller for now.
     }
+    
+    func didCancel() {
+        dismiss(animated: true)
+    }
 }
 
 
