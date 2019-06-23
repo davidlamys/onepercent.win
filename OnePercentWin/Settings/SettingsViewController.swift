@@ -116,7 +116,7 @@ final class SettingsViewController: UIViewController {
         { (granted, error) in
             // Enable or disable features based on authorization.
         }
-    NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
+        NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
             self.styleElements()
             self.applyBackgroundColor()
         }
