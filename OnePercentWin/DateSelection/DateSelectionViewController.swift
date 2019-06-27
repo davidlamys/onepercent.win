@@ -82,14 +82,16 @@ extension DateSelectionViewController: UICollectionViewDelegate, UICollectionVie
         let cellModel = presenter.cellModelFor(indexPath: indexPath)
         let cellIdentifier: String!
         switch cellModel.goalStatus {
-        case .completeWithNotes:
+        case .completedWithNotes:
             cellIdentifier = "CompleteWithNotesCell"
-        case .complete:
+        case .completed:
             cellIdentifier = "CompleteCell"
-        case .incomplete:
+        case .inProgress:
             cellIdentifier = "IncompleteCell"
         case .notSet:
             cellIdentifier = "NoEntryCell"
+        case .failed:
+            cellIdentifier = "CompleteCell"
         }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? DateSelectionCell else {
             fatalError("misconfigured collection view")

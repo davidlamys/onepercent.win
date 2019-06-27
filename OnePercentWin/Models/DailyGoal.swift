@@ -24,6 +24,7 @@ struct DailyGoal {
     var userId: String
     var notes: String?
     var completed: Bool = false
+    var status: GoalStatus
 }
 
 extension DailyGoal {
@@ -39,7 +40,8 @@ extension DailyGoal {
                          createdBy: createdBy,
                          userId: userId,
                          notes: nil,
-                         completed: false)
+                         completed: false,
+                         status: .inProgress)
     }
 }
 
@@ -68,7 +70,8 @@ extension DailyGoal: DocumentSerializable {
             "createdBy": createdBy,
             "userId": userId,
             "notes": notes as Any,
-            "completed": completed
+            "completed": completed,
+            "status": status.rawValue
         ]
     }
     
@@ -86,6 +89,9 @@ extension DailyGoal: DocumentSerializable {
         let notes = dictionary["notes"] as? String
         let completed = dictionary["completed"] as? Bool ?? false
         
+        let statusString = dictionary["status"] as? String
+        let status = GoalStatus.createFrom(rawValue: statusString, notes: notes)
+        
         self.init(id: id,
                   goal: goal,
                   reason: reason,
@@ -93,7 +99,8 @@ extension DailyGoal: DocumentSerializable {
                   createdBy: createdBy,
                   userId: userId,
                   notes: notes,
-                  completed: completed)
+                  completed: completed,
+                  status: status)
     }
 }
 
@@ -107,13 +114,6 @@ extension DailyGoal: DailyGoalModelling {
         return !notes.isEmpty
     }
     
-    var status: GoalStatus {
-        if completed == false {
-            return .incomplete
-        }
-        
-        return hasNotes ? .completeWithNotes : .complete
-    }
 }
 
 extension Optional where Wrapped == DailyGoal {
@@ -126,26 +126,44 @@ extension Optional where Wrapped == DailyGoal {
     
     var colorForStatus: UIColor {
         switch status {
-        case .completeWithNotes:
+        case .completedWithNotes:
             return completedWithNotesColor
-        case .complete:
+        case .completed:
             return completedColor
-        case .incomplete:
-            return incompleteColor
+        case .failed:
+            return failedColor
+        case .inProgress:
+            return inprogressColor
         case .notSet:
             return noEntryColor
         }
     }
 }
 
-enum GoalStatus {
+enum GoalStatus: String {
     case notSet
-    case incomplete
-    case complete
-    case completeWithNotes
+    case inProgress
+    case failed
+    case completed
+    case completedWithNotes
+    
+    static func createFrom(rawValue: String?,
+                           notes: String?) -> GoalStatus {
+        guard let rawValue = rawValue else {
+            return .inProgress
+        }
+        
+        guard rawValue == completed.rawValue else {
+            return GoalStatus.init(rawValue: rawValue) ?? .inProgress
+        }
+        
+        return (notes == nil) ? .completed : .completedWithNotes
+        
+    }
 }
 
 fileprivate let completedWithNotesColor = UIColor.green
 fileprivate let completedColor = UIColor.yellow
-fileprivate let incompleteColor = UIColor.orange
+fileprivate let failedColor = UIColor.yellow
+fileprivate let inprogressColor = UIColor.orange
 fileprivate let noEntryColor = UIColor.red
