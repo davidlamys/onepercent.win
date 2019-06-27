@@ -46,7 +46,7 @@ extension DailyGoal {
 extension DailyGoal {
     var displayTextGlobal: String {
         let user = createdBy
-        return user + " wants to " + goal + " as it's going to help " + user + " " + reason
+        return user + ": I wants to " + goal + " as it's going to help me" + reason
     }
     
     var displayText: String {
