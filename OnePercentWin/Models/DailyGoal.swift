@@ -34,6 +34,15 @@ struct DailyGoal {
             return dbStatus
         }
     }
+    
+    var isCompleted: Bool {
+        return dbStatus == .completed
+    }
+    
+    var hasCheckin: Bool {
+        return dbStatus == .completed || dbStatus == .failed || dbStatus == .completedWithNotes
+    }
+    
     private var dbStatus: GoalStatus
 }
 
@@ -131,6 +140,10 @@ extension DailyGoal: DailyGoalModelling {
     
     mutating func completedWithoutNotes() {
         dbStatus = .completed
+    }
+    
+    mutating func failedWithoutNotes() {
+        dbStatus = .failed
     }
     
     var hasNotes: Bool {

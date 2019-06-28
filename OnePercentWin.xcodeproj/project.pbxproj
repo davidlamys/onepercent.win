@@ -17,8 +17,11 @@
 		150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303021A70207000CAB0C /* RepoWrapper.swift */; };
 		150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303421A70248000CAB0C /* HistoryViewController.swift */; };
 		150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303621A70251000CAB0C /* HistoryViewModel.swift */; };
+		15A8FD2622C50C5200C868D8 /* CheckinViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */; };
+		15A8FD2822C50C7D00C868D8 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */; };
 		15E2FCCA22633FDD00C5775F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */; };
 		15E2FCCC226340D200C5775F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15E2FCCB226340D200C5775F /* GoogleService-Info.plist */; };
+		15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */; };
 		630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */; };
 		630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9853222AA025008B0116 /* DateSelectionViewController.swift */; };
 		630A9856222AA03F008B0116 /* DateSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9855222AA03F008B0116 /* DateSelectionPresenter.swift */; };
@@ -81,8 +84,11 @@
 		150A303021A70207000CAB0C /* RepoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWrapper.swift; sourceTree = "<group>"; };
 		150A303421A70248000CAB0C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		150A303621A70251000CAB0C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckinViewController.storyboard; sourceTree = "<group>"; };
+		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryContracts.swift; sourceTree = "<group>"; };
 		1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePercentWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelectionViewController.storyboard; sourceTree = "<group>"; };
 		630A9853222AA025008B0116 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
+				15A8FD2422C50C0200C868D8 /* Check-in */,
 				6371A51E21FC4A3000D80CF7 /* CompletedGoal */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
@@ -245,6 +252,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		15A8FD2422C50C0200C868D8 /* Check-in */ = {
+			isa = PBXGroup;
+			children = (
+				15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */,
+				15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */,
+			);
+			path = "Check-in";
+			sourceTree = "<group>";
+		};
 		630A9850222A9FFB008B0116 /* DateSelection */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +306,7 @@
 				6371A51821F9AE4800D80CF7 /* NotesEntry.storyboard */,
 				6371A51A21F9AE5B00D80CF7 /* NotesEntryViewController.swift */,
 				6371A51C21F9AE6300D80CF7 /* NotesEntryViewModel.swift */,
+				15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */,
 			);
 			path = NotesEntry;
 			sourceTree = "<group>";
@@ -404,6 +421,7 @@
 			files = (
 				63B96A802224268600BBA9F9 /* DashboardViewController.storyboard in Resources */,
 				63426E2021E9F45C00EA35CB /* Roboto-Italic.ttf in Resources */,
+				15A8FD2622C50C5200C868D8 /* CheckinViewController.storyboard in Resources */,
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
 				630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */,
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
@@ -526,7 +544,9 @@
 				630A9864222BC01D008B0116 /* UserGoalsServiceWrapper.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
 				630A9860222AA0E6008B0116 /* DateSelectionContract.swift in Sources */,
+				15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */,
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
+				15A8FD2822C50C7D00C868D8 /* CheckinViewController.swift in Sources */,
 				63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */,
 				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				630A985C222AA08A008B0116 /* DateSelectionBuilder.swift in Sources */,

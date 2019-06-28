@@ -12,7 +12,7 @@ protocol DashboardViewControllerDelegate: class {
     func userDidCompleteGoal()
 }
 
-final class DashboardViewController: UIViewController {
+final class DashboardViewController: UIViewController, CheckinViewControllerPresenter {
     @IBOutlet weak var goalPromptLabel: UILabel!
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var reasonPromptLabel: UILabel!
@@ -30,7 +30,7 @@ final class DashboardViewController: UIViewController {
     }
     
     @IBAction func didPressedCompleted(sender: Any) {
-        presentNotesEntryViewController(goal: goal)
+        presentCheckinViewController()
     }
     
     @IBAction func didPressEdit(sender: Any) {
@@ -56,16 +56,6 @@ final class DashboardViewController: UIViewController {
         editGoalButton.greyOutIfDisable()
     }
     
-    private func presentNotesEntryViewController(goal: DailyGoal) {
-        let sb = UIStoryboard(name: "NotesEntry", bundle: Bundle.main)
-        guard let vc = sb.instantiateViewController(withIdentifier: "NotesEntryViewController") as? NotesEntryViewController else {
-            fatalError("view controller not found")
-        }
-        vc.delegate = self
-        vc.goal = goal
-        present(vc, animated: true)
-    }
-    
     func styleElements() {
         editGoalButton.applyStyle()
         completeGoalButton.applyStyle()
@@ -88,13 +78,8 @@ extension DashboardViewController: GoalEntryViewControllerDelegate {
     }
 }
 
-
-extension DashboardViewController: NotesEntryViewControllerDelegate {
-    func userDidAbortNoteTaking() {
-        dismiss(animated: true)
-    }
-    
-    func userDidSaveNotes() {
+extension DashboardViewController: CheckinViewControllerDelegate {
+    func userCompletedCheckin() {
         dismiss(animated: true)
     }
 }

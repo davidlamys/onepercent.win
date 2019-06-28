@@ -11,7 +11,7 @@ import UIKit
 fileprivate let goalPromptText = "I wanted to "
 fileprivate let reasonPromptText = "Because it was going to help me "
 
-final class CompletedGoalViewController: UIViewController {
+final class CompletedGoalViewController: UIViewController, NotesEntryViewControllerPresenter {
     @IBOutlet private weak var congratulationsLabel: UILabel!
     @IBOutlet private weak var congrulationsSubtitleLabel: UILabel!
     @IBOutlet private weak var goalPrompt: UILabel!
@@ -22,11 +22,10 @@ final class CompletedGoalViewController: UIViewController {
     @IBOutlet private weak var addLessonLearntButton: UIButton!
     @IBOutlet private weak var stackViewHolder: UIStackView!
     
-    private var goal: DailyGoal?
+    var goal: DailyGoal!
     
     @IBAction func didPressAddNotes(sender: Any) {
-        guard let goal = goal else { return }
-        presentNotesEntryViewController(goal: goal)
+        presentNotesEntryViewController()
     }
     
     override func viewDidLoad() {

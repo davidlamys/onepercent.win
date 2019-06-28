@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol NotesEntryViewControllerDelegate: class {
-    func userDidAbortNoteTaking()
-    func userDidSaveNotes()
-}
 
 final class NotesEntryViewController: UIViewController {
     @IBOutlet weak var congratulationsLabel: UILabel!
@@ -45,6 +41,11 @@ final class NotesEntryViewController: UIViewController {
         super.viewDidLoad()
         applyBackgroundColor()
         applyStyle()
+        
+        congratulationsLabel.text = viewModel.mainLabel
+        congratulationsSubtitle.text = viewModel.subtitle
+        lessonLearntPrompt.text = viewModel.lessonLearntPrompt
+        
         lessonLearntTextBox.delegate = self
         lessonLearntTextBox.text = self.goal?.notes
     }

@@ -101,7 +101,7 @@ final class MainViewController: UIViewController {
         }
         noGoalContainerView.isHidden = true
         
-        if goalForDay.completed {
+        if goalForDay.hasCheckin {
             dashboardView.isHidden = true
             completedGoalView.isHidden = false
             completedGoalViewController.setup(with: goalForDay)
