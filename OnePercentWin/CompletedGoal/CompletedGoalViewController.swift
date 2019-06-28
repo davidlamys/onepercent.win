@@ -8,9 +8,6 @@
 
 import UIKit
 
-fileprivate let goalPromptText = "I wanted to "
-fileprivate let reasonPromptText = "Because it was going to help me "
-
 final class CompletedGoalViewController: UIViewController, NotesEntryViewControllerPresenter {
     @IBOutlet private weak var congratulationsLabel: UILabel!
     @IBOutlet private weak var congrulationsSubtitleLabel: UILabel!
@@ -22,7 +19,15 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
     @IBOutlet private weak var addLessonLearntButton: UIButton!
     @IBOutlet private weak var stackViewHolder: UIStackView!
     
-    var goal: DailyGoal!
+    var goal: DailyGoal! {
+        didSet {
+            if viewModel == nil {
+                viewModel = CompletedGoalViewModel(goal: goal)
+            }
+            viewModel.goal = goal
+        }
+    }
+    var viewModel: CompletedGoalViewModel!
     
     @IBAction func didPressAddNotes(sender: Any) {
         presentNotesEntryViewController()
@@ -30,6 +35,7 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = CompletedGoalViewModel(goal: goal)
         styleElements()
         applyBackgroundColor()
     }
@@ -48,9 +54,13 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
             lessonsLearntLabel.text = nil
             addLessonLearntButton.setTitle("Add Notes", for: .normal)
         }
-        goalPrompt.attributedText = getAttributedString(prompt: goalPromptText, input: goal.goal)
+        congratulationsLabel.text = viewModel.mainLabel
+        congrulationsSubtitleLabel.text = viewModel.subtitle
+        lessonsLearntPrompt.text = viewModel.lessonLearntPrompt
         
-        reasonPrompt.attributedText = getAttributedString(prompt: reasonPromptText, input: goal.reason)
+        goalPrompt.attributedText = viewModel.goalPromptAttributedText
+        reasonPrompt.attributedText = viewModel.reasonPromptAttributedText
+        imageViewHolder.isHidden = !viewModel.goal.isCompleted
     }
     
     private func presentNotesEntryViewController(goal: DailyGoal) {
@@ -69,23 +79,15 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
         
         let orange = ThemeHelper.defaultOrange()
         
-        goalPrompt.attributedText = getAttributedString(prompt: goalPromptText, input: goal?.goal ?? "")
+        goalPrompt.attributedText = viewModel.goalPromptAttributedText
+        reasonPrompt.attributedText = viewModel.reasonPromptAttributedText
         
-        reasonPrompt.attributedText = getAttributedString(prompt: reasonPromptText, input: goal?.reason ?? "")
         lessonsLearntPrompt.applyFont(fontSize: .medium)
         lessonsLearntLabel.applyFont(fontSize: .medium, color: orange)
         addLessonLearntButton.applyStyle()
     }
     
-    private func getAttributedString(prompt: String, input: String) -> NSAttributedString {
-        let font = [NSAttributedString.Key.font: ThemeHelper.defaultFont(fontSize: .medium)]
-        let retString = NSMutableAttributedString(string: prompt + input, attributes: font)
-        let promptRange = NSMakeRange(0, prompt.count - 1)
-        retString.addAttributes([NSAttributedString.Key.foregroundColor: ThemeHelper.textColor()], range: promptRange)
-        let inputRange = NSMakeRange(prompt.count, input.count)
-        retString.addAttributes([NSAttributedString.Key.foregroundColor: ThemeHelper.defaultOrange()], range: inputRange)
-        return retString
-    }
+
 }
 
 extension CompletedGoalViewController: NotesEntryViewControllerDelegate {

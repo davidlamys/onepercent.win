@@ -36,11 +36,11 @@ struct DailyGoal {
     }
     
     var isCompleted: Bool {
-        return dbStatus == .completed
+        return dbStatus == .completed || dbStatus == .completedWithNotes
     }
     
     var hasCheckin: Bool {
-        return dbStatus == .completed || dbStatus == .failed || dbStatus == .completedWithNotes
+        return dbStatus == .completed || dbStatus == .completedWithNotes || dbStatus == .failed
     }
     
     private var dbStatus: GoalStatus
