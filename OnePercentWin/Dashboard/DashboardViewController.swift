@@ -30,8 +30,6 @@ final class DashboardViewController: UIViewController {
     }
     
     @IBAction func didPressedCompleted(sender: Any) {
-        goal.completed = true
-        RepoWrapper.shared.save(goal)
         presentNotesEntryViewController(goal: goal)
     }
     

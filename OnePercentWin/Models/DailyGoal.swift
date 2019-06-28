@@ -13,6 +13,8 @@ protocol DailyGoalModelling {
     var hasNotes: Bool { get }
     var completed: Bool { get set }
     var status: GoalStatus { get }
+    mutating func addNotes(_ note: String?)
+    mutating func completedWithoutNotes()
 }
 
 struct DailyGoal {
@@ -24,7 +26,15 @@ struct DailyGoal {
     var userId: String
     var notes: String?
     var completed: Bool = false
-    var status: GoalStatus
+    var status: GoalStatus {
+        get {
+            if dbStatus == .completed {
+                return (notes == nil) ? .completed : .completedWithNotes
+            }
+            return dbStatus
+        }
+    }
+    private var dbStatus: GoalStatus
 }
 
 extension DailyGoal {
@@ -41,7 +51,7 @@ extension DailyGoal {
                          userId: userId,
                          notes: nil,
                          completed: false,
-                         status: .inProgress)
+                         dbStatus: .inProgress)
     }
 }
 
@@ -100,13 +110,29 @@ extension DailyGoal: DocumentSerializable {
                   userId: userId,
                   notes: notes,
                   completed: completed,
-                  status: status)
+                  dbStatus: status)
     }
 }
 
 extension DailyGoal: Equatable {}
 
 extension DailyGoal: DailyGoalModelling {
+    mutating func addNotes(_ note: String?) {
+        guard note != "" else {
+            notes = nil
+            return
+        }
+        
+        notes = note
+        if dbStatus == .completed || completed {
+            dbStatus = .completedWithNotes
+        }
+    }
+    
+    mutating func completedWithoutNotes() {
+        dbStatus = .completed
+    }
+    
     var hasNotes: Bool {
         guard let notes = notes else {
             return false

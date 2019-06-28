@@ -12,11 +12,8 @@ class NotesEntryViewModel {
     var goal: DailyGoal!
     
     func save(notes: String?) {
-        if notes == "" {
-            goal.notes = nil
-        } else {
-            goal.notes = notes
-        }
+        goal.addNotes(notes)
         RepoWrapper.shared.save(goal)
     }
+    
 }
