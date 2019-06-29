@@ -31,7 +31,7 @@ struct CompletedGoalViewModel {
     }
     
     var lessonLearntPrompt: String {
-        return goal.isCompleted ? "It made me feel" : "Lession Learn"
+        return goal.isCompleted ? "It made me feel" : "Lesson Learn"
     }
     
     var goalPromptAttributedText: NSAttributedString {

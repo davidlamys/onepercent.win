@@ -15,21 +15,20 @@ class NotesEntryViewModel {
         if goal.isCompleted {
             return "Congratulations!"
         } else {
-            return "Oops"
+            return "Oops :("
         }
     }
     
     var subtitle: String {
-        let goalString = goal.goal
         if goal.isCompleted {
             return "Looks like you crushed it!"
         } else {
-            return "Something stopped you from your goal to \(goalString)"
+            return "You failed your goal"
         }
     }
     
     var lessonLearntPrompt: String {
-        return goal.isCompleted ? "How does that make you feel?" : "Lession Learn"
+        return goal.isCompleted ? "How does that make you feel?" : "Lesson Learn"
     }
     
     func save(notes: String?) {
