@@ -29,11 +29,11 @@ final class DashboardViewController: UIViewController, CheckinViewControllerPres
         styleElements()
     }
     
-    @IBAction func didPressedCompleted(sender: Any) {
+    @IBAction func didPressCompleted(sender: Any) {
         presentCheckinViewController()
     }
     
-    @IBAction func didPressEdit(sender: Any) {
+    @IBAction func didPressit(sender: Any) {
         let sb = UIStoryboard(name: "GoalEntry", bundle: Bundle.main)
         guard let vc = sb.instantiateViewController(withIdentifier: "GoalEntryViewController") as? GoalEntryViewController else {
             fatalError("view controller not found")

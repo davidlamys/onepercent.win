@@ -29,13 +29,13 @@ class CheckinViewController: UIViewController, NotesEntryViewControllerPresenter
     
     weak var delegate: CheckinViewControllerDelegate?
     
-    @IBAction func didPressedFailed(sender: Any) {
+    @IBAction func didPressFailed(sender: Any) {
         goal.failedWithoutNotes()
         RepoWrapper.shared.save(goal)
         presentNotesEntryViewController()
     }
     
-    @IBAction func didPressedCompleted(sender: Any) {
+    @IBAction func didPressCompleted(sender: Any) {
         goal.completedWithoutNotes()
         RepoWrapper.shared.save(goal)
         presentNotesEntryViewController()
