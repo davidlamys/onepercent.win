@@ -15,12 +15,16 @@ protocol CheckinViewControllerPresenter: class {
 
 protocol CheckinViewControllerDelegate: class {
     func userCompletedCheckin()
+    func userCancelledCheckin()
 }
 
 class CheckinViewController: UIViewController, NotesEntryViewControllerPresenter {
+    
+    @IBOutlet weak var checkinPrompt: UILabel!
     @IBOutlet weak var successPrompt: UILabel!
     @IBOutlet weak var failedPrompt: UILabel!
-
+    @IBOutlet weak var cancelButton: UIButton!
+    
     var goal: DailyGoal!
     
     weak var delegate: CheckinViewControllerDelegate?
@@ -37,17 +41,23 @@ class CheckinViewController: UIViewController, NotesEntryViewControllerPresenter
         presentNotesEntryViewController()
     }
     
+    @IBAction func didPressCancel(_ sender: Any) {
+        delegate?.userCancelledCheckin()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackgroundColor()
         applyStyle()
+        checkinPrompt.text = "How did it go?"
     }
     
     private func applyStyle() {
+        checkinPrompt.applyFont(fontSize: .large)
         successPrompt.applyFont(fontSize: .medium)
         failedPrompt.applyFont(fontSize: .medium)
+        cancelButton.applyStyle()
     }
-    
 }
 
 extension CheckinViewController: NotesEntryViewControllerDelegate {

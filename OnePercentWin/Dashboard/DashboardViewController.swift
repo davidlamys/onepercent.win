@@ -79,6 +79,11 @@ extension DashboardViewController: GoalEntryViewControllerDelegate {
 }
 
 extension DashboardViewController: CheckinViewControllerDelegate {
+    
+    func userCancelledCheckin() {
+        dismiss(animated: true)
+    }
+    
     func userCompletedCheckin() {
         dismiss(animated: true)
     }
