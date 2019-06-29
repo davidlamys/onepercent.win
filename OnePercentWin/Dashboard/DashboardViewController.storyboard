@@ -62,7 +62,7 @@
                                         </constraints>
                                         <state key="normal" title="edit goal"/>
                                         <connections>
-                                            <action selector="didPressEditWithSender:" destination="nKQ-0m-glG" eventType="touchUpInside" id="dwj-ng-PzE"/>
+                                            <action selector="didPressitWithSender:" destination="nKQ-0m-glG" eventType="touchUpInside" id="dwj-ng-PzE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-iL-xt9">
@@ -72,7 +72,7 @@
                                         </constraints>
                                         <state key="normal" title="check-in"/>
                                         <connections>
-                                            <action selector="didPressedCompletedWithSender:" destination="nKQ-0m-glG" eventType="touchUpInside" id="Pih-qu-mDh"/>
+                                            <action selector="didPressCompletedWithSender:" destination="nKQ-0m-glG" eventType="touchUpInside" id="Pih-qu-mDh"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -27,7 +27,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <state key="normal" title=" 😓"/>
                                                 <connections>
-                                                    <action selector="didPressedFailedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="vcV-2t-FQR"/>
+                                                    <action selector="didPressFailedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="vcV-2t-FQR"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ooops..let's regroup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqK-6X-hOe">
@@ -46,7 +46,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <state key="normal" title=" 😁"/>
                                                 <connections>
-                                                    <action selector="didPressedCompletedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="J6X-0L-pDj"/>
+                                                    <action selector="didPressCompletedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="J6X-0L-pDj"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRUSHED IT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJn-0N-X26">
