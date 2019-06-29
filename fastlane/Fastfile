@@ -20,7 +20,7 @@ platform :ios do
     cached_timestamp = current_timestamp
     match(type: "adhoc", readonly: is_ci)
     build_app(scheme: "OnePercentWin")
-    todo: inject api token from jenkins
+    # todo: inject api token from jenkins
     commit = last_git_commit
     deploygate(
       api_token: "f6090463008eb32f50a78dbe144e5980cb25a3c7",
