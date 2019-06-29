@@ -17,9 +17,10 @@ default_platform(:ios)
 
 platform :ios do
   lane :beta do
+    cached_timestamp = current_timestamp
     match(type: "adhoc", readonly: is_ci)
     build_app(scheme: "OnePercentWin")
-    #todo: inject api token from jenkins
+    todo: inject api token from jenkins
     commit = last_git_commit
     deploygate(
       api_token: "f6090463008eb32f50a78dbe144e5980cb25a3c7",
@@ -27,6 +28,13 @@ platform :ios do
       ipa: "./OnePercentWin.ipa",
       message: commit[:message]
     )
+    add_git_tag(tag: "#{cached_timestamp}")
+    push_git_tags(tag: "å#{cached_timestamp}")
+  
   end
 
+end
+
+def current_timestamp
+  Time.now.strftime("%y%m%d%H%M")
 end
