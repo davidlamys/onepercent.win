@@ -63,16 +63,6 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
         imageViewHolder.isHidden = !viewModel.goal.isCompleted
     }
     
-    private func presentNotesEntryViewController(goal: DailyGoal) {
-        let sb = UIStoryboard(name: "NotesEntry", bundle: Bundle.main)
-        guard let vc = sb.instantiateViewController(withIdentifier: "NotesEntryViewController") as? NotesEntryViewController else {
-            fatalError("view controller not found")
-        }
-        vc.delegate = self
-        vc.goal = goal
-        present(vc, animated: true)
-    }
-    
     func styleElements() {
         congratulationsLabel.applyBoldFont(fontSize: .large)
         congrulationsSubtitleLabel.applyFont(fontSize: .large)
