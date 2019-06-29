@@ -97,6 +97,18 @@ final class GoalEntryViewController: UIViewController {
         setupUseLastGoalStackView()
     }
     
+    func setupView(goal: DailyGoal) {
+        guard let goalTextView = goalTextView,
+            let reasonTextView = reasonTextView else {
+                return
+        }
+        
+        goalTextView.text = goal.goal
+        reasonTextView.text = goal.reason
+        textViewDidChange(goalTextView)
+        textViewDidChange(reasonTextView)
+    }
+    
     private func setFonts() {
         goalPrompt.applyFont(fontSize: .medium)
         goalTextView.applyFont(fontSize: .medium)
@@ -124,7 +136,7 @@ final class GoalEntryViewController: UIViewController {
         reasonTextView.resignFirstResponder()
     }
     
-    func setupUseLastGoalStackView() {
+    private func setupUseLastGoalStackView() {
         guard let goalTextView = goalTextView,
             let reasonTextView = reasonTextView,
             let repeatLastGoalStackView = repeatLastGoalStackView,
@@ -145,17 +157,6 @@ final class GoalEntryViewController: UIViewController {
         repeatLastGoalSwitch.isOn = false
     }
     
-    func setupView(goal: DailyGoal) {
-        guard let goalTextView = goalTextView,
-            let reasonTextView = reasonTextView else {
-                return
-        }
-            
-        goalTextView.text = goal.goal
-        reasonTextView.text = goal.reason
-        textViewDidChange(goalTextView)
-        textViewDidChange(reasonTextView)
-    }
 }
 
 extension GoalEntryViewController: UITextViewDelegate {

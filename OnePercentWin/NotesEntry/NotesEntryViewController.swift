@@ -28,7 +28,7 @@ final class NotesEntryViewController: UIViewController {
     weak var delegate: NotesEntryViewControllerDelegate?
     
     @IBAction func didPressSkip(sender: Any) {
-        self.delegate?.userDidAbortNoteTaking()
+        delegate?.userDidAbortNoteTaking()
     }
     
     @IBAction func didPressSave(sender: Any) {

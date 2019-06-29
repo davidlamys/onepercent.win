@@ -67,7 +67,7 @@ final class MainViewController: UIViewController {
         performSegue(withIdentifier: "showGoalEntry", sender: nil)
     }
     
-    func applyStyle() {
+    private func applyStyle() {
         
         tapToAddGoal.applyStyle()
         noGoalPrompt.applyFont(fontSize: .medium)
@@ -92,7 +92,7 @@ final class MainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = ThemeHelper.defaultOrange()
     }
     
-    func setupInitialView() {
+    private func setupInitialView() {
         guard let goalForDay = viewModel.todayGoal else {
             dashboardView.isHidden = true
             completedGoalView.isHidden = true

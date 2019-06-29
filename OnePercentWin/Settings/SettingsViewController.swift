@@ -32,13 +32,6 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet weak private var userNameTextField: UITextField!
     
-    fileprivate func displayAuthenticationUI() {
-        let authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
-        let authViewController = authUI?.authViewController()
-        present(authViewController!, animated: true)
-    }
-    
     @IBAction func didTapSignIn(_ sender: Any) {
         if viewModel.hasLoggedInUser {
             viewModel.signOutUser()
@@ -110,6 +103,17 @@ final class SettingsViewController: UIViewController {
         userNameTextField.text = viewModel.getUserName()
         userNameTextField.delegate = self
         setupUI()
+        setupThemeChangeNotification()
+    }
+    
+    private func displayAuthenticationUI() {
+        let authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        let authViewController = authUI?.authViewController()
+        present(authViewController!, animated: true)
+    }
+    
+    private func setupThemeChangeNotification() {
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .sound])
