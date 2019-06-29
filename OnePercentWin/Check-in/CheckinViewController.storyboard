@@ -59,15 +59,38 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfg-6J-MYT">
+                                <rect key="frame" x="16" y="796" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kS2-2i-utx"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="didPressCancel:" destination="pZL-en-99K" eventType="touchUpInside" id="GOn-qT-32P"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oG-lT-fR4">
+                                <rect key="frame" x="186" y="76" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerX" secondItem="VYG-OF-7AE" secondAttribute="centerX" id="54r-pH-mCZ"/>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerY" secondItem="VYG-OF-7AE" secondAttribute="centerY" id="GOZ-rK-OwJ"/>
+                            <constraint firstItem="bfg-6J-MYT" firstAttribute="leading" secondItem="VYG-OF-7AE" secondAttribute="leading" constant="16" id="GmW-2p-Oi5"/>
+                            <constraint firstItem="5oG-lT-fR4" firstAttribute="top" secondItem="VYG-OF-7AE" secondAttribute="top" constant="32" id="M15-3i-I0O"/>
+                            <constraint firstItem="VYG-OF-7AE" firstAttribute="bottom" secondItem="bfg-6J-MYT" secondAttribute="bottom" constant="16" id="iQT-Hm-eCL"/>
+                            <constraint firstItem="5oG-lT-fR4" firstAttribute="centerX" secondItem="VYG-OF-7AE" secondAttribute="centerX" id="vze-nW-LfC"/>
+                            <constraint firstItem="VYG-OF-7AE" firstAttribute="trailing" secondItem="bfg-6J-MYT" secondAttribute="trailing" constant="16" id="xyE-mq-HaP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VYG-OF-7AE"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="bfg-6J-MYT" id="bIG-tu-Zv2"/>
+                        <outlet property="checkinPrompt" destination="5oG-lT-fR4" id="f40-Gv-ycp"/>
                         <outlet property="failedPrompt" destination="OqK-6X-hOe" id="SrF-jX-3xU"/>
                         <outlet property="successPrompt" destination="uJn-0N-X26" id="v0D-6V-vx7"/>
                     </connections>
