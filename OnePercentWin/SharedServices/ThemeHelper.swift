@@ -34,6 +34,24 @@ enum ThemeType: Int, Codable {
         case .light: return "Light"
         }
     }
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .dark:
+            return .black
+        case .light:
+            return .white
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .dark:
+            return .white
+        case .light:
+            return .black
+        }
+    }
 }
 
 class ThemeHelper {
@@ -60,12 +78,7 @@ class ThemeHelper {
             userDefaultsWrapper.save(settings: settings)
             return .black
         }
-        switch theme {
-        case .dark:
-            return .black
-        case .light:
-            return .white
-        }
+        return theme.backgroundColor
     }
     
     static func textColor() -> UIColor {
@@ -78,12 +91,7 @@ class ThemeHelper {
             userDefaultsWrapper.save(settings: settings)
             return .white
         }
-        switch theme {
-        case .dark:
-            return .white
-        case .light:
-            return .black
-        }
+        return theme.textColor
     }
     
     static func tabbarColor() -> UIColor {
