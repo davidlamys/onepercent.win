@@ -34,7 +34,7 @@ struct HistoryCellModel {
         guard let goal = goal else {
             return .notSet
         }
-        return (goal.completed) ? .complete : .incomplete
+        return goal.isCompleted ? .complete : .incomplete
     }
     
     var colorForStatus: UIColor {

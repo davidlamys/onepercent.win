@@ -121,30 +121,38 @@ extension HistoryViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .white
         if viewModel.shouldShowAllGoals {
-            let goalForCell = viewModel.visibleGoals[indexPath.row]
-            cell.textLabel?.text = goalForCell.displayTextGlobal
-            cell.textLabel?.numberOfLines = 0
-            cell.detailTextLabel?.text = goalForCell.prettyDate
-            
-            let isCompleted = goalForCell.completed
-            cell.accessoryType = isCompleted ? .checkmark : .none
-            
-            return cell
+            return configureCellForGlobalMode(indexPath, cell)
         } else {
-            let cellModelForCell = cellModels[indexPath.row]
-            cell.textLabel?.text = cellModelForCell.dateLabel
-            cell.detailTextLabel?.text = cellModelForCell.textLabel
-            switch cellModelForCell.status {
-            case .complete:
-                cell.accessoryType = .checkmark
-            case .incomplete:
-                cell.accessoryType = .none
-            case .notSet:
-                cell.accessoryType = .none
-                cell.backgroundColor = cellModelForCell.colorForStatus
-            }
-            return cell
+            return configureCellForPersonalMode(indexPath, cell)
         }
+    }
+    
+    fileprivate func configureCellForGlobalMode(_ indexPath: IndexPath, _ cell: UITableViewCell) -> UITableViewCell {
+        let goalForCell = viewModel.visibleGoals[indexPath.row]
+        cell.textLabel?.text = goalForCell.displayTextGlobal
+        cell.textLabel?.numberOfLines = 0
+        cell.detailTextLabel?.text = goalForCell.prettyDate
+        
+        let isCompleted = goalForCell.isCompleted
+        cell.accessoryType = isCompleted ? .checkmark : .none
+        
+        return cell
+    }
+    
+    fileprivate func configureCellForPersonalMode(_ indexPath: IndexPath, _ cell: UITableViewCell) -> UITableViewCell {
+        let cellModelForCell = cellModels[indexPath.row]
+        cell.textLabel?.text = cellModelForCell.dateLabel
+        cell.detailTextLabel?.text = cellModelForCell.textLabel
+        switch cellModelForCell.status {
+        case .complete:
+            cell.accessoryType = .checkmark
+        case .incomplete:
+            cell.accessoryType = .none
+        case .notSet:
+            cell.accessoryType = .none
+            cell.backgroundColor = cellModelForCell.colorForStatus
+        }
+        return cell
     }
 }
 
