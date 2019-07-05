@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pZL-en-99K">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pZL-en-99K">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-mw-lOA">
                                                 <rect key="frame" x="0.0" y="0.0" width="153" height="96"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <state key="normal" title=" 😓"/>
+                                                <state key="normal" title="😓"/>
                                                 <connections>
                                                     <action selector="didPressFailedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="vcV-2t-FQR"/>
                                                 </connections>
@@ -44,7 +45,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMK-Y7-ONi">
                                                 <rect key="frame" x="0.0" y="0.0" width="153" height="96"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <state key="normal" title=" 😁"/>
+                                                <state key="normal" title="😁"/>
                                                 <connections>
                                                     <action selector="didPressCompletedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="J6X-0L-pDj"/>
                                                 </connections>
@@ -76,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerX" secondItem="VYG-OF-7AE" secondAttribute="centerX" id="54r-pH-mCZ"/>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerY" secondItem="VYG-OF-7AE" secondAttribute="centerY" id="GOZ-rK-OwJ"/>
