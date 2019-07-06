@@ -93,4 +93,20 @@ class UserService {
         }
     }
     
+    func signUpWith(email: String,
+                    password: String,
+                    completion: @escaping (UserServiceResult) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(UserServiceResult.failure(error))
+                return
+            }
+            if let result = result {
+                completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
+                return
+            }
+            fatalError()
+        }
+    }
+    
 }

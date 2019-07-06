@@ -76,6 +76,9 @@
                                             <constraint firstAttribute="height" constant="50" id="NMK-8L-jDM"/>
                                         </constraints>
                                         <state key="normal" title="Sign up"/>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="JIa-qk-uYu" eventType="touchUpInside" id="arY-HV-LP6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztU-aC-zgD">
                                         <rect key="frame" x="0.0" y="280" width="374" height="50"/>

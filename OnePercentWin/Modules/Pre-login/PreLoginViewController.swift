@@ -8,44 +8,6 @@
 
 import UIKit
 
-protocol PreLoginViewModelDelegate: class {
-    func signInCompleted()
-}
-
-class PreLoginViewModel {
-    private let userService = UserService()
-    
-    weak var delegate: PreLoginViewModelDelegate?
-    
-    var hasUser: Bool {
-        return userService.hasLoggedInUser()
-    }
-    
-    func signInAnonymously() {
-        userService.signInAnonymously { result in
-            switch result {
-            case .success:
-                self.delegate?.signInCompleted()
-            case .failure(let error):
-                print(error.localizedDescription)
-                return
-            }
-        }
-    }
-    
-    func loginWith(email: String, password: String) {
-        userService.loginWith(email: email, password: password) { result in
-            switch result {
-            case .success:
-                self.delegate?.signInCompleted()
-            case .failure(let error):
-                print(error.localizedDescription)
-                return
-            }
-        }
-    }
-}
-
 class PreLoginViewController: BaseViewController {
     
     let viewModel = PreLoginViewModel()
@@ -65,6 +27,15 @@ class PreLoginViewController: BaseViewController {
                 return
         }
         viewModel.loginWith(email: email, password: password)
+    }
+    
+    @IBAction func signUpTapped(_ sender: Any) {
+        guard
+            let email = emailTextField.text,
+            let password = passwordTextField.text else {
+                return
+        }
+        viewModel.createUserWith(email: email, password: password)
     }
     
     @IBAction func incongitoTapped(_ sender: Any) {

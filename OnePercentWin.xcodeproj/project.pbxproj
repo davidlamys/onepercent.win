@@ -23,6 +23,7 @@
 		15E76EAE22D0571100F8F99E /* PreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */; };
 		15E76EB022D0572E00F8F99E /* PreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */; };
 		15E76EB222D097E300F8F99E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB122D097E300F8F99E /* BaseViewController.swift */; };
+		15E76EB622D0E87400F8F99E /* PreLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */; };
 		15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */; };
 		630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */; };
 		630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9853222AA025008B0116 /* DateSelectionViewController.swift */; };
@@ -90,6 +91,7 @@
 		15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreLoginViewController.storyboard; sourceTree = "<group>"; };
 		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
 		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewModel.swift; sourceTree = "<group>"; };
 		15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryContracts.swift; sourceTree = "<group>"; };
 		1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePercentWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelectionViewController.storyboard; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */,
 				15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */,
+				15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */,
 			);
 			path = "Pre-login";
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				630A985E222AA09D008B0116 /* DateSelectionCoordinator.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
+				15E76EB622D0E87400F8F99E /* PreLoginViewModel.swift in Sources */,
 				15E2FCCA22633FDD00C5775F /* DashboardViewModel.swift in Sources */,
 				15E76EB022D0572E00F8F99E /* PreLoginViewController.swift in Sources */,
 				634C9EAA2249E9A500E2B53E /* UIView+Ext.swift in Sources */,
