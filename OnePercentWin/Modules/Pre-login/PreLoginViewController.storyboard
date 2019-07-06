@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JIa-qk-uYu">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pre Login View Controller-->
+        <scene sceneID="n77-fg-Yk8">
+            <objects>
+                <viewController id="JIa-qk-uYu" customClass="PreLoginViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Igw-G4-VGb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-6k-YcS">
+                                <rect key="frame" x="20" y="358" width="374" height="190"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-oC-VBJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WeZ-xB-FbC"/>
+                                        </constraints>
+                                        <state key="normal" title="Login"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SO-Ng-0eD">
+                                        <rect key="frame" x="0.0" y="70" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="NMK-8L-jDM"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign up"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztU-aC-zgD">
+                                        <rect key="frame" x="0.0" y="140" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="cPf-BZ-e2d"/>
+                                        </constraints>
+                                        <state key="normal" title="Continue Incognito"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ztU-aC-zgD" firstAttribute="width" secondItem="q3f-oC-VBJ" secondAttribute="width" id="TPI-S5-dSw"/>
+                                    <constraint firstItem="5SO-Ng-0eD" firstAttribute="width" secondItem="q3f-oC-VBJ" secondAttribute="width" id="sLA-Is-WKt"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gv9-6k-YcS" firstAttribute="centerY" secondItem="zjc-mD-cax" secondAttribute="centerY" id="4qx-Qe-M4D"/>
+                            <constraint firstItem="q3f-oC-VBJ" firstAttribute="leading" secondItem="zjc-mD-cax" secondAttribute="leading" constant="20" id="BiU-na-8OG"/>
+                            <constraint firstItem="zjc-mD-cax" firstAttribute="trailing" secondItem="q3f-oC-VBJ" secondAttribute="trailing" constant="20" id="qm1-pa-cBJ"/>
+                            <constraint firstItem="gv9-6k-YcS" firstAttribute="centerX" secondItem="zjc-mD-cax" secondAttribute="centerX" id="v1N-to-ry8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zjc-mD-cax"/>
+                    </view>
+                    <connections>
+                        <outlet property="incognitoButton" destination="ztU-aC-zgD" id="JiL-AC-UbV"/>
+                        <outlet property="loginButton" destination="q3f-oC-VBJ" id="VHe-fC-QNe"/>
+                        <outlet property="signupButton" destination="5SO-Ng-0eD" id="1lW-va-Wpl"/>
+                        <segue destination="1Tn-MG-GR6" kind="presentation" identifier="presentMainViewController" animates="NO" modalPresentationStyle="fullScreen" id="Zzd-ul-sNR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1e-E0-Zhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76.811594202898561" y="77.678571428571431"/>
+        </scene>
+        <!--MainViewController-->
+        <scene sceneID="jQB-O0-4Iw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainViewController" id="1Tn-MG-GR6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UdR-st-3vJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="78"/>
+        </scene>
+    </scenes>
+</document>
