@@ -28,9 +28,9 @@ platform :ios do
       ipa: "./OnePercentWin.ipa",
       message: commit[:message]
     )
-    add_git_tag(tag: "#{cached_timestamp}")
-    push_git_tags(tag: "å#{cached_timestamp}")
-  
+    # add_git_tag(tag: "#{cached_timestamp}")
+    # push_git_tags(tag: "å#{cached_timestamp}")
+
   end
 
 end
