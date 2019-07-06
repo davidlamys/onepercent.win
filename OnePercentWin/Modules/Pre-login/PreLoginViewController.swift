@@ -34,7 +34,7 @@ class PreLoginViewModel {
     }
     
     func loginWith(email: String, password: String) {
-        userService.signInWith(email: email, password: password) { result in
+        userService.loginWith(email: email, password: password) { result in
             switch result {
             case .success:
                 self.delegate?.signInCompleted()
