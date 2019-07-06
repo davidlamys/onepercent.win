@@ -14,6 +14,10 @@ class PreLoginViewController: BaseViewController {
     private let userService = UserService()
     private var goalsListner: UserGoalQueryListener!
     
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var incognitoButton: UIButton!
@@ -47,6 +51,16 @@ class PreLoginViewController: BaseViewController {
         loginButton.applyStyle()
         signupButton.applyStyle()
         incognitoButton.applyStyle()
+
+        emailLabel.applyFont(fontSize: .medium)
+        emailTextField.applyFont(fontSize: .medium)
+        emailTextField.backgroundColor = .clear
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+
+        passwordLabel.applyFont(fontSize: .medium)
+        passwordTextField.applyFont(fontSize: .medium)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+        passwordTextField.backgroundColor = .clear
     }
     
     private func setupForLoggedInUser() {
