@@ -21,10 +21,7 @@ class PreLoginViewController: BaseViewController {
     @IBAction func incongitoTapped(_ sender: Any) {
         Auth.auth().signInAnonymously() { (authResult, error) in
             if let result = authResult {
-                if self.userService.hasLoggedInUser() {
-                    self.setupForLoggedInUser()
-                }
-                
+                self.setupViews()
             } else if let error = error {
                 print(error.localizedDescription)
                 return
@@ -34,16 +31,16 @@ class PreLoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
+            self.setupViews()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if userService.hasLoggedInUser() {
-            setupForLoggedInUser()
-        } else {
-            goalsListner?.delegate = nil
-            toggleButtons(isHidden: false)
-        }
+        setupViews()
     }
     
     override func styleElements() {
@@ -58,6 +55,20 @@ class PreLoginViewController: BaseViewController {
         let userId = userService.userId()
         goalsListner.set(userId: userId)
         goalsListner?.delegate = self
+    }
+    
+    private func setupViews() {
+        if userService.hasLoggedInUser() {
+            setupForLoggedInUser()
+        } else {
+            setupForLoggedOutUser()
+        }
+    }
+    
+    private func setupForLoggedOutUser() {
+        goalsListner?.delegate = nil
+        toggleButtons(isHidden: false)
+        dismiss(animated: true)
     }
     
     private func toggleButtons(isHidden: Bool) {

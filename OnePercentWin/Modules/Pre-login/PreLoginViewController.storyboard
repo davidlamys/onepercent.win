@@ -64,7 +64,7 @@
                         <outlet property="incognitoButton" destination="ztU-aC-zgD" id="JiL-AC-UbV"/>
                         <outlet property="loginButton" destination="q3f-oC-VBJ" id="VHe-fC-QNe"/>
                         <outlet property="signupButton" destination="5SO-Ng-0eD" id="1lW-va-Wpl"/>
-                        <segue destination="1Tn-MG-GR6" kind="presentation" identifier="presentMainViewController" animates="NO" modalPresentationStyle="fullScreen" id="Zzd-ul-sNR"/>
+                        <segue destination="1Tn-MG-GR6" kind="presentation" identifier="presentMainViewController" modalPresentationStyle="fullScreen" id="Zzd-ul-sNR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1e-E0-Zhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
