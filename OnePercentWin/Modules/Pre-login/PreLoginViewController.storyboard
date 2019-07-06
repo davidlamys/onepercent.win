@@ -40,6 +40,9 @@
                                             <constraint firstAttribute="height" constant="50" id="cPf-BZ-e2d"/>
                                         </constraints>
                                         <state key="normal" title="Continue Incognito"/>
+                                        <connections>
+                                            <action selector="incongitoTapped:" destination="JIa-qk-uYu" eventType="touchUpInside" id="QdU-RQ-2fE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import Firebase
 
 class PreLoginViewController: BaseViewController {
-
+    
     private let userService = UserService()
     private var goalsListner: UserGoalQueryListener!
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var incognitoButton: UIButton!
+    
+    @IBAction func incongitoTapped(_ sender: Any) {
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            if let result = authResult {
+                if self.userService.hasLoggedInUser() {
+                    self.setupForLoggedInUser()
+                }
+                
+            } else if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +39,7 @@ class PreLoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if userService.hasLoggedInUser() {
-            toggleButtons(isHidden: true)
-            goalsListner = UserGoalQueryListener.shared
-            let userId = userService.userId()
-            goalsListner.set(userId: userId)
-            goalsListner?.delegate = self
+            setupForLoggedInUser()
         } else {
             goalsListner?.delegate = nil
             toggleButtons(isHidden: false)
@@ -39,6 +50,14 @@ class PreLoginViewController: BaseViewController {
         loginButton.applyStyle()
         signupButton.applyStyle()
         incognitoButton.applyStyle()
+    }
+    
+    private func setupForLoggedInUser() {
+        toggleButtons(isHidden: true)
+        goalsListner = UserGoalQueryListener.shared
+        let userId = userService.userId()
+        goalsListner.set(userId: userId)
+        goalsListner?.delegate = self
     }
     
     private func toggleButtons(isHidden: Bool) {
