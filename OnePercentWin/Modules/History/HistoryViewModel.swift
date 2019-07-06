@@ -36,6 +36,7 @@ class HistoryViewModel {
          userService: UserService) {
         self.delegate = delegate
         self.userService = userService
+        shouldShowAllGoals = true
         wrapper = RepoWrapper.shared
         wrapper.delegate = self
     }
