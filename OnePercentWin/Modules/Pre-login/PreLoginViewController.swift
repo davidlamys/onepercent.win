@@ -7,12 +7,48 @@
 //
 
 import UIKit
-import Firebase
+
+protocol PreLoginViewModelDelegate: class {
+    func signInCompleted()
+}
+
+class PreLoginViewModel {
+    private let userService = UserService()
+    
+    weak var delegate: PreLoginViewModelDelegate?
+    
+    var hasUser: Bool {
+        return userService.hasLoggedInUser()
+    }
+    
+    func signInAnonymously() {
+        userService.signInAnonymously { result in
+            switch result {
+            case .success:
+                self.delegate?.signInCompleted()
+            case .failure(let error):
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    func loginWith(email: String, password: String) {
+        userService.signInWith(email: email, password: password) { result in
+            switch result {
+            case .success:
+                self.delegate?.signInCompleted()
+            case .failure(let error):
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+}
 
 class PreLoginViewController: BaseViewController {
     
-    private let userService = UserService()
-    private var goalsListner: UserGoalQueryListener!
+    let viewModel = PreLoginViewModel()
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -22,15 +58,17 @@ class PreLoginViewController: BaseViewController {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var incognitoButton: UIButton!
     
-    @IBAction func incongitoTapped(_ sender: Any) {
-        Auth.auth().signInAnonymously() { (authResult, error) in
-            if let result = authResult {
-                self.setupViews()
-            } else if let error = error {
-                print(error.localizedDescription)
+    @IBAction func loginTapped(_ sender: Any) {
+        guard
+            let email = emailTextField.text,
+            let password = passwordTextField.text else {
                 return
-            }
         }
+        viewModel.loginWith(email: email, password: password)
+    }
+    
+    @IBAction func incongitoTapped(_ sender: Any) {
+        viewModel.signInAnonymously()
     }
     
     override func viewDidLoad() {
@@ -39,7 +77,7 @@ class PreLoginViewController: BaseViewController {
         NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
             self.setupViews()
         }
-        
+        viewModel.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,14 +103,11 @@ class PreLoginViewController: BaseViewController {
     
     private func setupForLoggedInUser() {
         toggleButtons(isHidden: true)
-        goalsListner = UserGoalQueryListener.shared
-        let userId = userService.userId()
-        goalsListner.set(userId: userId)
-        goalsListner?.delegate = self
+        performSegue(withIdentifier: "presentMainViewController", sender: nil)
     }
     
     private func setupViews() {
-        if userService.hasLoggedInUser() {
+        if viewModel.hasUser {
             setupForLoggedInUser()
         } else {
             setupForLoggedOutUser()
@@ -80,23 +115,25 @@ class PreLoginViewController: BaseViewController {
     }
     
     private func setupForLoggedOutUser() {
-        goalsListner?.delegate = nil
         toggleButtons(isHidden: false)
         dismiss(animated: true)
     }
     
     private func toggleButtons(isHidden: Bool) {
+        emailLabel.isHidden = isHidden
+        emailTextField.isHidden = isHidden
+        emailTextField.text = nil
+        passwordLabel.isHidden = isHidden
+        passwordTextField.isHidden = isHidden
+        passwordTextField.text = nil
         loginButton.isHidden = isHidden
         signupButton.isHidden = isHidden
         incognitoButton.isHidden = isHidden
     }
 }
 
-extension PreLoginViewController: RepoWrapperDelegate {
-    func refreshWith(goals: [DailyGoal]) {
-        guard userService.hasLoggedInUser() else {
-            fatalError()
-        }
-        performSegue(withIdentifier: "presentMainViewController", sender: nil)
+extension PreLoginViewController: PreLoginViewModelDelegate {
+    func signInCompleted() {
+        self.setupViews()
     }
 }

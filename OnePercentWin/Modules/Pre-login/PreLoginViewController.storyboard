@@ -66,6 +66,9 @@
                                             <constraint firstAttribute="height" constant="50" id="dAI-Gq-hHZ"/>
                                         </constraints>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="JIa-qk-uYu" eventType="touchUpInside" id="6yQ-jL-BBF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SO-Ng-0eD">
                                         <rect key="frame" x="0.0" y="210" width="374" height="50"/>
