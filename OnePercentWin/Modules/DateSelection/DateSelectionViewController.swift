@@ -14,7 +14,7 @@ final class DateSelectionViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var presenter: DateSelectionPresenterProtocol? {
+    weak var presenter: DateSelectionPresenterProtocol? {
         didSet {
             presenter?.setupPresenter()
         }

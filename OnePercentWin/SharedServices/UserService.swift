@@ -9,6 +9,13 @@
 import Foundation
 import FirebaseAuth
 
+typealias UserServiceResult = Result<OPWUser, Error>
+
+struct OPWUser {
+    let displayName: String?
+}
+
+
 class UserService {
     
     private let userDefaultsWrapper = UserDefaultsWrapper()
@@ -54,6 +61,52 @@ class UserService {
     
     func didAuthenticateUser() {
         NotificationCenter.default.post(for: .userDidChange)
+    }
+    
+    func signInAnonymously(completion: @escaping (UserServiceResult) -> Void) {
+        Auth.auth().signInAnonymously { (result, error) in
+            if let error = error {
+                completion(UserServiceResult.failure(error))
+                return
+            }
+            if let result = result {
+                completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
+                return
+            }
+            fatalError()
+        }
+    }
+    
+    func loginWith(email: String,
+                    password: String,
+                    completion: @escaping (UserServiceResult) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(UserServiceResult.failure(error))
+                return
+            }
+            if let result = result {
+                completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
+                return
+            }
+            fatalError()
+        }
+    }
+    
+    func signUpWith(email: String,
+                    password: String,
+                    completion: @escaping (UserServiceResult) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(UserServiceResult.failure(error))
+                return
+            }
+            if let result = result {
+                completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
+                return
+            }
+            fatalError()
+        }
     }
     
 }

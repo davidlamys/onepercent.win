@@ -12,7 +12,7 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     
     weak var dateView: DateSelectionViewProtocol?
     weak var outputConsumer: DateSelectionPresenterOutputConsumer?
-    var interactor: DateSelectionInteractorProtocol? {
+    weak var interactor: DateSelectionInteractorProtocol? {
         didSet {
             interactor?.fetchAllUserGoals()
         }

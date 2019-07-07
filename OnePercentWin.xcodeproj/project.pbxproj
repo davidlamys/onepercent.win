@@ -20,6 +20,11 @@
 		15A8FD2822C50C7D00C868D8 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */; };
 		15E2FCCA22633FDD00C5775F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */; };
 		15E2FCCC226340D200C5775F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15E2FCCB226340D200C5775F /* GoogleService-Info.plist */; };
+		15E76EAE22D0571100F8F99E /* PreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */; };
+		15E76EB022D0572E00F8F99E /* PreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */; };
+		15E76EB222D097E300F8F99E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB122D097E300F8F99E /* BaseViewController.swift */; };
+		15E76EB622D0E87400F8F99E /* PreLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */; };
+		15E76EBA22D19D1500F8F99E /* Checklist.md in Resources */ = {isa = PBXBuildFile; fileRef = 15E76EB922D19D1500F8F99E /* Checklist.md */; };
 		15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */; };
 		630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */; };
 		630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9853222AA025008B0116 /* DateSelectionViewController.swift */; };
@@ -84,6 +89,11 @@
 		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreLoginViewController.storyboard; sourceTree = "<group>"; };
+		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
+		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewModel.swift; sourceTree = "<group>"; };
+		15E76EB922D19D1500F8F99E /* Checklist.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Checklist.md; sourceTree = "<group>"; };
 		15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryContracts.swift; sourceTree = "<group>"; };
 		1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePercentWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelectionViewController.storyboard; sourceTree = "<group>"; };
@@ -165,6 +175,7 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
+				15E76EB922D19D1500F8F99E /* Checklist.md */,
 				15E76EA122CF875100F8F99E /* Modules */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
@@ -247,6 +258,8 @@
 		15E76EA122CF875100F8F99E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				15E76EAB22D04D7500F8F99E /* Pre-login */,
+				15E76EAC22D04D7F00F8F99E /* Login */,
 				150A303321A70237000CAB0C /* History */,
 				630A9850222A9FFB008B0116 /* DateSelection */,
 				150A302821A700C4000CAB0C /* MainViewController */,
@@ -256,8 +269,26 @@
 				63BB459121F5AA51006556D3 /* Dashboard */,
 				6371A51E21FC4A3000D80CF7 /* CompletedGoal */,
 				15A8FD2422C50C0200C868D8 /* Check-in */,
+				15E76EB122D097E300F8F99E /* BaseViewController.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		15E76EAB22D04D7500F8F99E /* Pre-login */ = {
+			isa = PBXGroup;
+			children = (
+				15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */,
+				15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */,
+				15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */,
+			);
+			path = "Pre-login";
+			sourceTree = "<group>";
+		};
+		15E76EAC22D04D7F00F8F99E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		630A9850222A9FFB008B0116 /* DateSelection */ = {
@@ -423,6 +454,7 @@
 				15A8FD2622C50C5200C868D8 /* CheckinViewController.storyboard in Resources */,
 				150A301E21A6E107000CAB0C /* LaunchScreen.storyboard in Resources */,
 				630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */,
+				15E76EAE22D0571100F8F99E /* PreLoginViewController.storyboard in Resources */,
 				63426E2921E9F65700EA35CB /* Roboto-Regular.ttf in Resources */,
 				6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */,
 				63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */,
@@ -433,6 +465,7 @@
 				63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */,
 				63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */,
 				63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */,
+				15E76EBA22D19D1500F8F99E /* Checklist.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +576,7 @@
 				15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */,
 				150A301221A6E106000CAB0C /* AppDelegate.swift in Sources */,
 				15A8FD2822C50C7D00C868D8 /* CheckinViewController.swift in Sources */,
+				15E76EB222D097E300F8F99E /* BaseViewController.swift in Sources */,
 				63426E0021E9E3AB00EA35CB /* HistoryCellModel.swift in Sources */,
 				63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */,
 				630A985C222AA08A008B0116 /* DateSelectionBuilder.swift in Sources */,
@@ -563,7 +597,9 @@
 				630DC5F321B011B600E608F4 /* SettingsViewModel.swift in Sources */,
 				630A985E222AA09D008B0116 /* DateSelectionCoordinator.swift in Sources */,
 				150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */,
+				15E76EB622D0E87400F8F99E /* PreLoginViewModel.swift in Sources */,
 				15E2FCCA22633FDD00C5775F /* DashboardViewModel.swift in Sources */,
+				15E76EB022D0572E00F8F99E /* PreLoginViewController.swift in Sources */,
 				634C9EAA2249E9A500E2B53E /* UIView+Ext.swift in Sources */,
 				630A9856222AA03F008B0116 /* DateSelectionPresenter.swift in Sources */,
 				630A9858222AA05F008B0116 /* DateSelectionInteractor.swift in Sources */,
@@ -710,7 +746,7 @@
 			baseConfigurationReference = AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
@@ -721,8 +757,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.happylab.onepercentwin";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.happylab.onepercentwin";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -744,7 +780,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.happylab.onepercentwin";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
