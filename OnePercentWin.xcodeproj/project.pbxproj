@@ -24,6 +24,7 @@
 		15E76EB022D0572E00F8F99E /* PreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */; };
 		15E76EB222D097E300F8F99E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB122D097E300F8F99E /* BaseViewController.swift */; };
 		15E76EB622D0E87400F8F99E /* PreLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */; };
+		15E76EBA22D19D1500F8F99E /* Checklist.md in Resources */ = {isa = PBXBuildFile; fileRef = 15E76EB922D19D1500F8F99E /* Checklist.md */; };
 		15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */; };
 		630A9852222AA016008B0116 /* DateSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */; };
 		630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630A9853222AA025008B0116 /* DateSelectionViewController.swift */; };
@@ -92,6 +93,7 @@
 		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
 		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		15E76EB522D0E87400F8F99E /* PreLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewModel.swift; sourceTree = "<group>"; };
+		15E76EB922D19D1500F8F99E /* Checklist.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Checklist.md; sourceTree = "<group>"; };
 		15F33FE522C65A7700A4278B /* NotesEntryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEntryContracts.swift; sourceTree = "<group>"; };
 		1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePercentWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630A9851222AA016008B0116 /* DateSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelectionViewController.storyboard; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		150A301021A6E106000CAB0C /* OnePercentWin */ = {
 			isa = PBXGroup;
 			children = (
+				15E76EB922D19D1500F8F99E /* Checklist.md */,
 				15E76EA122CF875100F8F99E /* Modules */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
@@ -462,6 +465,7 @@
 				63BA7BC821CFA4210010A5A7 /* GoalEntry.storyboard in Resources */,
 				63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */,
 				63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */,
+				15E76EBA22D19D1500F8F99E /* Checklist.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
