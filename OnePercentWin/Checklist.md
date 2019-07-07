@@ -6,7 +6,7 @@ Turn off get nosy [ ]
 Linking anonoymous account [ ]
 Forget password [ ]
 Logout confirmation for anonoymous account [ ]
-
+Fix iPhone 5s display bugs [ ]
 
 Good to have
 Mechanism to unlock get nosy [ ]
