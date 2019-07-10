@@ -10,6 +10,7 @@ import Foundation
 
 protocol PreLoginViewModelDelegate: class {
     func signInCompleted()
+    func signInFailed(message: String)
 }
 
 class PreLoginViewModel {
@@ -37,8 +38,7 @@ class PreLoginViewModel {
         case .success:
             self.delegate?.signInCompleted()
         case .failure(let error):
-            print(error.localizedDescription)
-            return
+            self.delegate?.signInFailed(message: error.localizedDescription)
         }
     }
 }

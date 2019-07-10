@@ -1,6 +1,7 @@
 ## 7 July 2019 ##
 ### Backlog to launch ###
-Authentication negative flow [ ]
+Authentication loading flow [x ]
+Authentication negative flow [x ]
 Google Sign in [ ]
 Turn off get nosy [ ]
 Linking anonoymous account [ ]

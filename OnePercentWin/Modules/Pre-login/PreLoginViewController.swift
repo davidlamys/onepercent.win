@@ -11,6 +11,7 @@ import UIKit
 class PreLoginViewController: BaseViewController {
     
     let viewModel = PreLoginViewModel()
+    let spinner = SpinnerViewController()
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -26,6 +27,7 @@ class PreLoginViewController: BaseViewController {
             let password = passwordTextField.text else {
                 return
         }
+        showSpinnerView()
         viewModel.loginWith(email: email, password: password)
     }
     
@@ -35,10 +37,12 @@ class PreLoginViewController: BaseViewController {
             let password = passwordTextField.text else {
                 return
         }
+        showSpinnerView()
         viewModel.createUserWith(email: email, password: password)
     }
     
     @IBAction func incongitoTapped(_ sender: Any) {
+        showSpinnerView()
         viewModel.signInAnonymously()
     }
     
@@ -61,20 +65,22 @@ class PreLoginViewController: BaseViewController {
         signupButton.applyStyle()
         incognitoButton.applyStyle()
 
-        emailLabel.applyFont(fontSize: .medium)
-        emailTextField.applyFont(fontSize: .medium)
-        emailTextField.backgroundColor = .clear
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
-
+        styleEmailElements()
+        stylePasswordElements()
+    }
+    
+    fileprivate func stylePasswordElements() {
         passwordLabel.applyFont(fontSize: .medium)
         passwordTextField.applyFont(fontSize: .medium)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         passwordTextField.backgroundColor = .clear
     }
     
-    private func setupForLoggedInUser() {
-        toggleButtons(isHidden: true)
-        performSegue(withIdentifier: "presentMainViewController", sender: nil)
+    fileprivate func styleEmailElements() {
+        emailLabel.applyFont(fontSize: .medium)
+        emailTextField.applyFont(fontSize: .medium)
+        emailTextField.backgroundColor = .clear
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
     }
     
     private func setupViews() {
@@ -83,6 +89,11 @@ class PreLoginViewController: BaseViewController {
         } else {
             setupForLoggedOutUser()
         }
+    }
+    
+    private func setupForLoggedInUser() {
+        toggleButtons(isHidden: true)
+        performSegue(withIdentifier: "presentMainViewController", sender: nil)
     }
     
     private func setupForLoggedOutUser() {
@@ -101,10 +112,48 @@ class PreLoginViewController: BaseViewController {
         signupButton.isHidden = isHidden
         incognitoButton.isHidden = isHidden
     }
+    
 }
 
 extension PreLoginViewController: PreLoginViewModelDelegate {
     func signInCompleted() {
-        self.setupViews()
+        hideSpinnerView()
+        setupViews()
     }
+    
+    func signInFailed(message: String) {
+        hideSpinnerView()
+        setupViews()
+        showAlertWithText(errorMessage: message)
+    }
+}
+
+// MARK: - AuxillaryViews
+extension PreLoginViewController {
+    private func showSpinnerView() {
+        addChild(spinner)
+        spinner.view.frame = view.frame
+        view.addSubview(spinner.view)
+        spinner.didMove(toParent: self)
+    }
+    
+    private func hideSpinnerView() {
+        spinner.willMove(toParent: nil)
+        spinner.view.removeFromSuperview()
+        spinner.removeFromParent()
+    }
+    
+    private func showAlertWithText(errorMessage: String) {
+        let alert = UIAlertController(title: "Oops something went wrong",
+                                      message: errorMessage,
+                                      preferredStyle: .alert)
+        
+        let okayAction = UIAlertAction(title: "Okay",
+                                       style: UIAlertAction.Style.destructive){ [weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        alert.addAction(okayAction)
+        present(alert, animated: true)
+    }
+    
 }

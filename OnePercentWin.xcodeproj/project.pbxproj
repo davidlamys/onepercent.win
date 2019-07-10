@@ -16,6 +16,7 @@
 		150A303121A70207000CAB0C /* RepoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303021A70207000CAB0C /* RepoWrapper.swift */; };
 		150A303521A70248000CAB0C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303421A70248000CAB0C /* HistoryViewController.swift */; };
 		150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150A303621A70251000CAB0C /* HistoryViewModel.swift */; };
+		159E5E8B22D6221D004E6E49 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E5E8A22D6221D004E6E49 /* SpinnerView.swift */; };
 		15A8FD2622C50C5200C868D8 /* CheckinViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */; };
 		15A8FD2822C50C7D00C868D8 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */; };
 		15E2FCCA22633FDD00C5775F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */; };
@@ -85,6 +86,7 @@
 		150A303021A70207000CAB0C /* RepoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWrapper.swift; sourceTree = "<group>"; };
 		150A303421A70248000CAB0C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		150A303621A70251000CAB0C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		159E5E8A22D6221D004E6E49 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckinViewController.storyboard; sourceTree = "<group>"; };
 		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		150A302D21A701E1000CAB0C /* SharedServices */ = {
 			isa = PBXGroup;
 			children = (
+				159E5E8922D62209004E6E49 /* SharedViews */,
 				63426E0321E9F45000EA35CB /* Fonts */,
 				150A303021A70207000CAB0C /* RepoWrapper.swift */,
 				63BA7C0521D1DF6F0010A5A7 /* UserService.swift */,
@@ -244,6 +247,14 @@
 				630DC5F421B191C900E608F4 /* UserSettings.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		159E5E8922D62209004E6E49 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				159E5E8A22D6221D004E6E49 /* SpinnerView.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		15A8FD2422C50C0200C868D8 /* Check-in */ = {
@@ -565,6 +576,7 @@
 			files = (
 				6371A51B21F9AE5B00D80CF7 /* NotesEntryViewController.swift in Sources */,
 				63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */,
+				159E5E8B22D6221D004E6E49 /* SpinnerView.swift in Sources */,
 				150A302C21A701DC000CAB0C /* MainViewModel.swift in Sources */,
 				63BB459321F5AA73006556D3 /* DashboardViewController.swift in Sources */,
 				630DC5F521B191C900E608F4 /* UserSettings.swift in Sources */,
