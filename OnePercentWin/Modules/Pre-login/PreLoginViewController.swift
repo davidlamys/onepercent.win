@@ -52,6 +52,14 @@ class PreLoginViewController: BaseViewController {
         NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
             self.setupViews()
         }
+        emailTextField.delegate = self
+        emailTextField.returnKeyType = .next
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+
+        passwordTextField.delegate = self
+        passwordTextField.returnKeyType = .done
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+
         viewModel.delegate = self
     }
     
@@ -104,27 +112,60 @@ class PreLoginViewController: BaseViewController {
     private func toggleButtons(isHidden: Bool) {
         emailLabel.isHidden = isHidden
         emailTextField.isHidden = isHidden
-        emailTextField.text = nil
         passwordLabel.isHidden = isHidden
         passwordTextField.isHidden = isHidden
-        passwordTextField.text = nil
         loginButton.isHidden = isHidden
         signupButton.isHidden = isHidden
         incognitoButton.isHidden = isHidden
+        toggleButtonsEnablement()
     }
     
+    private func clearTextFields() {
+        emailTextField.text = nil
+        passwordTextField.text = nil
+    }
 }
 
 extension PreLoginViewController: PreLoginViewModelDelegate {
     func signInCompleted() {
         hideSpinnerView()
         setupViews()
+        clearTextFields()
     }
     
     func signInFailed(message: String) {
         hideSpinnerView()
         setupViews()
         showAlertWithText(errorMessage: message)
+    }
+}
+
+extension PreLoginViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        toggleButtonsEnablement()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField) {
+        toggleButtonsEnablement()
+    }
+    
+    private func toggleButtonsEnablement() {
+        let emailIsEmpty = (emailTextField.text?.isEmpty) ?? true
+        let passwordIsEmpty = (passwordTextField.text?.isEmpty) ?? true
+        let shouldDisable = emailIsEmpty || passwordIsEmpty
+        loginButton.isEnabled = !shouldDisable
+        signupButton.isEnabled = !shouldDisable
     }
 }
 

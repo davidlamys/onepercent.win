@@ -12,6 +12,7 @@ extension UIButton {
     func applyStyle() {
         backgroundColor = ThemeHelper.defaultOrange()
         setTitleColor(ThemeHelper.textColor(), for: .normal)
+        setTitleColor(.gray, for: .disabled)
         layer.cornerRadius = 5.0
         clipsToBounds = true
     }
