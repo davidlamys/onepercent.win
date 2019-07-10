@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bz2-5h-OcH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bz2-5h-OcH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,6 +119,7 @@
                         <outlet property="congratulationsLabel" destination="PDW-hu-sC5" id="2lK-Tb-FOf"/>
                         <outlet property="congrulationsSubtitleLabel" destination="ySZ-Wm-q2M" id="Kyn-1a-yrw"/>
                         <outlet property="goalPrompt" destination="0gs-fI-6oZ" id="XCG-mE-rU7"/>
+                        <outlet property="imageView" destination="oaP-b6-ldG" id="tjX-zs-2JJ"/>
                         <outlet property="imageViewHolder" destination="yqf-qJ-m6Y" id="Xf5-H4-IBW"/>
                         <outlet property="lessonsLearntLabel" destination="MBn-wJ-hQ6" id="MY9-xy-VwJ"/>
                         <outlet property="lessonsLearntPrompt" destination="1LD-VG-OAV" id="pGJ-Jf-C1Z"/>

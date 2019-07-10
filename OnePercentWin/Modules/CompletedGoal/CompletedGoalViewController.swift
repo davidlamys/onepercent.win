@@ -16,6 +16,7 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
     @IBOutlet private weak var lessonsLearntPrompt: UILabel!
     @IBOutlet private weak var lessonsLearntLabel: UILabel!
     @IBOutlet private weak var imageViewHolder: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var addLessonLearntButton: UIButton!
     @IBOutlet private weak var stackViewHolder: UIStackView!
     
@@ -75,6 +76,7 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
         lessonsLearntPrompt.applyFont(fontSize: .medium)
         lessonsLearntLabel.applyFont(fontSize: .medium, color: orange)
         addLessonLearntButton.applyStyle()
+        imageView.setImage(.goalCompletedDashboardImage)
     }
     
 

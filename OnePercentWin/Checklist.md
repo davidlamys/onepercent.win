@@ -13,3 +13,6 @@ Mechanism to unlock get nosy [ ]
     Mechanism to turn posts public [ ]
 Onboarding [ ]
 Local notification modification [ ]
+
+Todo:
+Think about image templating?

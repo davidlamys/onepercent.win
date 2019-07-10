@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreImage
 
 enum SizeType {
     case large
@@ -68,6 +69,16 @@ class ThemeHelper {
         return UIColor(rgb: 0xFF9500)
     }
     
+    private static func getTheme() -> ThemeType {
+        guard let settings = userDefaultsWrapper.getSettings(),
+            let theme = settings.theme
+        else {
+            return .dark
+        }
+        
+        return theme
+    }
+    
     static func backgroundColor() -> UIColor {
         guard var settings = userDefaultsWrapper.getSettings() else {
             return .black
@@ -96,6 +107,15 @@ class ThemeHelper {
     
     static func tabbarColor() -> UIColor {
         return backgroundColor()
+    }
+    
+    fileprivate static func getTintColor() -> UIColor {
+        switch getTheme() {
+        case .dark:
+            return .white
+        case .light:
+            return .black
+        }
     }
     
 }
@@ -133,8 +153,9 @@ fileprivate protocol ImageProvider {
     static func getImage(for image: Images) -> UIImage
 }
 
-enum Images {
+enum Images: Hashable {
     case noGoalImage
+    case goalCompletedDashboardImage
 }
 
 fileprivate struct DarkThemeImageProvider: ImageProvider {
@@ -142,6 +163,8 @@ fileprivate struct DarkThemeImageProvider: ImageProvider {
         switch image {
         case .noGoalImage:
             return #imageLiteral(resourceName: "no_goal_dark")
+        case .goalCompletedDashboardImage:
+            return #imageLiteral(resourceName: "clappingHandPartner").withRenderingMode(.alwaysTemplate)
         }
     }
 }
@@ -151,6 +174,15 @@ fileprivate struct LightThemeImageProvider: ImageProvider {
         switch image {
         case .noGoalImage:
             return #imageLiteral(resourceName: "no_goal_light")
+        case .goalCompletedDashboardImage:
+            return #imageLiteral(resourceName: "clappingHandPartner").withRenderingMode(.alwaysTemplate)
         }
+    }
+}
+
+extension UIImageView {
+    func setImage(_ image: Images) {
+        self.image = ThemeHelper.getImage(for: image)
+        tintColor = ThemeHelper.getTintColor()
     }
 }
