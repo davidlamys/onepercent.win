@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class PreLoginViewController: BaseViewController {
     
@@ -20,7 +21,8 @@ class PreLoginViewController: BaseViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var incognitoButton: UIButton!
-    
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
+
     @IBAction func loginTapped(_ sender: Any) {
         guard
             let email = emailTextField.text,
@@ -52,6 +54,11 @@ class PreLoginViewController: BaseViewController {
         NotificationCenter.default.observeOnMainQueue(for: .userDidChange) { _ in
             self.setupViews()
         }
+        
+        NotificationCenter.default.observeOnMainQueue(for: .themeDidChange) { _ in
+            self.styleElements()
+        }
+        
         emailTextField.delegate = self
         emailTextField.returnKeyType = .next
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
@@ -75,6 +82,14 @@ class PreLoginViewController: BaseViewController {
 
         styleEmailElements()
         stylePasswordElements()
+        
+        let theme = ThemeHelper.getTheme()
+        switch theme {
+        case .light:
+            googleSignInButton.colorScheme = .light
+        case .dark:
+            googleSignInButton.colorScheme = .dark
+        }
     }
     
     fileprivate func stylePasswordElements() {
@@ -117,6 +132,7 @@ class PreLoginViewController: BaseViewController {
         loginButton.isHidden = isHidden
         signupButton.isHidden = isHidden
         incognitoButton.isHidden = isHidden
+        googleSignInButton.isHidden = isHidden
         toggleButtonsEnablement()
     }
     

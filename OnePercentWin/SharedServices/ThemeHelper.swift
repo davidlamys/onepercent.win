@@ -69,7 +69,7 @@ class ThemeHelper {
         return UIColor(rgb: 0xFF9500)
     }
     
-    private static func getTheme() -> ThemeType {
+    static func getTheme() -> ThemeType {
         guard let settings = userDefaultsWrapper.getSettings(),
             let theme = settings.theme
         else {
