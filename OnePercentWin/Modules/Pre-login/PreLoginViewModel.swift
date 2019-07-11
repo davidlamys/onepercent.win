@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol PreLoginViewModelDelegate: class {
     func signInCompleted()
@@ -27,6 +28,11 @@ class PreLoginViewModel {
     
     func loginWith(email: String, password: String) {
         userService.loginWith(email: email, password: password, completion: authenticationHandler)
+    }
+    
+    func signWithGoogleAuth(auth: AuthCredential) {
+        userService.signInWithGoogleAuth(auth: auth,
+                                         completion: authenticationHandler)
     }
     
     func createUserWith(email: String, password: String) {

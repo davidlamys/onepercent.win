@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import GoogleSignIn
 
 typealias UserServiceResult = Result<OPWUser, Error>
 
@@ -54,6 +55,7 @@ class UserService {
         do {
             try Auth.auth().signOut()
             NotificationCenter.default.post(for: .userDidChange)
+            GIDSignIn.sharedInstance().signOut()
         } catch let error {
             print(error)
         }
@@ -70,6 +72,7 @@ class UserService {
                 return
             }
             if let result = result {
+                self.didAuthenticateUser()
                 completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
                 return
             }
@@ -86,6 +89,23 @@ class UserService {
                 return
             }
             if let result = result {
+                self.didAuthenticateUser()
+                completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
+                return
+            }
+            fatalError()
+        }
+    }
+    
+    func signInWithGoogleAuth(auth: AuthCredential,
+                              completion: @escaping (UserServiceResult) -> Void) {
+        Auth.auth().signInAndRetrieveData(with: auth) { (result, error) in
+            if let error = error {
+                completion(UserServiceResult.failure(error))
+                return
+            }
+            if let result = result {
+                self.didAuthenticateUser()
                 completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
                 return
             }
@@ -102,6 +122,7 @@ class UserService {
                 return
             }
             if let result = result {
+                self.didAuthenticateUser()
                 completion(UserServiceResult.success(OPWUser(displayName: result.user.displayName)))
                 return
             }

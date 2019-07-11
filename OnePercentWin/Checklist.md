@@ -2,7 +2,7 @@
 ### Backlog to launch ###
 Authentication loading flow [x ]
 Authentication negative flow [x ]
-Google Sign in [ ]
+Google Sign in [ x ]
 Turn off get nosy [ ]
 Linking anonoymous account [ ]
 Forget password [ ]
@@ -17,3 +17,4 @@ Local notification modification [ ]
 
 Todo:
 Think about image templating?
+Centralize GoogleAuth import statements if possible
