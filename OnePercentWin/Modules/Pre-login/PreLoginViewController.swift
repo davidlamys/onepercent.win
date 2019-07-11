@@ -15,34 +15,8 @@ class PreLoginViewController: BaseViewController {
     let viewModel = PreLoginViewModel()
     let spinner = SpinnerViewController()
     
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var incognitoButton: UIButton!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
-
-    @IBAction func loginTapped(_ sender: Any) {
-        guard
-            let email = emailTextField.text,
-            let password = passwordTextField.text else {
-                return
-        }
-        showSpinnerView()
-        viewModel.loginWith(email: email, password: password)
-    }
-    
-    @IBAction func signUpTapped(_ sender: Any) {
-        guard
-            let email = emailTextField.text,
-            let password = passwordTextField.text else {
-                return
-        }
-        showSpinnerView()
-        viewModel.createUserWith(email: email, password: password)
-    }
     
     @IBAction func incongitoTapped(_ sender: Any) {
         showSpinnerView()
@@ -60,18 +34,11 @@ class PreLoginViewController: BaseViewController {
             self.styleElements()
         }
         
-        emailTextField.delegate = self
-        emailTextField.returnKeyType = .next
-        emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
-
-        passwordTextField.delegate = self
-        passwordTextField.returnKeyType = .done
-        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
-
         viewModel.delegate = self
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
+        GIDSignIn.sharedInstance()?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,12 +47,7 @@ class PreLoginViewController: BaseViewController {
     }
     
     override func styleElements() {
-        loginButton.applyStyle()
-        signupButton.applyStyle()
         incognitoButton.applyStyle()
-
-        styleEmailElements()
-        stylePasswordElements()
         
         let theme = ThemeHelper.getTheme()
         switch theme {
@@ -95,21 +57,7 @@ class PreLoginViewController: BaseViewController {
             googleSignInButton.colorScheme = .dark
         }
     }
-    
-    fileprivate func stylePasswordElements() {
-        passwordLabel.applyFont(fontSize: .medium)
-        passwordTextField.applyFont(fontSize: .medium)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
-        passwordTextField.backgroundColor = .clear
-    }
-    
-    fileprivate func styleEmailElements() {
-        emailLabel.applyFont(fontSize: .medium)
-        emailTextField.applyFont(fontSize: .medium)
-        emailTextField.backgroundColor = .clear
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
-    }
-    
+   
     private func setupViews() {
         if viewModel.hasUser {
             setupForLoggedInUser()
@@ -129,24 +77,13 @@ class PreLoginViewController: BaseViewController {
     }
     
     private func toggleButtons(isHidden: Bool) {
-        emailLabel.isHidden = isHidden
-        emailTextField.isHidden = isHidden
-        passwordLabel.isHidden = isHidden
-        passwordTextField.isHidden = isHidden
-        loginButton.isHidden = isHidden
-        signupButton.isHidden = isHidden
         incognitoButton.isHidden = isHidden
         googleSignInButton.isHidden = isHidden
-        toggleButtonsEnablement()
     }
     
-    private func clearTextFields() {
-        emailTextField.text = nil
-        passwordTextField.text = nil
-    }
 }
 
-extension PreLoginViewController: GIDSignInUIDelegate {
+extension PreLoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
@@ -157,49 +94,22 @@ extension PreLoginViewController: GIDSignInUIDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
+        showSpinnerView()
         viewModel.signWithGoogleAuth(auth: credential)
     }
 }
 
 extension PreLoginViewController: PreLoginViewModelDelegate {
     func signInCompleted() {
+        precondition(Thread.isMainThread)
         hideSpinnerView()
-        clearTextFields()
     }
     
     func signInFailed(message: String) {
+        precondition(Thread.isMainThread)
         hideSpinnerView()
         setupViews()
         showAlertWithText(errorMessage: message)
-    }
-}
-
-extension PreLoginViewController: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        toggleButtonsEnablement()
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        }
-        if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
-        }
-        return true
-    }
-    
-    @objc func textFieldDidChange(textField: UITextField) {
-        toggleButtonsEnablement()
-    }
-    
-    private func toggleButtonsEnablement() {
-        let emailIsEmpty = (emailTextField.text?.isEmpty) ?? true
-        let passwordIsEmpty = (passwordTextField.text?.isEmpty) ?? true
-        let shouldDisable = emailIsEmpty || passwordIsEmpty
-        loginButton.isEnabled = !shouldDisable
-        signupButton.isEnabled = !shouldDisable
     }
 }
 
