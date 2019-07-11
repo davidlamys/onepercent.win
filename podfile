@@ -13,5 +13,6 @@ target 'OnePercentWin' do
   pod 'FirebaseFirestore'
   pod 'FirebaseUI/Auth', '~> 5.0'
   pod 'JTAppleCalendar', '~> 7.0'
+  pod 'GoogleSignIn'
   
 end

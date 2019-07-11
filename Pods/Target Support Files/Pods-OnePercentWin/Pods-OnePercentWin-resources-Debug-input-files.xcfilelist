@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle
+${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
