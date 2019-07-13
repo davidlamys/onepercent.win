@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-Vx-EkT">
-                                <rect key="frame" x="0.0" y="132" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="484"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-cW-fh6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -41,10 +41,10 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXn-Fr-Qwy">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="491"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-Ku-zBe">
-                                                <rect key="frame" x="37.5" y="409" width="300" height="50"/>
+                                                <rect key="frame" x="37.5" y="402" width="300" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0xo-Yg-Bbd"/>
                                                 </constraints>
@@ -54,13 +54,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no goals yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-r3-boV">
-                                                <rect key="frame" x="104.5" y="76" width="166.5" height="20.5"/>
+                                                <rect key="frame" x="104.5" y="72.5" width="166.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ej2-2s-439">
-                                                <rect key="frame" x="56.5" y="114.5" width="262.5" height="262.5"/>
+                                                <rect key="frame" x="56.5" y="111" width="262.5" height="262.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ej2-2s-439" secondAttribute="height" multiplier="1:1" id="VSa-Bg-rFB"/>
                                                 </constraints>
@@ -87,9 +87,9 @@
                                 </constraints>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fC-vx-1Kx">
-                                <rect key="frame" x="0.0" y="64" width="375" height="68"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="0fC-vx-1Kx" secondAttribute="height" multiplier="5.5:1" id="Wlt-9c-IRb"/>
+                                    <constraint firstAttribute="width" secondItem="0fC-vx-1Kx" secondAttribute="height" multiplier="5:1" id="Wlt-9c-IRb"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="qId-hL-oiB" kind="embed" id="mBt-Yy-f3V"/>
