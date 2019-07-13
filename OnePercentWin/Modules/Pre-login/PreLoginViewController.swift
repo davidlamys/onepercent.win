@@ -52,9 +52,9 @@ class PreLoginViewController: BaseViewController {
         let theme = ThemeHelper.getTheme()
         switch theme {
         case .light:
-            googleSignInButton.colorScheme = .light
-        case .dark:
             googleSignInButton.colorScheme = .dark
+        case .dark:
+            googleSignInButton.colorScheme = .light
         }
     }
    
