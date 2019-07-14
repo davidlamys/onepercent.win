@@ -41,7 +41,10 @@ class PreLoginViewModel {
     
     private func authenticationHandler(result: UserServiceResult) {
         switch result {
-        case .success:
+        case .success(let user):
+            if let displayName = user.displayName {
+                UserDefaultsWrapper.init().save(userName: displayName)
+            }
             self.delegate?.signInCompleted()
         case .failure(let error):
             self.delegate?.signInFailed(message: error.localizedDescription)
