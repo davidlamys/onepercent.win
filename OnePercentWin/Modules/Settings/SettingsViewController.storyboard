@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N13-8w-LBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N13-8w-LBv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeG-JG-qd2">
-                                <rect key="frame" x="37" y="76" width="301" height="521"/>
+                                <rect key="frame" x="37" y="40" width="301" height="557"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="uJs-h0-cAV">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
@@ -103,7 +103,7 @@
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e1-I8-xry">
-                                        <rect key="frame" x="0.0" y="141" width="301" height="164.5"/>
+                                        <rect key="frame" x="0.0" y="141" width="301" height="182.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
                                             <!--2018-11-22 13:20:10 +0000-->
@@ -113,7 +113,7 @@
                                         </connections>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Ry-yWf" userLabel="MorningReminder">
-                                        <rect key="frame" x="0.0" y="315.5" width="257" height="31"/>
+                                        <rect key="frame" x="0.0" y="333.5" width="257" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-gM-1IJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
@@ -141,7 +141,7 @@
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR1-hr-759">
-                                        <rect key="frame" x="0.0" y="356.5" width="301" height="164.5"/>
+                                        <rect key="frame" x="0.0" y="374.5" width="301" height="182.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <date key="date" timeIntervalSinceReferenceDate="564585610.72167397">
                                             <!--2018-11-22 13:20:10 +0000-->
@@ -174,7 +174,7 @@
                             <constraint firstItem="NeG-JG-qd2" firstAttribute="centerX" secondItem="eXV-le-fu5" secondAttribute="centerX" id="PCd-bb-AI8"/>
                             <constraint firstItem="eXV-le-fu5" firstAttribute="bottom" secondItem="emm-dE-1tb" secondAttribute="bottom" constant="10" id="PMn-Qn-wHh"/>
                             <constraint firstItem="emm-dE-1tb" firstAttribute="width" secondItem="4a9-Tn-VTQ" secondAttribute="width" multiplier="0.8" constant="1" id="eFi-5N-tik"/>
-                            <constraint firstItem="NeG-JG-qd2" firstAttribute="top" secondItem="eXV-le-fu5" secondAttribute="top" constant="56" id="mFY-Aw-jrP"/>
+                            <constraint firstItem="NeG-JG-qd2" firstAttribute="top" secondItem="eXV-le-fu5" secondAttribute="top" constant="20" id="mFY-Aw-jrP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eXV-le-fu5"/>
                     </view>
