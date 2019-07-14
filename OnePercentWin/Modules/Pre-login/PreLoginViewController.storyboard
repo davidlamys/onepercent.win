@@ -18,12 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-6k-YcS">
-                                <rect key="frame" x="20" y="393" width="374" height="120"/>
+                                <rect key="frame" x="82" y="403" width="250" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztU-aC-zgD">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <rect key="frame" x="2.5" y="0.0" width="245" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="cPf-BZ-e2d"/>
+                                            <constraint firstAttribute="width" constant="245" id="0qA-ib-rju"/>
+                                            <constraint firstAttribute="height" constant="40" id="zgu-Lm-dOO"/>
                                         </constraints>
                                         <state key="normal" title="Continue Incognito"/>
                                         <connections>
@@ -31,23 +32,19 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7z-GT-fra" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="60" width="250" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="h51-PZ-6Vp"/>
+                                            <constraint firstAttribute="width" constant="250" id="L7S-YB-W1z"/>
+                                            <constraint firstAttribute="height" constant="40" id="h51-PZ-6Vp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="B7z-GT-fra" firstAttribute="width" secondItem="ztU-aC-zgD" secondAttribute="width" id="o2i-zK-Jh7"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gv9-6k-YcS" firstAttribute="centerY" secondItem="zjc-mD-cax" secondAttribute="centerY" id="4qx-Qe-M4D"/>
-                            <constraint firstItem="zjc-mD-cax" firstAttribute="trailing" secondItem="ztU-aC-zgD" secondAttribute="trailing" constant="20" id="rLg-t9-htV"/>
-                            <constraint firstItem="ztU-aC-zgD" firstAttribute="leading" secondItem="zjc-mD-cax" secondAttribute="leading" constant="20" id="t0G-1h-5Ug"/>
                             <constraint firstItem="gv9-6k-YcS" firstAttribute="centerX" secondItem="zjc-mD-cax" secondAttribute="centerX" id="v1N-to-ry8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zjc-mD-cax"/>
