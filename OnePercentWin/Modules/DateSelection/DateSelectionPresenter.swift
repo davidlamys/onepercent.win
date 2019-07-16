@@ -38,7 +38,7 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
             let tomorrow = Date.tomorrow()
             
             if let newestGoals = allGoalsFromUser.first {
-                if newestGoals.date.startOfDay == today && newestGoals.completed {
+                if newestGoals.date.startOfDay == today && newestGoals.isCompleted {
                     lastDate = tomorrow
                 } else if newestGoals.date.startOfDay == tomorrow {
                     lastDate = tomorrow
