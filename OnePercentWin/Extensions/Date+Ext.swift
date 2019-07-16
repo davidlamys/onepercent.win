@@ -39,8 +39,10 @@ extension Date {
         return dateFormatter
     }()
     
-    static func tomorrow() -> Date? {
-        return Calendar.current.date(byAdding: Calendar.Component.day, value: 1, to: Date().startOfDay)
+    static func tomorrow() -> Date {
+        return Calendar.gregorian.date(byAdding: Calendar.Component.day,
+                                       value: 1,
+                                       to: Date().startOfDay)!
     }
     
     var prettyDate: String {
@@ -64,26 +66,26 @@ extension Date {
     }
 
     var startOfDay: Date {
-        return Calendar.current.startOfDay(for: self)
+        return Calendar.gregorian.startOfDay(for: self)
     }
     
     var endOfDay: Date {
         var components = DateComponents()
         components.day = 1
         components.second = -1
-        return Calendar.current.date(byAdding: components, to: startOfDay)!
+        return Calendar.gregorian.date(byAdding: components, to: startOfDay)!
     }
     
     var startOfMonth: Date {
-        let components = Calendar.current.dateComponents([.year, .month], from: startOfDay)
-        return Calendar.current.date(from: components)!
+        let components = Calendar.gregorian.dateComponents([.year, .month], from: startOfDay)
+        return Calendar.gregorian.date(from: components)!
     }
     
     var endOfMonth: Date {
         var components = DateComponents()
         components.month = 1
         components.second = -1
-        return Calendar.current.date(byAdding: components, to: startOfMonth)!
+        return Calendar.gregorian.date(byAdding: components, to: startOfMonth)!
     }
     
     func allDates(till endDate: Date) -> [Date] {
@@ -91,9 +93,15 @@ extension Date {
         var array: [Date] = []
         while date <= endDate {
             array.append(date)
-            date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+            date = Calendar.gregorian.date(byAdding: .day, value: 1, to: date)!
         }
         return array
     }
     
+}
+
+extension Calendar {
+    static var gregorian: Calendar {
+        return Calendar(identifier: .gregorian)
+    }
 }
