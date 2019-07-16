@@ -23,40 +23,43 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
         return Date().startOfDay
     }
     
-    private var allDates: [Date] = [Date().startOfDay]
+    private var displayDates: [Date] = [Date().startOfDay]
     private var goalsHashMap = [Date: DailyGoal?]()
     private var allGoalsFromUser = [DailyGoal]() {
         didSet {
             goalsHashMap.removeAll()
             guard let firstEnteredGoal = allGoalsFromUser.last else {
                 selectedIndexPath = IndexPath(row: 0, section: 0)
-                allDates = [today]
+                displayDates = [today]
                 return
             }
             
-            var lastDate: Date?
             let tomorrow = Date.tomorrow()
+            let lastDate: Date = self.needDatesTillTomorrow(latestGoal: allGoalsFromUser.first!) ? tomorrow : today
             
-            if let newestGoals = allGoalsFromUser.first {
-                if newestGoals.date.startOfDay == today && newestGoals.isCompleted {
-                    lastDate = tomorrow
-                } else if newestGoals.date.startOfDay == tomorrow {
-                    lastDate = tomorrow
-                }
-            }
-            
-            allDates = firstEnteredGoal.date.startOfDay
-                .allDates(till: lastDate ?? today)
+            displayDates = firstEnteredGoal.date.startOfDay
+                .allDates(till: lastDate)
                 .reversed()
         }
     }
     
+    private func needDatesTillTomorrow(latestGoal: DailyGoal) -> Bool {
+        let tomorrow = Date.tomorrow()
+        if latestGoal.date.startOfDay == tomorrow {
+            return true
+        }
+        if latestGoal.date.startOfDay == today && latestGoal.isCompleted {
+            return true
+        }
+        return false
+    }
+    
     func numberOfCellsToPresent() -> Int {
-        return allDates.count
+        return displayDates.count
     }
     
     func cellModelFor(indexPath: IndexPath) -> DateSelectionCellModelling {
-        let date = allDates[indexPath.item]
+        let date = displayDates[indexPath.item]
         
         if let goal = goalsHashMap[date] {
             return DateSelectionCellModel(goal: goal,
@@ -82,7 +85,7 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     func initialSetup() {
         goalsHashMap.removeAll()
         allGoalsFromUser = []
-        allDates = [today]
+        displayDates = [today]
         interactor?.fetchAllUserGoals()
     }
     
