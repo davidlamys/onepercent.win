@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="f4o-LW-ScU">
-                                <rect key="frame" x="28" y="16" width="319" height="183"/>
+                                <rect key="frame" x="28" y="16" width="319" height="150.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N58-Em-w5t">
                                         <rect key="frame" x="0.0" y="0.0" width="319" height="53"/>
@@ -27,7 +27,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="53"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clappingHandPartner" translatesAutoresizingMaskIntoConstraints="NO" id="oaP-b6-ldG">
-                                                        <rect key="frame" x="0.0" y="-1" width="64" height="55"/>
+                                                        <rect key="frame" x="0.0" y="-1" width="64" height="55.000000000000057"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="oaP-b6-ldG" secondAttribute="height" multiplier="247:214" id="Iep-GL-mB4"/>
@@ -82,14 +82,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="insert lesson" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBn-wJ-hQ6">
-                                        <rect key="frame" x="0.0" y="162.5" width="319" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gDM-sx-1BM">
+                                <rect key="frame" x="28" y="174.5" width="319" height="382.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bq9-Cb-Vxl">
                                 <rect key="frame" x="37.5" y="577" width="300" height="50"/>
                                 <constraints>
@@ -109,8 +110,13 @@
                             <constraint firstItem="Bq9-Cb-Vxl" firstAttribute="width" secondItem="Y72-zt-cok" secondAttribute="width" multiplier="0.8" id="0Vr-qh-JWZ"/>
                             <constraint firstItem="f4o-LW-ScU" firstAttribute="width" secondItem="o3q-Fz-YDq" secondAttribute="width" multiplier="0.85" id="0lT-of-4ia"/>
                             <constraint firstItem="o3q-Fz-YDq" firstAttribute="bottom" secondItem="Bq9-Cb-Vxl" secondAttribute="bottom" constant="40" id="5Rp-bI-HO9"/>
+                            <constraint firstItem="gDM-sx-1BM" firstAttribute="leading" secondItem="f4o-LW-ScU" secondAttribute="leading" id="BTy-ta-IFe"/>
+                            <constraint firstItem="Bq9-Cb-Vxl" firstAttribute="top" secondItem="gDM-sx-1BM" secondAttribute="bottom" constant="20" id="Hm4-ra-22o"/>
+                            <constraint firstItem="Bq9-Cb-Vxl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="f4o-LW-ScU" secondAttribute="bottom" constant="20" id="Koh-mG-VTb"/>
+                            <constraint firstItem="gDM-sx-1BM" firstAttribute="trailing" secondItem="f4o-LW-ScU" secondAttribute="trailing" id="RFI-2V-jTL"/>
                             <constraint firstItem="f4o-LW-ScU" firstAttribute="centerX" secondItem="o3q-Fz-YDq" secondAttribute="centerX" id="Vou-UC-YBR"/>
                             <constraint firstItem="f4o-LW-ScU" firstAttribute="top" secondItem="Y72-zt-cok" secondAttribute="top" constant="16" id="a0G-mL-2rA"/>
+                            <constraint firstItem="gDM-sx-1BM" firstAttribute="top" secondItem="f4o-LW-ScU" secondAttribute="bottom" constant="8" id="mFg-23-T6z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o3q-Fz-YDq"/>
                     </view>
@@ -121,8 +127,8 @@
                         <outlet property="goalPrompt" destination="0gs-fI-6oZ" id="XCG-mE-rU7"/>
                         <outlet property="imageView" destination="oaP-b6-ldG" id="tjX-zs-2JJ"/>
                         <outlet property="imageViewHolder" destination="yqf-qJ-m6Y" id="Xf5-H4-IBW"/>
-                        <outlet property="lessonsLearntLabel" destination="MBn-wJ-hQ6" id="MY9-xy-VwJ"/>
                         <outlet property="lessonsLearntPrompt" destination="1LD-VG-OAV" id="pGJ-Jf-C1Z"/>
+                        <outlet property="lessonsLearntTextView" destination="gDM-sx-1BM" id="9kg-JX-dAZ"/>
                         <outlet property="reasonPrompt" destination="YKv-3g-P7W" id="oEk-8d-Mid"/>
                         <outlet property="stackViewHolder" destination="f4o-LW-ScU" id="3OR-Xj-PlJ"/>
                     </connections>

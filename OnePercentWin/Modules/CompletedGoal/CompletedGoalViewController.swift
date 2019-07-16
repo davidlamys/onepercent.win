@@ -14,7 +14,8 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
     @IBOutlet private weak var goalPrompt: UILabel!
     @IBOutlet private weak var reasonPrompt: UILabel!
     @IBOutlet private weak var lessonsLearntPrompt: UILabel!
-    @IBOutlet private weak var lessonsLearntLabel: UILabel!
+
+    @IBOutlet private weak var lessonsLearntTextView: UITextView!
     @IBOutlet private weak var imageViewHolder: UIView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var addLessonLearntButton: UIButton!
@@ -45,14 +46,14 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
         self.goal = goal
         
         if let notes = goal.notes {
-            lessonsLearntLabel.isHidden = false
+            lessonsLearntTextView.isHidden = false
             lessonsLearntPrompt.isHidden = false
-            lessonsLearntLabel.text = notes
+            lessonsLearntTextView.text = notes
             addLessonLearntButton.setTitle("Edit Notes", for: .normal)
         } else {
-            lessonsLearntLabel.isHidden = true
+            lessonsLearntTextView.isHidden = true
             lessonsLearntPrompt.isHidden = true
-            lessonsLearntLabel.text = nil
+            lessonsLearntTextView.text = nil
             addLessonLearntButton.setTitle("Add Notes", for: .normal)
         }
         congratulationsLabel.text = viewModel.mainLabel
@@ -74,7 +75,8 @@ final class CompletedGoalViewController: UIViewController, NotesEntryViewControl
         reasonPrompt.attributedText = viewModel.reasonPromptAttributedText
         
         lessonsLearntPrompt.applyFont(fontSize: .medium)
-        lessonsLearntLabel.applyFont(fontSize: .medium, color: orange)
+        lessonsLearntTextView.applyFont(fontSize: .medium, color: orange)
+        lessonsLearntTextView.backgroundColor = ThemeHelper.backgroundColor()
         addLessonLearntButton.applyStyle()
         imageView.setImage(.goalCompletedDashboardImage)
     }
