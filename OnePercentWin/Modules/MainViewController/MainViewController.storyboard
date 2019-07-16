@@ -44,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-Ku-zBe">
-                                                <rect key="frame" x="37.5" y="402" width="300" height="50"/>
+                                                <rect key="frame" x="37.5" y="394" width="300" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0xo-Yg-Bbd"/>
                                                 </constraints>
@@ -68,7 +68,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="n7Q-Ku-zBe" secondAttribute="bottom" constant="32" id="14z-cH-W48"/>
+                                            <constraint firstAttribute="bottom" secondItem="n7Q-Ku-zBe" secondAttribute="bottom" constant="40" id="14z-cH-W48"/>
                                             <constraint firstItem="WuH-r3-boV" firstAttribute="centerX" secondItem="ej2-2s-439" secondAttribute="centerX" id="6jE-AS-DUP"/>
                                             <constraint firstItem="n7Q-Ku-zBe" firstAttribute="centerX" secondItem="PXn-Fr-Qwy" secondAttribute="centerX" id="frm-hJ-T84"/>
                                             <constraint firstItem="n7Q-Ku-zBe" firstAttribute="width" secondItem="PXn-Fr-Qwy" secondAttribute="width" multiplier="0.8" id="h1f-gb-hek"/>
