@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import GoogleSignIn
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupGoogleSignIn()
         setupUIAppearance()
         addNotificationCenterObserver()
+        IQKeyboardManager.shared.enable = true
         return true
     }
     
