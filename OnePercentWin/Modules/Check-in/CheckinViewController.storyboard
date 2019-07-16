@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pZL-en-99K">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,25 +14,25 @@
             <objects>
                 <viewController storyboardIdentifier="CheckinViewController" id="pZL-en-99K" customClass="CheckinViewController" customModule="OnePercentWin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lP4-8x-Umc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="cT2-ad-Tfd">
-                                <rect key="frame" x="54" y="395" width="306" height="116.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cT2-ad-Tfd">
+                                <rect key="frame" x="47" y="181.5" width="226" height="137"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-tJ-O4U">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="116.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="103" height="137"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-mw-lOA">
-                                                <rect key="frame" x="0.0" y="0.0" width="153" height="96"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103" height="96"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <state key="normal" title="😓"/>
                                                 <connections>
                                                     <action selector="didPressFailedWithSender:" destination="pZL-en-99K" eventType="touchUpInside" id="vcV-2t-FQR"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ooops..let's regroup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqK-6X-hOe">
-                                                <rect key="frame" x="0.0" y="96" width="153" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ooops..let's regroup" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqK-6X-hOe">
+                                                <rect key="frame" x="0.0" y="96" width="103" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -40,10 +40,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ce2-cF-bQd">
-                                        <rect key="frame" x="153" y="0.0" width="153" height="116.5"/>
+                                        <rect key="frame" x="123" y="0.0" width="103" height="137"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMK-Y7-ONi">
-                                                <rect key="frame" x="0.0" y="0.0" width="153" height="96"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103" height="96"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <state key="normal" title="😁"/>
                                                 <connections>
@@ -51,7 +51,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRUSHED IT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJn-0N-X26">
-                                                <rect key="frame" x="0.0" y="96" width="153" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="96" width="103" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -59,9 +59,13 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="eMK-Y7-ONi" firstAttribute="top" secondItem="dwY-mw-lOA" secondAttribute="top" id="39Q-uQ-ZSZ"/>
+                                    <constraint firstItem="uJn-0N-X26" firstAttribute="top" secondItem="OqK-6X-hOe" secondAttribute="top" id="rv8-ka-n5u"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfg-6J-MYT">
-                                <rect key="frame" x="16" y="796" width="382" height="50"/>
+                                <rect key="frame" x="16" y="414" width="288" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kS2-2i-utx"/>
                                 </constraints>
@@ -71,7 +75,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oG-lT-fR4">
-                                <rect key="frame" x="186" y="76" width="42" height="20.5"/>
+                                <rect key="frame" x="139" y="52" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -81,8 +85,10 @@
                         <constraints>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerX" secondItem="VYG-OF-7AE" secondAttribute="centerX" id="54r-pH-mCZ"/>
                             <constraint firstItem="cT2-ad-Tfd" firstAttribute="centerY" secondItem="VYG-OF-7AE" secondAttribute="centerY" id="GOZ-rK-OwJ"/>
+                            <constraint firstItem="VYG-OF-7AE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cT2-ad-Tfd" secondAttribute="trailing" constant="20" id="Gc0-tk-Vx8"/>
                             <constraint firstItem="bfg-6J-MYT" firstAttribute="leading" secondItem="VYG-OF-7AE" secondAttribute="leading" constant="16" id="GmW-2p-Oi5"/>
                             <constraint firstItem="5oG-lT-fR4" firstAttribute="top" secondItem="VYG-OF-7AE" secondAttribute="top" constant="32" id="M15-3i-I0O"/>
+                            <constraint firstItem="cT2-ad-Tfd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VYG-OF-7AE" secondAttribute="leading" constant="20" id="OhT-FG-08R"/>
                             <constraint firstItem="VYG-OF-7AE" firstAttribute="bottom" secondItem="bfg-6J-MYT" secondAttribute="bottom" constant="16" id="iQT-Hm-eCL"/>
                             <constraint firstItem="5oG-lT-fR4" firstAttribute="centerX" secondItem="VYG-OF-7AE" secondAttribute="centerX" id="vze-nW-LfC"/>
                             <constraint firstItem="VYG-OF-7AE" firstAttribute="trailing" secondItem="bfg-6J-MYT" secondAttribute="trailing" constant="16" id="xyE-mq-HaP"/>
