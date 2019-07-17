@@ -31,6 +31,7 @@ struct SettingsViewModel {
     }
     
     func save(userName: String) {
+        userService.updateDisplayName(to: userName)
         userDefaultsWrapper.save(userName: userName)
     }
     

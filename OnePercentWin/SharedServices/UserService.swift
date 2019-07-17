@@ -130,4 +130,18 @@ class UserService {
         }
     }
     
+    func updateDisplayName(to newName: String) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let newRequest = user.createProfileChangeRequest()
+        newRequest.displayName = newName
+        newRequest.commitChanges { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
+    
 }
