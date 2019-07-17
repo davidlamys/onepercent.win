@@ -21,7 +21,7 @@
                                 <rect key="frame" x="37" y="40" width="301" height="557"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="uJs-h0-cAV">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goZ-oJ-Iqk">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
@@ -30,7 +30,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENJ-oZ-rV5">
-                                                <rect key="frame" x="52" y="0.0" width="25" height="30"/>
+                                                <rect key="frame" x="52" y="0.0" width="249" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -75,7 +75,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-Ab-Q7X" userLabel="MorningReminder">
-                                        <rect key="frame" x="0.0" y="100" width="257" height="31"/>
+                                        <rect key="frame" x="0.0" y="100" width="301" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2V-Kr-KRg">
                                                 <rect key="frame" x="0.0" y="0.0" width="141" height="31"/>
@@ -84,7 +84,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-n0-GWc">
-                                                <rect key="frame" x="208" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="252" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="morningReminderToggled:" destination="N13-8w-LBv" eventType="valueChanged" id="D8V-Me-qRb"/>
                                                 </connections>
@@ -113,7 +113,7 @@
                                         </connections>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Ry-yWf" userLabel="MorningReminder">
-                                        <rect key="frame" x="0.0" y="333.5" width="257" height="31"/>
+                                        <rect key="frame" x="0.0" y="333.5" width="301" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-gM-1IJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
@@ -122,7 +122,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-1u-HKp">
-                                                <rect key="frame" x="208" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="252" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="eveningReminderToggled:" destination="N13-8w-LBv" eventType="valueChanged" id="OFV-Me-t8B"/>
                                                 </connections>
@@ -152,7 +152,10 @@
                                     </datePicker>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="t3d-Ry-yWf" firstAttribute="width" secondItem="jR1-hr-759" secondAttribute="width" id="H4H-1a-ISY"/>
                                     <constraint firstItem="8e1-I8-xry" firstAttribute="height" secondItem="jR1-hr-759" secondAttribute="height" id="cm0-A1-V7b"/>
+                                    <constraint firstItem="A8q-Ab-Q7X" firstAttribute="width" secondItem="8e1-I8-xry" secondAttribute="width" id="hFq-z2-gyH"/>
+                                    <constraint firstItem="uJs-h0-cAV" firstAttribute="width" secondItem="jR1-hr-759" secondAttribute="width" id="qsd-7m-cDd"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emm-dE-1tb">
