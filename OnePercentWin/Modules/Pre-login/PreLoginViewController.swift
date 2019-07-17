@@ -39,6 +39,13 @@ class PreLoginViewController: BaseViewController {
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance()?.delegate = self
+        incognitoButton.isHidden = true
+        googleSignInButton.isHidden = true
+        
+        if UserService().hasUser() == false {
+            showSpinnerView()
+            viewModel.signInAnonymously()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
