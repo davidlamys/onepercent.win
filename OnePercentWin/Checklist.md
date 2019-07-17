@@ -3,12 +3,12 @@
 Authentication loading flow [x ]
 Authentication negative flow [x ]
 Google Sign in [ x ]
-Turn off get nosy [ ]
-Linking anonoymous account [ ]
-Logout confirmation for anonoymous account [ ]
+Turn off get nosy [ x]
 Fix iPhone 5s display bugs for main flow [ x]
 
 Good to have
+Linking anonoymous account [ ]
+Logout confirmation for anonoymous account [ ]
 Mechanism to unlock get nosy [ ]
     Mechanism to turn posts public [ ]
 Change dashboard to a vertically scrollable view [ ]

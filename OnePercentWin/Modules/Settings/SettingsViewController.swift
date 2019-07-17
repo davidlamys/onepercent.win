@@ -99,11 +99,18 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         styleElements()
         applyBackgroundColor()
-
+        hideFeatures()
         userNameTextField.text = viewModel.getUserName()
         userNameTextField.delegate = self
         setupUI()
         setupThemeChangeNotification()
+    }
+    
+    private func hideFeatures() {
+        themeLabel.isHidden = true
+        themeSegmentControl.isHidden = true
+        getNosy.isHidden = true
+        signInButton.isHidden = true
     }
     
     private func displayAuthenticationUI() {
