@@ -99,7 +99,6 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         styleElements()
         applyBackgroundColor()
-        hideFeatures()
         userNameTextField.text = viewModel.getUserName()
         userNameTextField.delegate = self
         setupUI()
