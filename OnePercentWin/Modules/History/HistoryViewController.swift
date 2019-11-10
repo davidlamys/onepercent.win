@@ -12,7 +12,6 @@ import JTAppleCalendar
 final class HistoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var calendar: JTAppleCalendarView!
 
     private var viewModel: HistoryViewModel!
     private var cellModels: [HistoryCellModel] = []
@@ -26,13 +25,10 @@ final class HistoryViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyBackgroundColor()
         viewModel = HistoryViewModel(delegate: self,
                                      userService: UserService())
         tableView.dataSource = self
         tableView.delegate = self
-        calendar.calendarDataSource = self
-        calendar.calendarDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,8 +100,6 @@ extension HistoryViewController: HistoryViewModelDelegate {
         }
         cellModels = viewModel.generateCellModels()
         tableView.reloadData()
-        calendar.reloadData()
-        calendar.scrollToDate(Date())
     }
 }
 
@@ -132,6 +126,7 @@ extension HistoryViewController: UITableViewDataSource {
         cell.textLabel?.text = goalForCell.displayTextGlobal
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = goalForCell.prettyDate
+        cell.textLabel?.textColor = .black
         
         let isCompleted = goalForCell.isCompleted
         cell.accessoryType = isCompleted ? .checkmark : .none
