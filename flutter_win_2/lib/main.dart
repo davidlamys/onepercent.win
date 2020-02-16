@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_win_2/Screens/add_goal_screen.dart';
+import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 
@@ -7,6 +9,8 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  final userService = UserService();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +18,8 @@ class MyApp extends StatelessWidget {
       routes: {
         RouterScreen.id: (context) => RouterScreen(),
         PreLoginScreen.id: (context) => PreLoginScreen(),
+        LoggedInScreen.id: (context) => LoggedInScreen(),
+        AddGoalScreen.id: (context) => AddGoalScreen(),
       },
     );
   }
@@ -45,6 +51,8 @@ class _RouterScreenState extends State<RouterScreen> {
 
     var hasUser = await userService.hasLoggedInUser();
 
+    await Future.delayed(Duration(seconds: 3));
+
     setState(() {
       _isCheckingForUser = false;
       _hasUser = hasUser;
@@ -52,6 +60,7 @@ class _RouterScreenState extends State<RouterScreen> {
 
     if (_context != null) {
       if (hasUser) {
+        Navigator.pushNamed(_context, LoggedInScreen.id);
       } else {
         Navigator.pushNamed(_context, PreLoginScreen.id);
       }

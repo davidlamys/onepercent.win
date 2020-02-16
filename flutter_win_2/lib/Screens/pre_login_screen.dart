@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PreLoginScreen extends StatefulWidget {
@@ -16,6 +17,8 @@ final style = TextStyle(
 );
 
 class _PreLoginScreenState extends State<PreLoginScreen> {
+  final userService = UserService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +44,12 @@ class _PreLoginScreenState extends State<PreLoginScreen> {
               ),
               SignInButton(
                 Buttons.GoogleDark,
-                onPressed: () {},
+                onPressed: () async {
+                  await userService.googleSignIn();
+                  print("getting user id");
+                  var string = await userService.userId();
+                  print("user id $string");
+                },
               ),
               SizedBox(
                 height: 10.0,
