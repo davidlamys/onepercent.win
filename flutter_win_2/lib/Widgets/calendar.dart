@@ -10,9 +10,10 @@ class HomePageCalendar extends StatefulWidget {
   }
 }
 
+const _numDays = 14;
+
 class _HomePageState extends State<HomePageCalendar> {
-  final _dates = List<int>.generate(10, (i) => i + 1)
-      .reversed
+  final _dates = List<int>.generate(_numDays, (i) => i + 1)
       .map((i) => DateTime.now().subtract(Duration(days: i - 1)));
 
   final goalService = GoalService();
@@ -40,7 +41,8 @@ class _HomePageState extends State<HomePageCalendar> {
     return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: _buildDateSelectionBox,
-        itemCount: 10);
+        reverse: true,
+        itemCount: _numDays);
   }
 
   Widget _buildDateSelectionBox(BuildContext context, int index) {
