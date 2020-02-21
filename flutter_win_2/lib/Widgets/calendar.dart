@@ -1,40 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Services/goal_service.dart';
+import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:intl/intl.dart';
 
-class HomePageCalendar extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _HomePageState();
-  }
-}
+class HomePageCalendar extends StatelessWidget {
+  final List<Record> records;
+  final DateTime selectedDate;
+  final List<DateTime> dates;
 
-const _numDays = 14;
+  final void Function(DateTime newDate) onDateSelection;
 
-class _HomePageState extends State<HomePageCalendar> {
-  final _dates = List<int>.generate(_numDays, (i) => i + 1)
-      .map((i) => DateTime.now().subtract(Duration(days: i - 1)));
-
-  final goalService = GoalService();
-
-  List<Record> records;
-
-  @override
-  void initState() {
-    super.initState();
-    goalService
-        .goalStream()
-        .then((goalStream) => {listenOnGoalStream(goalStream)});
-  }
-
-  void listenOnGoalStream(Stream<List<Record>> goalStream) {
-    goalStream.listen((event) {
-      setState(() {
-        records = event;
-      });
-    });
-  }
+  const HomePageCalendar(
+      {Key key,
+      this.records,
+      this.selectedDate,
+      this.dates,
+      this.onDateSelection})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +24,33 @@ class _HomePageState extends State<HomePageCalendar> {
         scrollDirection: Axis.horizontal,
         itemBuilder: _buildDateSelectionBox,
         reverse: true,
-        itemCount: _numDays);
+        itemCount: numDays);
   }
 
   Widget _buildDateSelectionBox(BuildContext context, int index) {
-    var date = _dates.elementAt(index);
+    var date = dates.elementAt(index);
     return AspectRatio(
       aspectRatio: 1 / 1,
-      child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text(dayFormat().format(date)),
-            Text(dateFormat().format(date)),
-            Text(monthFormat().format(date)),
-            Container(
-              color: _colorForDate(date),
-              height: 10.0,
+      child: GestureDetector(
+        onTap: () {
+          onDateSelection(date);
+        },
+        child: Card(
+          child: Container(
+            color: (date == selectedDate) ? Colors.grey : Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(dayFormat().format(date)),
+                Text(dateFormat().format(date)),
+                Text(monthFormat().format(date)),
+                Container(
+                  color: _colorForDate(date),
+                  height: 10.0,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -71,10 +61,10 @@ class _HomePageState extends State<HomePageCalendar> {
       return Colors.red;
     }
     var record = records.reversed.firstWhere((element) {
-      final element_timestamp = element.timestamp;
-      return element_timestamp.year == refDate.year &&
-          element_timestamp.month == refDate.month &&
-          element_timestamp.day == refDate.day;
+      final elementTimestamp = element.timestamp;
+      return elementTimestamp.year == refDate.year &&
+          elementTimestamp.month == refDate.month &&
+          elementTimestamp.day == refDate.day;
     }, orElse: () => null);
 
     if (record == null) {
@@ -82,7 +72,7 @@ class _HomePageState extends State<HomePageCalendar> {
     }
 
     if (record.notes == null) {
-      return Colors.orange;
+      return Colors.yellow;
     }
 
     return Colors.green;
