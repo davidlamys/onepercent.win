@@ -20,7 +20,11 @@ class NoGoalView extends StatelessWidget {
           FlatButton(
             child: Text('Add goal'),
             onPressed: () {
-              Navigator.pushNamed(context, AddGoalScreen.id);
+              Navigator.pushNamed(
+                context,
+                AddGoalScreen.id,
+                arguments: {'date': date},
+              );
             },
           ),
         ],

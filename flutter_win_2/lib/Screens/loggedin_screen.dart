@@ -78,7 +78,9 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   Widget buildView(DateTime dateTime) {
     var record = recordForDate(dateTime);
     if (record == null) {
-      return NoGoalView();
+      return NoGoalView(
+        date: dateTime,
+      );
     } else {
       return GoalView(
         record: record,

@@ -6,8 +6,17 @@ import 'package:uuid/uuid.dart';
 class AddGoalScreen extends StatelessWidget {
   static final id = 'addGoalScreen';
 
+  DateTime date;
+
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    if (arguments != null) {
+      print(arguments['date']);
+      date = arguments['date'];
+      print('david is hear!!!');
+    }
+
     String _goal;
     String _reason;
     var _goalService = GoalService();
@@ -37,8 +46,8 @@ class AddGoalScreen extends StatelessWidget {
                 onPressed: () async {
                   var userId = await _userService.userId();
                   var userName = await _userService.userName();
-                  var goal = Goal(uuid.v4(), _goal, _reason, DateTime.now(),
-                      userName, userId, null);
+                  var goal = Goal(
+                      uuid.v4(), _goal, _reason, date, userName, userId, null);
                   _goalService.addGoal(goal).then((value) {
                     Navigator.pop(context);
                   });
