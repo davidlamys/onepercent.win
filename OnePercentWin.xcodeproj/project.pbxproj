@@ -69,6 +69,10 @@
 		63BB459721F5AD90006556D3 /* TextStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459621F5AD90006556D3 /* TextStylable.swift */; };
 		63BB459921F5AE72006556D3 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB459821F5AE72006556D3 /* UIButton+Ext.swift */; };
 		63F57A86222BDAFB003D7F31 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F57A85222BDAFB003D7F31 /* MainViewController.swift */; };
+		63F7AC33243311B900D8E0F4 /* FirebaseFeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7AC32243311B900D8E0F4 /* FirebaseFeatureManager.swift */; };
+		63F7AC352433132A00D8E0F4 /* FeatureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7AC342433132A00D8E0F4 /* FeatureConfiguration.swift */; };
+		63F7AC3A2433200800D8E0F4 /* AppLauncher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F7AC392433200800D8E0F4 /* AppLauncher.storyboard */; };
+		63F7AC3C2433201C00D8E0F4 /* AppLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7AC3B2433201B00D8E0F4 /* AppLauncherViewController.swift */; };
 		63FF09A221AC12850001B450 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF09A121AC12840001B450 /* LocalCollection.swift */; };
 		8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */; };
 /* End PBXBuildFile section */
@@ -90,7 +94,7 @@
 		15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckinViewController.storyboard; sourceTree = "<group>"; };
 		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreLoginViewController.storyboard; sourceTree = "<group>"; };
 		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
 		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,10 @@
 		63BB459621F5AD90006556D3 /* TextStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylable.swift; sourceTree = "<group>"; };
 		63BB459821F5AE72006556D3 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		63F57A85222BDAFB003D7F31 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		63F7AC32243311B900D8E0F4 /* FirebaseFeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFeatureManager.swift; sourceTree = "<group>"; };
+		63F7AC342433132A00D8E0F4 /* FeatureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureConfiguration.swift; sourceTree = "<group>"; };
+		63F7AC392433200800D8E0F4 /* AppLauncher.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppLauncher.storyboard; sourceTree = "<group>"; };
+		63F7AC3B2433201B00D8E0F4 /* AppLauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncherViewController.swift; sourceTree = "<group>"; };
 		63FF09A121AC12840001B450 /* LocalCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePercentWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePercentWin/Pods-OnePercentWin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +232,8 @@
 				150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */,
 				63426E0121E9F3B700EA35CB /* ThemeHelper.swift */,
 				630A9863222BC01D008B0116 /* UserGoalsServiceWrapper.swift */,
+				63F7AC32243311B900D8E0F4 /* FirebaseFeatureManager.swift */,
+				63F7AC342433132A00D8E0F4 /* FeatureConfiguration.swift */,
 			);
 			path = SharedServices;
 			sourceTree = "<group>";
@@ -269,6 +279,7 @@
 		15E76EA122CF875100F8F99E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				63F7AC3824331FF900D8E0F4 /* AppLauncher */,
 				15E76EAB22D04D7500F8F99E /* Pre-login */,
 				15E76EAC22D04D7F00F8F99E /* Login */,
 				150A303321A70237000CAB0C /* History */,
@@ -382,6 +393,15 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		63F7AC3824331FF900D8E0F4 /* AppLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				63F7AC392433200800D8E0F4 /* AppLauncher.storyboard */,
+				63F7AC3B2433201B00D8E0F4 /* AppLauncherViewController.swift */,
+			);
+			path = AppLauncher;
+			sourceTree = "<group>";
+		};
 		C7E2D27A34E025A1E9451F2B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +490,7 @@
 				6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */,
 				63426E2421E9F45C00EA35CB /* Roboto-Black.ttf in Resources */,
 				63A3B5D82236A42A00105C58 /* HistoryViewController.storyboard in Resources */,
+				63F7AC3A2433200800D8E0F4 /* AppLauncher.storyboard in Resources */,
 				6371A51921F9AE4800D80CF7 /* NotesEntry.storyboard in Resources */,
 				15E2FCCC226340D200C5775F /* GoogleService-Info.plist in Resources */,
 				150A301B21A6E107000CAB0C /* Assets.xcassets in Resources */,
@@ -555,6 +576,7 @@
 				63BB458E21E9FA27006556D3 /* GoalEntryViewModel.swift in Sources */,
 				6371A52021FC4A4300D80CF7 /* CompletedGoalViewController.swift in Sources */,
 				630A9864222BC01D008B0116 /* UserGoalsServiceWrapper.swift in Sources */,
+				63F7AC352433132A00D8E0F4 /* FeatureConfiguration.swift in Sources */,
 				150A302F21A701F4000CAB0C /* UserDefaultsWrapper.swift in Sources */,
 				630A9860222AA0E6008B0116 /* DateSelectionContract.swift in Sources */,
 				15F33FE622C65A7700A4278B /* NotesEntryContracts.swift in Sources */,
@@ -566,6 +588,7 @@
 				630A985C222AA08A008B0116 /* DateSelectionBuilder.swift in Sources */,
 				633781F021D434F200E11531 /* Date+Ext.swift in Sources */,
 				150A302621A6E422000CAB0C /* SettingsViewController.swift in Sources */,
+				63F7AC33243311B900D8E0F4 /* FirebaseFeatureManager.swift in Sources */,
 				63BB459921F5AE72006556D3 /* UIButton+Ext.swift in Sources */,
 				63BB458C21E9FA1F006556D3 /* GoalEntryViewController.swift in Sources */,
 				63BA7C0621D1DF6F0010A5A7 /* UserService.swift in Sources */,
@@ -588,6 +611,7 @@
 				630A9856222AA03F008B0116 /* DateSelectionPresenter.swift in Sources */,
 				630A9858222AA05F008B0116 /* DateSelectionInteractor.swift in Sources */,
 				630A9854222AA025008B0116 /* DateSelectionViewController.swift in Sources */,
+				63F7AC3C2433201C00D8E0F4 /* AppLauncherViewController.swift in Sources */,
 				150A303721A70251000CAB0C /* HistoryViewModel.swift in Sources */,
 				630A985A222AA07B008B0116 /* DateSelectionEntities.swift in Sources */,
 				632520DC2248DE2D00EF6971 /* UICollectionView+Ext.swift in Sources */,

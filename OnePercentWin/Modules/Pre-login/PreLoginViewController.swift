@@ -78,7 +78,12 @@ class PreLoginViewController: BaseViewController {
     
     private func toggleButtons(isHidden: Bool) {
         incognitoButton.isHidden = isHidden
-        googleSignInButton.isHidden = isHidden
+        
+        if viewModel.isGoogleSignInEnabled() {
+            googleSignInButton.isHidden = isHidden
+        } else {
+            googleSignInButton.isHidden = true
+        }
     }
     
 }

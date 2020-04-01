@@ -16,10 +16,19 @@ protocol PreLoginViewModelDelegate: class {
 
 class PreLoginViewModel {
     private let userService = UserService()
+    private let featureFlag: FeatureConfigurationType
     weak var delegate: PreLoginViewModelDelegate?
+    
+    init(featureFlag: FeatureConfigurationType = FeatureConfiguration.shared) {
+        self.featureFlag = featureFlag
+    }
     
     var hasUser: Bool {
         return userService.hasLoggedInUser()
+    }
+    
+    func isGoogleSignInEnabled() -> Bool {
+        return featureFlag.isFeatureEnabled(feature: .googleSignIn)
     }
     
     func signInAnonymously() {
