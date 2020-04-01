@@ -37,7 +37,8 @@ class FirebaseFeatureManager: FirebaseFeatureManagerType {
         }
 
         remoteConfig = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
+        let settings = RemoteConfigSettings(developerModeEnabled: true)
+        
 //        settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
         
@@ -91,6 +92,11 @@ extension RemoteConfig: FirebaseRemoteConfig {
 
 extension Features {
     func parseFrom(remoteConfig: RemoteConfigValue) -> Any? {
-         return remoteConfig.boolValue
+        switch self {
+        case .welcomeMessage:
+            return remoteConfig.stringValue
+        default:
+            return remoteConfig.boolValue
+        }
     }
 }

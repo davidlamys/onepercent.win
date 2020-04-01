@@ -8,9 +8,11 @@
 
 import Foundation
 
+// key where raw values must matches source
 public enum Features: String, CaseIterable {
     case enableDarkMode = "enable_dark_mode"
     case googleSignIn = "enable_google_sigin"
+    case welcomeMessage = "welcome_message"
 }
 
 public protocol FeatureConfigurationType {
@@ -27,7 +29,9 @@ public class FeatureConfiguration: FeatureConfigurationType {
 
     public static let shared: FeatureConfigurationType = FeatureConfiguration()
 
-    private init() {}
+    private init() {
+        assert(self.featureConfig.count == Features.allCases.count)
+    }
 
     public func getValue<T>(feature: Features) -> T? {
         return featureConfig[feature] as? T
@@ -50,9 +54,11 @@ public class FeatureConfiguration: FeatureConfigurationType {
         return enabled
     }
 
+    // fall back default
     fileprivate var featureConfig: [Features: Any] = [
         .enableDarkMode: false,
-        .googleSignIn: true
+        .googleSignIn: true,
+        .welcomeMessage: "fall back string"
     ]
 
     public func getFeatures() -> [Features: Any] {

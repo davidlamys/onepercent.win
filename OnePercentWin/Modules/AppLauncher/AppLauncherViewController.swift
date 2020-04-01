@@ -16,6 +16,8 @@ class AppLauncherViewController: UIViewController {
         manager.fetchLatestConfig { latestConfig in
             if let latestConfig = latestConfig {
                 FeatureConfiguration.shared.saveAndUpdateFeatures(features: latestConfig)
+            } else {
+                FeatureConfiguration.shared.updateFeatures(userDefaults: UserDefaults.standard)
             }
             self.performSegue(withIdentifier: "presentPreLoginViewController", sender: nil)
         }

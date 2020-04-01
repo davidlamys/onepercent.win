@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JIa-qk-uYu">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JIa-qk-uYu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRK-I4-IiR">
+                                <rect key="frame" x="186" y="283.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-6k-YcS">
                                 <rect key="frame" x="82" y="403" width="250" height="100"/>
                                 <subviews>
@@ -45,6 +50,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gv9-6k-YcS" firstAttribute="centerY" secondItem="zjc-mD-cax" secondAttribute="centerY" id="4qx-Qe-M4D"/>
+                            <constraint firstItem="gv9-6k-YcS" firstAttribute="top" secondItem="tRK-I4-IiR" secondAttribute="bottom" constant="99" id="BZK-Ia-eVd"/>
+                            <constraint firstItem="tRK-I4-IiR" firstAttribute="centerX" secondItem="gv9-6k-YcS" secondAttribute="centerX" id="shq-7L-Exz"/>
                             <constraint firstItem="gv9-6k-YcS" firstAttribute="centerX" secondItem="zjc-mD-cax" secondAttribute="centerX" id="v1N-to-ry8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zjc-mD-cax"/>
@@ -52,6 +59,7 @@
                     <connections>
                         <outlet property="googleSignInButton" destination="B7z-GT-fra" id="ZAf-4W-qSA"/>
                         <outlet property="incognitoButton" destination="ztU-aC-zgD" id="JiL-AC-UbV"/>
+                        <outlet property="welcomeLabel" destination="tRK-I4-IiR" id="le0-zX-QgL"/>
                         <segue destination="1Tn-MG-GR6" kind="presentation" identifier="presentMainViewController" modalPresentationStyle="fullScreen" id="Zzd-ul-sNR"/>
                     </connections>
                 </viewController>

@@ -31,6 +31,10 @@ class PreLoginViewModel {
         return featureFlag.isFeatureEnabled(feature: .googleSignIn)
     }
     
+    func getWelcomeText() -> String {
+        return featureFlag.getValue(feature: .welcomeMessage) ?? "Fallback string"
+    }
+    
     func signInAnonymously() {
         userService.signInAnonymously(completion: authenticationHandler) 
     }

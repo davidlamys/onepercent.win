@@ -15,6 +15,7 @@ class PreLoginViewController: BaseViewController {
     let viewModel = PreLoginViewModel()
     let spinner = SpinnerViewController()
     
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var incognitoButton: UIButton!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
@@ -49,6 +50,7 @@ class PreLoginViewController: BaseViewController {
     override func styleElements() {
         incognitoButton.applyStyle()
         
+        welcomeLabel.applyFont(fontSize: .medium)
         let theme = ThemeHelper.getTheme()
         switch theme {
         case .light:
@@ -59,6 +61,7 @@ class PreLoginViewController: BaseViewController {
     }
    
     private func setupViews() {
+        welcomeLabel.text = viewModel.getWelcomeText()
         if viewModel.hasUser {
             setupForLoggedInUser()
         } else {
