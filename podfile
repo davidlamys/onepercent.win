@@ -11,6 +11,7 @@ target 'OnePercentWin' do
   # Pods for OnePercentWin
   pod 'Firebase/Core'
   pod 'FirebaseFirestore'
+  pod 'Firebase/RemoteConfig'
   pod 'FirebaseUI/Auth', '~> 5.0'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'GoogleSignIn'
