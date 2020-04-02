@@ -186,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				15E76EB922D19D1500F8F99E /* Checklist.md */,
+				635D790C2435794100576921 /* FeatureConfigurationDemo */,
 				15E76EA122CF875100F8F99E /* Modules */,
 				150A301121A6E106000CAB0C /* AppDelegate.swift */,
 				150A301A21A6E107000CAB0C /* Assets.xcassets */,
@@ -232,8 +233,6 @@
 				150A302E21A701F4000CAB0C /* UserDefaultsWrapper.swift */,
 				63426E0121E9F3B700EA35CB /* ThemeHelper.swift */,
 				630A9863222BC01D008B0116 /* UserGoalsServiceWrapper.swift */,
-				63F7AC32243311B900D8E0F4 /* FirebaseFeatureManager.swift */,
-				63F7AC342433132A00D8E0F4 /* FeatureConfiguration.swift */,
 			);
 			path = SharedServices;
 			sourceTree = "<group>";
@@ -279,8 +278,6 @@
 		15E76EA122CF875100F8F99E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				63F7AC3824331FF900D8E0F4 /* AppLauncher */,
-				15E76EAB22D04D7500F8F99E /* Pre-login */,
 				15E76EAC22D04D7F00F8F99E /* Login */,
 				150A303321A70237000CAB0C /* History */,
 				630A9850222A9FFB008B0116 /* DateSelection */,
@@ -350,6 +347,17 @@
 				63426E0E21E9F45B00EA35CB /* Roboto-Italic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		635D790C2435794100576921 /* FeatureConfigurationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				15E76EAB22D04D7500F8F99E /* Pre-login */,
+				63F7AC3824331FF900D8E0F4 /* AppLauncher */,
+				63F7AC32243311B900D8E0F4 /* FirebaseFeatureManager.swift */,
+				63F7AC342433132A00D8E0F4 /* FeatureConfiguration.swift */,
+			);
+			path = FeatureConfigurationDemo;
 			sourceTree = "<group>";
 		};
 		6371A51721F9AE1900D80CF7 /* NotesEntry */ = {
