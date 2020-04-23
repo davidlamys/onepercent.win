@@ -14,5 +14,4 @@ target 'OnePercentWin' do
   pod 'FirebaseUI/Auth', '~> 5.0'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'GoogleSignIn'
- 	pod 'IQKeyboardManagerSwift' 
 end

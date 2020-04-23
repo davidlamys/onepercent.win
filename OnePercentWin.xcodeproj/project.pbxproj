@@ -56,6 +56,7 @@
 		6371A52221FC4A4E00D80CF7 /* CompletedGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */; };
 		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
 		63A3B5D82236A42A00105C58 /* HistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */; };
+		63AF0D2E2451C4CA004C09F0 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */; };
 		63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */; };
@@ -90,7 +91,7 @@
 		15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckinViewController.storyboard; sourceTree = "<group>"; };
 		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreLoginViewController.storyboard; sourceTree = "<group>"; };
 		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
 		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +128,8 @@
 		6371A52121FC4A4E00D80CF7 /* CompletedGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalViewModel.swift; sourceTree = "<group>"; };
 		6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompletedGoal.storyboard; sourceTree = "<group>"; };
 		63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryViewController.storyboard; sourceTree = "<group>"; };
+		63AF0D26245067E3004C09F0 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
+		63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */,
+				63AF0D2E2451C4CA004C09F0 /* IQKeyboardManagerSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +398,8 @@
 		E328ADD7DB7764224E12DBFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63AF0D26245067E3004C09F0 /* IQKeyboardManager.framework */,
+				63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */,
 				1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */,
 			);
 			name = Frameworks;
@@ -412,6 +418,7 @@
 				150A300C21A6E106000CAB0C /* Resources */,
 				FAEFC89F80B5F0D148C6B7CD /* [CP] Embed Pods Frameworks */,
 				F6C813EA4A20EB732446DF10 /* [CP] Copy Pods Resources */,
+				63AF0D2A24506804004C09F0 /* Carthage integration */,
 			);
 			buildRules = (
 			);
@@ -504,6 +511,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		63AF0D2A24506804004C09F0 /* Carthage integration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
+			);
+			name = "Carthage integration";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 		F6C813EA4A20EB732446DF10 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -730,9 +756,13 @@
 			baseConfigurationReference = AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -741,7 +771,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.happylab.onepercentwin";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -755,6 +785,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
