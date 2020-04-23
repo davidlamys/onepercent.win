@@ -9,8 +9,8 @@ target 'OnePercentWin' do
   inhibit_all_warnings!
   
   # Pods for OnePercentWin
-  pod 'Firebase/Core'
-  pod 'FirebaseFirestore'
-  pod 'FirebaseUI/Auth', '~> 5.0'
+#  pod 'Firebase/Core'
+#  pod 'FirebaseFirestore'
+#  pod 'FirebaseUI/Auth', '~> 5.0'
   pod 'JTAppleCalendar', '~> 7.0'
 end
