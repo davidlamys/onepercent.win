@@ -57,6 +57,7 @@
 		6371A52421FC4A5700D80CF7 /* CompletedGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6371A52321FC4A5700D80CF7 /* CompletedGoal.storyboard */; };
 		63A3B5D82236A42A00105C58 /* HistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */; };
 		63AF0D2E2451C4CA004C09F0 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */; };
+		63AF0D302451C751004C09F0 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AF0D2F2451C751004C09F0 /* GoogleSignIn.framework */; };
 		63B030BE21AB112300890104 /* DailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B030BD21AB112300890104 /* DailyGoal.swift */; };
 		63B96A7C2224233400BBA9F9 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */; };
 		63B96A7E2224256100BBA9F9 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */; };
@@ -130,6 +131,7 @@
 		63A3B5D72236A42A00105C58 /* HistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryViewController.storyboard; sourceTree = "<group>"; };
 		63AF0D26245067E3004C09F0 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
 		63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
+		63AF0D2F2451C751004C09F0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Carthage/Build/iOS/GoogleSignIn.framework; sourceTree = "<group>"; };
 		63B030BD21AB112300890104 /* DailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoal.swift; sourceTree = "<group>"; };
 		63B96A7B2224233400BBA9F9 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		63B96A7D2224256100BBA9F9 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			files = (
 				8D4F9253C435883B654B4926 /* Pods_OnePercentWin.framework in Frameworks */,
 				63AF0D2E2451C4CA004C09F0 /* IQKeyboardManagerSwift.framework in Frameworks */,
+				63AF0D302451C751004C09F0 /* GoogleSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +401,7 @@
 		E328ADD7DB7764224E12DBFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63AF0D2F2451C751004C09F0 /* GoogleSignIn.framework */,
 				63AF0D26245067E3004C09F0 /* IQKeyboardManager.framework */,
 				63AF0D27245067E3004C09F0 /* IQKeyboardManagerSwift.framework */,
 				1ADC9A54CAE28B932803F408 /* Pods_OnePercentWin.framework */,
@@ -521,6 +525,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GoogleSignIn.framework",
 			);
 			name = "Carthage integration";
 			outputFileListPaths = (

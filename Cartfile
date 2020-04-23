@@ -1,1 +1,2 @@
 github "hackiftekhar/IQKeyboardManager"
+github "https://github.com/fabio914/GoogleSignIn-iOS" ~> 4.2
