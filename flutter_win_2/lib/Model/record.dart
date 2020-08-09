@@ -22,5 +22,5 @@ class Record {
 }
 
 DateTime parseTime(dynamic date) {
-  return Platform.isIOS ? (date as Timestamp).toDate() : (date as DateTime);
+  return (date as Timestamp).toDate();
 }

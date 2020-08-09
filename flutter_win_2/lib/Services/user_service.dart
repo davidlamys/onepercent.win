@@ -26,6 +26,7 @@ class UserService {
   Future<String> userId() async {
     final user = await _auth.currentUser();
     if (user == null) {
+      print("user is null");
       return null;
     }
     return user.uid;

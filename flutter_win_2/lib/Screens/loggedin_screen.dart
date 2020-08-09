@@ -3,6 +3,7 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Services/goal_service.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
+import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
 import 'package:intl/intl.dart';
 
@@ -44,12 +45,26 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   Widget build(BuildContext context) {
     final UserService _userService = UserService();
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          title: Text(
+            '${dayFormat().format(selectedDate)}',
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  print("hello world");
+                },
+                child: Icon(Icons.settings),
+              ),
+            ),
+          ]),
       body: Container(
         child: Column(
           children: <Widget>[
             Expanded(
-              flex: 1,
+              flex: 10,
               child: Container(
                 color: Colors.blue,
                 child: HomePageCalendar(
@@ -64,9 +79,15 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
-            Text('${dayFormat().format(selectedDate)} selected'),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '${dayFormat().format(selectedDate)}',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
             Expanded(
-              flex: 9,
+              flex: 60,
               child: buildView(selectedDate),
             ),
           ],
@@ -102,36 +123,5 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
           elementTimestamp.month == refDate.month &&
           elementTimestamp.day == refDate.day;
     }, orElse: () => null);
-  }
-}
-
-class GoalView extends StatelessWidget {
-  final Record record;
-
-  const GoalView({Key key, this.record}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Text(
-            'Today I\'m going to',
-          ),
-          Text(
-            record.name,
-          ),
-          Text(
-            'because it\'s going to help me to',
-          ),
-          Text(
-            record.reason,
-          ),
-          Text(
-            'notes: ${record.notes ?? 'no notes'}',
-          ),
-        ],
-      ),
-    );
   }
 }

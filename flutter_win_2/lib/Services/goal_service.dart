@@ -10,15 +10,17 @@ class GoalService {
 
   Future<Stream<List<Record>>> goalStream() async {
     final userId = await UserService().userId();
+    print("setting up goal stream");
     print(userId);
     return _firestore
         .collection('dailyGoals')
         .orderBy("timestamp")
-        .where('userId', isEqualTo: userId)
+        .where("userId", isEqualTo: userId)
         .snapshots()
         .map((snapshot) {
       List<DocumentSnapshot> documents = snapshot.documents;
-
+      print("received:");
+        print(documents.length);
       return documents.map((e) => Record.fromSnapshot(e)).toList();
     });
   }

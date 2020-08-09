@@ -60,7 +60,7 @@ class _RouterScreenState extends State<RouterScreen> {
 
     if (_context != null) {
       if (hasUser) {
-        Navigator.pushNamed(_context, LoggedInScreen.id);
+        Navigator.pushReplacementNamed(_context, LoggedInScreen.id);
       } else {
         Navigator.pushNamed(_context, PreLoginScreen.id);
       }
