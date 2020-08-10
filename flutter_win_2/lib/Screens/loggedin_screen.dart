@@ -80,9 +80,9 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
-                '${dayFormat().format(selectedDate)}',
+                getStatusPrompt(),
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
@@ -94,6 +94,17 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
         ),
       ),
     );
+  }
+
+  String getStatusPrompt() {
+    Record selectedRecord = recordForDate(selectedDate);
+    if (selectedRecord == null) {
+      return "No Goals For Date";
+    } else if (selectedRecord.notes == null) {
+      return "Reflection needed!!!";
+    } else {
+      return "Well done! Now aim again!!!";
+    }
   }
 
   Widget buildView(DateTime dateTime) {
