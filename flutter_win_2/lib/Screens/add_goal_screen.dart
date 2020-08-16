@@ -46,8 +46,8 @@ class AddGoalScreen extends StatelessWidget {
                 onPressed: () async {
                   var userId = await _userService.userId();
                   var userName = await _userService.userName();
-                  var goal = Goal(
-                      uuid.v4(), _goal, _reason, date, userName, userId, null);
+                  var goal = Goal(uuid.v4(), _goal, _reason, date, userName,
+                      userId, null, "inProgress");
                   _goalService.addGoal(goal).then((value) {
                     Navigator.pop(context);
                   });

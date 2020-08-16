@@ -81,9 +81,10 @@ class Goal {
   final String createdBy;
   final String userId;
   final String notes;
+  final String status;
 
   Goal(this.id, this.goal, this.reason, this.date, this.createdBy, this.userId,
-      this.notes);
+      this.notes, this.status);
 
   factory(Record record) {}
 
@@ -95,6 +96,7 @@ class Goal {
       "createdBy": createdBy,
       "userId": userId,
       "notes": notes,
+      "status": status
     };
   }
 }

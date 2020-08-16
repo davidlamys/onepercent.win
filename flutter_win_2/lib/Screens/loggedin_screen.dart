@@ -99,11 +99,15 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   String getStatusPrompt() {
     Record selectedRecord = recordForDate(selectedDate);
     if (selectedRecord == null) {
-      return "No Goals For Date";
+      return "👀 No Goals?? 👀";
+    } else if (selectedRecord.status == "inProgress") {
+      return "💪 You've got this!! 💪";
     } else if (selectedRecord.notes == null) {
-      return "Reflection needed!!!";
+      return "🤔 Reflection needed!! 🤔";
+    } else if (selectedRecord.status == "completedWithNotes") {
+      return "🌈 Well done! Now aim again!! 🌈";
     } else {
-      return "Well done! Now aim again!!!";
+      return "🌱 Lesson Learnt 🌱";
     }
   }
 

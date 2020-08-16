@@ -6,6 +6,7 @@ class Record {
   final DateTime timestamp;
   final DocumentReference reference;
   final String notes;
+  final String status;
 
   Record.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['goal'] != null),
@@ -13,7 +14,8 @@ class Record {
         name = map['goal'],
         reason = map['reason'],
         timestamp = parseTime(map['timestamp']),
-        notes = map['notes'];
+        notes = map['notes'],
+        status = map['status'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
