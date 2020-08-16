@@ -4,6 +4,7 @@ import 'package:flutter_win_2/Screens/add_goal_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
+import 'package:flutter_win_2/service_factory.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,7 +33,7 @@ class RouterScreen extends StatefulWidget {
 }
 
 class _RouterScreenState extends State<RouterScreen> {
-  final userService = UserService();
+  final userService = ServiceFactory.getUserService();
   bool _hasUser = false;
   bool _isCheckingForUser = false;
 

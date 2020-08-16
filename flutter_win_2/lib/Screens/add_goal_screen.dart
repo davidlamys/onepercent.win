@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Services/goal_service.dart';
-import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:uuid/uuid.dart';
+
+import '../service_factory.dart';
 
 class AddGoalScreen extends StatelessWidget {
   static final id = 'addGoalScreen';
 
-  DateTime date;
-
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    DateTime date;
+
     if (arguments != null) {
       print(arguments['date']);
       date = arguments['date'];
-      print('david is hear!!!');
     }
 
     String _goal;
     String _reason;
-    var _goalService = GoalService();
-    var _userService = UserService();
+    var _goalService = ServiceFactory.getGoalService();
+    var _userService = ServiceFactory.getUserService();
     var uuid = Uuid();
 
     return Scaffold(

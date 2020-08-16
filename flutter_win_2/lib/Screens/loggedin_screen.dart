@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Services/goal_service.dart';
-import 'package:flutter_win_2/Services/user_service.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
+import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
 const numDays = 14;
@@ -16,7 +16,7 @@ class LoggedInScreen extends StatefulWidget {
 }
 
 class _LoggedInScreenState extends State<LoggedInScreen> {
-  final goalService = GoalService();
+  final goalService = ServiceFactory.getGoalService();
   DateTime selectedDate;
   List<Record> records;
 
@@ -43,7 +43,6 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final UserService _userService = UserService();
     return Scaffold(
       appBar: AppBar(
           title: Text(

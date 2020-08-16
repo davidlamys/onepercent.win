@@ -10,6 +10,32 @@ final GoogleSignIn _googleSignIn = GoogleSignIn(
 
 final _auth = FirebaseAuth.instance;
 
+class FakeUserService extends UserService {
+  @override
+  Future<bool> hasLoggedInUser() {
+    // TODO: implement hasLoggedInUser
+    return Future.value(true);
+  }
+
+  @override
+  Future<String> userId() {
+    // TODO: implement userId
+    return Future.value("some string");
+  }
+
+  @override
+  Future<String> userName() {
+    // TODO: implement userName
+    return Future.value("some user name");
+  }
+
+  @override
+  Future<void> googleSignIn() {
+    // TODO: implement googleSignIn
+    return Future.value();
+  }
+}
+
 class UserService {
   Stream<FirebaseUser> user;
 
@@ -45,7 +71,7 @@ class UserService {
   }
 
   void loginInAnonymously() async {
-    final result = await _auth.signInAnonymously();
+    await _auth.signInAnonymously();
   }
 
   Future<void> googleSignIn() async {

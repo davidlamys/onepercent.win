@@ -1,9 +1,48 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
+
+class FakeGoalService extends GoalService {
+  StreamController<List<Record>> stubGoalsStreamController =
+      StreamController<List<Record>>();
+  List<Record> _list = List.from([], growable: true);
+
+  FakeGoalService() {
+    _list.add(build());
+    stubGoalsStreamController.stream.asBroadcastStream().listen((event) {
+      print("new value in stub");
+      _list = event;
+    });
+  }
+
+  Record build() {
+    var map = Map<String, dynamic>();
+    map['goal'] = "Something";
+    map['reason'] = "big and strong";
+    map['timestamp'] = DateTime.now();
+    map['notes'] = "some notes";
+    return Record.fromMap(map);
+  }
+
+  @override
+  Future<Stream<List<Record>>> goalStream() {
+    return Future.value(stubGoalsStreamController.stream.asBroadcastStream());
+  }
+
+  @override
+  Future<void> addGoal(Goal goal) async {
+    final data = goal.data();
+    final newRecord = Record.fromMap(data);
+    _list.add(newRecord);
+    stubGoalsStreamController.add(_list);
+    print("add new goal in stub $newRecord");
+
+    print(newRecord.timestamp);
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
 
 class GoalService {
   final _firestore = Firestore.instance;
@@ -20,12 +59,12 @@ class GoalService {
         .map((snapshot) {
       List<DocumentSnapshot> documents = snapshot.documents;
       print("received:");
-        print(documents.length);
+      print(documents.length);
       return documents.map((e) => Record.fromSnapshot(e)).toList();
     });
   }
 
-  Future<Void> addGoal(Goal goal) {
+  Future<void> addGoal(Goal goal) {
     return _firestore.collection('dailyGoals').add(goal.data()).then((value) {
       return;
     }, onError: (error) {

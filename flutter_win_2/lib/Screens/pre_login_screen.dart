@@ -1,8 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../service_factory.dart';
 
 class PreLoginScreen extends StatefulWidget {
   static const String id = "pre_login_screen";
@@ -17,7 +18,7 @@ final style = TextStyle(
 );
 
 class _PreLoginScreenState extends State<PreLoginScreen> {
-  final userService = UserService();
+  final userService = ServiceFactory.getUserService();
 
   @override
   Widget build(BuildContext context) {
