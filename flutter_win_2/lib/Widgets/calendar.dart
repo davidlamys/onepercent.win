@@ -37,25 +37,51 @@ class HomePageCalendar extends StatelessWidget {
           onDateSelection(date);
         },
         child: Card(
-          child: Container(
-            color: (date == selectedDate) ? Colors.grey : offWhiteText,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Text(dayFormat().format(date)),
-                Text(dateFormat().format(date)),
-                Text(monthFormat().format(date)),
-                Container(
-                  color: _colorForDate(date),
-                  height: 10.0,
-                ),
-              ],
-            ),
-          ),
+          child: buildContainer(date),
         ),
       ),
     );
   }
+
+  Container buildContainer(DateTime date) {
+    return Container(
+      padding: EdgeInsets.all(5),
+      child: (date == selectedDate)
+          ? selectedDateContent(date)
+          : unselectedDateContent(date),
+    );
+  }
+
+  Column selectedDateContent(DateTime date) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        selectedTextStyle(dayFormat().format(date)),
+        selectedTextStyle(dateFormat().format(date)),
+        selectedTextStyle(monthFormat().format(date)),
+      ],
+    );
+  }
+
+  Column unselectedDateContent(DateTime date) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Text(dayFormat().format(date)),
+        Text(dateFormat().format(date)),
+        Text(monthFormat().format(date)),
+        Container(
+          color: _colorForDate(date),
+          height: 2.0,
+        ),
+      ],
+    );
+  }
+
+  Text selectedTextStyle(string) => Text(
+        string,
+        style: TextStyle(fontWeight: FontWeight.w900),
+      );
 
   Color _colorForDate(DateTime refDate) {
     if (records == null || refDate == null) {
