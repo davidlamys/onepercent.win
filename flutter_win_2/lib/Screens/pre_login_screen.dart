@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../service_factory.dart';
@@ -12,7 +13,7 @@ class PreLoginScreen extends StatefulWidget {
 }
 
 final style = TextStyle(
-  color: Colors.white,
+  color: offWhiteText,
   fontSize: 40.0,
   fontWeight: FontWeight.bold,
 );

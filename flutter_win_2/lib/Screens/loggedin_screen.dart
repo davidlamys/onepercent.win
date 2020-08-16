@@ -35,6 +35,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   void listenOnGoalStream(Stream<List<Record>> goalStream) {
     goalStream.listen((event) {
+      print("New goals has arrived");
       setState(() {
         records = event;
       });
@@ -65,7 +66,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
             Expanded(
               flex: 10,
               child: Container(
-                color: Colors.blue,
+                color: appBarColor,
                 child: HomePageCalendar(
                   records: records,
                   dates: _dates,

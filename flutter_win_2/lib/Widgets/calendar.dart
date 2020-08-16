@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:intl/intl.dart';
 
 class HomePageCalendar extends StatelessWidget {
@@ -37,7 +38,7 @@ class HomePageCalendar extends StatelessWidget {
         },
         child: Card(
           child: Container(
-            color: (date == selectedDate) ? Colors.grey : Colors.white,
+            color: (date == selectedDate) ? Colors.grey : offWhiteText,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
@@ -58,7 +59,7 @@ class HomePageCalendar extends StatelessWidget {
 
   Color _colorForDate(DateTime refDate) {
     if (records == null || refDate == null) {
-      return Colors.red;
+      return noGoal;
     }
     var record = records.reversed.firstWhere((element) {
       final elementTimestamp = element.timestamp;
@@ -68,14 +69,14 @@ class HomePageCalendar extends StatelessWidget {
     }, orElse: () => null);
 
     if (record == null) {
-      return Colors.red;
+      return noGoal;
     }
 
     if (record.notes == null) {
-      return Colors.yellow;
+      return pendingGoal;
     }
 
-    return Colors.green;
+    return completedGoal;
   }
 
   DateFormat dayFormat() {

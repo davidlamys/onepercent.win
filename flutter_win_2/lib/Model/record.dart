@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Record {
@@ -22,5 +20,8 @@ class Record {
 }
 
 DateTime parseTime(dynamic date) {
+  if (date is DateTime) {
+    return date;
+  }
   return (date as Timestamp).toDate();
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 
 class GoalView extends StatelessWidget {
   final Record record;
@@ -73,8 +74,7 @@ class ValueText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style:
-          Theme.of(context).textTheme.headline6.copyWith(color: Colors.indigo),
+      style: Theme.of(context).textTheme.headline5.copyWith(color: richBlack),
     );
   }
 }
