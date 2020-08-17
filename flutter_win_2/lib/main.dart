@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_win_2/Screens/add_goal_screen.dart';
@@ -24,8 +26,11 @@ class MyApp extends StatelessWidget {
         AddGoalScreen.id: (context) => AddGoalScreen(),
       },
       theme: ThemeData(
-        primaryColor: appBarColor,
-      ),
+          primaryColor: appBarColor,
+          textTheme: TextTheme(
+            bodyText1: TextStyle(fontWeight: FontWeight.w300),
+            headline6: TextStyle(fontWeight: FontWeight.normal),
+          )),
     );
   }
 }

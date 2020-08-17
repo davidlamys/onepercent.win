@@ -15,11 +15,8 @@ class GoalView extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 16,
-            alignment: WrapAlignment.center,
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
             children: buildChildrenWidgets(),
           ),
         ),
@@ -47,6 +44,15 @@ class GoalView extends StatelessWidget {
       children.add(TokenText(text: "Notes:"));
       children.add(ValueText(text: record.notes));
     }
+
+    var button = FlatButton(
+      onPressed: () {
+        print("hello world");
+      },
+      child: Text('Edit goal'),
+    );
+
+    children.add(button);
     return children;
   }
 }
@@ -58,9 +64,15 @@ class TokenText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.headline6,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyText1.copyWith(
+              fontStyle: FontStyle.italic,
+              color: richBlack,
+            ),
+      ),
     );
   }
 }
@@ -72,9 +84,12 @@ class ValueText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.headline5.copyWith(color: richBlack),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.headline6.copyWith(color: richBlack),
+      ),
     );
   }
 }
