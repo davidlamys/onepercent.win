@@ -61,6 +61,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
             ),
           ]),
       body: Container(
+        color: appBarColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -94,14 +95,14 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                getStatusPrompt(),
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
+//            Padding(
+//              padding: const EdgeInsets.only(top: 8),
+//              child: Text(
+//                getStatusPrompt(),
+//                textAlign: TextAlign.center,
+//                style: Theme.of(context).textTheme.headline6,
+//              ),
+//            ),
             Expanded(
               flex: 60,
               child: buildView(selectedDate),
@@ -112,8 +113,27 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     );
   }
 
-  String getStatusPrompt() {
+  Widget goalView() {
     Record selectedRecord = recordForDate(selectedDate);
+    var goalView = buildView(selectedDate);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [titleForGoal(selectedRecord), goalView],
+    );
+  }
+
+  Widget titleForGoal(Record record) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Text(
+        getStatusPrompt(record),
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline6,
+      ),
+    );
+  }
+
+  String getStatusPrompt(Record selectedRecord) {
     if (selectedRecord == null) {
       return "👀 No Goals?? 👀";
     } else if (selectedRecord.status == "inProgress") {
@@ -131,7 +151,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     var record = recordForDate(dateTime);
     if (record == null) {
       return NoGoalView(
-        date: dateTime,
+        date: selectedDate,
       );
     } else {
       return GoalView(

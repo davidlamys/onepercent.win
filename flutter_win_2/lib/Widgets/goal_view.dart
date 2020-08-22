@@ -11,13 +11,15 @@ class GoalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: buildChildrenWidgets(),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: buildChildrenWidgets(),
+            ),
           ),
         ),
       ),
