@@ -105,7 +105,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 //            ),
             Expanded(
               flex: 60,
-              child: buildView(selectedDate),
+              child: SingleChildScrollView(child: goalView()),
             ),
           ],
         ),
@@ -118,7 +118,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     var goalView = buildView(selectedDate);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [titleForGoal(selectedRecord), goalView],
+      children: [goalView],
     );
   }
 
