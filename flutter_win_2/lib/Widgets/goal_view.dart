@@ -11,22 +11,30 @@ class GoalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Card(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: buildChildrenWidgets(),
+            children: buildChildrenWidgets(context),
           ),
         ),
       ),
     );
   }
 
-  List<Widget> buildChildrenWidgets() {
+  List<Widget> buildChildrenWidgets(BuildContext context) {
     List<Widget> children = List<Widget>();
     children = [
+      Padding(
+        padding: const EdgeInsets.all(8),
+        child: Text(
+          getStatusPrompt(record),
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      ),
       TokenText(
         text: 'Today I\'m going to',
       ),
@@ -45,15 +53,32 @@ class GoalView extends StatelessWidget {
       children.add(ValueText(text: record.notes));
     }
 
-    var button = FlatButton(
+    children.add(buildCallToAction());
+    return children;
+  }
+
+  Widget buildCallToAction() {
+    var editButton = FlatButton(
       onPressed: () {
         print("hello world");
       },
       child: Text('Edit goal'),
     );
 
-    children.add(button);
-    return children;
+    var checkIn = FlatButton(
+      onPressed: () {
+        print("hello world");
+      },
+      child: Text('Reflect'),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [editButton, checkIn],
+      ),
+    );
   }
 }
 

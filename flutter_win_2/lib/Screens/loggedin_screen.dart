@@ -61,7 +61,9 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
             ),
           ]),
       body: Container(
+        color: appBarColor,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               flex: 10,
@@ -79,36 +81,28 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                getStatusPrompt(),
-                style: Theme.of(context).textTheme.headline6,
+            Container(
+              color: appBarColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${dayFormat().format(selectedDate)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: offWhiteText),
+                ),
               ),
             ),
             Expanded(
               flex: 60,
-              child: buildView(selectedDate),
+              child: SingleChildScrollView(child: buildView(selectedDate)),
             ),
           ],
         ),
       ),
     );
-  }
-
-  String getStatusPrompt() {
-    Record selectedRecord = recordForDate(selectedDate);
-    if (selectedRecord == null) {
-      return "👀 No Goals?? 👀";
-    } else if (selectedRecord.status == "inProgress") {
-      return "💪 You've got this!! 💪";
-    } else if (selectedRecord.notes == null) {
-      return "🤔 Reflection needed!! 🤔";
-    } else if (selectedRecord.status == "completedWithNotes") {
-      return "🌈 Well done! Now aim again!! 🌈";
-    } else {
-      return "🌱 Lesson Learnt 🌱";
-    }
   }
 
   Widget buildView(DateTime dateTime) {
@@ -125,7 +119,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEE, dd, MMM');
+    return DateFormat('EEEE dd MMMM y');
   }
 
   Record recordForDate(DateTime refDate) {
