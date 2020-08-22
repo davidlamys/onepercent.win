@@ -3,11 +3,32 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 
-class GoalView extends StatelessWidget {
+const List<Key> keys = [
+  Key("Network"),
+  Key("NetworkDialog"),
+  Key("Flare"),
+  Key("FlareDialog"),
+  Key("Asset"),
+  Key("AssetDialog")
+];
+
+class GoalView extends StatefulWidget {
   final Record record;
 
   const GoalView({Key key, this.record}) : super(key: key);
+
+  @override
+  _GoalViewState createState() {
+    return _GoalViewState(record);
+  }
+}
+
+class _GoalViewState extends State<GoalView> {
+  final Record record;
+
+  _GoalViewState(this.record);
 
   @override
   Widget build(BuildContext context) {
@@ -58,26 +79,67 @@ class GoalView extends StatelessWidget {
   }
 
   Widget buildCallToAction() {
-    var editButton = FlatButton(
+    var editGoalButton = FlatButton(
       onPressed: () {
         print("hello world");
       },
       child: Text('Edit goal'),
     );
 
-    var checkIn = FlatButton(
+    var editNotesButton = FlatButton(
       onPressed: () {
         print("hello world");
       },
-      child: Text('Reflect'),
+      child: Text('Edit notes'),
     );
 
+    var checkInButton = buildReflectButton();
+
+    print(record.notes);
+    var buttons = (record.notes == null)
+        ? [editGoalButton, checkInButton]
+        : [editGoalButton, editNotesButton];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [editButton, checkIn],
+        children: buttons,
       ),
+    );
+  }
+
+  FlatButton buildReflectButton() {
+    return FlatButton(
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (_) => NetworkGiffyDialog(
+                  key: keys[1],
+                  image: Image.network(
+                    // attribution: https://giphy.com/stickers/molangofficialpage-kawaii-molang-piupiu-29LdYf2N5uR1oCWSOI
+                    "https://media.giphy.com/media/29LdYf2N5uR1oCWSOI/giphy.gif",
+                    fit: BoxFit.scaleDown,
+                  ),
+                  entryAnimation: EntryAnimation.BOTTOM,
+                  title: Text(
+                    'How did it go?',
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+                  ),
+                  description: Text(
+                    'In many ways, this reflection will be as important as what happened.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  buttonOkText: Text("Crushed it 😎"),
+                  buttonOkColor: completedGoal,
+                  buttonCancelText: Text("Need Tweaks 🤔"),
+                  buttonCancelColor: noGoal,
+                  onOkButtonPressed: () {},
+                ));
+      },
+      child: Text('Reflect'),
     );
   }
 }

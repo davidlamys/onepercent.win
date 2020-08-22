@@ -113,6 +113,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
       );
     } else {
       return GoalView(
+        key: UniqueKey(),
         record: record,
       );
     }
