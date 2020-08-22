@@ -62,6 +62,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
           ]),
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               flex: 10,
@@ -79,10 +80,25 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
+            Container(
+              color: appBarColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${dayFormat().format(selectedDate)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: offWhiteText),
+                ),
+              ),
+            ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 8),
               child: Text(
                 getStatusPrompt(),
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
@@ -125,7 +141,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEE, dd, MMM');
+    return DateFormat('EEEE dd MMMM y');
   }
 
   Record recordForDate(DateTime refDate) {

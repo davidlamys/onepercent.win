@@ -45,7 +45,7 @@ class HomePageCalendar extends StatelessWidget {
 
   Container buildContainer(DateTime date) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
       child: (date == selectedDate)
           ? selectedDateContent(date)
           : unselectedDateContent(date),
@@ -58,7 +58,6 @@ class HomePageCalendar extends StatelessWidget {
       children: <Widget>[
         selectedTextStyle(dayFormat().format(date)),
         selectedTextStyle(dateFormat().format(date)),
-        selectedTextStyle(monthFormat().format(date)),
       ],
     );
   }
@@ -69,10 +68,9 @@ class HomePageCalendar extends StatelessWidget {
       children: <Widget>[
         Text(dayFormat().format(date)),
         Text(dateFormat().format(date)),
-        Text(monthFormat().format(date)),
         Container(
           color: _colorForDate(date),
-          height: 2.0,
+          height: 4.0,
         ),
       ],
     );
@@ -106,7 +104,7 @@ class HomePageCalendar extends StatelessWidget {
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEE');
+    return DateFormat('E');
   }
 
   DateFormat dateFormat() {
