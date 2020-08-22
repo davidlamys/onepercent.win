@@ -95,17 +95,9 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
-//            Padding(
-//              padding: const EdgeInsets.only(top: 8),
-//              child: Text(
-//                getStatusPrompt(),
-//                textAlign: TextAlign.center,
-//                style: Theme.of(context).textTheme.headline6,
-//              ),
-//            ),
             Expanded(
               flex: 60,
-              child: SingleChildScrollView(child: goalView()),
+              child: SingleChildScrollView(child: buildView(selectedDate)),
             ),
           ],
         ),
@@ -113,45 +105,11 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     );
   }
 
-  Widget goalView() {
-    Record selectedRecord = recordForDate(selectedDate);
-    var goalView = buildView(selectedDate);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [goalView],
-    );
-  }
-
-  Widget titleForGoal(Record record) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: Text(
-        getStatusPrompt(record),
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline6,
-      ),
-    );
-  }
-
-  String getStatusPrompt(Record selectedRecord) {
-    if (selectedRecord == null) {
-      return "👀 No Goals?? 👀";
-    } else if (selectedRecord.status == "inProgress") {
-      return "💪 You've got this!! 💪";
-    } else if (selectedRecord.notes == null) {
-      return "🤔 Reflection needed!! 🤔";
-    } else if (selectedRecord.status == "completedWithNotes") {
-      return "🌈 Well done! Now aim again!! 🌈";
-    } else {
-      return "🌱 Lesson Learnt 🌱";
-    }
-  }
-
   Widget buildView(DateTime dateTime) {
     var record = recordForDate(dateTime);
     if (record == null) {
       return NoGoalView(
-        date: selectedDate,
+        date: dateTime,
       );
     } else {
       return GoalView(

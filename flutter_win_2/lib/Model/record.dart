@@ -27,3 +27,17 @@ DateTime parseTime(dynamic date) {
   }
   return (date as Timestamp).toDate();
 }
+
+String getStatusPrompt(Record selectedRecord) {
+  if (selectedRecord == null) {
+    return "👀 No Goals?? 👀";
+  } else if (selectedRecord.status == "inProgress") {
+    return "💪 You've got this!! 💪";
+  } else if (selectedRecord.notes == null) {
+    return "🤔 Reflection needed!! 🤔";
+  } else if (selectedRecord.status == "completedWithNotes") {
+    return "🌈 Well done! Now aim again!! 🌈";
+  } else {
+    return "🌱 Lesson Learnt 🌱";
+  }
+}

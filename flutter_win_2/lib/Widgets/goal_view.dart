@@ -13,13 +13,11 @@ class GoalView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: buildChildrenWidgets(context),
-            ),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: buildChildrenWidgets(context),
           ),
         ),
       ),
@@ -81,20 +79,6 @@ class GoalView extends StatelessWidget {
         children: [editButton, checkIn],
       ),
     );
-  }
-
-  String getStatusPrompt(Record selectedRecord) {
-    if (selectedRecord == null) {
-      return "👀 No Goals?? 👀";
-    } else if (selectedRecord.status == "inProgress") {
-      return "💪 You've got this!! 💪";
-    } else if (selectedRecord.notes == null) {
-      return "🤔 Reflection needed!! 🤔";
-    } else if (selectedRecord.status == "completedWithNotes") {
-      return "🌈 Well done! Now aim again!! 🌈";
-    } else {
-      return "🌱 Lesson Learnt 🌱";
-    }
   }
 }
 
