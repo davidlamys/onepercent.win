@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_win_2/Screens/add_goal_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/service_factory.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +25,12 @@ class MyApp extends StatelessWidget {
         LoggedInScreen.id: (context) => LoggedInScreen(),
         AddGoalScreen.id: (context) => AddGoalScreen(),
       },
+      theme: ThemeData(
+          primaryColor: appBarColor,
+          textTheme: TextTheme(
+            bodyText1: TextStyle(fontWeight: FontWeight.w300),
+            headline6: TextStyle(fontWeight: FontWeight.normal),
+          )),
     );
   }
 }
@@ -32,7 +42,7 @@ class RouterScreen extends StatefulWidget {
 }
 
 class _RouterScreenState extends State<RouterScreen> {
-  final userService = UserService();
+  final userService = ServiceFactory.getUserService();
   bool _hasUser = false;
   bool _isCheckingForUser = false;
 
@@ -60,7 +70,7 @@ class _RouterScreenState extends State<RouterScreen> {
 
     if (_context != null) {
       if (hasUser) {
-        Navigator.pushNamed(_context, LoggedInScreen.id);
+        Navigator.pushReplacementNamed(_context, LoggedInScreen.id);
       } else {
         Navigator.pushNamed(_context, PreLoginScreen.id);
       }

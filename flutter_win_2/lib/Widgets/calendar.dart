@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:intl/intl.dart';
 
 class HomePageCalendar extends StatelessWidget {
@@ -36,29 +37,53 @@ class HomePageCalendar extends StatelessWidget {
           onDateSelection(date);
         },
         child: Card(
-          child: Container(
-            color: (date == selectedDate) ? Colors.grey : Colors.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Text(dayFormat().format(date)),
-                Text(dateFormat().format(date)),
-                Text(monthFormat().format(date)),
-                Container(
-                  color: _colorForDate(date),
-                  height: 10.0,
-                ),
-              ],
-            ),
-          ),
+          child: buildContainer(date),
         ),
       ),
     );
   }
 
+  Container buildContainer(DateTime date) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: (date == selectedDate)
+          ? selectedDateContent(date)
+          : unselectedDateContent(date),
+    );
+  }
+
+  Column selectedDateContent(DateTime date) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        selectedTextStyle(dayFormat().format(date)),
+        selectedTextStyle(dateFormat().format(date)),
+      ],
+    );
+  }
+
+  Column unselectedDateContent(DateTime date) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Text(dayFormat().format(date)),
+        Text(dateFormat().format(date)),
+        Container(
+          color: _colorForDate(date),
+          height: 4.0,
+        ),
+      ],
+    );
+  }
+
+  Text selectedTextStyle(string) => Text(
+        string,
+        style: TextStyle(fontWeight: FontWeight.w900),
+      );
+
   Color _colorForDate(DateTime refDate) {
     if (records == null || refDate == null) {
-      return Colors.red;
+      return noGoal;
     }
     var record = records.reversed.firstWhere((element) {
       final elementTimestamp = element.timestamp;
@@ -68,18 +93,18 @@ class HomePageCalendar extends StatelessWidget {
     }, orElse: () => null);
 
     if (record == null) {
-      return Colors.red;
+      return noGoal;
     }
 
     if (record.notes == null) {
-      return Colors.yellow;
+      return pendingGoal;
     }
 
-    return Colors.green;
+    return completedGoal;
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEE');
+    return DateFormat('E');
   }
 
   DateFormat dateFormat() {

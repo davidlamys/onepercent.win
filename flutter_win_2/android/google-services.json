@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "835998660076",
+    "firebase_url": "https://one-percent-win.firebaseio.com",
+    "project_id": "one-percent-win",
+    "storage_bucket": "one-percent-win.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835998660076:android:5be01b06694df72e82fcc9",
+        "android_client_info": {
+          "package_name": "com.happylab.onepercentwin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835998660076-l45v0e3doemrchs1eb3r0emjvs6p8236.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.happylab.onepercentwin",
+            "certificate_hash": "f4e15e93283efeac0e469086da348c00ff508f4b"
+          }
+        },
+        {
+          "client_id": "835998660076-jatkfabsqkn4c90c7olu8upr1172nd8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG8cyAGFHt19oSnu7ixkGRG1zFFOn3Els"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835998660076-jatkfabsqkn4c90c7olu8upr1172nd8s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "835998660076-n3cve9helhkj9gbb7kdki6lsea6sghbb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.happylab.onepercentwin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

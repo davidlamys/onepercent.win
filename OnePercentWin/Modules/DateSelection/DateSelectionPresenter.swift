@@ -59,6 +59,10 @@ class DateSelectionPresenter: DateSelectionPresenterProtocol {
     }
     
     func cellModelFor(indexPath: IndexPath) -> DateSelectionCellModelling {
+        if displayDates.count < indexPath.item {
+            print("shit")
+            return DateSelectionCellModel(goal: nil, date: Date())
+        }
         let date = displayDates[indexPath.item]
         
         if let goal = goalsHashMap[date] {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Services/goal_service.dart';
-import 'package:flutter_win_2/Services/user_service.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
+import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
+import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
 const numDays = 14;
@@ -15,7 +16,7 @@ class LoggedInScreen extends StatefulWidget {
 }
 
 class _LoggedInScreenState extends State<LoggedInScreen> {
-  final goalService = GoalService();
+  final goalService = ServiceFactory.getGoalService();
   DateTime selectedDate;
   List<Record> records;
 
@@ -34,6 +35,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   void listenOnGoalStream(Stream<List<Record>> goalStream) {
     goalStream.listen((event) {
+      print("New goals has arrived");
       setState(() {
         records = event;
       });
@@ -42,16 +44,31 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final UserService _userService = UserService();
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          title: Text(
+            '${dayFormat().format(selectedDate)}',
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  print("hello world");
+                },
+                child: Icon(Icons.settings),
+              ),
+            ),
+          ]),
       body: Container(
+        color: appBarColor,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
-              flex: 1,
+              flex: 10,
               child: Container(
-                color: Colors.blue,
+                color: appBarColor,
                 child: HomePageCalendar(
                   records: records,
                   dates: _dates,
@@ -64,10 +81,23 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 ),
               ),
             ),
-            Text('${dayFormat().format(selectedDate)} selected'),
+            Container(
+              color: appBarColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${dayFormat().format(selectedDate)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: offWhiteText),
+                ),
+              ),
+            ),
             Expanded(
-              flex: 9,
-              child: buildView(selectedDate),
+              flex: 60,
+              child: SingleChildScrollView(child: buildView(selectedDate)),
             ),
           ],
         ),
@@ -78,7 +108,9 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   Widget buildView(DateTime dateTime) {
     var record = recordForDate(dateTime);
     if (record == null) {
-      return NoGoalView();
+      return NoGoalView(
+        date: dateTime,
+      );
     } else {
       return GoalView(
         record: record,
@@ -87,7 +119,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEE, dd, MMM');
+    return DateFormat('EEEE dd MMMM y');
   }
 
   Record recordForDate(DateTime refDate) {
@@ -100,36 +132,5 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
           elementTimestamp.month == refDate.month &&
           elementTimestamp.day == refDate.day;
     }, orElse: () => null);
-  }
-}
-
-class GoalView extends StatelessWidget {
-  final Record record;
-
-  const GoalView({Key key, this.record}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Text(
-            'Today I\'m going to',
-          ),
-          Text(
-            record.name,
-          ),
-          Text(
-            'because it\'s going to help me to',
-          ),
-          Text(
-            record.reason,
-          ),
-          Text(
-            'notes: ${record.notes ?? 'no notes'}',
-          ),
-        ],
-      ),
-    );
   }
 }

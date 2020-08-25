@@ -90,7 +90,7 @@
 		15A8FD2522C50C5200C868D8 /* CheckinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckinViewController.storyboard; sourceTree = "<group>"; };
 		15A8FD2722C50C7D00C868D8 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		15E2FCC922633FDD00C5775F /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15E2FCCB226340D200C5775F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15E76EAD22D0571100F8F99E /* PreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreLoginViewController.storyboard; sourceTree = "<group>"; };
 		15E76EAF22D0572E00F8F99E /* PreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginViewController.swift; sourceTree = "<group>"; };
 		15E76EB122D097E300F8F99E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -730,8 +730,8 @@
 			baseConfigurationReference = AE36D516A8E4B23711AB8588 /* Pods-OnePercentWin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -741,7 +741,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.happylab.onepercentwin";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -752,8 +752,8 @@
 			baseConfigurationReference = 000630BC2ACDD59A9D83E0B0 /* Pods-OnePercentWin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UC52MR44U;
 				INFOPLIST_FILE = OnePercentWin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -763,7 +763,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.happylab.onepercentwin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.happylab.onepercentwin";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

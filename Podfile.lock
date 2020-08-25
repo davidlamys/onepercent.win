@@ -123,7 +123,7 @@ DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - BoringSSL
     - Firebase
     - FirebaseAnalytics
@@ -171,4 +171,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2aa3a2d46c3937ab08a3bcd1fa6771426c441351
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.9.3
