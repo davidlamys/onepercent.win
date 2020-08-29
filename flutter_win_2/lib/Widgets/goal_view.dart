@@ -95,7 +95,6 @@ class _GoalViewState extends State<GoalView> {
 
     var checkInButton = buildReflectButton();
 
-    print(record.notes);
     var buttons = (record.notes == null)
         ? [editGoalButton, checkInButton]
         : [editGoalButton, editNotesButton];
@@ -115,9 +114,9 @@ class _GoalViewState extends State<GoalView> {
             context: context,
             builder: (_) => NetworkGiffyDialog(
                   key: keys[1],
-                  image: Image.network(
-                    // attribution: https://giphy.com/stickers/molangofficialpage-kawaii-molang-piupiu-29LdYf2N5uR1oCWSOI
-                    "https://media.giphy.com/media/29LdYf2N5uR1oCWSOI/giphy.gif",
+
+                  image: Image.asset(
+                    'assets/zen-bunny.webp',
                     fit: BoxFit.scaleDown,
                   ),
                   entryAnimation: EntryAnimation.BOTTOM,
@@ -146,8 +145,10 @@ class _GoalViewState extends State<GoalView> {
 
 class TokenText extends StatelessWidget {
   final text;
+  final textColor;
 
-  const TokenText({Key key, this.text}) : super(key: key);
+  const TokenText({Key key, this.text, this.textColor = richBlack})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +158,7 @@ class TokenText extends StatelessWidget {
         text,
         style: Theme.of(context).textTheme.bodyText1.copyWith(
               fontStyle: FontStyle.italic,
-              color: richBlack,
+              color: textColor,
             ),
       ),
     );
