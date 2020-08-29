@@ -5,19 +5,29 @@ import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 
+import '../service_factory.dart';
+
 class NoteEntryScreen extends StatelessWidget {
   static final id = 'noteEntryScreen';
 
+  final goalService = ServiceFactory.getGoalService();
+
   final Record record;
 
-  const NoteEntryScreen({Key key, this.record}) : super(key: key);
+  NoteEntryScreen({Key key, this.record}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var textEditingController = TextEditingController(
+      text: record.notes,
+    );
+
     var saveNotes = RaisedButton(
       color: completedGoal,
       onPressed: () {
-        Navigator.popUntil(context, ModalRoute.withName(LoggedInScreen.id));
+        var clone = record.copyWith(notes: textEditingController.text);
+        goalService.update(clone).then((value) => Navigator.popUntil(
+            context, ModalRoute.withName(LoggedInScreen.id)));
       },
       child: Text('Save'),
     );
@@ -28,10 +38,6 @@ class NoteEntryScreen extends StatelessWidget {
         Navigator.popUntil(context, ModalRoute.withName(LoggedInScreen.id));
       },
       child: Text('Cancel'),
-    );
-
-    var textEditingController = TextEditingController(
-      text: record.notes,
     );
 
     var scrollController = ScrollController();
