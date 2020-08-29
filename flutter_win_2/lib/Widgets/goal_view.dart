@@ -122,7 +122,6 @@ class _GoalViewState extends State<GoalView> {
             context: context,
             builder: (_) => NetworkGiffyDialog(
                   key: keys[1],
-
                   image: Image.asset(
                     'assets/zen-bunny.webp',
                     fit: BoxFit.scaleDown,
@@ -148,7 +147,17 @@ class _GoalViewState extends State<GoalView> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => NoteEntryScreen(
-                          record: record,
+                          record: record.copyWith(status: "completedWithNotes"),
+                        ),
+                      ),
+                    );
+                  },
+                  onCancelButtonPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NoteEntryScreen(
+                          record: record.copyWith(status: "failed"),
                         ),
                       ),
                     );
