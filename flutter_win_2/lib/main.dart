@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_win_2/Screens/add_goal_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
+import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         PreLoginScreen.id: (context) => PreLoginScreen(),
         LoggedInScreen.id: (context) => LoggedInScreen(),
         AddGoalScreen.id: (context) => AddGoalScreen(),
+        NoteEntryScreen.id: (context) => NoteEntryScreen(),
       },
       theme: ThemeData(
           primaryColor: appBarColor,

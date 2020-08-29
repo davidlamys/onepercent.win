@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
@@ -88,7 +89,14 @@ class _GoalViewState extends State<GoalView> {
 
     var editNotesButton = FlatButton(
       onPressed: () {
-        print("hello world");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NoteEntryScreen(
+              record: record,
+            ),
+          ),
+        );
       },
       child: Text('Edit notes'),
     );
@@ -135,7 +143,16 @@ class _GoalViewState extends State<GoalView> {
                   buttonOkColor: completedGoal,
                   buttonCancelText: Text("Need Tweaks 🤔"),
                   buttonCancelColor: noGoal,
-                  onOkButtonPressed: () {},
+                  onOkButtonPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NoteEntryScreen(
+                          record: record,
+                        ),
+                      ),
+                    );
+                  },
                 ));
       },
       child: Text('Reflect'),
