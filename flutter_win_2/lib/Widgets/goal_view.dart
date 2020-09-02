@@ -2,12 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 
-class GoalView extends StatelessWidget {
+class GoalView extends StatefulWidget {
   final Record record;
 
   const GoalView({Key key, this.record}) : super(key: key);
+
+  @override
+  _GoalViewState createState() {
+    return _GoalViewState(record);
+  }
+}
+
+class _GoalViewState extends State<GoalView> {
+  final Record record;
+
+  _GoalViewState(this.record);
 
   @override
   Widget build(BuildContext context) {
@@ -58,34 +71,101 @@ class GoalView extends StatelessWidget {
   }
 
   Widget buildCallToAction() {
-    var editButton = FlatButton(
+    var editGoalButton = FlatButton(
       onPressed: () {
         print("hello world");
       },
       child: Text('Edit goal'),
     );
 
-    var checkIn = FlatButton(
+    var editNotesButton = FlatButton(
       onPressed: () {
-        print("hello world");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NoteEntryScreen(
+              record: record,
+            ),
+          ),
+        );
       },
-      child: Text('Reflect'),
+      child: Text('Edit notes'),
     );
 
+    var checkInButton = buildReflectButton();
+
+    var buttons = (record.notes == null)
+        ? [editGoalButton, checkInButton]
+        : [editGoalButton, editNotesButton];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [editButton, checkIn],
+        children: buttons,
       ),
+    );
+  }
+
+  FlatButton buildReflectButton() {
+    return FlatButton(
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (_) => NetworkGiffyDialog(
+                  key: Key("AssetDialog"),
+                  image: Image.asset(
+                    'assets/zen-bunny.webp',
+                    fit: BoxFit.scaleDown,
+                  ),
+                  entryAnimation: EntryAnimation.BOTTOM,
+                  title: Text(
+                    'How did it go?',
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+                  ),
+                  description: Text(
+                    'In many ways, this reflection will be as important as what happened.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  buttonOkText: Text("Crushed it 😎"),
+                  buttonOkColor: completedGoal,
+                  buttonCancelText: Text("Need Tweaks 🤔"),
+                  buttonCancelColor: noGoal,
+                  onOkButtonPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NoteEntryScreen(
+                          record: record.copyWith(status: "completedWithNotes"),
+                        ),
+                      ),
+                    );
+                  },
+                  onCancelButtonPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NoteEntryScreen(
+                          record: record.copyWith(status: "failed"),
+                        ),
+                      ),
+                    );
+                  },
+                ));
+      },
+      child: Text('Reflect'),
     );
   }
 }
 
 class TokenText extends StatelessWidget {
   final text;
+  final textColor;
 
-  const TokenText({Key key, this.text}) : super(key: key);
+  const TokenText({Key key, this.text, this.textColor = richBlack})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +175,7 @@ class TokenText extends StatelessWidget {
         text,
         style: Theme.of(context).textTheme.bodyText1.copyWith(
               fontStyle: FontStyle.italic,
-              color: richBlack,
+              color: textColor,
             ),
       ),
     );

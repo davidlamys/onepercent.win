@@ -71,6 +71,19 @@ class GoalService {
       return error;
     });
   }
+
+  Future<void> update(Record record) {
+    print(record.id);
+    return _firestore
+        .collection('dailyGoals')
+        .document(record.id)
+        .updateData(record.data())
+        .then((value) {
+      return;
+    }, onError: (error) {
+      return error;
+    });
+  }
 }
 
 class Goal {
@@ -85,8 +98,6 @@ class Goal {
 
   Goal(this.id, this.goal, this.reason, this.date, this.createdBy, this.userId,
       this.notes, this.status);
-
-  factory(Record record) {}
 
   Map<String, dynamic> data() {
     return {
