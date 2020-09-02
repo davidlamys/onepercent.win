@@ -6,15 +6,6 @@ import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
-const List<Key> keys = [
-  Key("Network"),
-  Key("NetworkDialog"),
-  Key("Flare"),
-  Key("FlareDialog"),
-  Key("Asset"),
-  Key("AssetDialog")
-];
-
 class GoalView extends StatefulWidget {
   final Record record;
 
@@ -121,7 +112,7 @@ class _GoalViewState extends State<GoalView> {
         showDialog(
             context: context,
             builder: (_) => NetworkGiffyDialog(
-                  key: keys[1],
+                  key: Key("AssetDialog"),
                   image: Image.asset(
                     'assets/zen-bunny.webp',
                     fit: BoxFit.scaleDown,
