@@ -19,11 +19,12 @@ class FakeGoalService extends GoalService {
 
   Record build() {
     var map = Map<String, dynamic>();
+    map['documentID'] = "hello";
     map['goal'] = "Something";
     map['reason'] = "big and strong";
     map['timestamp'] = DateTime.now();
     map['notes'] = "some notes";
-    return Record.fromMap(map);
+    return Record.fromMap(map, documentID: "some  ID");
   }
 
   @override

@@ -6,15 +6,15 @@ class Record {
   final String reason;
   final DateTime timestamp;
   final String userId;
-  final DocumentReference reference;
+  final String documentID;
   final String createdBy;
   final String notes;
   final String status;
 
-  Record.fromMap(Map<String, dynamic> map, {this.reference})
+  Record.fromMap(Map<String, dynamic> map, {this.documentID})
       : assert(map['goal'] != null),
         assert(map['reason'] != null),
-        id = reference.documentID,
+        id = documentID,
         name = map['goal'],
         reason = map['reason'],
         timestamp = parseTime(map['timestamp']),
@@ -24,7 +24,7 @@ class Record {
         status = map['status'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
+      : this.fromMap(snapshot.data, documentID: snapshot.reference.documentID);
 
   Record(
       String id,
@@ -32,7 +32,7 @@ class Record {
       String reason,
       DateTime timestamp,
       String userId,
-      DocumentReference reference,
+      String documentID,
       String createdBy,
       String notes,
       String status)
@@ -41,7 +41,7 @@ class Record {
         reason = reason,
         timestamp = timestamp,
         userId = userId,
-        reference = reference,
+        documentID = documentID,
         createdBy = createdBy,
         notes = notes,
         status = status;
@@ -58,7 +58,7 @@ class Record {
         reason ?? this.reason,
         this.timestamp,
         this.userId,
-        this.reference,
+        this.documentID,
         this.createdBy,
         notes ?? this.notes,
         status ?? this.status);
