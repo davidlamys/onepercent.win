@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Screens/add_goal_screen.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 
 class NoGoalView extends StatelessWidget {
   final DateTime date;
@@ -10,24 +11,52 @@ class NoGoalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orange,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text("No goal set yet."),
-          FlatButton(
-            child: Text('Add goal'),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                AddGoalScreen.id,
-                arguments: {'date': date},
-              );
-            },
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: AspectRatio(
+        aspectRatio: 1.4,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Let's set a goal",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                FlatButton(
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.add_circle,
+                        color: pendingGoal,
+                        size: 100.0,
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      AddGoalScreen.id,
+                      arguments: {'date': date},
+                    );
+                  },
+                ),
+                Text(
+                  "Remember, taking it easy can be a goal too.",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2
+                      .copyWith(fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
