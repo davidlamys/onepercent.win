@@ -4,8 +4,8 @@ import 'package:uuid/uuid.dart';
 
 import '../service_factory.dart';
 
-class AddGoalScreen extends StatelessWidget {
-  static final id = 'addGoalScreen';
+class GoalEntryScreen extends StatelessWidget {
+  static final id = 'goalEntryScreen';
 
   @override
   Widget build(BuildContext context) {

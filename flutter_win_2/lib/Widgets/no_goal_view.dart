@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_win_2/Screens/add_goal_screen.dart';
+import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 
 class NoGoalView extends StatelessWidget {
@@ -40,7 +40,7 @@ class NoGoalView extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      AddGoalScreen.id,
+                      GoalEntryScreen.id,
                       arguments: {'date': date},
                     );
                   },

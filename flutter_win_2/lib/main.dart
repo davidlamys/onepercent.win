@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_win_2/Screens/add_goal_screen.dart';
+import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         RouterScreen.id: (context) => RouterScreen(),
         PreLoginScreen.id: (context) => PreLoginScreen(),
         LoggedInScreen.id: (context) => LoggedInScreen(),
-        AddGoalScreen.id: (context) => AddGoalScreen(),
+        GoalEntryScreen.id: (context) => GoalEntryScreen(),
         NoteEntryScreen.id: (context) => NoteEntryScreen(),
       },
       theme: ThemeData(
