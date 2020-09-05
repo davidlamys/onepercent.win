@@ -81,7 +81,7 @@ class NoteEntryScreen extends StatelessWidget {
 
   RaisedButton buildCancelButton(BuildContext context) {
     var cancelButton = RaisedButton(
-      color: noGoal,
+      color: appRed,
       onPressed: () {
         Navigator.popUntil(context, ModalRoute.withName(LoggedInScreen.id));
       },
@@ -93,7 +93,7 @@ class NoteEntryScreen extends StatelessWidget {
   RaisedButton buildSaveNotesButton(
       TextEditingController textEditingController, BuildContext context) {
     var saveNotes = RaisedButton(
-      color: completedGoal,
+      color: appGreen,
       onPressed: () {
         var clone = record.copyWith(notes: textEditingController.text);
         goalService.update(clone).then((value) => Navigator.popUntil(

@@ -32,7 +32,7 @@ class NoGoalView extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.add_circle,
-                        color: pendingGoal,
+                        color: appOrange,
                         size: 100.0,
                       ),
                     ],
