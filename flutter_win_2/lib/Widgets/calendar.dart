@@ -83,7 +83,7 @@ class HomePageCalendar extends StatelessWidget {
 
   Color _colorForDate(DateTime refDate) {
     if (records == null || refDate == null) {
-      return noGoal;
+      return appRed;
     }
     var record = records.reversed.firstWhere((element) {
       final elementTimestamp = element.timestamp;
@@ -93,14 +93,14 @@ class HomePageCalendar extends StatelessWidget {
     }, orElse: () => null);
 
     if (record == null) {
-      return noGoal;
+      return appRed;
     }
 
     if (record.notes == null) {
-      return pendingGoal;
+      return appOrange;
     }
 
-    return completedGoal;
+    return appGreen;
   }
 
   DateFormat dayFormat() {

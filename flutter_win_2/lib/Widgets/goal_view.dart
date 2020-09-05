@@ -130,9 +130,9 @@ class _GoalViewState extends State<GoalView> {
                     style: TextStyle(fontSize: 18.0),
                   ),
                   buttonOkText: Text("Crushed it 😎"),
-                  buttonOkColor: completedGoal,
+                  buttonOkColor: appGreen,
                   buttonCancelText: Text("Need Tweaks 🤔"),
-                  buttonCancelColor: noGoal,
+                  buttonCancelColor: appRed,
                   onOkButtonPressed: () {
                     Navigator.push(
                       context,

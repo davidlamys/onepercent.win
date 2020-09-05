@@ -75,6 +75,10 @@ class Record {
       "status": status
     };
   }
+
+  bool hasFailed() => this.status == "failed";
+  bool isInProgress() => this.status == "inProgress";
+  bool isCompletedWithNotes() => this.status == "completedWithNotes";
 }
 
 DateTime parseTime(dynamic date) {
@@ -87,13 +91,15 @@ DateTime parseTime(dynamic date) {
 String getStatusPrompt(Record selectedRecord) {
   if (selectedRecord == null) {
     return "👀 No Goals?? 👀";
-  } else if (selectedRecord.status == "inProgress") {
+  } else if (selectedRecord.isInProgress()) {
     return "💪 You've got this!! 💪";
   } else if (selectedRecord.notes == null) {
-    return "🤔 Reflection needed!! 🤔";
-  } else if (selectedRecord.status == "completedWithNotes") {
+    return "🤔 Reflection needed!! 🤔"; // legacy ui
+  } else if (selectedRecord.isCompletedWithNotes()) {
     return "🌈 Well done! Now aim again!! 🌈";
-  } else {
+  } else if (selectedRecord.hasFailed()) {
     return "🌱 Lesson Learnt 🌱";
+  } else {
+    return "";
   }
 }
