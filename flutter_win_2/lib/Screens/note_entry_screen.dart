@@ -129,7 +129,7 @@ class NoteEntryScreen extends StatelessWidget {
   }
 
   String getHeadline(Record record) {
-    if (record.status == "failed") {
+    if (record.hasFailed()) {
       return "Let's see how we can make it better 🤔";
     } else {
       return "Congratulations rock star! 😎";
@@ -137,7 +137,7 @@ class NoteEntryScreen extends StatelessWidget {
   }
 
   String getPrompt(Record record) {
-    if (record.status == "failed") {
+    if (record.hasFailed()) {
       return "Oops, looks like you failed to do what you planned to do. What went wrong? What are the lessons learnt? How do we aim better next time?";
     } else {
       return "Nice, looks like you crushed it!! How did it make you feel? What's next? How may we build on this?";
