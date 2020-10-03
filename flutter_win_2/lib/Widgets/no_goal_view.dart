@@ -38,10 +38,14 @@ class NoGoalView extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(
+                    Navigator.push(
                       context,
-                      GoalEntryScreen.id,
-                      arguments: {'date': date},
+                      MaterialPageRoute(
+                        builder: (context) => GoalEntryScreen(
+                          record: null,
+                          date: date,
+                        ),
+                      ),
                     );
                   },
                 ),

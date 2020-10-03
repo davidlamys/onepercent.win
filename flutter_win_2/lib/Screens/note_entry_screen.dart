@@ -106,7 +106,7 @@ class NoteEntryScreen extends StatelessWidget {
 
   TextField buildNoteTextField(ScrollController scrollController,
       TextEditingController textEditingController) {
-    var noteTextField = TextField(
+    return TextField(
       onChanged: (newText) {
         scrollController.animateTo(scrollController.position.minScrollExtent,
             duration: Duration(milliseconds: 500), curve: Curves.ease);
@@ -125,7 +125,6 @@ class NoteEntryScreen extends StatelessWidget {
             EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
       ),
     );
-    return noteTextField;
   }
 
   String getHeadline(Record record) {
