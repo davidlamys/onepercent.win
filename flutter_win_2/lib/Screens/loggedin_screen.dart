@@ -54,7 +54,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  print("hello world");
+                  print("settings tapped");
                 },
                 child: Icon(Icons.settings),
               ),
@@ -78,20 +78,6 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                       selectedDate = date;
                     });
                   },
-                ),
-              ),
-            ),
-            Container(
-              color: appBarColor,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '${dayFormat().format(selectedDate)}',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6
-                      .copyWith(color: offWhiteText),
                 ),
               ),
             ),
