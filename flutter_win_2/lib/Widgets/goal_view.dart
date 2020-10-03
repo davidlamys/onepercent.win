@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
@@ -73,7 +74,15 @@ class _GoalViewState extends State<GoalView> {
   Widget buildCallToAction() {
     var editGoalButton = FlatButton(
       onPressed: () {
-        print("hello world");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => GoalEntryScreen(
+              record: record,
+              date: record.timestamp,
+            ),
+          ),
+        );
       },
       child: Text('Edit goal'),
     );
@@ -193,6 +202,7 @@ class ValueText extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headline6.copyWith(color: richBlack),
       ),
     );
