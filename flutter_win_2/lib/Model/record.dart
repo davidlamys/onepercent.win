@@ -92,11 +92,11 @@ String getStatusPrompt(Record selectedRecord) {
   if (selectedRecord == null) {
     return "👀 No Goals?? 👀";
   } else if (selectedRecord.isInProgress()) {
-    return "💪 You've got this!! 💪";
+    return "💪 You've got this 💪";
   } else if (selectedRecord.notes == null) {
-    return "🤔 Reflection needed!! 🤔"; // legacy ui
+    return "🤔 Reflection needed 🤔"; // legacy ui
   } else if (selectedRecord.isCompletedWithNotes()) {
-    return "🌈 Well done! Now aim again!! 🌈";
+    return "🌈 Good. Now aim higher🌈";
   } else if (selectedRecord.hasFailed()) {
     return "🌱 Lesson Learnt 🌱";
   } else {
