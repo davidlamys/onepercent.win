@@ -7,6 +7,8 @@ import 'package:flutter_win_2/Widgets/no_goal_view.dart';
 import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
+import 'settings_screen.dart';
+
 const numDays = 14;
 
 class LoggedInScreen extends StatefulWidget {
@@ -54,7 +56,12 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  print("settings tapped");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(),
+                    ),
+                  );
                 },
                 child: Icon(Icons.settings),
               ),
