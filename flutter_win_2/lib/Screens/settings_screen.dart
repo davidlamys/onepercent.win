@@ -3,6 +3,8 @@ import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 
 class SettingsScreen extends StatelessWidget {
+  static const id = "settingsScreen";
+
   const SettingsScreen({Key key}) : super(key: key);
 
   @override

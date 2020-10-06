@@ -12,7 +12,7 @@ import 'settings_screen.dart';
 const numDays = 14;
 
 class LoggedInScreen extends StatefulWidget {
-  static final id = 'loggedInScreen';
+  static const id = 'loggedInScreen';
   @override
   _LoggedInScreenState createState() => _LoggedInScreenState();
 }

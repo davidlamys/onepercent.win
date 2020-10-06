@@ -8,7 +8,7 @@ import 'package:flutter_win_2/Widgets/goal_view.dart';
 import '../service_factory.dart';
 
 class NoteEntryScreen extends StatelessWidget {
-  static final id = 'noteEntryScreen';
+  static const id = 'noteEntryScreen';
 
   final goalService = ServiceFactory.getGoalService();
 

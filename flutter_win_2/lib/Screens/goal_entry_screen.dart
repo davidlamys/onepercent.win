@@ -9,7 +9,7 @@ import '../service_factory.dart';
 import 'loggedin_screen.dart';
 
 class GoalEntryScreen extends StatelessWidget {
-  static final id = 'goalEntryScreen';
+  static const id = 'goalEntryScreen';
   final _goalService = ServiceFactory.getGoalService();
   final _userService = ServiceFactory.getUserService();
 
