@@ -59,8 +59,7 @@ class GoalService {
         .snapshots()
         .map((snapshot) {
       List<DocumentSnapshot> documents = snapshot.documents;
-      print("received:");
-      print(documents.length);
+      print("received: ${documents.length}");
       return documents.map((e) => Record.fromSnapshot(e)).toList();
     });
   }
@@ -74,7 +73,7 @@ class GoalService {
   }
 
   Future<void> update(Record record) {
-    print(record.id);
+    print("updating record with id: ${record.id}");
     return _firestore
         .collection('dailyGoals')
         .document(record.id)

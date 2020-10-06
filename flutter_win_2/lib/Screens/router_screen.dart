@@ -5,8 +5,6 @@ import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/blocs/router_provider.dart';
 
-import '../service_factory.dart';
-
 class RouterScreen extends StatefulWidget {
   static const String id = "router_screen";
   @override
@@ -14,8 +12,6 @@ class RouterScreen extends StatefulWidget {
 }
 
 class _RouterScreenState extends State<RouterScreen> {
-  final userService = ServiceFactory.getUserService();
-
   BuildContext _context;
 
   @override

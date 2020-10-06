@@ -143,6 +143,7 @@ class _GoalViewState extends State<GoalView> {
                   buttonCancelText: Text("Need Tweaks 🤔"),
                   buttonCancelColor: appRed,
                   onOkButtonPressed: () {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -153,6 +154,7 @@ class _GoalViewState extends State<GoalView> {
                     );
                   },
                   onCancelButtonPressed: () {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(

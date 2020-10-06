@@ -101,15 +101,12 @@ class GoalEntryScreen extends StatelessWidget {
               userId,
               null,
               "inProgress");
-          _goalService.addGoal(goal).then((value) {
-            Navigator.pop(context);
-          });
+          _goalService.addGoal(goal).then((value) => Navigator.pop(context));
         } else {
           var clone = record.copyWith(
               goal: goalEditingController.text,
               reason: reasonEditingController.text);
-          _goalService.update(clone).then((value) => Navigator.popUntil(
-              context, ModalRoute.withName(LoggedInScreen.id)));
+          _goalService.update(clone).then((value) => Navigator.pop(context));
         }
       },
       child: Text('Save'),
