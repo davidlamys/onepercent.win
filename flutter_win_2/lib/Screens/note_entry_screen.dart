@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 
@@ -83,7 +82,7 @@ class NoteEntryScreen extends StatelessWidget {
     var cancelButton = RaisedButton(
       color: appRed,
       onPressed: () {
-        Navigator.popUntil(context, ModalRoute.withName(LoggedInScreen.id));
+        Navigator.pop(context);
       },
       child: Text('Cancel'),
     );
@@ -96,8 +95,7 @@ class NoteEntryScreen extends StatelessWidget {
       color: appGreen,
       onPressed: () {
         var clone = record.copyWith(notes: textEditingController.text);
-        goalService.update(clone).then((value) => Navigator.popUntil(
-            context, ModalRoute.withName(LoggedInScreen.id)));
+        goalService.update(clone).then((value) => Navigator.pop(context));
       },
       child: Text('Save'),
     );
