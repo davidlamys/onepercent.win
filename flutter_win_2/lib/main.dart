@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
@@ -15,6 +16,9 @@ import 'blocs/settings_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp());
 }
 
