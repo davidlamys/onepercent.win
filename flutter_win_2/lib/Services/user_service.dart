@@ -40,7 +40,7 @@ class UserService {
   Stream<FirebaseUser> user;
 
   UserService() {
-//    user = _auth.onAuthStateChanged;
+    user = _auth.onAuthStateChanged;
   }
 
   Future<bool> hasLoggedInUser() async {

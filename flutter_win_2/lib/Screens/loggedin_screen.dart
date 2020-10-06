@@ -12,7 +12,7 @@ import 'settings_screen.dart';
 const numDays = 14;
 
 class LoggedInScreen extends StatefulWidget {
-  static final id = 'loggedInScreen';
+  static const id = 'loggedInScreen';
   @override
   _LoggedInScreenState createState() => _LoggedInScreenState();
 }
@@ -51,6 +51,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
           title: Text(
             '${dayFormat().format(selectedDate)}',
           ),
+          leading: Container(),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
@@ -113,7 +114,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   }
 
   DateFormat dayFormat() {
-    return DateFormat('EEEE dd MMMM y');
+    return DateFormat('d MMMM yyyy');
   }
 
   Record recordForDate(DateTime refDate) {

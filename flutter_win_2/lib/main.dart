@@ -1,16 +1,22 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
+import 'package:flutter_win_2/Screens/settings_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
-import 'package:flutter_win_2/service_factory.dart';
+import 'package:flutter_win_2/blocs/router_provider.dart';
 
-void main() => runApp(MyApp());
+import 'Screens/router_screen.dart';
+import 'blocs/settings_provider.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -18,91 +24,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: RouterScreen.id,
-      routes: {
-        RouterScreen.id: (context) => RouterScreen(),
-        PreLoginScreen.id: (context) => PreLoginScreen(),
-        LoggedInScreen.id: (context) => LoggedInScreen(),
-        GoalEntryScreen.id: (context) => GoalEntryScreen(),
-        NoteEntryScreen.id: (context) => NoteEntryScreen(),
-      },
-      theme: ThemeData(
-          primaryColor: appBarColor,
-          textTheme: TextTheme(
-            bodyText1: TextStyle(fontWeight: FontWeight.w300),
-            headline6: TextStyle(fontWeight: FontWeight.normal),
-          )),
+    return RouterProvider(
+      child: SettingsProvider(
+        child: MaterialApp(
+          home: RouterScreen(),
+          onGenerateRoute: routes,
+          theme: ThemeData(
+              primaryColor: appBarColor,
+              textTheme: TextTheme(
+                bodyText1: TextStyle(fontWeight: FontWeight.w300),
+                headline6: TextStyle(fontWeight: FontWeight.normal),
+              )),
+        ),
+      ),
     );
   }
-}
 
-class RouterScreen extends StatefulWidget {
-  static const String id = "router_screen";
-  @override
-  _RouterScreenState createState() => _RouterScreenState();
-}
-
-class _RouterScreenState extends State<RouterScreen> {
-  final userService = ServiceFactory.getUserService();
-  bool _hasUser = false;
-  bool _isCheckingForUser = false;
-
-  BuildContext _context;
-
-  @override
-  void initState() {
-    super.initState();
-    checkForUser();
-  }
-
-  void checkForUser() async {
-    setState(() {
-      _isCheckingForUser = true;
-    });
-
-    var hasUser = await userService.hasLoggedInUser();
-
-    await Future.delayed(Duration(seconds: 3));
-
-    setState(() {
-      _isCheckingForUser = false;
-      _hasUser = hasUser;
-    });
-
-    if (_context != null) {
-      if (hasUser) {
-        Navigator.pushReplacementNamed(_context, LoggedInScreen.id);
-      } else {
-        Navigator.pushNamed(_context, PreLoginScreen.id);
+  Route routes(RouteSettings settings) {
+    return MaterialPageRoute(builder: (context) {
+      print("route: ${settings.name}");
+      switch (settings.name) {
+        case RouterScreen.id:
+          return RouterScreen();
+        case PreLoginScreen.id:
+          return PreLoginScreen();
+        case LoggedInScreen.id:
+          return LoggedInScreen();
+        case GoalEntryScreen.id:
+          return GoalEntryScreen();
+        case NoteEntryScreen.id:
+          return NoteEntryScreen();
+        case SettingsScreen.id:
+          return SettingsScreen();
       }
-    } else {
-      print('no context');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _context = context;
-    print('rebuildinggggg');
-    return Scaffold(
-        backgroundColor: Colors.black54,
-        body: _isCheckingForUser
-            ? SpinKitChasingDots(
-                color: Colors.amberAccent,
-              )
-            : null);
-  }
-
-  Widget bodyWidget(BuildContext context) {
-    if (_hasUser) {
       return null;
-    } else {
-      Navigator.pushNamed(context, PreLoginScreen.id);
-      print('pushingggggg');
-      return null;
-    }
+    });
   }
 }
-//
-//class RouterScreen extends StatelessWidget {}
