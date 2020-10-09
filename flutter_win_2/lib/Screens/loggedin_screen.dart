@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
 import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
-import 'settings_screen.dart';
+import 'profile_screen.dart';
 
 const numDays = 14;
 
 class LoggedInScreen extends StatefulWidget {
+  final scaffoldState = GlobalKey<ScaffoldState>();
+
   static const id = 'loggedInScreen';
   @override
   _LoggedInScreenState createState() => _LoggedInScreenState();
@@ -57,14 +60,13 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SettingsScreen(),
-                    ),
-                  );
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (builderContext) {
+                        return loggedInBottomSheet();
+                      });
                 },
-                child: Icon(Icons.settings),
+                child: Icon(Icons.more_horiz),
               ),
             ),
           ]),
@@ -127,5 +129,26 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
           elementTimestamp.month == refDate.month &&
           elementTimestamp.day == refDate.day;
     }, orElse: () => null);
+  }
+
+  Widget loggedInBottomSheet() {
+    return Container(
+      height: 80,
+      color: appOrange,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: [
+            BottomSheetIcon(
+              text: "Profile",
+              iconData: Icons.account_circle_outlined,
+              onPressed: () {
+                print("rest if you must but dont you quit");
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

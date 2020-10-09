@@ -38,7 +38,6 @@ class UserService {
         .snapshots()
         .map((snapshot) {
       List<DocumentSnapshot> documents = snapshot.documents;
-      print("received: ${user.length}");
       return documents.map((e) => User.fromDocument(e)).toList().first;
     });
   }
