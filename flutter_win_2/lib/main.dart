@@ -6,9 +6,10 @@ import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
-import 'package:flutter_win_2/Screens/settings_screen.dart';
+import 'package:flutter_win_2/Screens/profile_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/blocs/profile_provider.dart';
 import 'package:flutter_win_2/blocs/router_provider.dart';
 
 import 'Screens/router_screen.dart';
@@ -29,16 +30,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RouterProvider(
-      child: SettingsProvider(
-        child: MaterialApp(
-          home: RouterScreen(),
-          onGenerateRoute: routes,
-          theme: ThemeData(
-              primaryColor: appBarColor,
-              textTheme: TextTheme(
-                bodyText1: TextStyle(fontWeight: FontWeight.w300),
-                headline6: TextStyle(fontWeight: FontWeight.normal),
-              )),
+      child: ProfileProvider(
+        child: SettingsProvider(
+          child: MaterialApp(
+            home: RouterScreen(),
+            onGenerateRoute: routes,
+            theme: ThemeData(
+                primaryColor: appBarColor,
+                textTheme: TextTheme(
+                  bodyText1: TextStyle(fontWeight: FontWeight.w300),
+                  headline6: TextStyle(fontWeight: FontWeight.normal),
+                )),
+          ),
         ),
       ),
     );
@@ -58,8 +61,8 @@ class MyApp extends StatelessWidget {
           return GoalEntryScreen();
         case NoteEntryScreen.id:
           return NoteEntryScreen();
-        case SettingsScreen.id:
-          return SettingsScreen();
+        case ProfileScreen.id:
+          return ProfileScreen();
       }
       return null;
     });

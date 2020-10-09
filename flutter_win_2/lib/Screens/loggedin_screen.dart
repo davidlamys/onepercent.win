@@ -143,7 +143,12 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               text: "Profile",
               iconData: Icons.account_circle_outlined,
               onPressed: () {
-                print("rest if you must but dont you quit");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(),
+                  ),
+                );
               },
             ),
           ],
