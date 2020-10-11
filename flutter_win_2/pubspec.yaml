@@ -35,6 +35,7 @@ dependencies:
   giffy_dialog: ^1.8.0
   rxdart: ^0.24.1
   dart_date: ^1.0.7
+  flutter_datetime_picker: ^1.4.0
 
 dev_dependencies:
   flutter_test:

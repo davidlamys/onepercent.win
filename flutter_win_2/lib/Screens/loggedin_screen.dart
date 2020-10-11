@@ -9,6 +9,7 @@ import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
 import 'profile_screen.dart';
+import 'reminder_screen.dart';
 
 const numDays = 14;
 
@@ -51,25 +52,26 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            '${dayFormat().format(selectedDate)}',
-          ),
-          leading: Container(),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (builderContext) {
-                        return loggedInBottomSheet();
-                      });
-                },
-                child: Icon(Icons.more_horiz),
-              ),
+        title: Text(
+          '${dayFormat().format(selectedDate)}',
+        ),
+        leading: Container(),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (builderContext) {
+                      return loggedInBottomSheet();
+                    });
+              },
+              child: Icon(Icons.more_horiz),
             ),
-          ]),
+          ),
+        ],
+      ),
       body: Container(
         color: appBarColor,
         child: Column(
@@ -133,10 +135,10 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   Widget loggedInBottomSheet() {
     return Container(
-      height: 80,
+      // height: 80,
       color: appOrange,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 24.0),
         child: Row(
           children: [
             BottomSheetIcon(
@@ -147,6 +149,18 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ProfileScreen(),
+                  ),
+                );
+              },
+            ),
+            BottomSheetIcon(
+              text: "Reminder",
+              iconData: Icons.add_alarm_outlined,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReminderScreen(),
                   ),
                 );
               },
