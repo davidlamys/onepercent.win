@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_win_2/Widgets/reminder_section.dart';
+import 'package:flutter_win_2/utils/notificationHelper.dart';
+
+import '../main.dart';
 
 class ReminderScreen extends StatefulWidget {
   @override
@@ -40,6 +44,14 @@ class _ReminderScreenState extends State<ReminderScreen> {
                     onConfirm: (newTime) {
                       setState(() {
                         morningReminder = newTime;
+                        turnOffNotificationById(
+                            flutterLocalNotificationsPlugin, 0);
+                        scheduleDailyNotification(
+                            flutterLocalNotificationsPlugin,
+                            0,
+                            "Reminder",
+                            "Text to be entered",
+                            newTime);
                       });
                     },
                     onPreferenceChanged: (isEnabled) {
@@ -47,6 +59,8 @@ class _ReminderScreenState extends State<ReminderScreen> {
                         morningReminderEnabled = isEnabled;
                         if (isEnabled == false) {
                           morningReminder = null;
+                          turnOffNotificationById(
+                              flutterLocalNotificationsPlugin, 0);
                         }
                       });
                     }),
