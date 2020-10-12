@@ -8,38 +8,42 @@ class ReminderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: Text(
                   reminderModel.title,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                Switch(
-                  value: reminderModel.isEnabled,
-                  onChanged: reminderModel.onPreferenceChanged,
-                  activeTrackColor: Colors.tealAccent,
-                  activeColor: Colors.teal,
-                ),
-              ],
-            ),
+              ),
+              Switch(
+                value: reminderModel.isEnabled,
+                onChanged: reminderModel.onPreferenceChanged,
+                activeTrackColor: Colors.tealAccent,
+                activeColor: Colors.teal,
+              ),
+            ],
           ),
-          TimePickerButton(
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: TimePickerButton(
             time: reminderModel.dateString(),
             date: reminderModel.date,
             onConfirm: reminderModel.onConfirm,
             isEnabled: reminderModel.isEnabled,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -67,4 +71,51 @@ class ReminderModel {
 
     return '$hour : $min';
   }
+}
+
+class ReminderData {
+  final ReminderType type;
+  final int hour;
+  final int minute;
+  final bool isEnabled;
+
+  ReminderData(this.type, this.hour, this.minute, this.isEnabled);
+
+  DateTime get date {
+    if (hour == null || minute == null) {
+      return null;
+    }
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day, hour, minute, 0);
+  }
+}
+
+enum ReminderType { morning, evening }
+
+String getReminderNotificationTitle(ReminderType reminderType) {
+  if (reminderType == ReminderType.morning) {
+    return "Gooood Morning!!";
+  } else {
+    return "Hey there!";
+  }
+}
+
+String getReminderNotificationText(ReminderType reminderType) {
+  if (reminderType == ReminderType.morning) {
+    return "Time to aim at something for the day!";
+  } else {
+    return "Time to reflect on the day!";
+  }
+}
+
+String getReminderTitle(ReminderType reminderType) {
+  if (reminderType == ReminderType.morning) {
+    return "Morning Reminder";
+  } else {
+    return "Evening Reminder";
+  }
+}
+
+int id(ReminderType reminderType) {
+  return ReminderType.values.indexOf(reminderType);
 }

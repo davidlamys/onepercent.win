@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_win_2/Widgets/reminder_section.dart';
+import 'package:flutter_win_2/blocs/reminder_provider.dart';
 import 'package:flutter_win_2/utils/notificationHelper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 
@@ -11,9 +13,6 @@ class ReminderScreen extends StatefulWidget {
 }
 
 class _ReminderScreenState extends State<ReminderScreen> {
-  DateTime morningReminder;
-  bool morningReminderEnabled = false;
-
   DateTime eveningReminder;
   bool eveningReminderEnabled = false;
 
@@ -22,8 +21,47 @@ class _ReminderScreenState extends State<ReminderScreen> {
     super.initState();
   }
 
+  Widget buildReminderSection(
+      ReminderData data, ReminderBloc bloc, ReminderType reminderType) {
+    final notificationId = id(reminderType);
+    return ReminderSection(
+      reminderModel: ReminderModel(
+          title: getReminderTitle(reminderType),
+          isEnabled: data.isEnabled,
+          date: data.date,
+          onConfirm: (newTime) {
+            bloc.saveDate(newTime, reminderType);
+            turnOffNotificationById(
+                flutterLocalNotificationsPlugin, notificationId);
+            scheduleDailyNotification(
+                flutterLocalNotificationsPlugin,
+                notificationId,
+                "Good morning!!!",
+                getReminderNotificationText(reminderType),
+                newTime);
+            setState(() {});
+          },
+          onPreferenceChanged: (isEnabled) {
+            bloc.toggleReminder(isEnabled, reminderType);
+            if (isEnabled == false) {
+              turnOffNotificationById(
+                  flutterLocalNotificationsPlugin, notificationId);
+            } else {
+              scheduleDailyNotification(
+                  flutterLocalNotificationsPlugin,
+                  notificationId,
+                  "",
+                  getReminderNotificationText(reminderType),
+                  data.date);
+            }
+            setState(() {});
+          }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final bloc = ReminderProvider.of(context).bloc;
     return Scaffold(
       appBar: AppBar(
         title: Text('Set Reminder'),
@@ -36,56 +74,28 @@ class _ReminderScreenState extends State<ReminderScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              ReminderSection(
-                reminderModel: ReminderModel(
-                    title: "Morning Reminder",
-                    isEnabled: morningReminderEnabled,
-                    date: morningReminder,
-                    onConfirm: (newTime) {
-                      setState(() {
-                        morningReminder = newTime;
-                        turnOffNotificationById(
-                            flutterLocalNotificationsPlugin, 0);
-                        scheduleDailyNotification(
-                            flutterLocalNotificationsPlugin,
-                            0,
-                            "Reminder",
-                            "Text to be entered",
-                            newTime);
-                      });
-                    },
-                    onPreferenceChanged: (isEnabled) {
-                      setState(() {
-                        morningReminderEnabled = isEnabled;
-                        if (isEnabled == false) {
-                          morningReminder = null;
-                          turnOffNotificationById(
-                              flutterLocalNotificationsPlugin, 0);
-                        }
-                      });
-                    }),
+              FutureBuilder<ReminderData>(
+                future: bloc.getMorningData(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text('something went wrong');
+                  }
+                  return buildReminderSection(
+                      snapshot.data, bloc, ReminderType.morning);
+                },
               ),
               SizedBox(
                 height: 8.0,
               ),
-              ReminderSection(
-                reminderModel: ReminderModel(
-                    title: "Evening Reminder",
-                    isEnabled: eveningReminderEnabled,
-                    date: eveningReminder,
-                    onConfirm: (newTime) {
-                      setState(() {
-                        eveningReminder = newTime;
-                      });
-                    },
-                    onPreferenceChanged: (isEnabled) {
-                      setState(() {
-                        eveningReminderEnabled = isEnabled;
-                        if (isEnabled == false) {
-                          eveningReminder = null;
-                        }
-                      });
-                    }),
+              FutureBuilder<ReminderData>(
+                future: bloc.getEveningData(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text('something went wrong');
+                  }
+                  return buildReminderSection(
+                      snapshot.data, bloc, ReminderType.evening);
+                },
               ),
             ],
           ),

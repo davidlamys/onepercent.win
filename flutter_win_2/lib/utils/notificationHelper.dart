@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/subjects.dart';
-import '../Model/reminder_notification.dart';
+// import '../Model/reminder_notification.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 const MethodChannel platform =
     MethodChannel('dexterx.dev/flutter_local_notifications_example');
-
-final BehaviorSubject<ReminderNotification> didReceiveLocalNotificationSubject =
-    BehaviorSubject<ReminderNotification>();
 
 final BehaviorSubject<String> selectNotificationSubject =
     BehaviorSubject<String>();
@@ -23,10 +20,7 @@ Future<void> initNotifications(
       requestBadgePermission: false,
       requestSoundPermission: false,
       onDidReceiveLocalNotification:
-          (int id, String title, String body, String payload) async {
-        didReceiveLocalNotificationSubject.add(ReminderNotification(
-            id: id, title: title, body: body, payload: payload));
-      });
+          (int id, String title, String body, String payload) async {});
   var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,

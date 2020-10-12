@@ -13,7 +13,7 @@ import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/blocs/profile_provider.dart';
 import 'package:flutter_win_2/blocs/router_provider.dart';
 import 'Screens/router_screen.dart';
-import 'blocs/settings_provider.dart';
+import 'blocs/reminder_provider.dart';
 import 'utils/notificationHelper.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RouterProvider(
       child: ProfileProvider(
-        child: SettingsProvider(
+        child: ReminderProvider(
           child: MaterialApp(
             home: RouterScreen(),
             onGenerateRoute: routes,
