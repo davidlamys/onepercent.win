@@ -12,13 +12,13 @@ import Flutter
             UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         }
         if let controller = self.window.rootViewController as? FlutterViewController  {
-            let batteryChannel = FlutterMethodChannel(name: "dexterx.dev/flutter_local_notifications_example",
+            let localNotificationChannel = FlutterMethodChannel(name: "dexterx.dev/flutter_local_notifications_example",
                                                       binaryMessenger: controller.binaryMessenger)
-            batteryChannel.setMethodCallHandler({
+            localNotificationChannel.setMethodCallHandler({
                 (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
                 // Note: this method is invoked on the UI thread.
                 // Handle battery messages.
-                if (call.method == "getBatteryLevel") {
+                if (call.method == "getTimeZoneName") {
                     let tz = TimeZone.current
                     result(tz.identifier)
                 }

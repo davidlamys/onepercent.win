@@ -20,7 +20,7 @@ class MainActivity: FlutterActivity() {
         GeneratedPluginRegistrant.registerWith(flutterEngine);
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "dexterx.dev/flutter_local_notifications_example").setMethodCallHandler {
             call, result ->
-            if (call.method == "getBatteryLevel") {
+            if (call.method == "getTimeZoneName") {
                 val tz: TimeZone = TimeZone.getDefault();
                 val id = tz.getID();
                 result.success(id);
