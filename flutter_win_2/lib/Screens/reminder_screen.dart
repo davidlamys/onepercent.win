@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_win_2/Widgets/reminder_section.dart';
 import 'package:flutter_win_2/blocs/reminder_provider.dart';
 import 'package:flutter_win_2/utils/notificationHelper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 
@@ -30,7 +28,13 @@ class _ReminderScreenState extends State<ReminderScreen> {
           isEnabled: data.isEnabled,
           date: data.date,
           onConfirm: (newTime) {
-            bloc.saveDate(newTime, reminderType);
+            DateTime reminderTime;
+            if (newTime.isBefore(DateTime.now())) {
+              reminderTime = newTime.add(Duration(days: 1));
+            } else {
+              reminderTime = newTime;
+            }
+            bloc.saveDate(reminderTime, reminderType);
             turnOffNotificationById(
                 flutterLocalNotificationsPlugin, notificationId);
             scheduleDailyNotification(
@@ -38,7 +42,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                 notificationId,
                 getReminderNotificationTitle(reminderType),
                 getReminderNotificationText(reminderType),
-                newTime);
+                reminderTime);
             setState(() {});
           },
           onPreferenceChanged: (isEnabled) {
