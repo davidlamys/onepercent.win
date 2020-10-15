@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Widgets/reminder_section.dart';
-import 'package:flutter_win_2/blocs/reminder_provider.dart';
+import 'package:flutter_win_2/blocs/index.dart';
 import 'package:flutter_win_2/utils/notificationHelper.dart';
 
 import '../main.dart';

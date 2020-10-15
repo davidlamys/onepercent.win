@@ -3,7 +3,7 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Model/user.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/profile_stat_card.dart';
-import 'package:flutter_win_2/blocs/profile_provider.dart';
+import 'package:flutter_win_2/blocs/index.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const id = "profileScreen";

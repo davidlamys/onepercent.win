@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Screens/pre_login_screen.dart';
-import 'package:flutter_win_2/blocs/router_provider.dart';
+import 'package:flutter_win_2/blocs/index.dart';
 
 class RouterScreen extends StatefulWidget {
   static const String id = "router_screen";
