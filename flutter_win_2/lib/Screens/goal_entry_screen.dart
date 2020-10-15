@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Services/goal_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
-import 'package:uuid/uuid.dart';
-
-import '../service_factory.dart';
+import 'package:flutter_win_2/utils/debouncer.dart';
 
 class GoalEntryScreen extends StatelessWidget {
   static const id = 'goalEntryScreen';
-  final _goalService = ServiceFactory.getGoalService();
-  final _userService = ServiceFactory.getUserService();
 
   final Record record;
   final DateTime date;
@@ -86,6 +81,7 @@ class GoalEntryScreen extends StatelessWidget {
   Widget buildSaveGoalButton(TextEditingController goalEditingController,
       TextEditingController reasonEditingController, BuildContext context) {
     final bloc = GoalEntryProvider.of(context).bloc;
+    final debouncer = Debouncer(milliseconds: 1000);
     return StreamBuilder<bool>(
       stream: bloc.isSaveEnabled,
       builder: (context, snapshot) {
@@ -97,12 +93,14 @@ class GoalEntryScreen extends StatelessWidget {
           color: appGreen,
           onPressed: isEnabled
               ? () async {
-                  bloc
-                      .save(
-                          goal: goalEditingController.text,
-                          reason: reasonEditingController.text,
-                          goalDate: date)
-                      .then((value) => Navigator.pop(context));
+                  debouncer.run(() {
+                    bloc
+                        .save(
+                            goal: goalEditingController.text,
+                            reason: reasonEditingController.text,
+                            goalDate: date)
+                        .then((value) => Navigator.pop(context));
+                  });
                 }
               : null,
           child: Text('Save'),

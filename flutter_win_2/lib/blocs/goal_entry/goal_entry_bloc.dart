@@ -11,7 +11,9 @@ class GoalEntryBloc {
 
   Record record;
   BehaviorSubject<bool> _isSaveEnabled = BehaviorSubject.seeded(false);
+
   Stream<bool> get isSaveEnabled => _isSaveEnabled.stream;
+
   BehaviorSubject<String> _goal = BehaviorSubject.seeded(null);
   BehaviorSubject<String> _reason = BehaviorSubject.seeded(null);
 
@@ -29,8 +31,6 @@ class GoalEntryBloc {
   }
 
   Future<void> save({String goal, String reason, DateTime goalDate}) async {
-    // _isSaveEnabled.drain();
-    // _isSaveEnabled.sink.add(false);
     var userId = await _userService.userId();
     var userName = await _userService.userName();
     var uuid = Uuid();
