@@ -36,7 +36,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
             scheduleDailyNotification(
                 flutterLocalNotificationsPlugin,
                 notificationId,
-                "Good morning!!!",
+                getReminderNotificationTitle(reminderType),
                 getReminderNotificationText(reminderType),
                 newTime);
             setState(() {});
