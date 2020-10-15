@@ -3,10 +3,10 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Services/goal_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
+import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '../service_factory.dart';
-import 'loggedin_screen.dart';
 
 class GoalEntryScreen extends StatelessWidget {
   static const id = 'goalEntryScreen';
@@ -20,6 +20,7 @@ class GoalEntryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = GoalEntryProvider.of(context).bloc;
     var goalEditingController = TextEditingController(
       text: (record != null) ? record.name : "",
     );
@@ -28,7 +29,7 @@ class GoalEntryScreen extends StatelessWidget {
       text: (record != null) ? record.reason : "",
     );
 
-    RaisedButton saveGoal = buildSaveGoalButton(
+    Widget saveGoal = buildSaveGoalButton(
         goalEditingController, reasonEditingController, context);
 
     RaisedButton cancelButton = buildCancelButton(context);
@@ -36,10 +37,10 @@ class GoalEntryScreen extends StatelessWidget {
     var scrollController = ScrollController();
 
     TextField goalTextField =
-        buildTextField(scrollController, goalEditingController);
+        buildTextField(scrollController, goalEditingController, bloc.setGoal);
 
-    TextField reasonTextField =
-        buildTextField(scrollController, reasonEditingController);
+    TextField reasonTextField = buildTextField(
+        scrollController, reasonEditingController, bloc.setReason);
 
     return Scaffold(
       backgroundColor: appBarColor,
@@ -82,42 +83,41 @@ class GoalEntryScreen extends StatelessWidget {
     return cancelButton;
   }
 
-  RaisedButton buildSaveGoalButton(TextEditingController goalEditingController,
+  Widget buildSaveGoalButton(TextEditingController goalEditingController,
       TextEditingController reasonEditingController, BuildContext context) {
-    var saveNotes = RaisedButton(
-      color: appGreen,
-      onPressed: () async {
-        var userId = await _userService.userId();
-        var userName = await _userService.userName();
-        var uuid = Uuid();
-
-        if (record == null) {
-          var goal = Goal(
-              uuid.v4(),
-              goalEditingController.text,
-              reasonEditingController.text,
-              date,
-              userName,
-              userId,
-              null,
-              "inProgress");
-          _goalService.addGoal(goal).then((value) => Navigator.pop(context));
-        } else {
-          var clone = record.copyWith(
-              goal: goalEditingController.text,
-              reason: reasonEditingController.text);
-          _goalService.update(clone).then((value) => Navigator.pop(context));
+    final bloc = GoalEntryProvider.of(context).bloc;
+    return StreamBuilder<bool>(
+      stream: bloc.isSaveEnabled,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Text('something went wrong');
         }
+        final isEnabled = snapshot.data;
+        return RaisedButton(
+          color: appGreen,
+          onPressed: isEnabled
+              ? () async {
+                  bloc
+                      .save(
+                          goal: goalEditingController.text,
+                          reason: reasonEditingController.text,
+                          goalDate: date)
+                      .then((value) => Navigator.pop(context));
+                }
+              : null,
+          child: Text('Save'),
+        );
       },
-      child: Text('Save'),
     );
-    return saveNotes;
   }
 
-  TextField buildTextField(ScrollController scrollController,
-      TextEditingController textEditingController) {
+  TextField buildTextField(
+      ScrollController scrollController,
+      TextEditingController textEditingController,
+      Function(String) onChangeHandler) {
     return TextField(
       onChanged: (newText) {
+        onChangeHandler(newText);
         scrollController.animateTo(scrollController.position.minScrollExtent,
             duration: Duration(milliseconds: 500), curve: Curves.ease);
       },

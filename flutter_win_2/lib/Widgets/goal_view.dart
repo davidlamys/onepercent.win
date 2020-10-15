@@ -5,6 +5,7 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
 class GoalView extends StatefulWidget {
@@ -77,9 +78,11 @@ class _GoalViewState extends State<GoalView> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => GoalEntryScreen(
-              record: record,
-              date: record.timestamp,
+            builder: (context) => GoalEntryProvider(
+              child: GoalEntryScreen(
+                record: record,
+                date: record.timestamp,
+              ),
             ),
           ),
         );
