@@ -50,54 +50,57 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '${dayFormat().format(selectedDate)}',
-        ),
-        leading: Container(),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (builderContext) {
-                      return loggedInBottomSheet();
-                    });
-              },
-              child: Icon(Icons.more_horiz),
-            ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '${dayFormat().format(selectedDate)}',
           ),
-        ],
-      ),
-      body: Container(
-        color: appBarColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              flex: 10,
-              child: Container(
-                color: appBarColor,
-                child: HomePageCalendar(
-                  records: records,
-                  dates: _dates,
-                  selectedDate: selectedDate,
-                  onDateSelection: (date) {
-                    setState(() {
-                      selectedDate = date;
-                    });
-                  },
-                ),
+          leading: Container(),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (builderContext) {
+                        return loggedInBottomSheet();
+                      });
+                },
+                child: Icon(Icons.more_horiz),
               ),
             ),
-            Expanded(
-              flex: 60,
-              child: SingleChildScrollView(child: buildView(selectedDate)),
-            ),
           ],
+        ),
+        body: Container(
+          color: appBarColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                flex: 10,
+                child: Container(
+                  color: appBarColor,
+                  child: HomePageCalendar(
+                    records: records,
+                    dates: _dates,
+                    selectedDate: selectedDate,
+                    onDateSelection: (date) {
+                      setState(() {
+                        selectedDate = date;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 60,
+                child: SingleChildScrollView(child: buildView(selectedDate)),
+              ),
+            ],
+          ),
         ),
       ),
     );
