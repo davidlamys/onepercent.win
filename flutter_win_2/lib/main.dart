@@ -10,10 +10,8 @@ import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Screens/profile_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
-import 'package:flutter_win_2/blocs/profile_provider.dart';
-import 'package:flutter_win_2/blocs/router_provider.dart';
 import 'Screens/router_screen.dart';
-import 'blocs/reminder_provider.dart';
+import 'blocs/index.dart';
 import 'utils/notificationHelper.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
 
 class NoGoalView extends StatelessWidget {
   final DateTime date;
@@ -41,9 +42,11 @@ class NoGoalView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GoalEntryScreen(
-                          record: null,
-                          date: date,
+                        builder: (context) => GoalEntryProvider(
+                          child: GoalEntryScreen(
+                            record: null,
+                            date: date,
+                          ),
                         ),
                       ),
                     );
