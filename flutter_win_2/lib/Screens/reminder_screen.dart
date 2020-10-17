@@ -46,6 +46,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
             setState(() {});
           },
           onPreferenceChanged: (isEnabled) {
+            requestIOSPermissions(flutterLocalNotificationsPlugin);
             bloc.toggleReminder(isEnabled, reminderType);
             if (isEnabled == false) {
               turnOffNotificationById(
