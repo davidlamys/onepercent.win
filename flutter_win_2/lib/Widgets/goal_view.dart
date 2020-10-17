@@ -135,15 +135,23 @@ class _GoalViewState extends State<GoalView> {
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+                    textScaleFactor: 1.0,
                   ),
                   description: Text(
                     'In many ways, this reflection will be as important as what happened.',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 18.0),
+                    textScaleFactor: 1.0,
                   ),
-                  buttonOkText: Text("Crushed it 😎"),
+                  buttonOkText: Text(
+                    "Crushed it 😎",
+                    textScaleFactor: 1.0,
+                  ),
                   buttonOkColor: appGreen,
-                  buttonCancelText: Text("Need Tweaks 🤔"),
+                  buttonCancelText: Text(
+                    "Need Tweaks 🤔",
+                    textScaleFactor: 1.0,
+                  ),
                   buttonCancelColor: appRed,
                   onOkButtonPressed: () {
                     Navigator.pop(context);
