@@ -45,6 +45,16 @@ class GoalEntryBloc {
     }
   }
 
+  setRecord(Record record) {
+    this.record = record;
+    if (record == null) {
+      setGoal(null);
+      setReason(null);
+    }
+    setGoal(record.name);
+    setReason(record.reason);
+  }
+
   setGoal(String goal) {
     _goal.sink.add(goal);
   }

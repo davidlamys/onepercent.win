@@ -16,6 +16,8 @@ class GoalEntryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = GoalEntryProvider.of(context).bloc;
+    bloc.setRecord(record);
+
     var goalEditingController = TextEditingController(
       text: (record != null) ? record.name : "",
     );
