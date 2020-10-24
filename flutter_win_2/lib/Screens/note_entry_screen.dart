@@ -3,13 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
-
-import '../service_factory.dart';
+import 'package:flutter_win_2/blocs/index.dart';
 
 class NoteEntryScreen extends StatelessWidget {
   static const id = 'noteEntryScreen';
-
-  final goalService = ServiceFactory.getGoalService();
 
   final Record record;
 
@@ -21,15 +18,24 @@ class NoteEntryScreen extends StatelessWidget {
       text: record.notes,
     );
 
-    RaisedButton saveNotes =
-        buildSaveNotesButton(textEditingController, context);
+    NoteEntryBloc bloc = NoteEntryProvider.of(context).bloc;
+    bloc.setRecord(record);
+
+    Widget saveNotes = StreamBuilder(
+      stream: bloc.isSaveEnabled,
+      builder: (streamContext, snapshot) {
+        final shouldAllowSave = (snapshot.hasData == true && snapshot.data);
+        return buildSaveNotesButton(
+            textEditingController, context, shouldAllowSave, bloc);
+      },
+    );
 
     RaisedButton cancelButton = buildCancelButton(context);
 
     var scrollController = ScrollController();
 
     TextField noteTextField =
-        buildNoteTextField(scrollController, textEditingController);
+        buildNoteTextField(scrollController, textEditingController, bloc);
     return Scaffold(
       backgroundColor: appBarColor,
       body: Container(
@@ -89,23 +95,25 @@ class NoteEntryScreen extends StatelessWidget {
     return cancelButton;
   }
 
-  RaisedButton buildSaveNotesButton(
-      TextEditingController textEditingController, BuildContext context) {
+  Widget buildSaveNotesButton(TextEditingController textEditingController,
+      BuildContext context, bool isEnabled, NoteEntryBloc bloc) {
     var saveNotes = RaisedButton(
       color: appGreen,
-      onPressed: () {
-        var clone = record.copyWith(notes: textEditingController.text);
-        goalService.update(clone).then((value) => Navigator.pop(context));
-      },
+      onPressed: isEnabled
+          ? () {
+              bloc.save().then((value) => Navigator.pop(context));
+            }
+          : null,
       child: Text('Save'),
     );
     return saveNotes;
   }
 
   TextField buildNoteTextField(ScrollController scrollController,
-      TextEditingController textEditingController) {
+      TextEditingController textEditingController, NoteEntryBloc bloc) {
     return TextField(
       onChanged: (newText) {
+        bloc.setNote(newText);
         scrollController.animateTo(scrollController.position.minScrollExtent,
             duration: Duration(milliseconds: 500), curve: Curves.ease);
       },
