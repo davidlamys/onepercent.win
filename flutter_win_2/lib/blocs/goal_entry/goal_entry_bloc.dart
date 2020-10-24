@@ -50,9 +50,10 @@ class GoalEntryBloc {
     if (record == null) {
       setGoal(null);
       setReason(null);
+    } else {
+      setGoal(record.name);
+      setReason(record.reason);
     }
-    setGoal(record.name);
-    setReason(record.reason);
   }
 
   setGoal(String goal) {
