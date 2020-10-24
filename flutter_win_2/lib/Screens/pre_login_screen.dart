@@ -58,7 +58,12 @@ class _PreLoginScreenState extends State<PreLoginScreen> {
               ),
               SignInButtonBuilder(
                 backgroundColor: Colors.amberAccent.shade400,
-                onPressed: () {},
+                onPressed: () async {
+                  await userService.loginInAnonymously();
+                  print("getting user id");
+                  var string = await userService.userId();
+                  print("user id $string");
+                },
                 text: 'Continue anonymoulsy',
                 icon: FontAwesomeIcons.userSecret,
               ),
