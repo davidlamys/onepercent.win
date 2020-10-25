@@ -5,6 +5,7 @@ import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
+import 'package:flutter_win_2/blocs/profile/profile_provider.dart';
 import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
@@ -151,7 +152,8 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProfileScreen(),
+                    builder: (context) =>
+                        ProfileProvider(child: ProfileScreen()),
                   ),
                 );
               },

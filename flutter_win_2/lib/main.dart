@@ -38,19 +38,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RouterProvider(
-      child: ProfileProvider(
-        child: NoteEntryProvider(
-          child: ReminderProvider(
-            child: MaterialApp(
-              home: RouterScreen(),
-              onGenerateRoute: routes,
-              theme: ThemeData(
-                  primaryColor: appBarColor,
-                  textTheme: TextTheme(
-                    bodyText1: TextStyle(fontWeight: FontWeight.w300),
-                    headline6: TextStyle(fontWeight: FontWeight.normal),
-                  )),
-            ),
+      child: NoteEntryProvider(
+        child: ReminderProvider(
+          child: MaterialApp(
+            home: RouterScreen(),
+            onGenerateRoute: routes,
+            theme: ThemeData(
+                primaryColor: appBarColor,
+                textTheme: TextTheme(
+                  bodyText1: TextStyle(fontWeight: FontWeight.w300),
+                  headline6: TextStyle(fontWeight: FontWeight.normal),
+                )),
           ),
         ),
       ),
