@@ -150,6 +150,9 @@ class UserService {
       doc = await usersRef.document(firebaseUserId).get();
     } else {
       var map = doc.data;
+      map['email'] = firebaseUser.email;
+      map['displayName'] = firebaseUser.displayName ?? "";
+      map['photoUrl'] = firebaseUser.photoUrl;
       map['lastSeen'] = DateTime.now();
       usersRef.document(firebaseUserId).updateData(map);
       print('updatedLastSeen');

@@ -175,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      user.displayName,
+                      user.displayName ?? "",
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
