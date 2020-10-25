@@ -61,7 +61,7 @@ class UserService {
   }
 
   Future<void> signOutUser() async {
-    return _auth.signOut();
+    return _auth.signOut().then((value) => _googleSignIn.signOut());
   }
 
   Future<void> loginInAnonymously() async {
