@@ -29,11 +29,17 @@ class ProfileBloc {
   Stream<List<Record>> get goals => _goals.stream;
 
   int findDaysSinceFirstGoal(List<Record> records) {
+    if (records.isEmpty) {
+      return 0;
+    }
     final firstDayTime = records.first.timestamp.startOfDay;
     return _now().difference(firstDayTime).inDays;
   }
 
   int findDaysSinceLatestGoal(List<Record> records) {
+    if (records.isEmpty) {
+      return 0;
+    }
     final lastDayTime = records.last.timestamp.startOfDay;
     return _now().difference(lastDayTime).inDays;
   }
