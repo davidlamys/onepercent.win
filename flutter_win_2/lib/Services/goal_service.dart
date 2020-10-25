@@ -38,9 +38,8 @@ class FakeGoalService extends GoalService {
     final newRecord = Record.fromMap(data);
     _list.add(newRecord);
     stubGoalsStreamController.add(_list);
-    print("add new goal in stub $newRecord");
-
-    print(newRecord.timestamp);
+    print(
+        "add new goal in stub $newRecord with timeStamp: ${newRecord.timestamp}");
     await Future.delayed(Duration(seconds: 1));
   }
 }
@@ -50,8 +49,7 @@ class GoalService {
 
   Future<Stream<List<Record>>> goalStream() async {
     final userId = await UserService().userId();
-    print("setting up goal stream");
-    print(userId);
+    print("setting up goal stream with userId: $userId");
     return _firestore
         .collection('dailyGoals')
         .orderBy("timestamp")

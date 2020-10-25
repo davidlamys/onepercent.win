@@ -46,7 +46,7 @@ class UserService {
   Future<String> userId() async {
     final user = await _auth.currentUser();
     if (user == null) {
-      print("user is null");
+      print("no current user");
       return null;
     }
     return user.uid;
@@ -89,11 +89,11 @@ class UserService {
         idToken: googleSignInAuthentication.idToken,
       );
       return currentUser.linkWithCredential(credential).then((value) {
-        print(value);
+        print("linked crediential result: $value");
         return true;
       });
     } catch (error) {
-      print(error);
+      print("linked crediential error: $error");
       return Future.value(false);
     }
   }
@@ -120,7 +120,7 @@ class UserService {
       assert(user.uid == currentUser.uid);
       createUserInFirestoreIfNeeded();
     } catch (error) {
-      print(error);
+      print("google sign in error: $error");
     }
   }
 
