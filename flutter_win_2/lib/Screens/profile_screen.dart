@@ -13,7 +13,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileBloc = ProfileProvider.of(context).bloc;
-    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -28,9 +27,12 @@ class ProfileScreen extends StatelessWidget {
                 stream: profileBloc.loggedInUser,
                 builder: (context, AsyncSnapshot<User> snapshot) {
                   if (!snapshot.hasData) {
-                    return Text('Oops something went wrong');
+                    return Text('Oops something went wrong no user found');
                   }
                   final user = snapshot.data;
+                  if (user.email == null) {
+                    return anonHeader(context, user, profileBloc);
+                  }
                   return header(context, user, profileBloc);
                 },
               ),
@@ -105,6 +107,42 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  Widget anonHeader(BuildContext context, User user, ProfileBloc profileBloc) {
+    final linkUserButton = RaisedButton(
+        child: Text('Link Google Account'),
+        onPressed: () {
+          profileBloc.linkUser().then((value) {
+            if (value) {
+              print('success');
+            } else {
+              print('failure');
+            }
+          });
+        });
+
+    return Container(
+      color: appBarColor,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Flexible(
+              flex: 2,
+              child: getUsageRatePrompt(profileBloc),
+            ),
+            Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: linkUserButton,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget header(BuildContext context, User user, ProfileBloc profileBloc) {
     return Container(
       color: appBarColor,
@@ -114,12 +152,17 @@ class ProfileScreen extends StatelessWidget {
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  user.photoUrl,
-                ),
-                radius: 50.0,
-              ),
+              child: (user.photoUrl != null)
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        user.photoUrl,
+                      ),
+                      radius: 50.0,
+                    )
+                  : Icon(
+                      Icons.account_circle_outlined,
+                      color: offWhiteText,
+                    ),
             ),
           ),
           Flexible(
@@ -148,36 +191,40 @@ class ProfileScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                StreamBuilder(
-                  stream: profileBloc.goals,
-                  builder: (context, AsyncSnapshot<List<Record>> snapshot) {
-                    if (!snapshot.hasData) {
-                      return Text(
-                        'Oops something went wrong',
-                        textAlign: TextAlign.center,
-                      );
-                    }
-                    final usage = profileBloc.findUsageRate(snapshot.data);
-                    final daysPerWeek = (usage * 7).round();
-                    return Container(
-                      color: appBarColor,
-                      child: Text(
-                        'In an average week, you\'d set a goal on $daysPerWeek out of 7 days.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w300,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                getUsageRatePrompt(profileBloc),
               ],
             ),
           )
         ],
       ),
+    );
+  }
+
+  StreamBuilder<List<Record>> getUsageRatePrompt(ProfileBloc profileBloc) {
+    return StreamBuilder(
+      stream: profileBloc.goals,
+      builder: (context, AsyncSnapshot<List<Record>> snapshot) {
+        if (!snapshot.hasData) {
+          return Text(
+            'Oops something went wrong',
+            textAlign: TextAlign.center,
+          );
+        }
+        final usage = profileBloc.findUsageRate(snapshot.data);
+        final daysPerWeek = (usage * 7).round();
+        return Container(
+          color: appBarColor,
+          child: Text(
+            'In an average week, you\'d set a goal on $daysPerWeek out of 7 days.',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w300,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -19,6 +19,10 @@ class ProfileBloc {
     });
   }
 
+  Future<bool> linkUser() async {
+    return _userService.linkUser();
+  }
+
   Future<void> logoutUser() async {
     return _userService.signOutUser();
   }

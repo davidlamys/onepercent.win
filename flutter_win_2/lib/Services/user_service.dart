@@ -28,7 +28,8 @@ class UserService {
   }
 
   Stream<User> getUserStream(FirebaseUser firebaseUser) {
-    print("get user stream called");
+    print(
+        "get user stream called for ${firebaseUser.uid}. isAnon ${firebaseUser.isAnonymous}");
     if (firebaseUser == null) {
       return null;
     }
@@ -64,7 +65,37 @@ class UserService {
   }
 
   Future<void> loginInAnonymously() async {
-    return _auth.signInAnonymously();
+    final AuthResult authResult = await _auth.signInAnonymously();
+    final FirebaseUser user = authResult.user;
+    assert(user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
+    return createUserInFirestoreIfNeeded();
+  }
+
+  Future<bool> linkUser() async {
+    try {
+      final FirebaseUser currentUser = await _auth.currentUser();
+
+      final GoogleSignInAccount googleSignInAccount =
+          await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      return currentUser.linkWithCredential(credential).then((value) {
+        print(value);
+        return true;
+      });
+    } catch (error) {
+      print(error);
+      return Future.value(false);
+    }
   }
 
   Future<void> googleSignIn() async {
