@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_win_2/Model/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rxdart/rxdart.dart';
@@ -88,8 +87,15 @@ class UserService {
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
-      return currentUser.linkWithCredential(credential).then((value) {
-        print("linked crediential result: $value");
+      return currentUser.linkWithCredential(credential).catchError((error) {
+        print('linked crediential error $error');
+        final platformError = error as PlatformException;
+        if (platformError != null) {
+          print(platformError.message);
+        }
+      }).then((value) {
+        print("linked crediential result: ${value.additionalUserInfo}");
+        createUserInFirestoreIfNeeded();
         return true;
       });
     } catch (error) {

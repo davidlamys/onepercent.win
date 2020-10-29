@@ -147,6 +147,7 @@ class ProfileScreen extends StatelessWidget {
     return Container(
       color: appBarColor,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Flexible(
             flex: 1,
@@ -168,19 +169,25 @@ class ProfileScreen extends StatelessWidget {
           Flexible(
             flex: 2,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      user.displayName ?? "",
+                      user.displayName ?? "Add display name",
                       style: TextStyle(
-                        fontSize: 24.0,
+                        fontSize: 32.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
+                    ),
+                    IconButton(
+                      iconSize: 24,
+                      icon: Icon(Icons.edit_rounded),
+                      color: offWhiteText,
+                      onPressed: () {},
                     ),
                   ],
                 ),
