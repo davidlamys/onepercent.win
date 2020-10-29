@@ -29,11 +29,9 @@ class _GoalViewState extends State<GoalView> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: buildChildrenWidgets(context),
-          ),
+        clipBehavior: Clip.hardEdge,
+        child: Column(
+          children: buildChildrenWidgets(context),
         ),
       ),
     );
@@ -42,12 +40,53 @@ class _GoalViewState extends State<GoalView> {
   List<Widget> buildChildrenWidgets(BuildContext context) {
     List<Widget> children = List<Widget>();
     children = [
-      Padding(
-        padding: const EdgeInsets.all(8),
-        child: Text(
-          getStatusPrompt(record),
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline6,
+      Container(
+        width: double.infinity,
+        color: getColor(record),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(
+              right: 16,
+              child: ClipOval(
+                child: Material(
+                  color: getColor(record), // button color
+                  child: InkWell(
+                    splashColor: Colors.red, // inkwell color
+                    child: SizedBox(
+                      width: 32,
+                      height: 32,
+                      child: Container(
+                        decoration: new BoxDecoration(
+                          // color: Colors.blueAccent,
+                          border: new Border.all(
+                            color: Colors.grey.shade800,
+                            width: 2.0,
+                          ),
+                          borderRadius: new BorderRadius.circular(18.0),
+                        ),
+                        child: Icon(
+                          Icons.edit_outlined,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      print("hi world");
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                getStatusPrompt(record),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+          ],
         ),
       ),
       TokenText(
