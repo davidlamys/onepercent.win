@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_win_2/Model/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rxdart/rxdart.dart';
@@ -28,7 +27,8 @@ class UserService {
   }
 
   Stream<User> getUserStream(FirebaseUser firebaseUser) {
-    print("get user stream called");
+    print(
+        "get user stream called for ${firebaseUser.uid}. isAnon ${firebaseUser.isAnonymous}");
     if (firebaseUser == null) {
       return null;
     }
@@ -45,7 +45,7 @@ class UserService {
   Future<String> userId() async {
     final user = await _auth.currentUser();
     if (user == null) {
-      print("user is null");
+      print("no current user");
       return null;
     }
     return user.uid;
@@ -60,11 +60,46 @@ class UserService {
   }
 
   Future<void> signOutUser() async {
-    return _auth.signOut();
+    return _auth.signOut().then((value) => _googleSignIn.signOut());
   }
 
-  void loginInAnonymously() async {
-    await _auth.signInAnonymously();
+  Future<void> loginInAnonymously() async {
+    final AuthResult authResult = await _auth.signInAnonymously();
+    final FirebaseUser user = authResult.user;
+    assert(user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
+    return createUserInFirestoreIfNeeded();
+  }
+
+  Future<bool> linkUser() async {
+    final FirebaseUser currentUser = await _auth.currentUser();
+
+    final GoogleSignInAccount googleSignInAccount =
+        await _googleSignIn.signIn();
+
+    if (googleSignInAccount == null) {
+      return false;
+    }
+
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+    return currentUser.linkWithCredential(credential).then((value) {
+      if (value != null) {
+        createUserInFirestoreIfNeeded();
+        return true;
+      }
+    }).catchError((error) {
+      _googleSignIn.signOut();
+      print("linked crediential error::: $error");
+    });
   }
 
   Future<void> googleSignIn() async {
@@ -89,7 +124,7 @@ class UserService {
       assert(user.uid == currentUser.uid);
       createUserInFirestoreIfNeeded();
     } catch (error) {
-      print(error);
+      print("google sign in error: $error");
     }
   }
 
@@ -119,6 +154,9 @@ class UserService {
       doc = await usersRef.document(firebaseUserId).get();
     } else {
       var map = doc.data;
+      map['email'] = firebaseUser.email;
+      map['displayName'] = firebaseUser.displayName ?? "";
+      map['photoUrl'] = firebaseUser.photoUrl;
       map['lastSeen'] = DateTime.now();
       usersRef.document(firebaseUserId).updateData(map);
       print('updatedLastSeen');
