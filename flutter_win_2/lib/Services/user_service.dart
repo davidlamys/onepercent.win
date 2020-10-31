@@ -99,6 +99,7 @@ class UserService {
         return true;
       });
     } catch (error) {
+      _googleSignIn.signOut();
       print("linked crediential error: $error");
       return Future.value(false);
     }
