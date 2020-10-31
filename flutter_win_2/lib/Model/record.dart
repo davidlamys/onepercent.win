@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_win_2/Styling/colors.dart';
 
 class Record {
   final String id;
@@ -90,16 +93,24 @@ DateTime parseTime(dynamic date) {
 
 String getStatusPrompt(Record selectedRecord) {
   if (selectedRecord == null) {
-    return "👀 No Goals?? 👀";
+    return "No Goals??";
   } else if (selectedRecord.isInProgress()) {
-    return "💪 You've got this 💪";
+    return "You've got this!";
   } else if (selectedRecord.notes == null) {
-    return "🤔 Reflection needed 🤔"; // legacy ui
+    return "Reflection needed"; // legacy ui
   } else if (selectedRecord.isCompletedWithNotes()) {
-    return "🌈 Good. Now aim higher🌈";
+    return "Good. Now aim higher";
   } else if (selectedRecord.hasFailed()) {
-    return "🌱 Lesson Learnt 🌱";
+    return "Lesson Learnt";
   } else {
     return "";
   }
+}
+
+Color getColor(Record selectedRecord) {
+  if (selectedRecord.notes == null) {
+    return appOrange;
+  }
+
+  return appGreen;
 }

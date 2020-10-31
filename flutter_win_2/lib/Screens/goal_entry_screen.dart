@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
+import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
 import 'package:flutter_win_2/utils/debouncer.dart';
 
@@ -29,7 +30,7 @@ class GoalEntryScreen extends StatelessWidget {
     Widget saveGoal = buildSaveGoalButton(
         goalEditingController, reasonEditingController, context);
 
-    RaisedButton cancelButton = buildCancelButton(context);
+    Widget cancelButton = buildCancelButton(context);
 
     var scrollController = ScrollController();
 
@@ -71,13 +72,12 @@ class GoalEntryScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton buildCancelButton(BuildContext context) {
-    var cancelButton = RaisedButton(
+  Widget buildCancelButton(BuildContext context) {
+    return AppButton(
       color: appRed,
       onPressed: () => Navigator.pop(context),
       child: Text('Cancel'),
     );
-    return cancelButton;
   }
 
   Widget buildSaveGoalButton(TextEditingController goalEditingController,
@@ -91,7 +91,7 @@ class GoalEntryScreen extends StatelessWidget {
           return Text('something went wrong');
         }
         final isEnabled = snapshot.data;
-        return RaisedButton(
+        return AppButton(
           color: appGreen,
           onPressed: isEnabled
               ? () async {

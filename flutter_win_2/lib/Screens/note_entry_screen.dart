@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/blocs/index.dart';
 
@@ -30,7 +31,7 @@ class NoteEntryScreen extends StatelessWidget {
       },
     );
 
-    RaisedButton cancelButton = buildCancelButton(context);
+    Widget cancelButton = buildCancelButton(context);
 
     var scrollController = ScrollController();
 
@@ -84,20 +85,19 @@ class NoteEntryScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton buildCancelButton(BuildContext context) {
-    var cancelButton = RaisedButton(
+  Widget buildCancelButton(BuildContext context) {
+    return AppButton(
       color: appRed,
       onPressed: () {
         Navigator.pop(context);
       },
       child: Text('Cancel'),
     );
-    return cancelButton;
   }
 
   Widget buildSaveNotesButton(TextEditingController textEditingController,
       BuildContext context, bool isEnabled, NoteEntryBloc bloc) {
-    var saveNotes = RaisedButton(
+    return AppButton(
       color: appGreen,
       onPressed: isEnabled
           ? () {
@@ -106,7 +106,6 @@ class NoteEntryScreen extends StatelessWidget {
           : null,
       child: Text('Save'),
     );
-    return saveNotes;
   }
 
   TextField buildNoteTextField(ScrollController scrollController,
