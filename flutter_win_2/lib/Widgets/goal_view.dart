@@ -85,6 +85,7 @@ class _GoalViewState extends State<GoalView> {
 
   Widget buildCallToAction() {
     var editGoalButton = AppButton(
+      color: appGreen,
       onPressed: () {
         Navigator.push(
           context,
@@ -98,10 +99,14 @@ class _GoalViewState extends State<GoalView> {
           ),
         );
       },
-      child: Text('Edit goal'),
+      child: AppButtonText(
+        'Edit goal',
+        textColor: Colors.white,
+      ),
     );
 
     var editNotesButton = AppButton(
+      color: appGreen,
       onPressed: () {
         Navigator.push(
           context,
@@ -112,14 +117,21 @@ class _GoalViewState extends State<GoalView> {
           ),
         );
       },
-      child: Text('Edit notes'),
+      child: AppButtonText(
+        'Edit notes',
+        textColor: Colors.white,
+      ),
     );
 
     var checkInButton = AppButton(
+      color: appGreen,
       onPressed: () {
         showReflectionDialog();
       },
-      child: Text('Reflect'),
+      child: AppButtonText(
+        'Reflect',
+        textColor: Colors.white,
+      ),
     );
 
     var buttons = (record.notes == null)
