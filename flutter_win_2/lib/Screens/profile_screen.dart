@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Model/user.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/Widgets/profile_stat_card.dart';
 import 'package:flutter_win_2/blocs/index.dart';
 
@@ -108,8 +109,12 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget anonHeader(BuildContext context, User user, ProfileBloc profileBloc) {
-    final linkUserButton = RaisedButton(
-        child: Text('Link Google Account'),
+    final linkUserButton = AppButton(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text('Link with Google'),
+        ),
         onPressed: () {
           profileBloc.linkUser().then((value) {
             if (value) {
@@ -123,8 +128,9 @@ class ProfileScreen extends StatelessWidget {
     return Container(
       color: appBarColor,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(12.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Flexible(
               flex: 2,
@@ -132,10 +138,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             Flexible(
               flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: linkUserButton,
-              ),
+              child: linkUserButton,
             ),
           ],
         ),
@@ -146,64 +149,65 @@ class ProfileScreen extends StatelessWidget {
   Widget header(BuildContext context, User user, ProfileBloc profileBloc) {
     return Container(
       color: appBarColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Flexible(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: (user.photoUrl != null)
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        user.photoUrl,
-                      ),
-                      radius: 50.0,
-                    )
-                  : Icon(
-                      Icons.account_circle_outlined,
-                      color: offWhiteText,
-                    ),
-            ),
-          ),
-          Flexible(
-            flex: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      user.displayName ?? "Add display name",
-                      style: TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    IconButton(
-                      iconSize: 24,
-                      icon: Icon(Icons.edit_rounded),
-                      color: offWhiteText,
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-                Text(
-                  user.email,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.white,
-                  ),
-                ),
-                getUsageRatePrompt(profileBloc),
-              ],
-            ),
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: buildProfileMainRow(user, profileBloc),
       ),
+    );
+  }
+
+  Row buildProfileMainRow(User user, ProfileBloc profileBloc) {
+    var widgets = List<Widget>();
+    if (user.photoUrl != null) {
+      widgets.add(Flexible(
+        flex: 1,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 4.0),
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+              user.photoUrl,
+            ),
+            radius: 50.0,
+          ),
+        ),
+      ));
+    }
+    widgets.add(Flexible(
+      flex: 2,
+      child: buildProfileColumn(user, profileBloc),
+    ));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: widgets,
+    );
+  }
+
+  Column buildProfileColumn(User user, ProfileBloc profileBloc) {
+    var widgets = List<Widget>();
+    if (user.displayName != null && user.displayName != "") {
+      widgets.add(Text(
+        user.displayName,
+        style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ));
+    }
+    if (user.email != null) {
+      widgets.add(Text(
+        user.email,
+        style: TextStyle(
+          fontSize: 16.0,
+          color: Colors.white,
+        ),
+      ));
+    }
+    widgets.add(getUsageRatePrompt(profileBloc));
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: widgets,
     );
   }
 
@@ -222,10 +226,10 @@ class ProfileScreen extends StatelessWidget {
         return Container(
           color: appBarColor,
           child: Text(
-            'In an average week, you\'d set a goal on $daysPerWeek out of 7 days.',
+            'In an average week, you\'d set a goal on $daysPerWeek out of 7 days since starting this app.',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16.0,
+              fontSize: 14.0,
               fontWeight: FontWeight.w300,
               fontStyle: FontStyle.italic,
             ),
