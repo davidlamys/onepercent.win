@@ -5,6 +5,7 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Screens/goal_entry_screen.dart';
 import 'package:flutter_win_2/Screens/note_entry_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/blocs/goal_entry/goal_entry_provider.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
@@ -41,43 +42,14 @@ class _GoalViewState extends State<GoalView> {
     List<Widget> children = List<Widget>();
     children = [
       Container(
+        margin: EdgeInsets.only(
+          bottom: 8,
+        ),
         width: double.infinity,
         color: getColor(record),
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned(
-              right: 16,
-              child: ClipOval(
-                child: Material(
-                  color: getColor(record), // button color
-                  child: InkWell(
-                    splashColor: Colors.red, // inkwell color
-                    child: SizedBox(
-                      width: 32,
-                      height: 32,
-                      child: Container(
-                        decoration: new BoxDecoration(
-                          // color: Colors.blueAccent,
-                          border: new Border.all(
-                            color: Colors.grey.shade800,
-                            width: 2.0,
-                          ),
-                          borderRadius: new BorderRadius.circular(18.0),
-                        ),
-                        child: Icon(
-                          Icons.edit_outlined,
-                          size: 18,
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      print("hi world");
-                    },
-                  ),
-                ),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
@@ -112,7 +84,7 @@ class _GoalViewState extends State<GoalView> {
   }
 
   Widget buildCallToAction() {
-    var editGoalButton = FlatButton(
+    var editGoalButton = AppButton(
       onPressed: () {
         Navigator.push(
           context,
@@ -129,7 +101,7 @@ class _GoalViewState extends State<GoalView> {
       child: Text('Edit goal'),
     );
 
-    var editNotesButton = FlatButton(
+    var editNotesButton = AppButton(
       onPressed: () {
         Navigator.push(
           context,
@@ -143,7 +115,12 @@ class _GoalViewState extends State<GoalView> {
       child: Text('Edit notes'),
     );
 
-    var checkInButton = buildReflectButton();
+    var checkInButton = AppButton(
+      onPressed: () {
+        showReflectionDialog();
+      },
+      child: Text('Reflect'),
+    );
 
     var buttons = (record.notes == null)
         ? [editGoalButton, checkInButton]
@@ -157,67 +134,61 @@ class _GoalViewState extends State<GoalView> {
     );
   }
 
-  FlatButton buildReflectButton() {
-    return FlatButton(
-      onPressed: () {
-        showDialog(
-            context: context,
-            builder: (_) => NetworkGiffyDialog(
-                  key: Key("AssetDialog"),
-                  image: Image.asset(
-                    'assets/zen-bunny.webp',
-                    fit: BoxFit.scaleDown,
+  void showReflectionDialog() {
+    showDialog(
+        context: context,
+        builder: (_) => NetworkGiffyDialog(
+              key: Key("AssetDialog"),
+              image: Image.asset(
+                'assets/zen-bunny.webp',
+                fit: BoxFit.scaleDown,
+              ),
+              entryAnimation: EntryAnimation.BOTTOM,
+              title: Text(
+                'How did it go?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+                textScaleFactor: 1.0,
+              ),
+              description: Text(
+                'In many ways, this reflection will be as important as what happened.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.0),
+                textScaleFactor: 1.0,
+              ),
+              buttonOkText: Text(
+                "Crushed it 😎",
+                textScaleFactor: 1.0,
+              ),
+              buttonOkColor: appGreen,
+              buttonCancelText: Text(
+                "Need Tweaks 🤔",
+                textScaleFactor: 1.0,
+              ),
+              buttonCancelColor: appRed,
+              onOkButtonPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NoteEntryScreen(
+                      record: record.copyWith(status: "completedWithNotes"),
+                    ),
                   ),
-                  entryAnimation: EntryAnimation.BOTTOM,
-                  title: Text(
-                    'How did it go?',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
-                    textScaleFactor: 1.0,
+                );
+              },
+              onCancelButtonPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NoteEntryScreen(
+                      record: record.copyWith(status: "failed"),
+                    ),
                   ),
-                  description: Text(
-                    'In many ways, this reflection will be as important as what happened.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0),
-                    textScaleFactor: 1.0,
-                  ),
-                  buttonOkText: Text(
-                    "Crushed it 😎",
-                    textScaleFactor: 1.0,
-                  ),
-                  buttonOkColor: appGreen,
-                  buttonCancelText: Text(
-                    "Need Tweaks 🤔",
-                    textScaleFactor: 1.0,
-                  ),
-                  buttonCancelColor: appRed,
-                  onOkButtonPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NoteEntryScreen(
-                          record: record.copyWith(status: "completedWithNotes"),
-                        ),
-                      ),
-                    );
-                  },
-                  onCancelButtonPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NoteEntryScreen(
-                          record: record.copyWith(status: "failed"),
-                        ),
-                      ),
-                    );
-                  },
-                ));
-      },
-      child: Text('Reflect'),
-    );
+                );
+              },
+            ));
   }
 }
 
@@ -251,7 +222,10 @@ class ValueText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 4,
+        horizontal: 20,
+      ),
       child: Text(
         text,
         textAlign: TextAlign.center,
