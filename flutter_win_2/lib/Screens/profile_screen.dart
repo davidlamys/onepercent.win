@@ -47,9 +47,12 @@ class ProfileScreen extends StatelessWidget {
                     return buildGridView(list, profileBloc);
                   }),
               Center(
-                child: RaisedButton(
+                child: AppButton(
                   color: appRed,
-                  child: Text('Log out'),
+                  child: AppButtonText(
+                    'Log out',
+                    textColor: Colors.white,
+                  ),
                   onPressed: () {
                     profileBloc.logoutUser();
                   },
@@ -113,7 +116,10 @@ class ProfileScreen extends StatelessWidget {
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Text('Link with Google'),
+          child: AppButtonText(
+            'Link with Google',
+            textColor: Colors.black,
+          ),
         ),
         onPressed: () {
           profileBloc.linkUser().then((value) {

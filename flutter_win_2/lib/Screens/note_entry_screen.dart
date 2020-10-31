@@ -91,7 +91,10 @@ class NoteEntryScreen extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text('Cancel'),
+      child: AppButtonText(
+        'Cancel',
+        textColor: Colors.white,
+      ),
     );
   }
 
@@ -104,7 +107,10 @@ class NoteEntryScreen extends StatelessWidget {
               bloc.save().then((value) => Navigator.pop(context));
             }
           : null,
-      child: Text('Save'),
+      child: AppButtonText(
+        'Save',
+        textColor: Colors.white,
+      ),
     );
   }
 

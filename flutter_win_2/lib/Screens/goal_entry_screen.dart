@@ -76,7 +76,10 @@ class GoalEntryScreen extends StatelessWidget {
     return AppButton(
       color: appRed,
       onPressed: () => Navigator.pop(context),
-      child: Text('Cancel'),
+      child: AppButtonText(
+        'Cancel',
+        textColor: Colors.white,
+      ),
     );
   }
 
@@ -105,7 +108,10 @@ class GoalEntryScreen extends StatelessWidget {
                   });
                 }
               : null,
-          child: Text('Save'),
+          child: AppButtonText(
+            'Save',
+            textColor: Colors.white,
+          ),
         );
       },
     );

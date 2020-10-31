@@ -11,6 +11,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       color: color,
+      disabledColor: color.withAlpha(100),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
         side: (color == null)
@@ -21,4 +22,16 @@ class AppButton extends StatelessWidget {
       child: child,
     );
   }
+}
+
+class AppButtonText extends Text {
+  final Color textColor;
+  final String text;
+  AppButtonText(this.text, {this.textColor})
+      : super(
+          text,
+          style: TextStyle(
+            color: textColor,
+          ),
+        );
 }
