@@ -118,10 +118,12 @@ class ProfileScreen extends StatelessWidget {
         onPressed: () {
           profileBloc.linkUser().then((value) {
             if (value) {
-              print('success');
-            } else {
-              print('failure');
+              showLinkedSuccessDialog(context);
             }
+          }).catchError((error) {
+            print('i ve got you mr error');
+            print(error);
+            showLinkFailedDialog(context);
           });
         });
 
@@ -144,6 +146,25 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showLinkFailedDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        child: new AlertDialog(
+          title: new Text("Oops..Something went wrong!"),
+          content: new Text(
+              "We could not link the account.\nPlease try again later."),
+        ));
+  }
+
+  void showLinkedSuccessDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        child: new AlertDialog(
+          title: new Text("Thank you"),
+          content: new Text("Account linked successfully"),
+        ));
   }
 
   Widget header(BuildContext context, User user, ProfileBloc profileBloc) {

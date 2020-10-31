@@ -75,34 +75,31 @@ class UserService {
   }
 
   Future<bool> linkUser() async {
-    try {
-      final FirebaseUser currentUser = await _auth.currentUser();
+    final FirebaseUser currentUser = await _auth.currentUser();
 
-      final GoogleSignInAccount googleSignInAccount =
-          await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+    final GoogleSignInAccount googleSignInAccount =
+        await _googleSignIn.signIn();
 
-      final AuthCredential credential = GoogleAuthProvider.getCredential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken,
-      );
-      return currentUser.linkWithCredential(credential).catchError((error) {
-        print('linked crediential error $error');
-        final platformError = error as PlatformException;
-        if (platformError != null) {
-          print(platformError.message);
-        }
-      }).then((value) {
-        print("linked crediential result: ${value.additionalUserInfo}");
+    if (googleSignInAccount == null) {
+      return false;
+    }
+
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+    return currentUser.linkWithCredential(credential).then((value) {
+      if (value != null) {
         createUserInFirestoreIfNeeded();
         return true;
-      });
-    } catch (error) {
+      }
+    }).catchError((error) {
       _googleSignIn.signOut();
-      print("linked crediential error: $error");
-      return Future.value(false);
-    }
+      print("linked crediential error::: $error");
+    });
   }
 
   Future<void> googleSignIn() async {
