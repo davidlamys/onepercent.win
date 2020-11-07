@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
 import 'package:flutter_win_2/blocs/logged_in/logged_in_provider.dart';
 import 'package:flutter_win_2/blocs/profile/profile_provider.dart';
-import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
 
 import 'profile_screen.dart';
@@ -15,40 +13,10 @@ import 'reminder_screen.dart';
 
 const numDays = 14;
 
-class LoggedInScreen extends StatefulWidget {
+class LoggedInScreen extends StatelessWidget {
   final scaffoldState = GlobalKey<ScaffoldState>();
 
   static const id = 'loggedInScreen';
-
-  @override
-  _LoggedInScreenState createState() => _LoggedInScreenState();
-}
-
-class _LoggedInScreenState extends State<LoggedInScreen> {
-  final goalService = ServiceFactory.getGoalService();
-  DateTime selectedDate;
-  List<Record> records;
-
-  final _dates = List<int>.generate(numDays, (i) => i + 1)
-      .map((i) => DateTime.now().subtract(Duration(days: i - 1)))
-      .toList();
-
-  @override
-  void initState() {
-    super.initState();
-    goalService
-        .goalStream()
-        .then((goalStream) => {listenOnGoalStream(goalStream)});
-    selectedDate = _dates.first;
-  }
-
-  void listenOnGoalStream(Stream<List<Record>> goalStream) {
-    goalStream.listen((event) {
-      setState(() {
-        records = event;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +45,7 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                   showModalBottomSheet(
                       context: context,
                       builder: (builderContext) {
-                        return loggedInBottomSheet();
+                        return loggedInBottomSheet(context);
                       });
                 },
                 child: Icon(Icons.more_horiz),
@@ -148,32 +116,20 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     return DateFormat('d MMMM yyyy');
   }
 
-  Record recordForDate(DateTime refDate) {
-    if (records == null) {
-      return null;
-    }
-    return records.reversed.firstWhere((element) {
-      final elementTimestamp = element.timestamp;
-      return elementTimestamp.year == refDate.year &&
-          elementTimestamp.month == refDate.month &&
-          elementTimestamp.day == refDate.day;
-    }, orElse: () => null);
-  }
-
-  Widget loggedInBottomSheet() {
+  Widget loggedInBottomSheet(BuildContext context) {
     return Container(
       // height: 80,
       color: appOrange,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 24.0),
         child: Row(
-          children: buildSheetIcons(),
+          children: buildSheetIcons(context),
         ),
       ),
     );
   }
 
-  List<Widget> buildSheetIcons() {
+  List<Widget> buildSheetIcons(BuildContext context) {
     var baseIcons = [
       BottomSheetIcon(
         text: "Profile",
