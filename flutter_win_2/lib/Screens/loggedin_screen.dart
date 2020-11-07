@@ -4,8 +4,7 @@ import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
-import 'package:flutter_win_2/blocs/logged_in/logged_in_provider.dart';
-import 'package:flutter_win_2/blocs/profile/profile_provider.dart';
+import 'package:flutter_win_2/blocs/index.dart';
 import 'package:intl/intl.dart';
 
 import 'profile_screen.dart';
@@ -25,13 +24,16 @@ class LoggedInScreen extends StatelessWidget {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: StreamBuilder<DateTime>(
-              stream: bloc.selectedDate,
+          title: StreamBuilder<HomePageModel>(
+              stream: bloc.homePageModel,
               builder: (context, snapshot) {
-                if (snapshot.hasData == false || snapshot.data == null) {
+                if (snapshot.hasData == false ||
+                    snapshot.data == null ||
+                    snapshot.data.selectedDate == null) {
                   return Container();
                 }
-                final navBarHeader = dayFormat().format(snapshot.data);
+                final navBarHeader =
+                    dayFormat().format(snapshot.data.selectedDate);
                 return Text(
                   navBarHeader,
                 );
@@ -62,8 +64,8 @@ class LoggedInScreen extends StatelessWidget {
                 flex: 10,
                 child: Container(
                   color: appBarColor,
-                  child: StreamBuilder<HomePageCalendarModel>(
-                      stream: bloc.calendarModel,
+                  child: StreamBuilder<HomePageModel>(
+                      stream: bloc.homePageModel,
                       builder: (context, snapshot) {
                         if (snapshot.hasData == false) {
                           return Container();
@@ -80,8 +82,8 @@ class LoggedInScreen extends StatelessWidget {
               ),
               Expanded(
                 flex: 60,
-                child: StreamBuilder<HomePageCalendarModel>(
-                    stream: bloc.calendarModel,
+                child: StreamBuilder<HomePageModel>(
+                    stream: bloc.homePageModel,
                     builder: (context, snapshot) {
                       return SingleChildScrollView(
                           child: buildView(snapshot.data));
@@ -94,7 +96,7 @@ class LoggedInScreen extends StatelessWidget {
     );
   }
 
-  Widget buildView(HomePageCalendarModel calendarModel) {
+  Widget buildView(HomePageModel calendarModel) {
     if (calendarModel == null) {
       return null;
     }
@@ -156,6 +158,7 @@ class LoggedInScreen extends StatelessWidget {
         },
       ),
     ];
+
     return baseIcons;
   }
 }

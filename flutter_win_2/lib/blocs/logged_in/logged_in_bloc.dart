@@ -1,16 +1,24 @@
 import 'dart:async';
 
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:rxdart/rxdart.dart';
-
 import '../../service_factory.dart';
+
+class HomePageModel {
+  final List<Record> records;
+  final List<Record> recordsForSelectedDate;
+  final DateTime selectedDate;
+  final List<DateTime> dates;
+
+  HomePageModel(
+      this.records, this.recordsForSelectedDate, this.selectedDate, this.dates);
+}
 
 class LoggedInBloc {
   final _goalService = ServiceFactory.getGoalService();
-  // final _userService = ServiceFactory.getUserService();
+  final _userService = ServiceFactory.getUserService();
 
-  // BehaviorSubject<bool> _isAdmin = BehaviorSubject.seeded(false);
+  BehaviorSubject<bool> _isAdmin = BehaviorSubject.seeded(false);
   BehaviorSubject<List<Record>> _records = BehaviorSubject.seeded([]);
   BehaviorSubject<List<DateTime>> _dates = BehaviorSubject.seeded([]);
   BehaviorSubject<DateTime> _selectedDate =
@@ -19,19 +27,11 @@ class LoggedInBloc {
   BehaviorSubject<List<Record>> _recordsForSelectedDate =
       BehaviorSubject.seeded([]);
 
-  BehaviorSubject<HomePageCalendarModel> _calendarModel =
-      BehaviorSubject.seeded(null);
-
-  // Stream<bool> get isAdmin => _isAdmin;
-  Stream<List<Record>> get recordsStream => _records.stream;
-  Stream<List<DateTime>> get dates => _dates.stream;
-  Stream<List<Record>> get recordsForSelectedDate =>
-      _recordsForSelectedDate.stream;
-  Stream<DateTime> get selectedDate => _selectedDate.stream;
+  BehaviorSubject<HomePageModel> _calendarModel = BehaviorSubject.seeded(null);
 
   Stream<List<Record>> _interimStream;
 
-  Stream<HomePageCalendarModel> get calendarModel => _calendarModel.stream;
+  Stream<HomePageModel> get homePageModel => _calendarModel.stream;
 
   LoggedInBloc() {
     _goalService.goalStream().then((value) {
@@ -55,13 +55,13 @@ class LoggedInBloc {
     _selectedDate.sink.add(_startingDates.first);
 
     CombineLatestStream.combine4(
-        recordsStream, recordsForSelectedDate, selectedDate, dates,
+        _records, _recordsForSelectedDate, _selectedDate, _dates,
         (List<Record> a, List<Record> b, DateTime c, List<DateTime> d) {
       if (a == null || b == null || c == null || d == null) {
         return null;
       }
 
-      return HomePageCalendarModel(a, b, c, d);
+      return HomePageModel(a, b, c, d);
     }).pipe(_calendarModel);
   }
 

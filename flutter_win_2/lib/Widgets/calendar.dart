@@ -4,16 +4,6 @@ import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:intl/intl.dart';
 
-class HomePageCalendarModel {
-  final List<Record> records;
-  final List<Record> recordsForSelectedDate;
-  final DateTime selectedDate;
-  final List<DateTime> dates;
-
-  HomePageCalendarModel(
-      this.records, this.recordsForSelectedDate, this.selectedDate, this.dates);
-}
-
 class HomePageCalendar extends StatelessWidget {
   final List<Record> records;
   final DateTime selectedDate;
