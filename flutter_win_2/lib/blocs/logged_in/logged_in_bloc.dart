@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:flutter_win_2/Model/user.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../service_factory.dart';
 
@@ -9,16 +10,16 @@ class HomePageModel {
   final List<Record> recordsForSelectedDate;
   final DateTime selectedDate;
   final List<DateTime> dates;
+  final bool isAdmin;
 
-  HomePageModel(
-      this.records, this.recordsForSelectedDate, this.selectedDate, this.dates);
+  HomePageModel(this.records, this.recordsForSelectedDate, this.selectedDate,
+      this.dates, this.isAdmin);
 }
 
 class LoggedInBloc {
   final _goalService = ServiceFactory.getGoalService();
   final _userService = ServiceFactory.getUserService();
 
-  BehaviorSubject<bool> _isAdmin = BehaviorSubject.seeded(false);
   BehaviorSubject<List<Record>> _records = BehaviorSubject.seeded([]);
   BehaviorSubject<List<DateTime>> _dates = BehaviorSubject.seeded([]);
   BehaviorSubject<DateTime> _selectedDate =
@@ -54,14 +55,14 @@ class LoggedInBloc {
     _dates.sink.add(_startingDates);
     _selectedDate.sink.add(_startingDates.first);
 
-    CombineLatestStream.combine4(
-        _records, _recordsForSelectedDate, _selectedDate, _dates,
-        (List<Record> a, List<Record> b, DateTime c, List<DateTime> d) {
-      if (a == null || b == null || c == null || d == null) {
+    CombineLatestStream.combine5(_records, _recordsForSelectedDate,
+        _selectedDate, _dates, _userService.loggedInUser, (List<Record> a,
+            List<Record> b, DateTime c, List<DateTime> d, User user) {
+      if (a == null || b == null || c == null || d == null || user == null) {
         return null;
       }
-
-      return HomePageModel(a, b, c, d);
+      final isAdmin = user.isAdmin ?? false;
+      return HomePageModel(a, b, c, d, isAdmin);
     }).pipe(_calendarModel);
   }
 

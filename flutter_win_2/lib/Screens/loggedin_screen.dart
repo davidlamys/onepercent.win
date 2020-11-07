@@ -22,77 +22,68 @@ class LoggedInScreen extends StatelessWidget {
     final bloc = LoggedinProvider.of(context).bloc;
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          title: StreamBuilder<HomePageModel>(
-              stream: bloc.homePageModel,
-              builder: (context, snapshot) {
-                if (snapshot.hasData == false ||
-                    snapshot.data == null ||
-                    snapshot.data.selectedDate == null) {
-                  return Container();
-                }
-                final navBarHeader =
-                    dayFormat().format(snapshot.data.selectedDate);
-                return Text(
+      child: StreamBuilder<HomePageModel>(
+          stream: bloc.homePageModel,
+          builder: (context, snapshot) {
+            if (snapshot.hasData == false || snapshot.data == null) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text('oops.. something went wrong'),
+                ),
+              );
+            }
+            final model = snapshot.data;
+            final navBarHeader = dayFormat().format(model.selectedDate);
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(
                   navBarHeader,
-                );
-              }),
-          leading: Container(),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (builderContext) {
-                        return loggedInBottomSheet(context);
-                      });
-                },
-                child: Icon(Icons.more_horiz),
+                ),
+                leading: Container(),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (builderContext) {
+                              return loggedInBottomSheet(
+                                  context, model.isAdmin);
+                            });
+                      },
+                      child: Icon(Icons.more_horiz),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-        body: Container(
-          color: appBarColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                flex: 10,
-                child: Container(
-                  color: appBarColor,
-                  child: StreamBuilder<HomePageModel>(
-                      stream: bloc.homePageModel,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData == false) {
-                          return Container();
-                        }
-                        final model = snapshot.data;
-                        return HomePageCalendar(
+              body: Container(
+                color: appBarColor,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 10,
+                      child: Container(
+                        color: appBarColor,
+                        child: HomePageCalendar(
                           records: model.records,
                           dates: model.dates,
                           selectedDate: model.selectedDate,
                           onDateSelection: bloc.updateSelectedDate,
-                        );
-                      }),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                        flex: 60,
+                        child: SingleChildScrollView(
+                          child: buildView(snapshot.data),
+                        )),
+                  ],
                 ),
               ),
-              Expanded(
-                flex: 60,
-                child: StreamBuilder<HomePageModel>(
-                    stream: bloc.homePageModel,
-                    builder: (context, snapshot) {
-                      return SingleChildScrollView(
-                          child: buildView(snapshot.data));
-                    }),
-              ),
-            ],
-          ),
-        ),
-      ),
+            );
+          }),
     );
   }
 
@@ -118,20 +109,20 @@ class LoggedInScreen extends StatelessWidget {
     return DateFormat('d MMMM yyyy');
   }
 
-  Widget loggedInBottomSheet(BuildContext context) {
+  Widget loggedInBottomSheet(BuildContext context, bool isAdmin) {
     return Container(
       // height: 80,
       color: appOrange,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 24.0),
         child: Row(
-          children: buildSheetIcons(context),
+          children: buildSheetIcons(context, isAdmin),
         ),
       ),
     );
   }
 
-  List<Widget> buildSheetIcons(BuildContext context) {
+  List<Widget> buildSheetIcons(BuildContext context, bool isAdmin) {
     var baseIcons = [
       BottomSheetIcon(
         text: "Profile",
@@ -158,7 +149,21 @@ class LoggedInScreen extends StatelessWidget {
         },
       ),
     ];
-
+    if (isAdmin) {
+      final getNosy = BottomSheetIcon(
+        text: "Get nosy",
+        iconData: Icons.remove_red_eye_outlined,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ReminderScreen(),
+            ),
+          );
+        },
+      );
+      baseIcons.add(getNosy);
+    }
     return baseIcons;
   }
 }
