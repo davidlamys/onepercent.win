@@ -5,6 +5,7 @@ import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/Widgets/no_goal_view.dart';
+import 'package:flutter_win_2/blocs/logged_in/logged_in_provider.dart';
 import 'package:flutter_win_2/blocs/profile/profile_provider.dart';
 import 'package:flutter_win_2/service_factory.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +19,7 @@ class LoggedInScreen extends StatefulWidget {
   final scaffoldState = GlobalKey<ScaffoldState>();
 
   static const id = 'loggedInScreen';
+
   @override
   _LoggedInScreenState createState() => _LoggedInScreenState();
 }
@@ -42,7 +44,6 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   void listenOnGoalStream(Stream<List<Record>> goalStream) {
     goalStream.listen((event) {
-      print("New goals has arrived");
       setState(() {
         records = event;
       });
@@ -51,13 +52,22 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = LoggedinProvider.of(context).bloc;
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            '${dayFormat().format(selectedDate)}',
-          ),
+          title: StreamBuilder<DateTime>(
+              stream: bloc.selectedDate,
+              builder: (context, snapshot) {
+                if (snapshot.hasData == false || snapshot.data == null) {
+                  return Container();
+                }
+                final navBarHeader = dayFormat().format(snapshot.data);
+                return Text(
+                  navBarHeader,
+                );
+              }),
           leading: Container(),
           actions: [
             Padding(
@@ -84,21 +94,30 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
                 flex: 10,
                 child: Container(
                   color: appBarColor,
-                  child: HomePageCalendar(
-                    records: records,
-                    dates: _dates,
-                    selectedDate: selectedDate,
-                    onDateSelection: (date) {
-                      setState(() {
-                        selectedDate = date;
-                      });
-                    },
-                  ),
+                  child: StreamBuilder<HomePageCalendarModel>(
+                      stream: bloc.calendarModel,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData == false) {
+                          return Container();
+                        }
+                        final model = snapshot.data;
+                        return HomePageCalendar(
+                          records: model.records,
+                          dates: model.dates,
+                          selectedDate: model.selectedDate,
+                          onDateSelection: bloc.updateSelectedDate,
+                        );
+                      }),
                 ),
               ),
               Expanded(
                 flex: 60,
-                child: SingleChildScrollView(child: buildView(selectedDate)),
+                child: StreamBuilder<HomePageCalendarModel>(
+                    stream: bloc.calendarModel,
+                    builder: (context, snapshot) {
+                      return SingleChildScrollView(
+                          child: buildView(snapshot.data));
+                    }),
               ),
             ],
           ),
@@ -107,16 +126,20 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
     );
   }
 
-  Widget buildView(DateTime dateTime) {
-    var record = recordForDate(dateTime);
-    if (record == null) {
+  Widget buildView(HomePageCalendarModel calendarModel) {
+    if (calendarModel == null) {
+      return null;
+    }
+
+    if (calendarModel.recordsForSelectedDate == null ||
+        calendarModel.recordsForSelectedDate.isEmpty) {
       return NoGoalView(
-        date: dateTime,
+        date: calendarModel.selectedDate,
       );
     } else {
       return GoalView(
         key: UniqueKey(),
-        record: record,
+        record: calendarModel.recordsForSelectedDate.first,
       );
     }
   }
@@ -144,35 +167,39 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 24.0),
         child: Row(
-          children: [
-            BottomSheetIcon(
-              text: "Profile",
-              iconData: Icons.account_circle_outlined,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ProfileProvider(child: ProfileScreen()),
-                  ),
-                );
-              },
-            ),
-            BottomSheetIcon(
-              text: "Reminder",
-              iconData: Icons.add_alarm_outlined,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ReminderScreen(),
-                  ),
-                );
-              },
-            ),
-          ],
+          children: buildSheetIcons(),
         ),
       ),
     );
+  }
+
+  List<Widget> buildSheetIcons() {
+    var baseIcons = [
+      BottomSheetIcon(
+        text: "Profile",
+        iconData: Icons.account_circle_outlined,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProfileProvider(child: ProfileScreen()),
+            ),
+          );
+        },
+      ),
+      BottomSheetIcon(
+        text: "Reminder",
+        iconData: Icons.add_alarm_outlined,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ReminderScreen(),
+            ),
+          );
+        },
+      ),
+    ];
+    return baseIcons;
   }
 }

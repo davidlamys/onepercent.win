@@ -10,6 +10,7 @@ import 'package:flutter_win_2/Screens/pre_login_screen.dart';
 import 'package:flutter_win_2/Screens/profile_screen.dart';
 import 'package:flutter_win_2/Services/user_service.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
+import 'package:flutter_win_2/blocs/logged_in/logged_in_provider.dart';
 import 'Screens/router_screen.dart';
 import 'blocs/index.dart';
 import 'utils/notificationHelper.dart';
@@ -64,7 +65,9 @@ class MyApp extends StatelessWidget {
         case PreLoginScreen.id:
           return PreLoginScreen();
         case LoggedInScreen.id:
-          return LoggedInScreen();
+          return LoggedinProvider(
+            child: LoggedInScreen(),
+          );
         case GoalEntryScreen.id:
           return GoalEntryScreen();
         case NoteEntryScreen.id:
