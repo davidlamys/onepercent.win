@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:intl/intl.dart';
+import 'package:dart_date/dart_date.dart';
 
 class HomePageCalendar extends StatelessWidget {
   final List<Record> records;
@@ -45,7 +46,7 @@ class HomePageCalendar extends StatelessWidget {
   Container buildContainer(DateTime date) {
     return Container(
       padding: EdgeInsets.all(10),
-      child: (date == selectedDate)
+      child: (date.differenceInDays(selectedDate) == 0)
           ? selectedDateContent(date)
           : unselectedDateContent(date),
     );
