@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/blocs/index.dart';
@@ -38,19 +37,6 @@ class AdminScreen extends StatelessWidget {
     );
   }
 
-  String getEmojiString(Record record) {
-    if (record.status == null) {
-      return "";
-    }
-    if (record.status == "completedWithNotes") {
-      return " 😎 ";
-    }
-    if (record.status == "failed") {
-      return " 🤔 ";
-    }
-    return "";
-  }
-
   Widget _buildDateSelectionBox(BuildContext context, Record record) {
     final timeStampString = dayFormat().format(record.timestamp);
     final token1 = "I want to ";
@@ -76,7 +62,6 @@ class AdminScreen extends StatelessWidget {
         subtitle: Text(
           timeStampString,
         ),
-        // trailing: Text("😎"),
         onTap: () {
           showFullRecord(context, record, "Reflection");
         });

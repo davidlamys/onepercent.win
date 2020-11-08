@@ -88,20 +88,20 @@ class LoggedInScreen extends StatelessWidget {
     );
   }
 
-  Widget buildView(HomePageModel calendarModel) {
-    if (calendarModel == null) {
+  Widget buildView(HomePageModel model) {
+    if (model == null) {
       return null;
     }
 
-    if (calendarModel.recordsForSelectedDate == null ||
-        calendarModel.recordsForSelectedDate.isEmpty) {
+    if (model.recordsForSelectedDate == null ||
+        model.recordsForSelectedDate.isEmpty) {
       return NoGoalView(
-        date: calendarModel.selectedDate,
+        date: model.selectedDate,
       );
     } else {
       return GoalView(
         key: UniqueKey(),
-        record: calendarModel.recordsForSelectedDate.first,
+        record: model.recordsForSelectedDate.first,
       );
     }
   }

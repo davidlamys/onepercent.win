@@ -114,3 +114,16 @@ Color getColor(Record selectedRecord) {
 
   return appGreen;
 }
+
+String getEmojiString(Record record) {
+  if (record.status == null) {
+    return "";
+  }
+  if (record.status == "completedWithNotes") {
+    return " 😎 ";
+  }
+  if (record.status == "failed") {
+    return " 🤔 ";
+  }
+  return "";
+}
