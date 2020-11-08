@@ -11,8 +11,6 @@ import 'admin_screen.dart';
 import 'profile_screen.dart';
 import 'reminder_screen.dart';
 
-const numDays = 14;
-
 class LoggedInScreen extends StatelessWidget {
   final scaffoldState = GlobalKey<ScaffoldState>();
 

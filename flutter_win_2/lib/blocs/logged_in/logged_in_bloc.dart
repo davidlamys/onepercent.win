@@ -48,23 +48,42 @@ class LoggedInBloc {
       return _recordsForDate(selectedDate, records);
     }).pipe(_recordsForSelectedDate);
 
-    final _startingDates = List<int>.generate(14, (i) => i + 1)
-        .map((i) => DateTime.now().subtract(Duration(days: i - 1)))
-        .toList();
+    _records.distinct().map(datesForCalendar).pipe(_dates);
+    _selectedDate.sink.add(DateTime.now());
 
-    _dates.sink.add(_startingDates);
-    _selectedDate.sink.add(_startingDates.first);
-
-    CombineLatestStream.combine5(_records, _recordsForSelectedDate,
-        _selectedDate, _dates, _userService.loggedInUser, (List<Record> a,
-            List<Record> b, DateTime c, List<DateTime> d, User user) {
+    CombineLatestStream.combine5(
+        _records.distinct(),
+        _recordsForSelectedDate.distinct(),
+        _selectedDate,
+        _dates.distinct(),
+        _userService.loggedInUser.distinct(), (List<Record> a, List<Record> b,
+            DateTime c, List<DateTime> d, User user) {
       if (a == null || b == null || c == null || d == null || user == null) {
         return null;
       }
       final isAdmin = user.isAdmin ?? false;
       return HomePageModel(a, b, c, d, isAdmin);
-    }).pipe(_calendarModel);
+    }).distinct().pipe(_calendarModel);
   }
+
+  List<DateTime> datesForCalendar(List<Record> records) {
+    if (records == null || records.isEmpty) {
+      return _getDefaultRange();
+    }
+    final firstRecord = records.first;
+    if (firstRecord.timestamp == null) {
+      return _getDefaultRange();
+    }
+    final daysAgo = DateTime.now().difference(firstRecord.timestamp).inDays;
+    return _getDateRange(daysAgo);
+  }
+
+  List<DateTime> _getDefaultRange() => _getDateRange(7);
+
+  List<DateTime> _getDateRange(int daysAgo) =>
+      List<int>.generate(daysAgo, (i) => i + 1)
+          .map((i) => DateTime.now().subtract(Duration(days: i - 1)))
+          .toList();
 
   List<Record> _recordsForDate(DateTime refDate, List<Record> records) {
     return records.reversed.where((element) {
