@@ -27,7 +27,8 @@ class LoggedInScreen extends StatelessWidget {
             if (snapshot.hasData == false || snapshot.data == null) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Text('oops.. something went wrong'),
+                  title: Text('Loading...'),
+                  leading: Container(),
                 ),
               );
             }
