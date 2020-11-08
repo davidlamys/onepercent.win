@@ -24,7 +24,7 @@ class LoggedInBloc {
   BehaviorSubject<List<Record>> _records = BehaviorSubject.seeded([]);
   BehaviorSubject<List<DateTime>> _dates = BehaviorSubject.seeded([]);
   BehaviorSubject<DateTime> _selectedDate =
-      BehaviorSubject.seeded(DateTime.now());
+      BehaviorSubject.seeded(DateTime.now().startOfDay);
 
   BehaviorSubject<List<Record>> _recordsForSelectedDate =
       BehaviorSubject.seeded([]);
@@ -50,7 +50,6 @@ class LoggedInBloc {
     }).pipe(_recordsForSelectedDate);
 
     _records.distinct().map(datesForCalendar).pipe(_dates);
-    _selectedDate.sink.add(DateTime.now());
 
     CombineLatestStream.combine5(
         _records.distinct(),
