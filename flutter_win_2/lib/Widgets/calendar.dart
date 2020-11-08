@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
-import 'package:flutter_win_2/Screens/loggedin_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +24,7 @@ class HomePageCalendar extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: _buildDateSelectionBox,
         reverse: true,
-        itemCount: numDays);
+        itemCount: dates.length);
   }
 
   Widget _buildDateSelectionBox(BuildContext context, int index) {
