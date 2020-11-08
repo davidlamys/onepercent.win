@@ -7,6 +7,7 @@ import 'package:flutter_win_2/Widgets/no_goal_view.dart';
 import 'package:flutter_win_2/blocs/index.dart';
 import 'package:intl/intl.dart';
 
+import 'admin_screen.dart';
 import 'profile_screen.dart';
 import 'reminder_screen.dart';
 
@@ -157,7 +158,9 @@ class LoggedInScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ReminderScreen(),
+              builder: (context) => AdminScreenProvider(
+                child: AdminScreen(),
+              ),
             ),
           );
         },
