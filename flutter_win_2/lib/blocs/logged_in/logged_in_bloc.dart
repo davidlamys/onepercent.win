@@ -4,6 +4,7 @@ import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Model/user.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../service_factory.dart';
+import 'package:dart_date/dart_date.dart';
 
 class HomePageModel {
   final List<Record> records;
@@ -74,16 +75,44 @@ class LoggedInBloc {
     if (firstRecord.timestamp == null) {
       return _getDefaultRange();
     }
-    final daysAgo = DateTime.now().difference(firstRecord.timestamp).inDays;
-    return _getDateRange(daysAgo);
+    final tomorrow = DateTime.now().startOfDay.addDays(1);
+    final today = DateTime.now().startOfDay;
+
+    final latestRecord = records.last;
+    final endDate = shouldShowTomorrow(latestRecord) ? tomorrow : today;
+
+    return _getDates(firstRecord.timestamp.startOfDay, endDate);
+  }
+
+  bool shouldShowTomorrow(Record latestRecord) {
+    if (latestRecord == null || latestRecord.timestamp == null) {
+      return false;
+    }
+    if (latestRecord.timestamp.isTomorrow) {
+      return true;
+    }
+    if (latestRecord.timestamp.isToday == false) {
+      return false;
+    }
+    return latestRecord.isInProgress() == false;
+  }
+
+  List<DateTime> _getDates(DateTime startDate, DateTime endDate) {
+    final daysBetween =
+        endDate.startOfDay.differenceInDays(startDate.startOfDay) + 1;
+    return List<int>.generate(daysBetween, (i) => i + 1)
+        .reversed
+        .map((e) => startDate.addDays(e - 1))
+        .toList();
   }
 
   List<DateTime> _getDefaultRange() => _getDateRange(7);
 
-  List<DateTime> _getDateRange(int daysAgo) =>
-      List<int>.generate(daysAgo, (i) => i + 1)
-          .map((i) => DateTime.now().subtract(Duration(days: i - 1)))
-          .toList();
+  List<DateTime> _getDateRange(int daysAgo) {
+    return List<int>.generate(daysAgo, (i) => i + 1)
+        .map((i) => DateTime.now().startOfDay.subtract(Duration(days: i - 1)))
+        .toList();
+  }
 
   List<Record> _recordsForDate(DateTime refDate, List<Record> records) {
     return records.reversed.where((element) {

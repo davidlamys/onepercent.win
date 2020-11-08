@@ -103,7 +103,7 @@ String getStatusPrompt(Record selectedRecord) {
   } else if (selectedRecord.hasFailed()) {
     return "Lesson Learnt";
   } else {
-    return "";
+    return "Good. Now aim higher";
   }
 }
 
