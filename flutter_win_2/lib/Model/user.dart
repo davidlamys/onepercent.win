@@ -9,6 +9,7 @@ class User {
   final String displayName;
   final String currentQuote;
   final DateTime memberSince;
+  final bool isAdmin;
 
   User(
       {this.userId,
@@ -17,7 +18,8 @@ class User {
       this.photoUrl,
       this.currentQuote,
       this.displayName,
-      this.memberSince});
+      this.memberSince,
+      this.isAdmin});
 
   factory User.fromDocument(DocumentSnapshot doc) {
     return User(
@@ -27,6 +29,7 @@ class User {
         photoUrl: doc['photoUrl'],
         displayName: doc['displayName'],
         currentQuote: doc['currentQuote'],
+        isAdmin: doc['isAdmin'],
         memberSince: parseTime(doc['memberSince']));
   }
 
@@ -38,7 +41,8 @@ class User {
       "photoUrl": photoUrl,
       "displayName": displayName,
       "currentQuote": currentQuote,
-      "memberSince": memberSince
+      "memberSince": memberSince,
+      "isAdmin": isAdmin
     };
   }
 }

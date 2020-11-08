@@ -62,6 +62,18 @@ class GoalService {
     });
   }
 
+  Stream<List<Record>> globalGoalsStream() {
+    return _firestore
+        .collection('dailyGoals')
+        .orderBy("timestamp")
+        .snapshots()
+        .map((snapshot) {
+      List<DocumentSnapshot> documents = snapshot.documents;
+      print("received: ${documents.length}");
+      return documents.map((e) => Record.fromSnapshot(e)).toList();
+    });
+  }
+
   Future<void> addGoal(Goal goal) {
     return _firestore.collection('dailyGoals').add(goal.data()).then((value) {
       return;
