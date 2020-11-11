@@ -13,7 +13,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_win_2"
+        android:label="One Percent Win"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
