@@ -124,48 +124,60 @@ class LoggedInScreen extends StatelessWidget {
 
   List<Widget> buildSheetIcons(BuildContext context, bool isAdmin) {
     var baseIcons = [
-      BottomSheetIcon(
-        text: "Profile",
-        iconData: Icons.account_circle_outlined,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ProfileProvider(child: ProfileScreen()),
-            ),
-          );
-        },
-      ),
-      BottomSheetIcon(
-        text: "Reminder",
-        iconData: Icons.add_alarm_outlined,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ReminderScreen(),
-            ),
-          );
-        },
-      ),
+      buildProfileIcon(context),
+      buildReminderIcon(context),
     ];
     if (isAdmin) {
-      final getNosy = BottomSheetIcon(
-        text: "Get nosy",
-        iconData: Icons.remove_red_eye_outlined,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AdminScreenProvider(
-                child: AdminScreen(),
-              ),
-            ),
-          );
-        },
-      );
+      final getNosy = buildGetNosyIcon(context);
       baseIcons.add(getNosy);
     }
     return baseIcons;
+  }
+
+  BottomSheetIcon buildProfileIcon(BuildContext context) {
+    return BottomSheetIcon(
+      text: "Profile",
+      iconData: Icons.account_circle_outlined,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfileProvider(child: ProfileScreen()),
+          ),
+        );
+      },
+    );
+  }
+
+  BottomSheetIcon buildReminderIcon(BuildContext context) {
+    return BottomSheetIcon(
+      text: "Reminder",
+      iconData: Icons.add_alarm_outlined,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ReminderScreen(),
+          ),
+        );
+      },
+    );
+  }
+
+  BottomSheetIcon buildGetNosyIcon(BuildContext context) {
+    return BottomSheetIcon(
+      text: "Get nosy",
+      iconData: Icons.remove_red_eye_outlined,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AdminScreenProvider(
+              child: AdminScreen(),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
