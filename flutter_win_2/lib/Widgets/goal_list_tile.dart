@@ -18,7 +18,7 @@ class GoalListTile extends StatelessWidget {
           adapter.getTitleString(),
         ),
         subtitle: Text(
-          adapter.timestampString,
+          adapter.getSubtitleString(),
         ),
         onTap: () {
           showFullRecord(context, adapter.record, "Reflection");
@@ -46,8 +46,10 @@ class GoalListTile extends StatelessWidget {
 abstract class GoalListTileAdapter {
   GoalListTileAdapter(this.record);
   String getTitleString();
+  String getSubtitleString();
   final Record record;
-  String get timestampString => dayFormat().format(record.timestamp);
+  DateFormat get dayFormat => DateFormat('d MMM yy');
+  String get timestampString => dayFormat.format(record.timestamp);
 }
 
 class AdminScreenListTileAdapter extends GoalListTileAdapter {
@@ -68,9 +70,10 @@ class AdminScreenListTileAdapter extends GoalListTileAdapter {
   }
 
   @override
-  final Record record;
-}
+  String getSubtitleString() {
+    return timestampString;
+  }
 
-DateFormat dayFormat() {
-  return DateFormat('d MMM yy');
+  @override
+  final Record record;
 }
