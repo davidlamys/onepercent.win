@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_win_2/Screens/history_screen.dart';
 import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/bottom_sheet_icon.dart';
 import 'package:flutter_win_2/Widgets/calendar.dart';
@@ -126,6 +127,7 @@ class LoggedInScreen extends StatelessWidget {
     var baseIcons = [
       buildProfileIcon(context),
       buildReminderIcon(context),
+      buildHistoryIcon(context),
     ];
     if (isAdmin) {
       final getNosy = buildGetNosyIcon(context);
@@ -158,6 +160,23 @@ class LoggedInScreen extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ReminderScreen(),
+          ),
+        );
+      },
+    );
+  }
+
+  BottomSheetIcon buildHistoryIcon(BuildContext context) {
+    return BottomSheetIcon(
+      text: "View All",
+      iconData: Icons.calendar_today_outlined,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HistoryProvider(
+              child: HistoryScreen(),
+            ),
           ),
         );
       },
