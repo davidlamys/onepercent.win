@@ -75,15 +75,6 @@ class HistoryBloc {
             refDate.start.year, refDate.end.month, refDate.start.day + (i)));
   }
 
-  List<Record> recordsForDate(DateTime refDate, List<Record> records) {
-    return records.reversed.where((element) {
-      final elementTimestamp = element.timestamp;
-      return elementTimestamp.year == refDate.year &&
-          elementTimestamp.month == refDate.month &&
-          elementTimestamp.day == refDate.day;
-    }).toList();
-  }
-
   List<Record> _recordsForDates(DateTimeRange refDate, List<Record> records) {
     return records.reversed.where((element) {
       final elementTimestamp = element.timestamp;
