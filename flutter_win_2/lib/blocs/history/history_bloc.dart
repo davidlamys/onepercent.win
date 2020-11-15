@@ -48,13 +48,14 @@ class HistoryBloc {
     CombineLatestStream.combine2(_goals, _selectedMonth,
         (List<Record> allGoals, DateTimeRange selectedTimeRange) {
       final goalsForMonth = _recordsForDates(selectedTimeRange, allGoals);
+
       return HistoryScreenModel(
           selectedTimeRange.start,
           selectedTimeRange,
           allGoals,
-          datesForRange(selectedTimeRange),
-          true,
-          true,
+          _datesForRange(selectedTimeRange),
+          (_getPrevRange(selectedTimeRange, allGoals) != null),
+          (_getNextRange(selectedTimeRange, allGoals) != null),
           goalsForMonth);
     }).distinct().pipe(_screenModel);
   }
@@ -63,11 +64,62 @@ class HistoryBloc {
     _selectedDate.sink.add(date);
   }
 
-  void viewPreviousMonth() {}
+  DateTimeRange _getPrevRange(
+      DateTimeRange currentRange, List<Record> allGoals) {
+    if (allGoals == null || allGoals.isEmpty) {
+      return null;
+    }
+    DateTime newStartDate = currentRange.start.subMonths(1);
+    final firstGoalTimestamp = allGoals.first.timestamp;
+    if (newStartDate.endOfMonth.isBefore(firstGoalTimestamp)) {
+      return null;
+    }
 
-  void viewNextMonth() {}
+    if (newStartDate.isBefore(firstGoalTimestamp)) {
+      newStartDate = firstGoalTimestamp;
+    }
+    return DateTimeRange(start: newStartDate, end: newStartDate.endOfMonth);
+  }
 
-  List<DateTime> datesForRange(DateTimeRange refDate) {
+  DateTimeRange _getNextRange(
+      DateTimeRange currentRange, List<Record> allGoals) {
+    if (allGoals == null || allGoals.isEmpty) {
+      return null;
+    }
+    final newStartDate = currentRange.start.addMonths(1);
+    DateTime endDate = newStartDate.endOfMonth;
+    final now = DateTime.now();
+    if (newStartDate.isAfter(now)) {
+      return null;
+    }
+    if (endDate.isAfter(now)) {
+      endDate = DateTime.now().endOfDay;
+    }
+    if (allGoals.last.timestamp.isAfter(now)) {
+      endDate = allGoals.last.timestamp;
+    }
+    return DateTimeRange(start: newStartDate, end: endDate);
+  }
+
+  void viewPreviousMonth() {
+    final currentRange = _selectedMonth.value;
+    final newRange = _getPrevRange(currentRange, _goals.value);
+    if (newRange == null) {
+      return;
+    }
+    _selectedMonth.sink.add(newRange);
+  }
+
+  void viewNextMonth() {
+    final currentRange = _selectedMonth.value;
+    final newRange = _getNextRange(currentRange, _goals.value);
+    if (newRange == null) {
+      return;
+    }
+    _selectedMonth.sink.add(newRange);
+  }
+
+  List<DateTime> _datesForRange(DateTimeRange refDate) {
     final daysToGenerate = refDate.duration.inDays + 1;
     return List.generate(
         daysToGenerate,

@@ -4,7 +4,8 @@ class AppButton extends StatelessWidget {
   final Widget child;
   final Color color;
   final VoidCallback onPressed;
-  const AppButton({Key key, this.child, @required this.onPressed, this.color})
+  const AppButton(
+      {Key key, this.child, @required this.onPressed, @required this.color})
       : super(key: key);
 
   @override
