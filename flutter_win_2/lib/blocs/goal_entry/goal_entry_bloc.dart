@@ -17,6 +17,8 @@ class GoalEntryBloc {
   BehaviorSubject<String> _goal = BehaviorSubject.seeded(null);
   BehaviorSubject<String> _reason = BehaviorSubject.seeded(null);
 
+  Function onSaveCompletion;
+
   GoalEntryBloc() {
     CombineLatestStream.combine2<String, String, bool>(_goal, _reason,
         (goal, reason) {
@@ -30,7 +32,7 @@ class GoalEntryBloc {
     }).pipe(_isSaveEnabled);
   }
 
-  Future<void> save({String goal, String reason, DateTime goalDate}) async {
+  save({String goal, String reason, DateTime goalDate}) async {
     var userId = await _userService.userId();
     var userName = await _userService.userName();
     var uuid = Uuid();
@@ -38,10 +40,16 @@ class GoalEntryBloc {
     if (record == null) {
       var newGoal = Goal(uuid.v4(), goal, reason, goalDate, userName, userId,
           null, "inProgress");
-      return _goalService.addGoal(newGoal);
+      _goalService.addGoal(newGoal).then((value) => _saveCompleted());
     } else {
       var clone = record.copyWith(goal: goal, reason: reason);
-      return _goalService.update(clone);
+      _goalService.update(clone).then((value) => _saveCompleted());
+    }
+  }
+
+  _saveCompleted() {
+    if (onSaveCompletion != null) {
+      onSaveCompletion();
     }
   }
 
