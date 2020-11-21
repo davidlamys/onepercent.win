@@ -125,5 +125,5 @@ String getEmojiString(Record record) {
   if (record.status == "failed") {
     return " 🤔 ";
   }
-  return "";
+  return " 🚧";
 }
