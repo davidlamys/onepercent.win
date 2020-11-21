@@ -3,9 +3,11 @@ import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/Widgets/history_timeline_list.dart';
 import 'package:flutter_win_2/blocs/index.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({Key key}) : super(key: key);
+  HistoryScreen({Key key}) : super(key: key);
+  final CalendarController _calendarController = CalendarController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +22,24 @@ class HistoryScreen extends StatelessWidget {
             if (snapshot.hasData == false) {
               return Container();
             }
-            final model = snapshot.data;
-            final dates = snapshot.data.dates.reversed.toList();
-            final recordsForRange = snapshot.data.recordsForSelectedMonth;
+            final dates = snapshot.data.dates.toList();
+            final recordsForRange = snapshot.data.recordsForVisibleRange;
 
             return Column(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: HistoryController(
-                    nextPressed: model.allowNext ? bloc.viewNextMonth : null,
-                    prevPressed:
-                        model.allowPrev ? bloc.viewPreviousMonth : null,
+                TableCalendar(
+                  calendarController: _calendarController,
+                  onVisibleDaysChanged: (DateTime startDate, DateTime endDate,
+                      CalendarFormat format) {
+                    bloc.onVisibleDaysChanged(startDate, endDate);
+                  },
+                  calendarStyle: CalendarStyle(
+                    selectedColor: Colors.deepOrange[400],
+                    todayColor: Colors.deepOrange[200],
+                    markersColor: Colors.brown[700],
+                    outsideDaysVisible: false,
                   ),
+                  endDay: DateTime.now(),
                 ),
                 Expanded(
                   flex: 9,
@@ -44,39 +51,6 @@ class HistoryScreen extends StatelessWidget {
               ],
             );
           }),
-    );
-  }
-}
-
-class HistoryController extends StatelessWidget {
-  final Function prevPressed;
-  final Function nextPressed;
-  final String title;
-  const HistoryController(
-      {Key key, this.prevPressed, this.nextPressed, this.title})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        AppButton(
-          onPressed: prevPressed,
-          color: appGreen,
-          child: AppButtonText(
-            "Prev",
-          ),
-        ),
-        Text('1 Nov'),
-        AppButton(
-          onPressed: nextPressed,
-          color: appGreen,
-          child: AppButtonText(
-            "Next",
-          ),
-        ),
-      ],
     );
   }
 }
