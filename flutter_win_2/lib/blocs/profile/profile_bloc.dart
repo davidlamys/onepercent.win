@@ -61,13 +61,15 @@ class ProfileBloc {
   int findLongestStreak(List<Record> records) {
     int currentStreak = 0;
     int longestStreak = 0;
-    DateTime lastTimeStamp = DateTime.fromMicrosecondsSinceEpoch(0).startOfDay;
-    for (var record in records) {
+    DateTime lastTimeStamp = _now();
+    for (var record in records.reversed) {
       final timeStamp = record.timestamp.startOfDay;
-      final daysSince = timeStamp.difference(lastTimeStamp).inDays;
+      final daysSince = lastTimeStamp.difference(timeStamp).inDays;
       if (daysSince < 2) {
-        currentStreak += 1;
-        if (currentStreak > longestStreak) {
+        if (daysSince == 1) {
+          currentStreak += 1;
+        }
+        if (currentStreak >= longestStreak) {
           longestStreak = currentStreak;
         }
       } else {
@@ -85,7 +87,9 @@ class ProfileBloc {
       final timeStamp = record.timestamp.startOfDay;
       final daysSince = lastTimeStamp.difference(timeStamp).inDays;
       if (daysSince < 2) {
-        currentStreak += 1;
+        if (daysSince == 1) {
+          currentStreak += 1;
+        }
       } else {
         return currentStreak;
       }
