@@ -66,8 +66,10 @@ class HistoryBloc {
   List<Record> _recordsForDates(DateTimeRange refDate, List<Record> records) {
     return records.where((element) {
       final elementTimestamp = element.timestamp;
-      return elementTimestamp.year == refDate.start.year &&
-          elementTimestamp.month == refDate.start.month;
+      return elementTimestamp.isSameDay(refDate.start) ||
+          elementTimestamp.isSameDay(refDate.end) ||
+          (elementTimestamp.isBefore(refDate.end) &&
+              elementTimestamp.isAfter(refDate.start));
     }).toList();
   }
 
