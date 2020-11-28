@@ -71,14 +71,12 @@ class HistoryScreen extends StatelessWidget {
           final children = <Widget>[];
           if (events.isNotEmpty) {
             Record recordForDate = events.first;
-            if (recordForDate != null) {
-              children.add(Container(
-                height: 3.0,
-                width: double.infinity,
-                color: getColor(recordForDate),
-              ));
-              children.add(Text(getEmojiString(recordForDate)));
-            }
+            children.add(Container(
+              height: 3.0,
+              width: double.infinity,
+              color: getColor(recordForDate),
+            ));
+            children.add(Text(getEmojiString(recordForDate)));
           } else {
             children.add(Container(
               height: 3.0,
@@ -87,24 +85,10 @@ class HistoryScreen extends StatelessWidget {
             ));
           }
 
-          if (events.isNotEmpty) {
-            children.add(
-              Positioned(
-                right: 1,
-                bottom: 1,
-                child: _buildEventsMarker(date, events),
-              ),
-            );
-          }
-
           return children;
         },
       ),
       endDay: DateTime.now(),
     );
-  }
-
-  _buildEventsMarker(DateTime date, List events) {
-    return Container();
   }
 }
