@@ -2,15 +2,60 @@ import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Widgets/history_timeline_list.dart';
 import 'package:flutter_win_2/blocs/index.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:dart_date/dart_date.dart';
 
-class HistoryScreen extends StatelessWidget {
+class HistoryScreen extends StatefulWidget {
   HistoryScreen({Key key}) : super(key: key);
+
+  @override
+  _HistoryScreenState createState() => _HistoryScreenState();
+}
+
+class _HistoryScreenState extends State<HistoryScreen> {
   final CalendarController _calendarController = CalendarController();
+  AutoScrollController controller;
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AutoScrollController(
+        viewportBoundaryGetter: () {
+          final rect =
+              Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom);
+          return rect;
+        },
+        axis: Axis.vertical);
+  }
+
+  Future _scrollToIndex(int index) async {
+    if (index == null || index < 0) {
+      return;
+    }
+    await controller.scrollToIndex(index,
+        preferPosition: AutoScrollPosition.begin);
+    controller.highlight(index);
+  }
 
   @override
   Widget build(BuildContext context) {
     final bloc = HistoryProvider.of(context).bloc;
+    bloc.selectedDate.withLatestFrom(bloc.screenModel,
+        (selectedDate, HistoryScreenModel screenModel) {
+      if (screenModel == null) {
+        return -1;
+      }
+      final index = screenModel.dates
+          .indexWhere((element) => element.isSameDay(selectedDate));
+      return index;
+    }).listen((index) {
+      if (index >= 0) {
+        print("scroll to index($index)");
+        _scrollToIndex(index);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text('November 2020'),
@@ -18,21 +63,24 @@ class HistoryScreen extends StatelessWidget {
       body: StreamBuilder<HistoryScreenModel>(
           stream: bloc.screenModel,
           builder: (context, snapshot) {
-            if (snapshot.hasData == false) {
+            if (snapshot.hasData == false || snapshot.data.dates == null) {
               return Container();
             }
             final dates = snapshot.data.dates.toList();
             final recordsForRange = snapshot.data.recordsForVisibleRange;
+            final historyTimelineList = HistoryTimelineList(
+              dates: dates,
+              recordsForRange: recordsForRange,
+              controller: this.controller,
+            );
+            _scrollToIndex(0);
 
             return Column(
               children: [
                 buildTableCalendar(bloc, recordsForRange),
                 Expanded(
                   flex: 9,
-                  child: HistoryTimelineList(
-                    dates: dates,
-                    recordsForRange: recordsForRange,
-                  ),
+                  child: historyTimelineList,
                 ),
               ],
             );
@@ -51,8 +99,10 @@ class HistoryScreen extends StatelessWidget {
       calendarController: _calendarController,
       onVisibleDaysChanged:
           (DateTime startDate, DateTime endDate, CalendarFormat format) {
-        print(format);
         bloc.onVisibleDaysChanged(startDate, endDate);
+      },
+      onDaySelected: (DateTime day, List events, List holidays) {
+        bloc.updateSelectedDate(day);
       },
       headerStyle: HeaderStyle(
         centerHeaderTitle: true,

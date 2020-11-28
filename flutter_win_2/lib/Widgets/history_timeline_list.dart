@@ -1,37 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'goal_list_tile.dart';
 
 class HistoryTimelineList extends StatelessWidget {
-  const HistoryTimelineList({
+  HistoryTimelineList({
     Key key,
     @required this.dates,
     @required this.recordsForRange,
+    this.controller,
   }) : super(key: key);
 
   final List<DateTime> dates;
   final List<Record> recordsForRange;
+  final AutoScrollController controller;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        controller: controller,
         scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
           final date = dates[index];
           final goalsForDate = _recordsForDate(date, recordsForRange);
           if (goalsForDate == null || goalsForDate.isEmpty) {
-            return GoalListTile(
+            final tile = GoalListTile(
               adapter: NoGoalListTileAdapter(date),
             );
+            return _wrapScrollTag(index: index, child: tile);
+          } else {
+            final tile = GoalListTile(
+              adapter: HistoryListTileAdapter(goalsForDate.first),
+            );
+            return _wrapScrollTag(index: index, child: tile);
           }
-          return GoalListTile(
-            adapter: HistoryListTileAdapter(goalsForDate.first),
-          );
         },
         reverse: false,
         itemCount: dates.length);
   }
+
+  Widget _wrapScrollTag({int index, Widget child}) => AutoScrollTag(
+        key: ValueKey(index),
+        controller: controller,
+        index: index,
+        child: child,
+        highlightColor: Colors.black.withOpacity(0.1),
+      );
 
   List<Record> _recordsForDate(DateTime refDate, List<Record> records) {
     return records.where((element) {
