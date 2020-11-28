@@ -21,7 +21,7 @@ class HistoryBloc {
   final _goals = BehaviorSubject<List<Record>>.seeded(<Record>[]);
   BehaviorSubject<DateTime> _selectedDate =
       BehaviorSubject.seeded(DateTime.now().startOfDay);
-  BehaviorSubject<DateTimeRange> _selectedMonth = BehaviorSubject.seeded(
+  BehaviorSubject<DateTimeRange> _visibleDates = BehaviorSubject.seeded(
       DateTimeRange(
           start: DateTime.now().startOfMonth, end: DateTime.now().endOfDay));
   Stream<List<Record>> _interimStream;
@@ -37,7 +37,7 @@ class HistoryBloc {
       _interimStream.pipe(_goals);
     });
 
-    CombineLatestStream.combine2(_goals, _selectedMonth,
+    CombineLatestStream.combine2(_goals, _visibleDates,
         (List<Record> allGoals, DateTimeRange selectedTimeRange) {
       final goalsForMonth = _recordsForDates(selectedTimeRange, allGoals);
 
@@ -52,7 +52,7 @@ class HistoryBloc {
 
   void onVisibleDaysChanged(DateTime first, DateTime last) {
     final newRange = DateTimeRange(start: first, end: last);
-    _selectedMonth.sink.add(newRange);
+    _visibleDates.sink.add(newRange);
   }
 
   List<DateTime> _datesForRange(DateTimeRange refDate) {
@@ -76,7 +76,7 @@ class HistoryBloc {
   dispose() {
     _goals.close();
     _selectedDate.close();
-    _selectedMonth.close();
+    _visibleDates.close();
     _screenModel.close();
   }
 }
