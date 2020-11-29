@@ -108,6 +108,9 @@ String getStatusPrompt(Record selectedRecord) {
 }
 
 Color getColor(Record selectedRecord) {
+  if (selectedRecord == null) {
+    return appRed;
+  }
   if (selectedRecord.notes == null) {
     return appOrange;
   }

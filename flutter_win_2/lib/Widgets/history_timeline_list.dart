@@ -34,7 +34,7 @@ class HistoryTimelineList extends StatelessWidget {
   }
 
   List<Record> _recordsForDate(DateTime refDate, List<Record> records) {
-    return records.reversed.where((element) {
+    return records.where((element) {
       final elementTimestamp = element.timestamp;
       return elementTimestamp.year == refDate.year &&
           elementTimestamp.month == refDate.month &&

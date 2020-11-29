@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_win_2/Styling/colors.dart';
-import 'package:flutter_win_2/Widgets/app_button.dart';
+import 'package:flutter_win_2/Model/record.dart';
 import 'package:flutter_win_2/Widgets/history_timeline_list.dart';
 import 'package:flutter_win_2/blocs/index.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({Key key}) : super(key: key);
+  HistoryScreen({Key key}) : super(key: key);
+  final CalendarController _calendarController = CalendarController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +21,12 @@ class HistoryScreen extends StatelessWidget {
             if (snapshot.hasData == false) {
               return Container();
             }
-            final model = snapshot.data;
-            final dates = snapshot.data.dates.reversed.toList();
-            final recordsForRange = snapshot.data.recordsForSelectedMonth;
+            final dates = snapshot.data.dates.toList();
+            final recordsForRange = snapshot.data.recordsForVisibleRange;
 
             return Column(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: HistoryController(
-                    nextPressed: model.allowNext ? bloc.viewNextMonth : null,
-                    prevPressed:
-                        model.allowPrev ? bloc.viewPreviousMonth : null,
-                  ),
-                ),
+                buildTableCalendar(bloc, recordsForRange),
                 Expanded(
                   flex: 9,
                   child: HistoryTimelineList(
@@ -46,37 +39,56 @@ class HistoryScreen extends StatelessWidget {
           }),
     );
   }
-}
 
-class HistoryController extends StatelessWidget {
-  final Function prevPressed;
-  final Function nextPressed;
-  final String title;
-  const HistoryController(
-      {Key key, this.prevPressed, this.nextPressed, this.title})
-      : super(key: key);
+  TableCalendar buildTableCalendar(
+      HistoryBloc bloc, List<Record> recordsForRange) {
+    Map<DateTime, List<Record>> _events = Map<DateTime, List<Record>>();
+    for (var record in recordsForRange) {
+      _events[record.timestamp] = List<Record>.of([record]);
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        AppButton(
-          onPressed: prevPressed,
-          color: appGreen,
-          child: AppButtonText(
-            "Prev",
-          ),
-        ),
-        Text('1 Nov'),
-        AppButton(
-          onPressed: nextPressed,
-          color: appGreen,
-          child: AppButtonText(
-            "Next",
-          ),
-        ),
-      ],
+    return TableCalendar(
+      calendarController: _calendarController,
+      onVisibleDaysChanged:
+          (DateTime startDate, DateTime endDate, CalendarFormat format) {
+        print(format);
+        bloc.onVisibleDaysChanged(startDate, endDate);
+      },
+      headerStyle: HeaderStyle(
+        centerHeaderTitle: true,
+        formatButtonVisible: true,
+        formatButtonShowsNext: true,
+      ),
+      calendarStyle: CalendarStyle(
+        selectedColor: Colors.deepOrange[400],
+        todayColor: Colors.deepOrange[200],
+        markersColor: Colors.brown[700],
+        outsideDaysVisible: false,
+      ),
+      events: _events,
+      builders: CalendarBuilders(
+        markersBuilder: (context, date, events, holidays) {
+          final children = <Widget>[];
+          if (events.isNotEmpty) {
+            Record recordForDate = events.first;
+            children.add(Container(
+              height: 3.0,
+              width: double.infinity,
+              color: getColor(recordForDate),
+            ));
+            children.add(Text(getEmojiString(recordForDate)));
+          } else {
+            children.add(Container(
+              height: 3.0,
+              width: double.infinity,
+              color: getColor(null),
+            ));
+          }
+
+          return children;
+        },
+      ),
+      endDay: DateTime.now(),
     );
   }
 }

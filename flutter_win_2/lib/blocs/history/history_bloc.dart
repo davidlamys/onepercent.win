@@ -7,21 +7,13 @@ import 'package:dart_date/dart_date.dart';
 
 class HistoryScreenModel {
   final DateTime selectedDate;
-  final DateTimeRange selectedMonth;
+  final DateTimeRange visibleRange;
   final List<Record> recordsForSelectedDate;
-  final List<Record> recordsForSelectedMonth;
+  final List<Record> recordsForVisibleRange;
   final List<DateTime> dates;
-  final bool allowPrev;
-  final bool allowNext;
 
-  HistoryScreenModel(
-      this.selectedDate,
-      this.selectedMonth,
-      this.recordsForSelectedDate,
-      this.dates,
-      this.allowPrev,
-      this.allowNext,
-      this.recordsForSelectedMonth);
+  HistoryScreenModel(this.selectedDate, this.visibleRange,
+      this.recordsForSelectedDate, this.dates, this.recordsForVisibleRange);
 }
 
 class HistoryBloc {
@@ -29,7 +21,7 @@ class HistoryBloc {
   final _goals = BehaviorSubject<List<Record>>.seeded(<Record>[]);
   BehaviorSubject<DateTime> _selectedDate =
       BehaviorSubject.seeded(DateTime.now().startOfDay);
-  BehaviorSubject<DateTimeRange> _selectedMonth = BehaviorSubject.seeded(
+  BehaviorSubject<DateTimeRange> _visibleDates = BehaviorSubject.seeded(
       DateTimeRange(
           start: DateTime.now().startOfMonth, end: DateTime.now().endOfDay));
   Stream<List<Record>> _interimStream;
@@ -45,18 +37,12 @@ class HistoryBloc {
       _interimStream.pipe(_goals);
     });
 
-    CombineLatestStream.combine2(_goals, _selectedMonth,
+    CombineLatestStream.combine2(_goals, _visibleDates,
         (List<Record> allGoals, DateTimeRange selectedTimeRange) {
       final goalsForMonth = _recordsForDates(selectedTimeRange, allGoals);
 
-      return HistoryScreenModel(
-          selectedTimeRange.start,
-          selectedTimeRange,
-          allGoals,
-          _datesForRange(selectedTimeRange),
-          (_getPrevRange(selectedTimeRange, allGoals) != null),
-          (_getNextRange(selectedTimeRange, allGoals) != null),
-          goalsForMonth);
+      return HistoryScreenModel(selectedTimeRange.start, selectedTimeRange,
+          allGoals, _datesForRange(selectedTimeRange), goalsForMonth);
     }).distinct().pipe(_screenModel);
   }
 
@@ -64,59 +50,9 @@ class HistoryBloc {
     _selectedDate.sink.add(date);
   }
 
-  DateTimeRange _getPrevRange(
-      DateTimeRange currentRange, List<Record> allGoals) {
-    if (allGoals == null || allGoals.isEmpty) {
-      return null;
-    }
-    DateTime newStartDate = currentRange.start.subMonths(1);
-    final firstGoalTimestamp = allGoals.first.timestamp;
-    if (newStartDate.endOfMonth.isBefore(firstGoalTimestamp)) {
-      return null;
-    }
-
-    if (newStartDate.isBefore(firstGoalTimestamp)) {
-      newStartDate = firstGoalTimestamp;
-    }
-    return DateTimeRange(start: newStartDate, end: newStartDate.endOfMonth);
-  }
-
-  DateTimeRange _getNextRange(
-      DateTimeRange currentRange, List<Record> allGoals) {
-    if (allGoals == null || allGoals.isEmpty) {
-      return null;
-    }
-    final newStartDate = currentRange.start.addMonths(1);
-    DateTime endDate = newStartDate.endOfMonth;
-    final now = DateTime.now();
-    if (newStartDate.isAfter(now)) {
-      return null;
-    }
-    if (endDate.isAfter(now)) {
-      endDate = DateTime.now().endOfDay;
-    }
-    if (allGoals.last.timestamp.isAfter(now)) {
-      endDate = allGoals.last.timestamp;
-    }
-    return DateTimeRange(start: newStartDate, end: endDate);
-  }
-
-  void viewPreviousMonth() {
-    final currentRange = _selectedMonth.value;
-    final newRange = _getPrevRange(currentRange, _goals.value);
-    if (newRange == null) {
-      return;
-    }
-    _selectedMonth.sink.add(newRange);
-  }
-
-  void viewNextMonth() {
-    final currentRange = _selectedMonth.value;
-    final newRange = _getNextRange(currentRange, _goals.value);
-    if (newRange == null) {
-      return;
-    }
-    _selectedMonth.sink.add(newRange);
+  void onVisibleDaysChanged(DateTime first, DateTime last) {
+    final newRange = DateTimeRange(start: first, end: last);
+    _visibleDates.sink.add(newRange);
   }
 
   List<DateTime> _datesForRange(DateTimeRange refDate) {
@@ -124,21 +60,23 @@ class HistoryBloc {
     return List.generate(
         daysToGenerate,
         (i) => DateTime(
-            refDate.start.year, refDate.end.month, refDate.start.day + (i)));
+            refDate.start.year, refDate.start.month, refDate.start.day + (i)));
   }
 
   List<Record> _recordsForDates(DateTimeRange refDate, List<Record> records) {
-    return records.reversed.where((element) {
+    return records.where((element) {
       final elementTimestamp = element.timestamp;
-      return elementTimestamp.year == refDate.start.year &&
-          elementTimestamp.month == refDate.start.month;
+      return elementTimestamp.isSameDay(refDate.start) ||
+          elementTimestamp.isSameDay(refDate.end) ||
+          (elementTimestamp.isBefore(refDate.end) &&
+              elementTimestamp.isAfter(refDate.start));
     }).toList();
   }
 
   dispose() {
     _goals.close();
     _selectedDate.close();
-    _selectedMonth.close();
+    _visibleDates.close();
     _screenModel.close();
   }
 }
