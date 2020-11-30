@@ -26,6 +26,7 @@ class HistoryBloc {
           start: DateTime.now().startOfMonth, end: DateTime.now().endOfDay));
   Stream<List<Record>> _interimStream;
   Stream<List<Record>> get goals => _goals.stream;
+  Stream<DateTime> get selectedDate => _selectedDate.stream;
   BehaviorSubject<HistoryScreenModel> _screenModel =
       BehaviorSubject.seeded(null);
 
