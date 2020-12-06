@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
       child: NoteEntryProvider(
         child: ReminderProvider(
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: RouterScreen(),
             onGenerateRoute: routes,
             theme: ThemeData(
