@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_win_2/Model/record.dart';
+import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../service_factory.dart';
@@ -12,8 +13,21 @@ class HistoryScreenModel {
   final List<Record> recordsForVisibleRange;
   final List<DateTime> dates;
 
-  HistoryScreenModel(this.selectedDate, this.visibleRange,
-      this.recordsForSelectedDate, this.dates, this.recordsForVisibleRange);
+  HistoryScreenModel(
+    this.selectedDate,
+    this.visibleRange,
+    this.recordsForSelectedDate,
+    this.dates,
+    this.recordsForVisibleRange,
+  );
+
+  DateFormat _dateFormat() {
+    return DateFormat('MMM yyyy');
+  }
+
+  String getNavBarTitle() {
+    return _dateFormat().format(visibleRange.start);
+  }
 }
 
 class HistoryBloc {
