@@ -56,36 +56,45 @@ class _HistoryScreenState extends State<HistoryScreen> {
         _scrollToIndex(index);
       }
     });
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('November 2020'),
-      ),
-      body: StreamBuilder<HistoryScreenModel>(
-          stream: bloc.screenModel,
-          builder: (context, snapshot) {
-            if (snapshot.hasData == false || snapshot.data.dates == null) {
-              return Container();
-            }
-            final dates = snapshot.data.dates.toList();
-            final recordsForRange = snapshot.data.recordsForVisibleRange;
-            final historyTimelineList = HistoryTimelineList(
-              dates: dates,
-              recordsForRange: recordsForRange,
-              controller: this.controller,
+    return StreamBuilder<HistoryScreenModel>(
+        stream: bloc.screenModel,
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false || snapshot.data.dates == null) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Loading'),
+              ),
             );
-            _scrollToIndex(0);
+          }
 
-            return Column(
-              children: [
-                buildTableCalendar(bloc, recordsForRange),
-                Expanded(
-                  flex: 9,
-                  child: historyTimelineList,
-                ),
-              ],
-            );
-          }),
-    );
+          final screenModel = snapshot.data;
+          final dates = screenModel.dates.toList();
+          final recordsForRange = screenModel.recordsForVisibleRange;
+          final historyTimelineList = HistoryTimelineList(
+            dates: dates,
+            recordsForRange: recordsForRange,
+            controller: this.controller,
+          );
+          _scrollToIndex(0);
+
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(screenModel.getNavBarTitle()),
+            ),
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
+              child: Column(
+                children: [
+                  buildTableCalendar(bloc, recordsForRange),
+                  Expanded(
+                    flex: 9,
+                    child: historyTimelineList,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   TableCalendar buildTableCalendar(
@@ -104,11 +113,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       onDaySelected: (DateTime day, List events, List holidays) {
         bloc.updateSelectedDate(day);
       },
-      headerStyle: HeaderStyle(
-        centerHeaderTitle: true,
-        formatButtonVisible: true,
-        formatButtonShowsNext: true,
-      ),
+      headerVisible: false,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.deepOrange[400],
         todayColor: Colors.deepOrange[200],
