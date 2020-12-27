@@ -64,7 +64,7 @@ class _PreLoginScreenState extends State<PreLoginScreen> {
                   var string = await userService.userId();
                   print("user id $string");
                 },
-                text: 'Continue anonymoulsy',
+                text: 'Continue anonymously',
                 icon: FontAwesomeIcons.userSecret,
               ),
             ],
