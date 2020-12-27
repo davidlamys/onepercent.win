@@ -65,12 +65,13 @@ class GoalService {
   Stream<List<Record>> globalGoalsStream() {
     return _firestore
         .collection('dailyGoals')
-        .orderBy("timestamp")
+        .orderBy("timestamp", descending: true)
+        .limit(50)
         .snapshots()
         .map((snapshot) {
       List<DocumentSnapshot> documents = snapshot.documents;
       print("received: ${documents.length}");
-      return documents.map((e) => Record.fromSnapshot(e)).toList();
+      return documents.reversed.map((e) => Record.fromSnapshot(e)).toList();
     });
   }
 
