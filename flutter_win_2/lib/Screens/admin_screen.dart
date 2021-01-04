@@ -20,9 +20,7 @@ class AdminScreen extends StatelessWidget {
               return Container();
             }
             final goals = snapshot.data.reversed.where((element) {
-              return ((element.name == null ||
-                      element.reason == null ||
-                      element.createdBy == null) ==
+              return ((element.name == null || element.reason == null) ==
                   false);
             }).toList();
 
