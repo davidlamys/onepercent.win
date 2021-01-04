@@ -60,7 +60,12 @@ class AdminScreenListTileAdapter extends GoalListTileAdapter {
     final token1 = "I want to ";
     final token2 = " because it is going to help me to ";
     final statusEmoji = getEmojiString(record);
-    return record.createdBy +
+    var author = record.createdBy;
+    if (record.createdBy == null) {
+      author = "Anon";
+    }
+
+    return author +
         ": " +
         token1 +
         record.name +
