@@ -50,6 +50,7 @@ class GoalEntryBloc {
   _saveCompleted() {
     if (onSaveCompletion != null) {
       onSaveCompletion();
+      onSaveCompletion = null;
     }
   }
 

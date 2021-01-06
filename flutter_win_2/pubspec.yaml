@@ -40,6 +40,7 @@ dependencies:
   shared_preferences: ^0.5.12
   table_calendar: ^2.3.0
   scroll_to_index: any
+  tap_debouncer: ^1.0.1
 
 dev_dependencies:
   flutter_test:

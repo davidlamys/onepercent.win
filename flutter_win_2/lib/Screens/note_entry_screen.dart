@@ -5,6 +5,7 @@ import 'package:flutter_win_2/Styling/colors.dart';
 import 'package:flutter_win_2/Widgets/app_button.dart';
 import 'package:flutter_win_2/Widgets/goal_view.dart';
 import 'package:flutter_win_2/blocs/index.dart';
+import 'package:tap_debouncer/tap_debouncer.dart';
 
 class NoteEntryScreen extends StatelessWidget {
   static const id = 'noteEntryScreen';
@@ -21,6 +22,9 @@ class NoteEntryScreen extends StatelessWidget {
 
     NoteEntryBloc bloc = NoteEntryProvider.of(context).bloc;
     bloc.setRecord(record);
+    bloc.onSaveCompletion = () {
+      Navigator.pop(context);
+    };
 
     Widget saveNotes = StreamBuilder(
       stream: bloc.isSaveEnabled,
@@ -100,17 +104,21 @@ class NoteEntryScreen extends StatelessWidget {
 
   Widget buildSaveNotesButton(TextEditingController textEditingController,
       BuildContext context, bool isEnabled, NoteEntryBloc bloc) {
-    return AppButton(
-      color: appGreen,
-      onPressed: isEnabled
-          ? () {
-              bloc.save().then((value) => Navigator.pop(context));
-            }
-          : null,
-      child: AppButtonText(
-        'Save',
-        textColor: Colors.white,
-      ),
+    return TapDebouncer(
+      cooldown: Duration(milliseconds: 500),
+      onTap: () async {
+        bloc.save();
+      },
+      builder: (BuildContext context, TapDebouncerFunc onTap) {
+        return AppButton(
+          color: appGreen,
+          onPressed: isEnabled ? onTap : null,
+          child: AppButtonText(
+            'Save',
+            textColor: Colors.white,
+          ),
+        );
+      },
     );
   }
 
